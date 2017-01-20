@@ -1,4 +1,4 @@
-# SOEN341_eCom
+# SOEN341-G4
 
 <h1>Group Members</h1>
 <ol>
