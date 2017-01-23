@@ -4,7 +4,7 @@
 <ol>
   <li>Charles-Philippe Labbé (40002442)  c.p.labbe@me.com</li>
   <li>Aman Bhandal(27390858) am_bhand@live.concordia.ca</li>
-  <li>Dmitry Kryukov(40029645) remasik@gmail.com</li>
+  <li>Dmitry Kryukov (40029645) remasik@gmail.com</li>
   <li>p.ksusha@gmail.com</li>
   <li>nikitabaranov@gmail.com</li>
   <li>batoul.yehia@gmail.com</li>
