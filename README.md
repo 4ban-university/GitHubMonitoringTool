@@ -8,7 +8,7 @@
   <li>Ksenia Popova (40029623) p.ksyusha@gmail.com</li>
   <li>nikitabaranov@gmail.com</li>
   <li>batoul.yehia@gmail.com</li>
-  <li>raymart54@gmail.com</li>
+  <li>Raymart De Guzman (40010443) raymart54@gmail.com</li>
   <li>andy.pham2956@gmail.com</li>
 </ol>
 
