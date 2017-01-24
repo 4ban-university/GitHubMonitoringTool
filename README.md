@@ -29,6 +29,6 @@
 
 <h1>Type of Application</h1>
 <ol>
-  <li>Web Application (HTML, CSS, JavaScript, Java/C# backend</li>
+  <li>Web Application (HTML, CSS, JavaScript, PHP, Java/C# backend -> MySQL)</li>
   <li>Desktop Application (using Java GUI)</li>
 </ol>
