@@ -6,7 +6,7 @@
   <li>Aman Bhandal(27390858) am_bhand@live.concordia.ca</li>
   <li>Dmitry Kryukov (40029645) remasik@gmail.com</li>
   <li>Ksenia Popova (40029623) p.ksyusha@gmail.com</li>
-  <li>nikitabaranov@gmail.com</li>
+  <li>Nikita Baranov (40012854) nikitabaranov@gmail.com</li>
   <li>batoul.yehia@gmail.com</li>
   <li>Raymart De Guzman (40010443) raymart54@gmail.com</li>
   <li>andy.pham2956@gmail.com</li>
