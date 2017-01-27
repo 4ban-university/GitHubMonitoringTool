@@ -32,3 +32,12 @@
   <li>Web Application (HTML, CSS, JavaScript, PHP, Java/C# backend -> MySQL)</li>
   <li>Desktop Application (using Java GUI)</li>
 </ol>
+
+<h1>Directives</h1>
+<ol>
+  <li>We must create something to help the TA</li>
+  <li>We should create "value" to our software</li>
+  <li>Must be eLearning related</li>
+  <li>Should be done in three months</li>
+  <li>Anything else?</li>
+</ol>
