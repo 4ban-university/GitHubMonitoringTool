@@ -6,9 +6,9 @@
   <li>Aman Bhandal(27390858) am_bhand@live.concordia.ca</li>
   <li>Dmitry Kryukov (40029645) remasik@gmail.com</li>
   <li>Ksenia Popova (40029623) p.ksyusha@gmail.com</li>
-  <li>nikitabaranov@gmail.com</li>
-  <li>batoul.yehia@gmail.com</li>
-  <li>raymart54@gmail.com</li>
+  <li>Nikita Baranov (40012854) nikitabaranov@gmail.com</li>
+  <li>Batoul Yehia (40010912) batoul.yehia@gmail.com</li>
+  <li>Raymart De Guzman (40010443) raymart54@gmail.com</li>
   <li>andy.pham2956@gmail.com</li>
 </ol>
 
@@ -29,6 +29,16 @@
 
 <h1>Type of Application</h1>
 <ol>
-  <li>Web Application (HTML, CSS, JavaScript, Java/C# backend</li>
+  <li>Web Application (HTML, CSS, JavaScript, PHP, Java/C# backend -> MySQL)</li>
   <li>Desktop Application (using Java GUI)</li>
+</ol>
+
+<h1>Directives</h1>
+<ol>
+  <li>We must create something to help the TA</li>
+  <li>We should create "value" to our software</li>
+  <li>Must be eLearning related</li>
+  <li>Should be done in three months</li>
+  <li>Documentation is very important not just coding</li>
+  <li>Anything else?</li>
 </ol>
