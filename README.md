@@ -39,5 +39,6 @@
   <li>We should create "value" to our software</li>
   <li>Must be eLearning related</li>
   <li>Should be done in three months</li>
+  <li>Documentation is very important not just coding</li>
   <li>Anything else?</li>
 </ol>
