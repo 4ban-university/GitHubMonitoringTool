@@ -1,5 +1,7 @@
 # SOEN341-G4
 
+<a href="https://abhandal.github.io/SOEN341-G4/">Group WebPage</a>
+
 <h1>Group Members</h1>
 <ol>
   <li>Charles-Philippe Labbé (40002442)  c.p.labbe@me.com</li>
