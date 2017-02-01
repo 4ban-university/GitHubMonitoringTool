@@ -11,7 +11,7 @@ The purpose of this document is to describe the need and to define features of t
 
 ### 1.2. Scope
 
-The purpose of the project is to develop an application for activity tracking on GitHub. This work will help the TA (teacher assistant) to assess student contribution to the project in easy way.
+The purpose of the project is to develop an application for activity tracking on GitHub. This work will help the TA (teacher assistant) to assess student contribution to the project in an easy way.
 
 ### 1.3. References
 
@@ -25,9 +25,9 @@ The purpose of the project is to develop an application for activity tracking on
 
 |---                             |---                                    |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The problem of                 | difficulty to track student activity and contribution in each project on GitHub. A lot of useful information is located on different pages and it is hard to remember all of it to make an analys.                                                                                           |
-| affects                        | TA                                                                                                                                                                          |
-| the impact of which is         | hard to make quick analysis about students activity and contribution to the projects. Hard to track project evolution                                                       |
+| Problem                 | difficulty to track student activity and contribution in each project on GitHub. A lot of useful information is located on different pages and it is hard to remember all of it to make an analys.                                                                                           |
+| Affects                        | TA                                                                                                                                                                          |
+| Impact         | hard to make quick analysis about students activity and contribution to the projects. Hard to track project evolution                                                       |
 | a successful solution would be | web-based application that collects all necessary data from GitHub and represents it in one place for further analysis. Data can be displayed in different types of charts. |
 
 
