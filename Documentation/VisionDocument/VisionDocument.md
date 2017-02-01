@@ -25,10 +25,10 @@ The purpose of the project is to develop a web application for activity tracking
 
 |---                             |---                                    |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Problem                 | difficulty to track student activity and contribution in each project on GitHub. A lot of useful information is located on different pages and it is hard to remember all of it to make an analys.                                                                                           |
+| Problem                 | Difficulty to track student activity and contribution in each project on GitHub. A lot of useful information is located on different pages and it is hard to remember all of it to make an analys.                                                                                           |
 | Affects                        | TA                                                                                                                                                                          |
-| Impact         | hard to make quick analysis about students activity and contribution to the projects. Hard to track project evolution                                                       |
-| Solution | web-based application that collects all necessary data from GitHub and represents it in one place for further analysis. Data can be displayed in different types of charts. |
+| Impact         | Hard to make quick analysis about students activity and contribution to the projects. Hard to track project evolution                                                       |
+| Solution | Web-based application that collects all necessary data from GitHub and represents it in one place for further analysis. Data can be displayed in different types of charts. |
 
 
 ### 2.2. Product position statement
@@ -37,10 +37,10 @@ The purpose of the project is to develop a web application for activity tracking
 | ---                         | ---                                                                                                    |
 |-----------------------------|--------------------------------------------------------------------------------------------------------|
 | For                         |  TA                                                                                                    |
-| Who                         |have difficulties with assessment of student's contribution and activity in project on GitHub           |                                                                                 |
-| What                        |collects data from GitHub and demonstrates it in convinient for futher analysis way                     |
+| Who                         |Wave difficulties with assessment of student's contribution and activity in project on GitHub           |                                                                                 |
+| What                        |Collects data from GitHub and demonstrates it in convinient for futher analysis way                     |
 | Unlike                      |GitHub, which doesn't have enough tools to represent data for tracking a single student's activity or the project's progress|
-| Our product                 |provides user a simple method to view all neccessary and addintional data from GitHub repository. It is done with different charts|                                                                                                           
+| Our product                 |Provides user a simple method to view all neccessary and addintional data from GitHub repository. It is done with different charts|                                                                                                           
 
 
 ## 3. Stakeholder Descriptions
@@ -49,7 +49,7 @@ The purpose of the project is to develop a web application for activity tracking
 ### 3.1. Stakeholder Summary
 | Name         | Description                 | Responsibilities                                          |
 |--------------|-----------------------------|-----------------------------------------------------------|
-|  TA          |A client, who is supposed to  use this application in the future |This stakeholder needs to check the progress of the project during each iteration. Coordinates each iteration with developers.|
+|  TA          |A client, who is supposed to  Use this application in the future |This stakeholder needs to check the progress of the project during each iteration. Coordinates each iteration with developers.|
                      
                                                                                      
 
