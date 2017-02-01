@@ -7,11 +7,11 @@ GitHub repository monitoring tool.
 
 ### 1.1. Purpose
 
-The purpose of this document is to describe the need and to define features of the GitHub repository monitoring tool.
+The GitHub repository monitoring tool will help the teaching assistants to monitor and grade each groups and students; by analyzing a repository and showing useful information in an easy-to-use and easy-to-understand way. In summary, this will show the contributions of each students and the progress of the project.
 
 ### 1.2. Scope
 
-The purpose of the project is to develop an application for activity tracking on GitHub. This work will help the TA (teacher assistant) to assess student contribution to the project in an easy way.
+The purpose of the project is to develop a web application for activity tracking on GitHub. The software will transform the information available on the GitHub database into a graphical interface.
 
 ### 1.3. References
 
@@ -37,9 +37,8 @@ The purpose of the project is to develop an application for activity tracking on
 | ---                         | ---                                                                                                    |
 |-----------------------------|--------------------------------------------------------------------------------------------------------|
 | For                         |  TA                                                                                                    |
-| Who                         |have difficulties with assessment of student's contribution and activity in project on GitHub           |
-| GitHub repo monitoring tool |is an application                                                                                       |
-| That                        |collects data from GitHub and demonstrates it in convinient for futher analysis way                     |
+| Who                         |have difficulties with assessment of student's contribution and activity in project on GitHub           |                                                                                 |
+| What                        |collects data from GitHub and demonstrates it in convinient for futher analysis way                     |
 | Unlike                      |GitHub, which doesn't have enough tools to represent data for tracking a single student's activity or the project's progress|
 | Our product                 |provides user a simple method to view all neccessary and addintional data from GitHub repository. It is done with different charts|                                                                                                           
 
