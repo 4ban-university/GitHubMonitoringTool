@@ -28,7 +28,7 @@ The purpose of the project is to develop an application for activity tracking on
 | Problem                 | difficulty to track student activity and contribution in each project on GitHub. A lot of useful information is located on different pages and it is hard to remember all of it to make an analys.                                                                                           |
 | Affects                        | TA                                                                                                                                                                          |
 | Impact         | hard to make quick analysis about students activity and contribution to the projects. Hard to track project evolution                                                       |
-| a successful solution would be | web-based application that collects all necessary data from GitHub and represents it in one place for further analysis. Data can be displayed in different types of charts. |
+| Solution | web-based application that collects all necessary data from GitHub and represents it in one place for further analysis. Data can be displayed in different types of charts. |
 
 
 ### 2.2. Product position statement
@@ -40,7 +40,7 @@ The purpose of the project is to develop an application for activity tracking on
 | Who                         |have difficulties with assessment of student's contribution and activity in project on GitHub           |
 | GitHub repo monitoring tool |is an application                                                                                       |
 | That                        |collects data from GitHub and demonstrates it in convinient for futher analysis way                     |
-| Unlike                      |GitHub, which doesn't have enough tools to represent data for tracking students activity or project progress|
+| Unlike                      |GitHub, which doesn't have enough tools to represent data for tracking a single student's activity or the project's progress|
 | Our product                 |provides user a simple method to view all neccessary and addintional data from GitHub repository. It is done with different charts|                                                                                                           
 
 
@@ -58,12 +58,12 @@ The purpose of the project is to develop an application for activity tracking on
 
 ### 4.1. System features
 1. Login into github account (through github API)
-2. Logout from guthub account (through github API)
+2. Logout from github account (through github API)
 3. Add repository to his own page
 4. Delete repository from his own page
 5. Add description to repository
 6. Edit description of repository
-7. ...
+7. Taking notes and grading students
 
 ### 4.2. User features
 1. Get activity of repository
@@ -72,4 +72,4 @@ The purpose of the project is to develop an application for activity tracking on
 4. Get list active issues for repository
 5. Get list of closed issues for repository
 6. Get list of all commits for repository
-7. ...
+7. Get list of students and the ability to follow each one of them
