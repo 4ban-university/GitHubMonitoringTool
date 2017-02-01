@@ -7,7 +7,11 @@ GitHub repository monitoring tool.
 
 ### 1.1. Purpose
 
+The purpose of this document is to describe the need and to define features of the GitHub repository monitoring tool.
+
 ### 1.2. Scope
+
+The purpose of the project is to develop an application for activity tracking on GitHub. This work will help the TA (teacher assistant) to assess student contribution to the project in easy way.
 
 ### 1.3. References
 
@@ -16,28 +20,39 @@ GitHub repository monitoring tool.
 
 ## 2. Positioning
 
-### 2.1. User/Market
-
-### 2.2. Problem statement
-
-### 2.3. Product position statement
+### 2.1. Problem statement
 
 
-| ---                         | ---  |
-|-----------------------------|------|
-| For                         |      |
-| Who                         |      |
-| GitHub repo monitoring tool |      |
-| That                        |      |
-| Unlike                      |      |
-| Our product                 |      |
+|---                             |---                                    |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The problem of                 | difficulty to track student activity and contribution in each project on GitHub. A lot of useful information is located on different pages and it is hard to remember all of it to make an analys.                                                                                           |
+| affects                        | TA                                                                                                                                                                          |
+| the impact of which is         | hard to make quick analysis about students activity and contribution to the projects. Hard to track project evolution                                                       |
+| a successful solution would be | web-based application that collects all necessary data from GitHub and represents it in one place for further analysis. Data can be displayed in different types of charts. |
 
 
-## 3. Product overview
+### 2.2. Product position statement
 
-### 3.1. Product Perspective
 
-### 3.2. Summary of Capabilities
+| ---                         | ---                                                                                                    |
+|-----------------------------|--------------------------------------------------------------------------------------------------------|
+| For                         |  TA                                                                                                    |
+| Who                         |have difficulties with assessment of student's contribution and activity in project on GitHub           |
+| GitHub repo monitoring tool |is an application                                                                                       |
+| That                        |collects data from GitHub and demonstrates it in convinient for futher analysis way                     |
+| Unlike                      |GitHub, which doesn't have enough tools to represent data for tracking students activity or project progress|
+| Our product                 |provides user a simple method to view all neccessary and addintional data from GitHub repository. It is done with different charts|                                                                                                           
+
+
+## 3. Stakeholder Descriptions
+
+
+### 3.1. Stakeholder Summary
+| Name         | Description                 | Responsibilities                                          |
+|--------------|-----------------------------|-----------------------------------------------------------|
+|  TA          |A client, who is supposed to  use this application in the future |This stakeholder needs to check the progress of the project during each iteration. Coordinates each iteration with developers.|
+                     
+                                                                                     
 
 ## 4. Product features
 
