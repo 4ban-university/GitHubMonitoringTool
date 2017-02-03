@@ -7,7 +7,6 @@ Before TA meeting
 <li>Meeting minutes in document folder</li>
 <li>Each file's format will be "meeting_date.md"</li>
 <li>Work distribution (front-end back-end | work in pair  agile)</li>
-<li>30 minutes</li>
 </ul>
 
 TA – meeting
@@ -36,11 +35,13 @@ Meeting after
 <li>Other info? Ex: minutes, issues, branches (epic)</li>
 <li>Task breakdown for sprint 2</li>
 <li>Backend language</li>
-</ul>
-For next week
-<ul>
+
+<ul>For next week
+
 <li>Idea of dashboard + login + menu (display)</li>
 <li>Database  Traviscl (entity relationship diagram + api)</li>
 <li>Architecture of the project</li>
 <li>Priorities for sprint 2</li>
 </ul>
+</ul>
+65 minutes
