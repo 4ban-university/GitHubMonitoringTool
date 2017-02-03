@@ -36,12 +36,12 @@ Meeting after
 <li>Task breakdown for sprint 2</li>
 <li>Backend language</li>
 
-<ul>For next week
+<li><ul>For next week
 
 <li>Idea of dashboard + login + menu (display)</li>
 <li>Database  Traviscl (entity relationship diagram + api)</li>
 <li>Architecture of the project</li>
 <li>Priorities for sprint 2</li>
-</ul>
+</ul></li>
 </ul>
 65 minutes
