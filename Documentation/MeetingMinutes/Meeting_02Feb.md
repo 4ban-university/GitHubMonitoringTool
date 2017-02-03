@@ -36,7 +36,7 @@ Meeting after
 <li>Other info? Ex: minutes, issues, branches (epic)</li>
 <li>Task breakdown for sprint 2</li>
 <li>Backend language</li>
-</li>
+</ul>
 For next week
 <ul>
 <li>Idea of dashboard + login + menu (display)</li>
