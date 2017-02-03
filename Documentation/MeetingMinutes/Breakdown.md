@@ -1,5 +1,4 @@
-<h1>Task Breakdown </h1>
-<i> for sprint 2</i>
+<h1>Task Breakdown </h1><h2><i> for sprint 2</i></h2>
 
 <ul>
   <li><h3>Aman</h3>
