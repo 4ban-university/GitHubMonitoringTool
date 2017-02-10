@@ -1,6 +1,7 @@
 # SOEN341-G4
 
 <a href="https://abhandal.github.io/SOEN341-G4/">Group WebPage</a>
+<a href="http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/entry.php"> PHP Github API Testing page for now</a>
 
 <h1>Group Members</h1>
 <ol>
