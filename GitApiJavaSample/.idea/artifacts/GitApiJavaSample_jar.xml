@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="GitApiJavaSample:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GitApiJavaSample_jar</output-path>
+    <root id="archive" name="GitApiJavaSample.jar">
+      <element id="module-output" name="GitApiJavaSample" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/eclips.egit/org.eclipse.egit.github.core/target/org.eclipse.egit.github.core-4.6.1-SNAPSHOT.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
