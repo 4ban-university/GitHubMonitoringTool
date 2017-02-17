@@ -2,16 +2,16 @@
 
 <ul>
   <li><h3>Aman</h3>
-  <ol><li> ERD</li></ol></li>
+  <ol><li> ERD(2)</li></ol></li>
   <li><h3>Nikita</h3>
   <ol>
-    <li> TravisCL </li>
-    <li>Api description</li></ol></li>
+    <li> TravisCL (3)</li>
+    <li>Api description(1)</li></ol></li>
   <li><h3>Batoul & Ray</h3><ol><li>Mock ups</li>
-    <li>log</li></ol>
-    <li><h3>Ksenia & Dmitry</h3> <ol><li> Google api for charts</li>
-    <li> JS library</li></ol>
-    <li><h3>Andy & Charles</h3> <ol><li> Generic Algorithms</li>
+    <li>log(2)</li></ol>
+    <li><h3>Ksenia & Dmitry</h3> <ol><li> Google api for charts(2)</li>
+    <li> JS library(1)</li></ol>
+    <li><h3>Andy & Charles</h3> <ol><li> Generic Algorithms(3)</li>
     <li>Load/save</li>
     <li> Backend Language</li></ol></li>
 </ul>
