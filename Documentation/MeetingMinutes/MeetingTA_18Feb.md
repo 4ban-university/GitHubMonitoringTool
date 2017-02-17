@@ -9,8 +9,11 @@
 
 3 TA: Show the plan for the next Sprint 
 	Milestones – OK
+
 4 Show Meetings minutes - OK
+
 5 Show System design – OK
+
 6 Show commits/ pull request/ issues/ contribution/ work done
 	Stats from our repo - OK
 
