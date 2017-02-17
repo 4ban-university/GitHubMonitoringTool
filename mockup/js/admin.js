@@ -27,6 +27,20 @@ $(document).ready(function () {
         deleteModalBody.append(deleteModalBodyContent);
         $("#delete-modal").modal("show");
     });
+
+    // on click sprint tabs toggle content view
+    $("#sprint-nav-tabs").find("a").click(function () {
+        var $sprintNavTabs = $("#sprint-nav-tabs"),
+            $sprintTabContent = $("#sprint-tab-content");
+        var listNumber = $(this).parent().index();
+        console.log(listNumber);
+
+        $sprintNavTabs.find("li").removeClass("active");
+        $(this).parent().addClass("active");
+
+        $sprintTabContent.find(".tab-pane").removeClass("active");
+        $sprintTabContent.find(".tab-pane").eq(listNumber).addClass("active");
+    });
 });
 
 function editRepoModalBody(title, description) {
