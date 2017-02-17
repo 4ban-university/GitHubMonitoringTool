@@ -10,7 +10,8 @@
 3 TA: Show the plan for the next Sprint 
  - Milestones – OK
 
-4 Show Meetings minutes - OK
+4 Show Meetings minutes
+ - Planing Poker - OK
 
 5 Show System design – OK
 
