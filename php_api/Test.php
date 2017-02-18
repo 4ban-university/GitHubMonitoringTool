@@ -5,12 +5,10 @@
     </title>
 </header>
 <body>
-    <?php
-
-    require_once 'vendor/autoload.php';
+    <?php require_once 'vendor/autoload.php';
 
     $client = new \Github\Client();
-
+    echo 'hey';
     $user = $client->authenticate('CharlesPhilippeLabbe','1maisondu', Github\Client::AUTH_HTTP_PASSWORD);
 
     $s = $client->api('repo')->statistics('abhandal','SOEN341-G4');

@@ -5,16 +5,23 @@
 <html lang="en">
 <head>
     <?php
-    echo "<title>". $_GET['name']." </title>";
+
     ?>
 </head>
 <body>
 
     <?php require_once 'vendor/autoload.php';
         //require('entry.php');
+    echo 'hi';
     $client = new \Github\Client();
 
-    $user = $client->authenticate($_SESSION['username'],$_SESSION['password'], Github\Client::AUTH_HTTP_PASSWORD);
+    //$user = $client->authenticate($_SESSION['username'],$_SESSION['password'], Github\Client::AUTH_HTTP_PASSWORD);
+  //  $user = $client->authenticate("0abab00f9539752f1578", "4aaec98ffc90eba7cbb99314b1e6d8a373ef3b72",Github\Client::AUTH_URL_CLIENT_ID );
+
+
+
+
+
 
     $repo = $_GET['repo'];
     $admin = $_GET['admin'];
