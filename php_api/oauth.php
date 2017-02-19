@@ -8,7 +8,7 @@ session_start();
     <body>
 
 
-        <?php require_once 'vendor/autoload.php';
+        <?php require_once '../../vendor/autoload.php';
 
         $code = $_GET['code'];
 
@@ -37,11 +37,8 @@ session_start();
         // Parse the response object, e.g. read the headers, body, etc.
         $headers = $response->getHeaders();
         $body = $response->getBody();
-
-        echo 'hello';
-        // Output headers and body for debugging purposes
-        var_dump($headers, $body);
-
+        //echo $headers;
+        echo $body;
 
     ?>
     </body>
