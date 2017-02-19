@@ -13,11 +13,6 @@ session_start();
         $code = $_GET['code'];
 
 
-        echo $code;
-
-
-
-
         // Initialize Guzzle client
         $c = new GuzzleHttp\Client();
 
@@ -35,10 +30,23 @@ session_start();
         );
 
         // Parse the response object, e.g. read the headers, body, etc.
-        $headers = $response->getHeaders();
+       // $headers = $response->getHeaders();
         $body = $response->getBody();
         //echo $headers;
-        echo $body;
+       $start =  strpos($body,"=") + 1;
+       $length = strpos($body,'&') - $start;
+       $token = substr($body, $start, $length);
+
+
+       $client = new \Github\Client();
+
+       $user = $client->authenticate($token, null, Github\Client::AUTH_HTTP_TOKEN);
+
+       $r = $client->api('repo')->show('abhandal','SOEN341-G4');
+
+       foreach($r as $i)
+       echo $i. '<br>';
+
 
     ?>
     </body>
