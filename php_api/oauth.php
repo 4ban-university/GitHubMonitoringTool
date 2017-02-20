@@ -4,6 +4,20 @@ session_start();
     <!DOCTYPE html>
     <html lang="en">
     <head>
+        <script>
+
+            function getRepoId(method){
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("data").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "getrepoid.php?user=abhandal&repo=SOEN341-G4&method="+ method, true);
+                xmlhttp.send();
+            }
+        </script>
     </head>
     <body>
 
@@ -38,16 +52,13 @@ session_start();
        $token = substr($body, $start, $length);
 
 
-       $client = new \Github\Client();
-
-       $user = $client->authenticate($token, null, Github\Client::AUTH_HTTP_TOKEN);
-
-       $r = $client->api('repo')->show('abhandal','SOEN341-G4');
-
-       foreach($r as $i)
-       echo $i. '<br>';
+       $_SESSION['token'] = $token;
 
 
     ?>
+        <input id="clickMe" type="button" value="numberOfCollaborators" onclick="getRepoId(this.value)"/>
+        <input id="clickMe" type="button" value="numberOfCommits" onclick="getRepoId(this.value)"/>
+
+        <p>Id: <span id="data"></span></p>
     </body>
 </html>
