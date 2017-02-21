@@ -12,9 +12,24 @@ session_start();
                 xmlhttp.onreadystatechange = function(){
                     if(this.readyState == 4 && this.status == 200){
                         document.getElementById("data").innerHTML = this.responseText;
+                        if(method == "numberOfCommits" || method == "numberOfIssues" || method == "numberOfComments"){
+                            getUserData(method, "CharlesPhilippeLabbe");
+                        }
                     }
                 };
                 xmlhttp.open("GET", "getRepoData.php?user=abhandal&repo=SOEN341-G4&method="+ method, true);
+                xmlhttp.send();
+            }
+
+            function getUserData(method, collaborator){
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("user").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator, true);
                 xmlhttp.send();
             }
         </script>
@@ -62,6 +77,9 @@ session_start();
         <input id="clickMe" type="button" value="numberOfComments" onclick="getRepoData(this.value)"/>
         <input id="clickMe" type="button" value="getCollaborators" onclick="getRepoData(this.value)"/>
 
-        <p>Id: <span id="data"></span></p>
+        <p>Repo: <span id="data"></span>
+        <br>CharlesPhilippeLabbe: <span id="user"></span></p>
+
+
     </body>
 </html>
