@@ -6,7 +6,7 @@ session_start();
     <head>
         <script>
 
-            function getRepoId(method){
+            function getRepoData(method){
 
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function(){
@@ -14,7 +14,7 @@ session_start();
                         document.getElementById("data").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", "getrepoid.php?user=abhandal&repo=SOEN341-G4&method="+ method, true);
+                xmlhttp.open("GET", "getRepoData.php?user=abhandal&repo=SOEN341-G4&method="+ method, true);
                 xmlhttp.send();
             }
         </script>
@@ -56,8 +56,11 @@ session_start();
 
 
     ?>
-        <input id="clickMe" type="button" value="numberOfCollaborators" onclick="getRepoId(this.value)"/>
-        <input id="clickMe" type="button" value="numberOfCommits" onclick="getRepoId(this.value)"/>
+        <input id="clickMe" type="button" value="numberOfCollaborators" onclick="getRepoData(this.value)"/>
+        <input id="clickMe" type="button" value="numberOfCommits" onclick="getRepoData(this.value)"/>
+        <input id="clickMe" type="button" value="numberOfIssues" onclick="getRepoData(this.value)"/>
+        <input id="clickMe" type="button" value="numberOfComments" onclick="getRepoData(this.value)"/>
+        <input id="clickMe" type="button" value="getCollaborators" onclick="getRepoData(this.value)"/>
 
         <p>Id: <span id="data"></span></p>
     </body>
