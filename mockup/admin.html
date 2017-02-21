@@ -59,7 +59,7 @@
             <div class="col-md-12">
                 <div class="col-md-2">
                     <ul class="nav nav-sidebar" id="nav-item">
-                        <li><button type="button" class="btn btn-success">New Repository</button></li>
+                        <li><button type="button" class="btn btn-success" id = "new-repo-button">New Repository</button></li>
                         <li class="active"><a href="admin.html">All Repositories</a></li>
                         <li><a href="#">Deleted Repositories</a></li>
                     </ul>
@@ -84,6 +84,8 @@
                         </thead>
                         <tbody>
                         <tr>
+                            
+            
                             <td>
                                 <button type="button" class="btn btn-warning"  aria-label="Left Align" btn="edit">
                                     <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
@@ -112,6 +114,7 @@
                             <td>9th Feb 2017, 11:08 pm</td>
                         </tr>
                         <tr>
+                        
                             <td>
                                 <button type="button" class="btn btn-warning" aria-label="Left Align" btn="edit">
                                     <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
@@ -129,6 +132,63 @@
                     </table>
                 </div>
             </div>
+            
+            <!-- NEW REPO MODAL -->
+             <div class="modal fade" tabindex="-1" role="dialog" id="new-repo-modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Add New Repo</h4>
+                        </div>
+                        <div class="modal-body">
+                           
+                        <p>Add a new Repository URI</p>
+                            
+                                <div class="col-md-12 margin-top-bottom">
+                                  <label for="basic-url">Format: Owner/Repo</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon3">https://github.com/</span>
+                                    <input type="text" class="form-control" id="repo-url" aria-describedby="basic-addon3" placeholder="user/repo">
+                                        </div>
+                                     <div class="alert alert-warning margin-top-bottom" role="alert" >Please enter a valid URI.</div>
+                                    <div class="alert alert-warning margin-top-bottom" role="alert" >Repo does not exist.</div>
+                                    <div class="alert alert-success margin-top-bottom hidden" role="alert" id="repo-added-btn" >Repo successfully added.</div>
+                                    
+                                </div>
+                            <div class="col-md-12 margin-top-bottom repoList" id="repo-list">
+                            <!--
+                                <p>Abhandal Repositories:</p>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" aria-label="...">
+                                    </span>
+                                        <input type="text" class="form-control" aria-label="..." readonly value="repo1">
+                                </div>
+                            </div>
+                                 <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" aria-label="...">
+                                    </span>
+                                        <input type="text" class="form-control" aria-label="..." readonly value="repo2">
+                                </div>
+                            </div> /.col-lg-6 -->
+                            </div>
+                            
+                            
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="add-repo-btn-modal">Add Repo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-->
 
             <!-- EDIT MODAL -->
             <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
