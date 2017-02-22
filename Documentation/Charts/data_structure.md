@@ -190,3 +190,51 @@ More info about options you can find in documentation:
 [Global options](http://www.chartjs.org/docs/#chart-configuration-creating-a-chart-with-options)
 and 
 [Polar chart options](http://www.chartjs.org/docs/#polar-area-chart-chart-options)
+
+------------
+## Pie chart
+![Pie chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/pie.png)
+
+### Usage
+```JS
+var myPieChart = new Chart(ctx,{
+    type: 'pie',
+    data: data,
+    options: options
+});
+```
+
+### Parameters
+
+Define before chart call. 
+
+```JS
+var data = {
+    labels: [
+        "Red",
+        "Blue",
+        "Yellow"
+    ],
+    datasets: [
+        {
+            data: [300, 50, 100],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ]
+        }]
+};
+
+var options = { };
+```
+More info about options you can find in documentation: 
+[Global options](http://www.chartjs.org/docs/#chart-configuration-creating-a-chart-with-options)
+and 
+[Pie chart options](http://www.chartjs.org/docs/#doughnut-pie-chart-chart-options)
+
