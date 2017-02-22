@@ -4,34 +4,108 @@ session_start();
     <!DOCTYPE html>
     <html lang="en">
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script>
 
-            function getRepoData(method){
 
+
+            function getRepoData(method, callback){
+                var result;
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function(){
                     if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("data").innerHTML = this.responseText;
-                        if(method == "numberOfCommits" || method == "numberOfIssues" || method == "numberOfComments"){
-                            getUserData(method, "CharlesPhilippeLabbe");
-                        }
+                         callback(JSON.parse(this.response));
                     }
                 };
                 xmlhttp.open("GET", "getRepoData.php?user=abhandal&repo=SOEN341-G4&method="+ method, true);
                 xmlhttp.send();
+
+                return result;
             }
 
-            function getUserData(method, collaborator){
+            function getUserData(method, collaborator, callback){
 
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function(){
                     if(this.readyState == 4 && this.status == 200){
-                        document.getElementById("user").innerHTML = this.responseText;
+                        callback(JSON.parse(this.response));
                     }
                 };
-                xmlhttp.open("GET", "getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator, true);
+                xmlhttp.open("GET", "getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator, false);
                 xmlhttp.send();
             }
+
+            function userData(data, set){
+
+                var result;
+                getUserData("numberOfIssues",data,function(d){
+                    result = d;
+                });
+
+                return result;
+
+            }
+
+            function drawchart(data){
+              //  document.write(data);
+                var set = new Array();
+                data.forEach(function(value){
+
+                    set.push(userData(value));
+                });
+
+
+
+                var ctx = document.getElementById("chart");
+
+                var data = {
+                    labels: data,
+                    datasets: [
+                        {
+                            data: set,
+                            backgroundColor: [
+                               " #3399ff",
+                                "#cc99ff",
+                                "#ff99ff",
+                                "#ff99cc",
+                                "#ff9999",
+                                "#ff9966",
+                                "#ff9933",
+                                "#cc6600"
+                            ],
+                            hoverBackgroundColor: [
+                                " #3399ff",
+                                "#cc99ff",
+                                "#ff99ff",
+                                "#ff99cc",
+                                "#ff9999",
+                                "#ff9966",
+                                "#ff9933",
+                                "#cc6600"
+                            ]
+                        }]
+                };
+
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        animation:{
+                            animateScale:true
+                        }
+                    }
+                });
+
+
+            }
+
+
+           window.onload = function() {
+                getRepoData("getCollaborators",drawchart);
+
+            }
+
+
         </script>
     </head>
     <body>
@@ -71,14 +145,8 @@ session_start();
 
 
     ?>
-        <input id="clickMe" type="button" value="numberOfCollaborators" onclick="getRepoData(this.value)"/>
-        <input id="clickMe" type="button" value="numberOfCommits" onclick="getRepoData(this.value)"/>
-        <input id="clickMe" type="button" value="numberOfIssues" onclick="getRepoData(this.value)"/>
-        <input id="clickMe" type="button" value="numberOfComments" onclick="getRepoData(this.value)"/>
-        <input id="clickMe" type="button" value="getCollaborators" onclick="getRepoData(this.value)"/>
 
-        <p>Repo: <span id="data"></span>
-        <br>CharlesPhilippeLabbe: <span id="user"></span></p>
+        <p>HEY: <canvas id="chart" width="400" height="400"></canvas></p>
 
 
     </body>
