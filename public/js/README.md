@@ -19,14 +19,14 @@ You can find documentation at [www.chartjs.org/docs](http://www.chartjs.org/docs
 You can use Chart.js CDN
 
 
-```
+```javascript
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
 <script>
     var myChart = new Chart({...})
 </script>
 ```
 
-```
+```javascript
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 <script>
     var myChart = new Chart({...})
@@ -35,26 +35,26 @@ You can use Chart.js CDN
 
 Or download library and connect manually.
 
-```
+```javascript
 <script src="/path/to/Chart.js"></script>
 <script>
     var myChart = new Chart({...})
 </script>
 ```
 
-```
+```javascript
 // Using CommonJS
 var Chart = require('chart.js')
 var myChart = new Chart({...})
 ```
 
-```
+```javascript
 // ES6
 import Chart from 'chart.js'
 let myChart = new Chart({...})
 ```
 
-```
+```javascript
 // Using requirejs
 require(['path/to/Chartjs'], function(Chart){
  var myChart = new Chart({...})
@@ -63,6 +63,7 @@ require(['path/to/Chartjs'], function(Chart){
 
 ## Chart
 
+```javascript
 <canvas id="myChart" width="400" height="400"></canvas>
 <script>
 var ctx = document.getElementById("myChart");
@@ -103,3 +104,4 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+```
