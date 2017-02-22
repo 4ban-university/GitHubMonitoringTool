@@ -1,7 +1,7 @@
 # Data examples for charts.
 
 ## Line chart
-![Line chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/line.png)
+![Line chart](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/screenshots/line.png)
 
 ### Usage
 ```JS
@@ -38,7 +38,7 @@ and
 
 -------------
 ## Bar chart
-![Bar chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/bar.png)
+![Bar chart](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/screenshots/bar.png)
 
 ### Usage
 ```JS
@@ -90,7 +90,7 @@ and
 
 -------------
 ## Radar chart
-![Radar chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/radar.png)
+![Radar chart](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/screenshots/radar.png)
 
 ### Usage
 ```JS
@@ -141,7 +141,7 @@ and
 
 -------------
 ## Polar area chart
-![polar chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/polar.png)
+![polar chart](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/screenshots/polar.png)
 
 ### Usage
 ```JS
