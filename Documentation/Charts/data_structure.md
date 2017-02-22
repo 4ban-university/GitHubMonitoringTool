@@ -87,3 +87,55 @@ More info about options you can find in documentation:
 [Global options](http://www.chartjs.org/docs/#chart-configuration-creating-a-chart-with-options)
 and 
 [Bar chart options](http://www.chartjs.org/docs/#bar-chart-chart-options)
+
+-------------
+## Radar chart
+![Radar chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/radar.png)
+
+### Usage
+```JS
+var myRadarChart = new Chart(ctx, {
+    type: 'radar',
+    data: data,
+    options: options
+});
+```
+
+### Parameters
+
+Define before chart call. 
+
+```JS
+var data = {
+    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    datasets: [
+        {
+            label: "My First dataset",
+            backgroundColor: "rgba(179,181,198,0.2)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [65, 59, 90, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            pointBackgroundColor: "rgba(255,99,132,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(255,99,132,1)",
+            data: [28, 48, 40, 19, 96, 27, 100]
+        }
+    ]
+};
+
+var options = { };
+```
+More info about options you can find in documentation: 
+[Global options](http://www.chartjs.org/docs/#chart-configuration-creating-a-chart-with-options)
+and 
+[Radar chart options](http://www.chartjs.org/docs/#radar-chart-chart-options)
+
