@@ -9,7 +9,8 @@ session_start();
 
 
 
-            function getRepoData(method, callback){
+            function getRepoData(method,async, callback){
+               // Access-Control-Allow-Origin: http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com
                 var result;
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function(){
@@ -17,13 +18,17 @@ session_start();
                          callback(JSON.parse(this.response));
                     }
                 };
-                xmlhttp.open("GET", "getRepoData.php?user=abhandal&repo=SOEN341-G4&method="+ method, true);
-                xmlhttp.send();
+
+                xmlhttp.open("GET", "getRepoData.php?user=abhandal&repo=SOEN341-G4&method="+ method, async);
+
+
+                xmlhttp.send();// respond to preflights
+
 
                 return result;
             }
 
-            function getUserData(method, collaborator, callback){
+            function getUserData(method, collaborator,async, callback){
 
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function(){
@@ -31,77 +36,83 @@ session_start();
                         callback(JSON.parse(this.response));
                     }
                 };
-                xmlhttp.open("GET", "getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator, false);
+                xmlhttp.open("GET", "getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator, async);
                 xmlhttp.send();
             }
 
-            function userData(data, set){
+            function userData(data, method){
 
-                var result;
-                getUserData("numberOfIssues",data,function(d){
+                var result = -1;
+                getUserData(method,data,false,function(d){
                     result = d;
                 });
-
                 return result;
 
             }
 
             function drawchart(data){
+
               //  document.write(data);
                 var set = new Array();
                 data.forEach(function(value){
 
-                    set.push(userData(value));
+                   set.push( userData(value,"numberOfIssues")
+                   +userData(value,"numberOfCommits")
+                   +userData(value,"numberOfComments"));
+
+
                 });
 
+            var ctx = document.getElementById("chart");
 
+            var data = {
+                labels: data,
+                datasets: [
+                    {
+                        data: set,
+                        backgroundColor: [
+                            " #3399ff",
+                            "#cc99ff",
+                            "#ff99ff",
+                            "#ff99cc",
+                            "#ff9999",
+                            "#ff9966",
+                            "#ff9933",
+                            "#cc6600"
+                        ],
+                        hoverBackgroundColor: [
+                            " #3399ff",
+                            "#cc99ff",
+                            "#ff99ff",
+                            "#ff99cc",
+                            "#ff9999",
+                            "#ff9966",
+                            "#ff9933",
+                            "#cc6600"
+                        ]
+                    }]
+            };
 
-                var ctx = document.getElementById("chart");
-
-                var data = {
-                    labels: data,
-                    datasets: [
-                        {
-                            data: set,
-                            backgroundColor: [
-                               " #3399ff",
-                                "#cc99ff",
-                                "#ff99ff",
-                                "#ff99cc",
-                                "#ff9999",
-                                "#ff9966",
-                                "#ff9933",
-                                "#cc6600"
-                            ],
-                            hoverBackgroundColor: [
-                                " #3399ff",
-                                "#cc99ff",
-                                "#ff99ff",
-                                "#ff99cc",
-                                "#ff9999",
-                                "#ff9966",
-                                "#ff9933",
-                                "#cc6600"
-                            ]
-                        }]
-                };
-
-                var myDoughnutChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: data,
-                    options: {
-                        animation:{
-                            animateScale:true
-                        }
+            var myDoughnutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    animation:{
+                        animateScale:true
                     }
-                });
+                }
+            });
+
+
+
+
 
 
             }
 
 
            window.onload = function() {
-                getRepoData("getCollaborators",drawchart);
+                getRepoData("getCollaborators",true,drawchart);
 
             }
 
