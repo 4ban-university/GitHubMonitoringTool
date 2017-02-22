@@ -139,3 +139,54 @@ More info about options you can find in documentation:
 and 
 [Radar chart options](http://www.chartjs.org/docs/#radar-chart-chart-options)
 
+-------------
+## Polar area chart
+![polar chart](https://github.com/abhandal/SOEN341-G4/blob/Charts_doc/Documentation/Charts/screenshots/polar.png)
+
+### Usage
+```JS
+new Chart(ctx, {
+    data: data,
+    type: 'polarArea',
+    options: options
+});
+```
+
+### Parameters
+
+Define before chart call. 
+
+```JS
+var data = {
+    datasets: [{
+        data: [
+            11,
+            16,
+            7,
+            3,
+            14
+        ],
+        backgroundColor: [
+            "#FF6384",
+            "#4BC0C0",
+            "#FFCE56",
+            "#E7E9ED",
+            "#36A2EB"
+        ],
+        label: 'My dataset' // for legend
+    }],
+    labels: [
+        "Red",
+        "Green",
+        "Yellow",
+        "Grey",
+        "Blue"
+    ]
+};
+
+var options = { };
+```
+More info about options you can find in documentation: 
+[Global options](http://www.chartjs.org/docs/#chart-configuration-creating-a-chart-with-options)
+and 
+[Polar chart options](http://www.chartjs.org/docs/#polar-area-chart-chart-options)
