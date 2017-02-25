@@ -10,13 +10,24 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Repository Overview Page Mock-up</title>
+    <title>Repository Overview </title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="../mockup/css/bootstrap.min.css" rel="stylesheet">
     <link href="../mockup/css/override.css" rel="stylesheet">
     <link href="../mockup/css/style.css" rel="stylesheet">
 
+    <style>
+
+        .loading {
+            background-color: #ffffff;
+            background-image: url("http://loadinggif.com/images/image-selection/3.gif");
+            background-size: 25px 25px;
+            background-position:center;
+            background-repeat: no-repeat;
+        }
+
+    </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -114,16 +125,16 @@ session_start();
                     <div class="tab-content clearfix" id="sprint-tab-content">
                         <div class="tab-pane active" tab-num="1">
                             <div id="chartContainer" style="height: 400px; width: 100%;">
-                               <h3>OVERALL:</h3> <canvas id="chart"></canvas>
+                               <h3>OVERALL:</h3> <canvas id="chart" class="loading"></canvas>
                             </div>
                             <div id="chartContainer2" style="height: 400px; width: 100%;">
-                                <h3>COMMITS:</h3> <canvas id="commits"></canvas>
+                                <h3>COMMITS:</h3> <canvas id="commits" class="loading"></canvas>
                             </div>
                             <div id="chartContainer3" style="height: 400px; width: 100%;">
-                                <h3>ISSUES:</h3> <canvas id="issues"></canvas>
+                                <h3>ISSUES:</h3> <canvas id="issues" class="loading"></canvas>
                             </div>
                             <div id="chartContainer4" style="height: 400px; width: 100%;">
-                                <h3>COMMENTS:</h3> <canvas id="comments"></canvas>
+                                <h3>COMMENTS:</h3> <canvas id="comments" class="loading"></canvas>
                             </div>
                         </div>
                         <div class="tab-pane" tab-num="2">

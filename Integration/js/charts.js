@@ -28,18 +28,16 @@ function getUserData(method, collaborator,async, callback){
     xmlhttp.open("GET", "../Integration/php/getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator, async);
     xmlhttp.send();
 }
-function userData(data, method){
-    var result = -1;
-    var res = new $.Deferred(
-        getUserData(method,data,true,function(d){
-            result = d;
-        })
-    );
 
-    res.resolve(result);
-    return res;
 
+
+function promiseRepoData(method){
+    return $.ajax({
+        url:"../Integration/php/getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method ,
+        type: 'GET'
+    });
 }
+
 
 function promiseUserData(method, collaborator){
     return $.ajax({
@@ -71,8 +69,9 @@ function drawOverall(data){
     //making sure all promises are finished
 
     Promise.all(promises).then(function(){
-        var ctx = document.getElementById("chart").getContext("2d");
-        drawchart(labels,set, ctx);
+        var ctx = document.getElementById("chart");
+        $(ctx).removeClass("loading");
+        drawchart(labels,set, ctx.getContext("2d"));
 
     }).catch(function(error){
         document.write('error');
@@ -95,8 +94,9 @@ function drawCommits(data){
     //making sure all promises are finished
 
     Promise.all(promises).then(function(){
-        var ctx = document.getElementById("commits").getContext("2d");
-        drawchart(labels,set, ctx);
+        var ctx = document.getElementById("commits");
+        $(ctx).removeClass("loading");
+        drawchart(labels,set, ctx.getContext("2d"));
 
     }).catch(function(error){
         document.write('error');
@@ -120,8 +120,9 @@ function drawIssues(data){
     //making sure all promises are finished
 
     Promise.all(promises).then(function(){
-        var ctx = document.getElementById("issues").getContext("2d");
-        drawchart(labels,set, ctx);
+        var ctx = document.getElementById("issues");
+        $(ctx).removeClass("loading");
+        drawchart(labels,set, ctx.getContext("2d"));
 
     }).catch(function(error){
         document.write('error');
@@ -142,8 +143,9 @@ function drawComments(data){
     //making sure all promises are finished
 
     Promise.all(promises).then(function(){
-        var ctx = document.getElementById("comments").getContext("2d");
-        drawchart(labels,set, ctx);
+        var ctx = document.getElementById("comments");
+        $(ctx).removeClass("loading");
+        drawchart(labels,set, ctx.getContext("2d"));
 
     }).catch(function(error){
         document.write('error');
