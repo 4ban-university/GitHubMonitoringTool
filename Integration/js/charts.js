@@ -29,65 +29,126 @@ function getUserData(method, collaborator,async, callback){
     xmlhttp.send();
 }
 function userData(data, method){
-
     var result = -1;
-    getUserData(method,data,false,function(d){
-        result = d;
-    });
-    return result;
+    var res = new $.Deferred(
+        getUserData(method,data,true,function(d){
+            result = d;
+        })
+    );
+
+    res.resolve(result);
+    return res;
 
 }
+
+function promiseUserData(method, collaborator){
+    return $.ajax({
+        url:"../Integration/php/getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator,
+        type: 'GET'
+    });
+}
+
+
+
+
+
+
 
 function drawOverall(data){
     drawComments(data);
     drawCommits(data);
     drawIssues(data);
+    var promises = new Array();
     var set = new Array();
+    var labels = new Array();
     data.forEach(function(value){
-
-        set.push( userData(value,"numberOfIssues")
-            +userData(value,"numberOfCommits")
-            +userData(value,"numberOfComments"));
-
+        promises.push(promiseUserData("numberOfEvents",value).done(function(r){
+            set.push(r);
+            labels.push(value);
+        }));
     });
-    var ctx = document.getElementById("chart").getContext("2d");
-    drawchart(data,set, ctx);
+
+    //making sure all promises are finished
+
+    Promise.all(promises).then(function(){
+        var ctx = document.getElementById("chart").getContext("2d");
+        drawchart(labels,set, ctx);
+
+    }).catch(function(error){
+        document.write('error');
+    });
+
+
 }
 
 function drawCommits(data){
+    var promises = new Array();
     var set = new Array();
+    var labels = new Array();
     data.forEach(function(value){
-
-        set.push(userData(value,"numberOfCommits"));
-
+        promises.push(promiseUserData("numberOfCommits",value).done(function(r){
+            set.push(r);
+            labels.push(value);
+        }));
     });
-    var ctx = document.getElementById("commits").getContext("2d");
-    drawchart(data,set, ctx);
+
+    //making sure all promises are finished
+
+    Promise.all(promises).then(function(){
+        var ctx = document.getElementById("commits").getContext("2d");
+        drawchart(labels,set, ctx);
+
+    }).catch(function(error){
+        document.write('error');
+    });
+
+
+
 }
 
 function drawIssues(data){
+    var promises = new Array();
     var set = new Array();
+    var labels = new Array();
     data.forEach(function(value){
-
-        set.push( userData(value,"numberOfIssues"));
-
+        promises.push(promiseUserData("numberOfIssues",value).done(function(r){
+            set.push(r);
+            labels.push(value);
+        }));
     });
 
-    var ctx = document.getElementById("issues").getContext("2d");
-    drawchart(data,set, ctx);
+    //making sure all promises are finished
+
+    Promise.all(promises).then(function(){
+        var ctx = document.getElementById("issues").getContext("2d");
+        drawchart(labels,set, ctx);
+
+    }).catch(function(error){
+        document.write('error');
+    });
 }
 
 function drawComments(data){
+    var promises = new Array();
     var set = new Array();
+    var labels = new Array();
     data.forEach(function(value){
-
-        set.push(userData(value,"numberOfComments"));
-
+        promises.push(promiseUserData("numberOfComments",value).done(function(r){
+            set.push(r);
+            labels.push(value);
+        }));
     });
-    var ctx = document.getElementById("comments").getContext("2d");
-    drawchart(data,set, ctx);
-}
 
+    //making sure all promises are finished
+
+    Promise.all(promises).then(function(){
+        var ctx = document.getElementById("comments").getContext("2d");
+        drawchart(labels,set, ctx);
+
+    }).catch(function(error){
+        document.write('error');
+    });
+}
 function drawchart(labels, data, ctx){
 
     //  document.write(data);
