@@ -33,7 +33,7 @@ function getUserData(method, collaborator,async, callback){
 
 function promiseRepoData(method){
     return $.ajax({
-        url:"../Integration/php/getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method ,
+        url:"../Integration/php/getRepoData.php?user=abhandal&repo=SOEN341-G4&method="+ method ,
         type: 'GET'
     });
 }

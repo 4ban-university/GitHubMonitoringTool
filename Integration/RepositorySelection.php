@@ -13,9 +13,9 @@ session_start();
     <title>Repository Overview </title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../mockup/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../mockup/css/override.css" rel="stylesheet">
-    <link href="../mockup/css/style.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/override.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
 
     <style>
 
@@ -73,15 +73,15 @@ session_start();
                 <div class="col-md-2">
                     <ul class="nav nav-sidebar" id="nav-item">
                         <li><button type="button" class="btn btn-success">New Repository</button></li>
-                        <li class="active"><a href="admin.html">All Repositories</a></li>
+                        <li class="active"><a href="admin.php">All Repositories</a></li>
                         <li><a href="#">Deleted Repositories</a></li>
                     </ul>
                 </div>
                 <div class="col-md-10 main">
                     <!-- Breadcrumbs -->
                     <ol class="breadcrumb">
-                        <li class="active"><a href="admin.html">All Repositories</a></li>
-                        <li><a href="RepositorySelection.html">SOEN341-G4</a></li>
+                        <li class="active"><a href="admin.php">All Repositories</a></li>
+                        <li><a href="RepositorySelection.php">SOEN341-G4</a></li>
                     </ol>
                     
                     
@@ -94,15 +94,8 @@ session_start();
                     </div>
                     <div class="col-md-4">
                       <h3>Team members</h3>
-                    <ul>
-                        <li>Charles-Philippe Labbé</li>
-                        <li>Aman Bhandal</li>
-                        <li>Dmitry Kryukov</li>
-                        <li>Ksenia Popova</li>
-                        <li>Nikita Baranov</li>
-                        <li>Batoul Yehia</li>
-                        <li>Raymart De Guzman</li>
-                        <li>Andy Pham</li>
+                    <ul id="collaborators">
+
                     </ul>
 
                     </div>
@@ -113,13 +106,13 @@ session_start();
 
                     <code>// By tabs is nicer</code>
                     <ul class="nav nav-tabs" id="sprint-nav-tabs">
-                        <li class="active"><a href="#">Sprint 1</a></li>
+                        <li class="active"><a href="#">All Sprints</a></li>
+                        <li><a href="#">Sprint 1</a></li>
                         <li><a href="#">Sprint 2</a></li>
                         <li><a href="#">Sprint 3</a></li>
                         <li><a href="#">Sprint 4</a></li>
                         <li><a href="#">Sprint 5</a></li>
                         <li><a href="#">Sprint 6</a></li>
-                        <li><a href="#">All sprints</a></li>
                     </ul>
 
                     <div class="tab-content clearfix" id="sprint-tab-content">
@@ -200,14 +193,15 @@ session_start();
     </div>
 </div>
 
-<script src="../mockup/js/jquery-3.1.1.min.js"></script>
-<script src="../mockup/js/bootstrap.min.js"></script>
-<script src="../mockup/js/ie10-viewport-bug-workaround.js"></script>
-<script src="../mockup/js/admin.js"></script>
+<script src="../public/js/jquery-3.1.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../public/js/admin.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 <script src="js/charts.js"></script>
 <script src="../public/js/canvasjs.min.js"></script>
 <script src="../public/js/jquery.canvasjs.min.js"></script>
+<script src="js/info.js"></script>
 </body>
 </html>

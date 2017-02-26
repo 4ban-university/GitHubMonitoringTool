@@ -13,9 +13,9 @@ session_start();
     <title>Admin view</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../mockup/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../mockup/css/override.css" rel="stylesheet">
-    <link href="../mockup/css/style.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/override.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -29,7 +29,7 @@ session_start();
 <body>
 
 
-<?php require_once '../../vendor/autoload.php';
+<?php require_once '../public/php/vendor/autoload.php';
 
     $code = $_GET['code'];
 
@@ -276,9 +276,9 @@ session_start();
     </div>
 </div>
 
-<script src="../mockup/js/jquery-3.1.1.min.js"></script>
-<script src="../mockup/js/bootstrap.min.js"></script>
-<script src="../mockup/js/ie10-viewport-bug-workaround.js"></script>
-<script src="../mockup/js/admin.js"></script>
+<script src="../public/js/jquery-3.1.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../public/js/admin.js"></script>
 </body>
 </html>

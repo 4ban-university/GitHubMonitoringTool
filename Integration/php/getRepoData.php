@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<?php require_once '../../vendor/autoload.php';
+<?php require_once '../../public/php/vendor/autoload.php';
 
 
     $client = new \Github\Client();

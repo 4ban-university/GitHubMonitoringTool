@@ -9,8 +9,8 @@
 
     <title>Login template</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../mockup/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../mockup/css/style.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -51,8 +51,8 @@
 
 </div>
 
-<script src="../mockup/js/jquery-3.1.1.min.js"></script>
-<script src="../mockup/js/bootstrap.min.js"></script>
-<script src="../mockup/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../public/js/jquery-3.1.1.min.js"></script>
+<script src="../public/js/bootstrap.min.js"></script>
+<script src="../public/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
