@@ -6,6 +6,8 @@ session_start();
     <head>
         <link rel="stylesheet" type="text/css" href="php_stylesheet.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+        <script src="../mockup/js/jquery-3.1.1.min.js"></script>
         <script>
 
 
@@ -41,19 +43,126 @@ session_start();
                 xmlhttp.send();
             }
 
-            function userData(data, method){
 
-                var result = -1;
-                getUserData(method,data,false,function(d){
-                    result = d;
+
+
+
+
+
+            function promiseUserData(method, collaborator){
+                return $.ajax({
+                    url:"getUserData.php?user=abhandal&repo=SOEN341-G4&method="+ method + "&collaborator=" + collaborator,
+                    type: 'GET'
                 });
-                return result;
+            }
+
+
+
+
+
+
+
+            function drawOverall(data){
+                drawComments(data);
+                drawCommits(data);
+                drawIssues(data);
+                var promises = new Array();
+                var set = new Array();
+                var labels = new Array();
+                data.forEach(function(value){
+                    promises.push(promiseUserData("numberOfEvents",value).done(function(r){
+                        set.push(r);
+                        labels.push(value);
+                    }));
+                });
+
+                //making sure all promises are finished
+
+                Promise.all(promises).then(function(){
+                    var ctx = document.getElementById("chart").getContext("2d");
+                    drawchart(labels,set, ctx);
+
+                }).catch(function(error){
+                    document.write('error');
+                });
+
 
             }
 
+            function drawCommits(data){
+                var promises = new Array();
+                var set = new Array();
+                var labels = new Array();
+                data.forEach(function(value){
+                    promises.push(promiseUserData("numberOfCommits",value).done(function(r){
+                        set.push(r);
+                        labels.push(value);
+                    }));
+                });
+
+                //making sure all promises are finished
+
+                Promise.all(promises).then(function(){
+                        var ctx = document.getElementById("commits").getContext("2d");
+                        drawchart(labels,set, ctx);
+
+                }).catch(function(error){
+                    document.write('error');
+                });
+
+
+
+            }
+
+            function drawIssues(data){
+                var promises = new Array();
+                var set = new Array();
+                var labels = new Array();
+                data.forEach(function(value){
+                    promises.push(promiseUserData("numberOfIssues",value).done(function(r){
+                        set.push(r);
+                        labels.push(value);
+                    }));
+                });
+
+                //making sure all promises are finished
+
+                Promise.all(promises).then(function(){
+                    var ctx = document.getElementById("issues").getContext("2d");
+                    drawchart(labels,set, ctx);
+
+                }).catch(function(error){
+                    document.write('error');
+                });
+            }
+
+            function drawComments(data){
+                var promises = new Array();
+                var set = new Array();
+                var labels = new Array();
+                data.forEach(function(value){
+                    promises.push(promiseUserData("numberOfComments",value).done(function(r){
+                        set.push(r);
+                        labels.push(value);
+                    }));
+                });
+
+                //making sure all promises are finished
+
+                Promise.all(promises).then(function(){
+                    var ctx = document.getElementById("comments").getContext("2d");
+                    drawchart(labels,set, ctx);
+
+                }).catch(function(error){
+                    document.write('error');
+                });
+            }
+
+
+
             function drawchart(labels, data, ctx){
 
-              //  document.write(data);
+                //  document.write(data);
                 ctx.canvas.width = 300;
                 ctx.canvas.height = 300;
 
@@ -105,57 +214,8 @@ session_start();
 
             }
 
-            function drawOverall(data){
-                var set = new Array();
-                data.forEach(function(value){
 
-                    set.push( userData(value,"numberOfIssues")
-                        +userData(value,"numberOfCommits")
-                        +userData(value,"numberOfComments"));
 
-                });
-                var ctx = document.getElementById("chart").getContext("2d");
-                drawchart(data,set, ctx);
-
-                drawComments(data);
-                drawCommits(data);
-                drawIssues(data);
-
-            }
-
-            function drawCommits(data){
-                var set = new Array();
-                data.forEach(function(value){
-
-                    set.push(userData(value,"numberOfCommits"));
-
-                });
-                var ctx = document.getElementById("commits").getContext("2d");
-                drawchart(data,set, ctx);
-            }
-
-            function drawIssues(data){
-                var set = new Array();
-                data.forEach(function(value){
-
-                    set.push( userData(value,"numberOfIssues"));
-
-                });
-
-                var ctx = document.getElementById("issues").getContext("2d");
-                drawchart(data,set, ctx);
-            }
-
-            function drawComments(data){
-                var set = new Array();
-                data.forEach(function(value){
-
-                    set.push(userData(value,"numberOfComments"));
-
-                });
-                var ctx = document.getElementById("comments").getContext("2d");
-                drawchart(data,set, ctx);
-            }
 
 
            window.onload = function() {

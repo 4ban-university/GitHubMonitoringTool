@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<?php require_once '../../vendor/autoload.php';
+<?php require_once '../../public/php/vendor/autoload.php';
 
 
     $client = new \Github\Client();
@@ -22,6 +22,8 @@ session_start();
         case 'numberOfComments': numberOfComments($user,$repo,$collaborator);
             break;
         case 'numberOfEvents': numberOfEvents($user,$repo,$collaborator);
+            break;
+        case 'getName': getName($user,$repo,$collaborator);
             break;
 
     }
@@ -93,5 +95,10 @@ session_start();
         $comments = numberOfComments($user,$repo,$collaborator,true);
         $overall = (int)$commits + (int)$issues + (int)$comments;
         echo $overall;
+    }
+
+    function getName($user,$repo,$collaborator){
+        $data = $GLOBALS['client']->api("user")->show($collaborator);
+        echo $data['name'];
     }
 ?>
