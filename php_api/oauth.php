@@ -18,10 +18,9 @@ session_start();
     <body>
 
 
-
         <?php require_once '../public/php/vendor/autoload.php';
 
-
+        require 'RepoInfo.php';
         $code = $_GET['code'];
 
 
@@ -52,14 +51,17 @@ session_start();
 
        $_SESSION['token'] = $token;
 
-       // $rep = new Repo('abhandal','SOEN341-G4');
-     //  echo "<script>var rep = new Repo('abhandal','SOEN341-G4','$token')</script>"
+        $rep = new RepoInfo('abhandal','SOEN341-G4');
+
 
     ?>
-        <?php
-        require 'RepoInfo.php';
-        $v = new RepoInfo('abhandal','SOEN341-G4');
-        ?>
+
+    <script>
+        rep.commits['CharlesPhilippeLabbe'].done(function(d){
+            document.write(d);
+        });
+    </script>
+
 
     </body>
 </html>

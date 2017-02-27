@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<?php
+<?php  require_once '../public/php/vendor/autoload.php';
 //require '../Integration/php/getUserData.php';
 //require '../Integration/php/getRepoData.php';
 
@@ -27,18 +27,48 @@ class RepoInfo{
 
 
     public function __construct($owner, $repo){
-        echo $_SESSION['token'];
-        $this->owner = $owner;
-        $this->repo = $repo;
-        $this->totalCollaborators = numberOfCollaborators($owner,$repo, true);
-        $this->collaborators = getCollaborators($owner,$repo, true);
-        $this->totalCommits = numberOfCommits($owner,$repo, true);
-        $this->totalIssues = numberOfIssues($owner,$repo, true);
-        $this->totalComments = numberOfComments($owner,$repo, true);
 
-        echo $this->totalCommits;
+        $client = new \Github\Client();
+
+        $user = $client->authenticate($_SESSION['token'], null, Github\Client::AUTH_HTTP_TOKEN);
 
 
+
+        $collaborators = $client->api('repo')->collaborators()->all($owner, $repo);
+
+        $collaborator = array();
+
+        $count = 0;
+        foreach($collaborators as $i)
+            $collaborator[$count++] = $i['login'];
+
+
+        $collaborators = json_encode($collaborator);
+
+        $token = urlencode($_SESSION['token']);
+
+        echo "
+            <script>
+            var collabs = $collaborators;
+            var rep = new Repo('$owner','$repo',collabs, '$token');
+            </script>
+            ";
+
+    }
+
+
+    function getCollaborators($user, $repo){
+        $collaborators = $GLOBALS['client']->api('repo')->collaborators()->all($user, $repo);
+
+        $collaborator = array();
+
+        $count = 0;
+        foreach($collaborators as $i)
+            $collaborator[$count++] = $i['login'];
+
+
+
+        return $collaborator;
     }
 
 
