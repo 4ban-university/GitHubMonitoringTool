@@ -8,6 +8,7 @@ session_start();
 
     $user = $client->authenticate($_SESSION['token'], null, Github\Client::AUTH_HTTP_TOKEN);
 
+    if(isset($_GET['user']) && isset($_GET['repo']) && isset($_GET['method'])){
     $user = $_REQUEST['user'];
     $repo = $_REQUEST['repo'];
     $method = $_REQUEST['method'];
@@ -30,7 +31,7 @@ session_start();
 
     }
 
-
+}
 
     //Getting the data from the repo
 
@@ -39,9 +40,12 @@ session_start();
  * @param $repo
  */
 
-    function numberOfCollaborators($user, $repo){
+    function numberOfCollaborators($user, $repo, $num = false){
 
         $collaborators = $GLOBALS['client']->api('repo')->collaborators()->all($user,$repo);
+
+        if($num)
+            return sizeof($collaborators);
 
         echo sizeof($collaborators);
 
@@ -51,7 +55,7 @@ session_start();
  * @param $user
  * @param $repo
  */
-    function getCollaborators($user, $repo){
+    function getCollaborators($user, $repo, $a = false){
         $collaborators = $GLOBALS['client']->api('repo')->collaborators()->all($user, $repo);
 
         $collaborator = array();
@@ -60,6 +64,9 @@ session_start();
         foreach($collaborators as $i)
             $collaborator[$count++] = $i['login'];
 
+        if($a)
+            return $collaborators;
+
         echo json_encode($collaborator);
     }
 
@@ -67,7 +74,7 @@ session_start();
  * @param $user
  * @param $repo
  */
-    function numberOfCommits($user, $repo){
+    function numberOfCommits($user, $repo, $num = false){
 
         $path = $GLOBALS['client']->api('repo')->commits();
         $param = array($user, $repo, array());
@@ -75,6 +82,9 @@ session_start();
         $paginator = new Github\ResultPager($GLOBALS['client']);
 
         $commits = $paginator->fetchAll($path,'all',$param);
+
+        if($num)
+            return sizeof($commits);
 
         echo sizeof($commits);
 
@@ -84,7 +94,7 @@ session_start();
  * @param $user
  * @param $repo
  */
-    function numberOfIssues($user, $repo){
+    function numberOfIssues($user, $repo, $num = false){
         $path = $GLOBALS['client']->api('issue');
         $param = array($user, $repo, array('state'=>'all'));
 
@@ -92,11 +102,14 @@ session_start();
 
         $issues = $paginator->fetchAll($path,'all',$param);
 
+        if($num)
+            return sizeof($issues);
+
         echo sizeof($issues);
 
     }
 
-    function numberOfComments($user, $repo){
+    function numberOfComments($user, $repo, $num = false){
         $page = 1;
         $count = 0;
         $com = $GLOBALS['client']->getHttpClient()->get("repos/$user/$repo/issues/comments?page=$page");
@@ -108,6 +121,8 @@ session_start();
             $com = $GLOBALS['client']->getHttpClient()->get("repos/$user/$repo/issues/comments?page=$page");
             $comments = Github\HttpClient\Message\ResponseMediator::getContent($com);
         }
+        if($num)
+            return $count;
 
         echo $count;
     }
