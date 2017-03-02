@@ -8,6 +8,7 @@ var ctx_doughnut = document.getElementById("commits_per_user_doughnut");
 line_chart();
 bar_chart();
 radar_chart();
+polar_chart();
 
 function line_chart(){
 
@@ -119,6 +120,42 @@ function radar_chart(){
     var chart = new Chart(ctx_radar, {
         type: 'radar',
         data: data,
+        options: options
+    });
+};
+
+function polar_chart(){
+    var data = {
+        datasets: [{
+            data: [
+                11,
+                16,
+                7,
+                3,
+                14
+            ],
+            backgroundColor: [
+                "#FF6384",
+                "#4BC0C0",
+                "#FFCE56",
+                "#E7E9ED",
+                "#36A2EB"
+            ],
+            label: 'My dataset' // for legend
+        }],
+        labels: [
+            "Red",
+            "Green",
+            "Yellow",
+            "Grey",
+            "Blue"
+        ]
+    };
+    var options = {};
+
+    new Chart(ctx_polar, {
+        data: data,
+        type: 'polarArea',
         options: options
     });
 };
