@@ -60,14 +60,14 @@
                 <div class="col-md-2">
                     <ul class="nav nav-sidebar" id="nav-item">
                         <li><button type="button" class="btn btn-success" id = "new-repo-button">New Repository</button></li>
-                        <li class="active"><a href="admin.html">All Repositories</a></li>
+                        <li class="active"><a href="admin.php">All Repositories</a></li>
                         <li><a href="#">Deleted Repositories</a></li>
                     </ul>
                 </div>
                 <div class="col-md-10 main">
                     <!-- Breadcrumbs -->
                     <ol class="breadcrumb">
-                        <li class="active"><a href="admin.html">All Repositories</a></li>
+                        <li class="active"><a href="admin.php">All Repositories</a></li>
                     </ol>
 
                     <h1 class="page-header">All Repositories</h1>
@@ -94,7 +94,7 @@
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </td>
-                            <td><a href="RepositorySelection.html">SOEN341-G4</a></td>
+                            <td><a href="repository_selection.php?repo_name=soen341-g4">SOEN341-G4</a></td>
                             <td><p>Some description here 1.</p></td>
                             <td>abhandal</td>
                             <td>9th Feb 2017, 11:08 pm</td>
@@ -157,24 +157,6 @@
                                     
                                 </div>
                             <div class="col-md-12 margin-top-bottom repoList" id="repo-list">
-                            <!--
-                                <p>Abhandal Repositories:</p>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="checkbox" aria-label="...">
-                                    </span>
-                                        <input type="text" class="form-control" aria-label="..." readonly value="repo1">
-                                </div>
-                            </div>
-                                 <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="checkbox" aria-label="...">
-                                    </span>
-                                        <input type="text" class="form-control" aria-label="..." readonly value="repo2">
-                                </div>
-                            </div> /.col-lg-6 -->
                             </div>
                             
                             
