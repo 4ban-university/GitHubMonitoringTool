@@ -9,6 +9,7 @@ line_chart();
 bar_chart();
 radar_chart();
 polar_chart();
+pie_chart();
 
 function line_chart(){
 
@@ -156,6 +157,36 @@ function polar_chart(){
     new Chart(ctx_polar, {
         data: data,
         type: 'polarArea',
+        options: options
+    });
+};
+
+function pie_chart(){
+    var data = {
+        labels: [
+            "Red",
+            "Blue",
+            "Yellow"
+        ],
+        datasets: [
+            {
+                data: [300, 50, 100],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+    };
+    var options = {};
+    var myPieChart = new Chart(ctx_pie,{
+        type: 'pie',
+        data: data,
         options: options
     });
 };
