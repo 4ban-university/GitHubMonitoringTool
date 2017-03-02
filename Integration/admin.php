@@ -108,14 +108,14 @@ session_start();
                 <div class="col-md-2">
                     <ul class="nav nav-sidebar" id="nav-item">
                         <li><button type="button" class="btn btn-success" id = "new-repo-button">New Repository</button></li>
-                        <li class="active"><a href="admin.html">All Repositories</a></li>
+                        <li class="active"><a href="admin.php">All Repositories</a></li>
                         <li><a href="#">Deleted Repositories</a></li>
                     </ul>
                 </div>
                 <div class="col-md-10 main">
                     <!-- Breadcrumbs -->
                     <ol class="breadcrumb">
-                        <li class="active"><a href="admin.html">All Repositories</a></li>
+                        <li class="active"><a href="admin.php">All Repositories</a></li>
                     </ol>
 
                     <h1 class="page-header">All Repositories</h1>
