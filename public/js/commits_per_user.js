@@ -10,6 +10,7 @@ bar_chart();
 radar_chart();
 polar_chart();
 pie_chart();
+doughnut_chart();
 
 function line_chart(){
 
@@ -186,6 +187,37 @@ function pie_chart(){
     var options = {};
     var myPieChart = new Chart(ctx_pie,{
         type: 'pie',
+        data: data,
+        options: options
+    });
+};
+
+function doughnut_chart(){
+    var data = {
+        labels: [
+            "Red",
+            "Blue",
+            "Yellow"
+        ],
+        datasets: [
+            {
+                data: [300, 50, 100],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+    };
+    var options = {};
+
+    var myDoughnutChart = new Chart(ctx_doughnut, {
+        type: 'doughnut',
         data: data,
         options: options
     });
