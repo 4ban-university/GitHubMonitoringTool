@@ -1,7 +1,7 @@
 # SOEN341-G4
 
 <a href="https://abhandal.github.io/SOEN341-G4/">Group WebPage</a><br>
-<a href="http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/login.php"> PHP Github API Testing page for now</a>
+<a href="http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/login.php"> PHP Github API Testing page for now</a>
 
 [Charts overview](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/data_structure.md)
 
