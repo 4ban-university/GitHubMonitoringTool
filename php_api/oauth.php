@@ -8,6 +8,7 @@ session_start();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
         <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
         <script src="../mockup/js/jquery-3.1.1.min.js"></script>
+        <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
         <script src="repo.js"></script>
         <script>
 
@@ -51,83 +52,10 @@ session_start();
 
        $_SESSION['token'] = $token;
 
-        $rep = new RepoInfo('abhandal','SOEN341-G4');
-
+       //$rep = new RepoInfo('abhandal','SOEN341-G4');
+        echo "<script>var repo = new Repo('abhandal','SOEN341-G4','$token');</script>";
 
     ?>
-
-    <script>
-        function drawchart(labels, data, ctx){
-
-            //  document.write(data);
-           // ctx.canvas.width = 300;
-           // ctx.canvas.height = 300;
-
-            //document.write(data);
-            var data = {
-                labels: labels,
-                datasets: [
-                    {
-                        data: data,
-                        backgroundColor: [
-                            " #3399ff",
-                            "#cc99ff",
-                            "#ff99ff",
-                            "#ff99cc",
-                            "#ff9999",
-                            "#ff9966",
-                            "#ff9933",
-                            "#cc6600"
-                        ],
-                        hoverBackgroundColor: [
-                            " #3399ff",
-                            "#cc99ff",
-                            "#ff99ff",
-                            "#ff99cc",
-                            "#ff9999",
-                            "#ff9966",
-                            "#ff9933",
-                            "#cc6600"
-                        ]
-                    }]
-            };
-
-            var myDoughnutChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: data,
-                options: {
-                    animation:{
-                        animateScale:true
-                    }
-                }
-            });
-
-
-        }
-
-
-    </script>
-        <canvas id="chart"></canvas>
-    <script>
-        var labels = new Array();
-        var data = new Array();
-        var ctx = document.getElementById("chart");
-
-        Promise.all(rep.events).then(function(){
-            document.write('all done ');
-            rep.events['CharlesPhilippeLabbe'].done(function(d){document.write(d);});
-        });
-        rep.collaborators.forEach(function(value){
-
-                labels.push('c');
-
-
-        });
-        document.write(labels);
-
-
-    </script>
-
 
 
 
