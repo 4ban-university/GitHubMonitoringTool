@@ -57,10 +57,78 @@ session_start();
     ?>
 
     <script>
-        rep.commits['CharlesPhilippeLabbe'].done(function(d){
-            document.write(d);
-        });
+        function drawchart(labels, data, ctx){
+
+            //  document.write(data);
+           // ctx.canvas.width = 300;
+           // ctx.canvas.height = 300;
+
+            //document.write(data);
+            var data = {
+                labels: labels,
+                datasets: [
+                    {
+                        data: data,
+                        backgroundColor: [
+                            " #3399ff",
+                            "#cc99ff",
+                            "#ff99ff",
+                            "#ff99cc",
+                            "#ff9999",
+                            "#ff9966",
+                            "#ff9933",
+                            "#cc6600"
+                        ],
+                        hoverBackgroundColor: [
+                            " #3399ff",
+                            "#cc99ff",
+                            "#ff99ff",
+                            "#ff99cc",
+                            "#ff9999",
+                            "#ff9966",
+                            "#ff9933",
+                            "#cc6600"
+                        ]
+                    }]
+            };
+
+            var myDoughnutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    animation:{
+                        animateScale:true
+                    }
+                }
+            });
+
+
+        }
+
+
     </script>
+        <canvas id="chart"></canvas>
+    <script>
+        var labels = new Array();
+        var data = new Array();
+        var ctx = document.getElementById("chart");
+
+        Promise.all(rep.events).then(function(){
+            document.write('all done ');
+            rep.events['CharlesPhilippeLabbe'].done(function(d){document.write(d);});
+        });
+        rep.collaborators.forEach(function(value){
+
+                labels.push('c');
+
+
+        });
+        document.write(labels);
+
+
+    </script>
+
+
 
 
     </body>

@@ -50,26 +50,13 @@ class RepoInfo{
         echo "
             <script>
             var collabs = $collaborators;
-            var rep = new Repo('$owner','$repo',collabs, '$token');
+            var rep = new Repo('$owner','$repo',collabs);
             </script>
             ";
 
     }
 
 
-    function getCollaborators($user, $repo){
-        $collaborators = $GLOBALS['client']->api('repo')->collaborators()->all($user, $repo);
-
-        $collaborator = array();
-
-        $count = 0;
-        foreach($collaborators as $i)
-            $collaborator[$count++] = $i['login'];
-
-
-
-        return $collaborator;
-    }
 
 
 }

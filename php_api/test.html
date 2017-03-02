@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../mockup/js/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+</head>
+<body>
+<script>
+    var g = new GitHub();
+    var c = g.getUser('CharlesPhilippeLabbe');
+    c.listStarredRepos(function(err,repos){
+        document.write(repos[0].id);
+    });
+</script>
+</body>
+</html>
