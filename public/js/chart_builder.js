@@ -1,4 +1,4 @@
-var repo = {"collaborators": {'1':'Dima', '2':'Ksyusha', '3':'Nikita'},
+var repo = {"collaborators": {'1':'Aman Bhandal', '2':'Dmitry Kryukov', '3':'Charles-Philippe Labbe', '4':'Ksenia Popova', '5':'Nikita Baranov', '6':'Batoul Yehia', '7':'Raymart De Guzman', '8':'Andy Pham'},
 			"commitsPerCollaborator":{'Dima':34, 'Ksyusha':345, 'Nikita':45},
 			"issues": 45,
 			"commits":345,
@@ -6,11 +6,13 @@ var repo = {"collaborators": {'1':'Dima', '2':'Ksyusha', '3':'Nikita'},
 			"commentsPerCollaborator": {'Dima':444, 'Ksyusha':3442, 'Nikita':43},
 	};
 
+
+
 charts(repo);
 
 function charts(repo){
 	//var visible = true;
-	overallInfo(repo.commits, repo.issues, repo.collaborators);
+	overAllInfo(repo.commits, repo.issues, repo.collaborators);
 	//Define canvas
 	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator');
 	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator');
@@ -36,7 +38,7 @@ function charts(repo){
     });
 };
 
-function overallInfo(){
+function overAllInfo(){
 	var commits = repo.commits;
 	var issues = repo.issues;
 	var collaborators = repo.collaborators;
@@ -48,13 +50,11 @@ function overallInfo(){
 		i++
 	}
 	document.getElementById('collaborators').innerHTML += '</ul>';
-
-
-
 	document.getElementById("commits").innerHTML += commits;
 	document.getElementById('issues').innerHTML += issues;
 	
-}
+};
+
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
