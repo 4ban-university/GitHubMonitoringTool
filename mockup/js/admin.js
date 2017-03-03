@@ -1,5 +1,57 @@
 $(document).ready(function () {
 
+    //new repo button
+    $("#new-repo-button").click(function(){
+        $("#new-repo-modal").modal("show");
+        
+    });
+    
+    $("#add-repo-btn-modal").click(function(){
+        var $repo_uri = $(this).parent().prev().children().find("#repo-url");
+        var repoUri_val = $repo_uri.val();
+        var user_name =  repoUri_val.substr(0, repoUri_val.indexOf("/"));
+        var $repo_list_var = $("#repo-list");
+        
+        var repo_name = repoUri_val.substr(repoUri_val.indexOf("/")+1,repoUri_val.length);
+        $(".repoList").removeClass("hidden");
+        $("#repo-added-btn").addClass("hidden");
+        $.ajax({
+            url: "https://api.github.com/users/"+user_name+"/repos",
+            success: function(data){
+                var repo_array = new Array();
+                var h = "";
+                for(var i=0; i<data.length; i++){
+                    for(var j=0; j<data.length; j++){
+                        repo_array[i]=data[i]["name"];
+                    }
+                }
+                h += '<p>'+user_name+' Repositories:</p>';
+                for(var i=0; i<repo_array.length; i++){
+                     h += checkbox_list(user_name, data[i]["name"], i);
+                }
+                
+                
+                var str_list = new Array();
+                $("#repo-list .col-md-6").find("input[type=checkbox]:checked").map(function() {
+                    //str_list += this.id;
+                    str_list += $("#repo-list").find(".checked-value").eq(this.id).val();
+                    $("#repo-added-btn").removeClass("hidden");
+                    $(".repoList").addClass("hidden");
+                });
+                console.log(str_list.toString());
+                
+                $("#repo-list").empty();
+                $("#repo-list").append(h);
+               
+            }
+        });
+         
+        
+        
+    });
+    
+    
+    
     // on click Edit button
     $("button[btn=edit]").click(function () {
         var $ele, $title, $description, editModalBody, editModalBodyContent;
@@ -64,6 +116,21 @@ function deleteRepoModalBody(title, message) {
     h +=    '<label>Deleting Repo: '+title+'</label>';
     h +=    '<div class="alert alert-danger" role="alert">'+message+'</div>';
     h += '</div>';
+    return h;
+}
+
+function checkbox_list(user_name,repo_name, checkBoxId){
+   
+    var h = "";
+   
+    h += '<div class="col-md-6 margin2-bottom">';
+    h += '<div class="input-group">';
+    h += '<span class="input-group-addon">';
+    h += '<input type="checkbox" aria-label="..." id="'+checkBoxId+'">';
+    h += '</span>';
+    h += '<input type="text" class="form-control checked-value" aria-label="..." readonly value="'+repo_name+'">';
+    h +=  '</div>';
+    h +=   '</div>';
     return h;
 }
 
