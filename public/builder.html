@@ -3,7 +3,7 @@
 <head>
 	<style>
 		body{
-			background: #e4e4e4;
+			background: #fff;
 		}
 		.chart{
 			width:90%;
@@ -13,6 +13,7 @@
 		}
 		.burndownCanvas{
 			width: 60%;
+			border: 1px solid #000;
 		}
 		.collaborators{
 			padding: 5px 5px 5px 5px;
@@ -65,6 +66,13 @@
    		<input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
    		<input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
    	</p>
+   	
+   	<div class="chart" id="burndownChart">
+		<h2>Burndown chart for sprint</h2>
+		<div class="burndownCanvas" id="burndownCanvas">
+			<canvas id='burndown' class='visible'></canvas>
+		</div>
+	</div>
 
 	<div class="chart" id="commitsChart">
 		<h2>Number of commits per collaborator</h2>
@@ -88,12 +96,6 @@
 		</div>
 	</div>
 
-	<div class="chart" id="burndownChart">
-		<h2>Burndown chart for sprint</h2>
-		<div class="burndownCanvas" id="burndownCanvas">
-			<canvas id='burndown' class='visible'></canvas>
-		</div>
-	</div>
 
 	
 
