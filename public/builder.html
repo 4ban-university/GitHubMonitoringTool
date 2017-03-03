@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.chart{
+			width:20%;
+		}
+	</style>
+	<script type="text/javascript" src="js/Chart.bundle.js" defer></script>
+	<script type="text/javascript" src='js/chart_builder.js' defer></script>
+
+</head>
+<body>
+	<div id='collaborators'>collaborators: </div>
+	<div id="issues">issues: </div>
+	<div id='commits'>commits: </div><br>
+
+	<div class="chart">
+		<canvas id='commitsPerCollaborator' class='visible'></canvas>
+	</div>
+	<div class="chart">
+		<canvas id='issuesPerCollaborator' class='visible'></canvas>
+	</div>
+	<div class="chart">
+		<canvas id='commentsPerCollaborator' class='visible'></canvas>
+	</div>
+</body>
+</html>
