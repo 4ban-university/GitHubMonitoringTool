@@ -40,3 +40,11 @@ function charts(repo){
         options: commitsPerCollaborator_options
     });
 };
+
+function commentsPerCollaboratorTransformation (commentsPerCollaborator_data){
+
+};
+
+function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
+
+};
