@@ -6,6 +6,8 @@ var repo = {"collaborators": {'1':'Dima', '2':'Ksyusha', '3':'Nikita'},
 			"commentsPerCollaborator": {'Dima':444, 'Ksyusha':3442, 'Nikita':43},
 	};
 
+charts(repo);
+
 function charts(repo){
 	//var visible = true;
 	var commits = repo.commits;
