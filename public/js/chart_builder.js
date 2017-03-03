@@ -41,6 +41,44 @@ function charts(repo){
     });
 };
 
+function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
+	var keyNum=0
+	var labels=[]
+
+	for (var key in commitsPerCollaborator_data) {
+		labels[keyNum]=key
+		keyNum++
+	}
+
+	var keyNum=0
+	var data=[]
+	for (var key in commitsPerCollaborator_data) {
+		data[keyNum]=commitsPerCollaborator_data[key]
+		keyNum++
+	}
+
+	commitsPerCollaborator_data = {
+		labels: labels,
+
+		datasets: [
+        {
+            data: data,
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ]
+        }]
+
+	}
+	return commitsPerCollaborator_data;
+};
+
 function commentsPerCollaboratorTransformation (commentsPerCollaborator_data){
 
 };
