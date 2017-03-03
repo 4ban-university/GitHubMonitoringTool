@@ -11,6 +11,9 @@
 		.canvas{
 			width:30%;
 		}
+		.burndownCanvas{
+			width: 60%;
+		}
 		.collaborators{
 			padding: 5px 5px 5px 5px;
 			margin: 5px 5px 5px 5px;
@@ -82,6 +85,13 @@
 		<div class="dataTable" id="commentsTable"></div>
 		<div class="canvas" id="commentsCanvas">
 			<canvas id='commentsPerCollaborator' class='visible'></canvas>
+		</div>
+	</div>
+
+	<div class="chart" id="burndownChart">
+		<h2>Burndown chart for sprint</h2>
+		<div class="burndownCanvas" id="burndownCanvas">
+			<canvas id='burndown' class='visible'></canvas>
 		</div>
 	</div>
 

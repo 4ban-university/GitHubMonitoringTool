@@ -4,6 +4,7 @@ var repo = {"collaborators": {'1':'Aman Bhandal', '2':'Dmitry Kryukov', '3':'Cha
 			"commits": 191,
 			"issuesPerCollaborator": {'Aman Bhandal': 8, 'Dmitry Kryukov': 10, 'Charles-Philippe Labbe': 29, 'Ksenia Popova': 10, 'Nikita Baranov': 12,'Batoul Yehia': 4, 'Raymart De Guzman': 1, 'Andy Pham': 1},
 			"commentsPerCollaborator": {'Aman Bhandal': 24, 'Dmitry Kryukov': 22, 'Charles-Philippe Labbe': 20, 'Ksenia Popova': 24, 'Nikita Baranov': 21,'Batoul Yehia': 20, 'Raymart De Guzman': 22, 'Andy Pham': 24},
+			"burndown" : {'1':28, '2':27, '3':33, '4':30, '5':30, '6':25, '7':20, '8':15, '9':13, '10':10, '11':5, '12':3, '13':1, '14':0, },
 	};
 
 
@@ -32,6 +33,7 @@ table+="</table>"
 document.getElementById('commentsTable').innerHTML += table;
 
 charts(repo);
+burndown(repo);
 
  //----------checkboxes for what information to show
  document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
@@ -243,3 +245,98 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 	return issuesPerCollaborator_data;
 
 };
+
+function burndown(repo){
+	var ctx_burndown = document.getElementById('burndown');	
+	var burndown_data = repo.burndown;
+	var burndown_options = {};
+	
+	var keyNum=0
+	var labels=[]
+
+	for (var key in burndown_data) {
+		labels[keyNum]='Day '+key
+		keyNum++
+	}
+
+	var keyNum=0
+	var data=[]
+	for (var key in burndown_data) {
+		data[keyNum]=burndown_data[key]
+		keyNum++
+	}
+
+	var i = 0;
+	var ideal_data = [];
+	var maxIssues = Math.max(...data);
+	var totalDays = labels.length;
+	var idealIncrement = maxIssues/totalDays
+	for (var day in labels){
+		ideal_data.push(idealIncrement*i+1);
+		i++
+	}
+	ideal_data = ideal_data.reverse()
+	console.log(maxIssues)
+	
+
+
+	burndown_data = {
+		labels: labels,
+
+		datasets: [
+        {
+            data: data,
+            label: "Burndown chart",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 5,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            spanGaps: false,
+        },
+        {	
+        	data: ideal_data,
+        	label: "Ideal burndown chart",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(34,100,12,0.4)",
+            borderColor: "rgba(34,100,12,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(34,100,12,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 5,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(34,100,12,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            spanGaps: false,
+        }]
+        
+
+	}
+
+
+	var burndown_chart = new Chart(ctx_burndown, {
+        type: 'line',
+        data: burndown_data,
+        options: burndown_options
+    });
+};
+
