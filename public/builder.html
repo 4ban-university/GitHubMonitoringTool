@@ -2,8 +2,16 @@
 <html>
 <head>
 	<style>
+		body{
+			background: #e4e4e4;
+		}
 		.chart{
 			width:20%;
+		}
+		.collaborators{
+			padding: 5px 5px 5px 5px;
+			margin: 5px 5px 5px 5px;
+			border: 1px solid #000;
 		}
 	</style>
 	<script type="text/javascript" src="js/Chart.bundle.js" defer></script>
@@ -11,9 +19,9 @@
 
 </head>
 <body>
-	<div id='collaborators'>collaborators: </div>
-	<div id="issues">issues: </div>
-	<div id='commits'>commits: </div><br>
+	<div id='collaborators' class='collaborators'></div>
+	<div id="issues" class='issues'>issues: </div>
+	<div id='commits' class='comments'>commits: </div><br>
 
 	<div class="chart">
 		<canvas id='commitsPerCollaborator' class='visible'></canvas>
