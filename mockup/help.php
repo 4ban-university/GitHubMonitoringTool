@@ -70,7 +70,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading"><h2>Help/About</h2></div>
                     <div class="panel-body">
-                <h1>Help</h1>
+                <h1>Help  </h1>
                 <h2>About us</h2>
                     <p>We are Concordia students working on a project to keep track of commits and all sorts of activities done in a project on Github. They will be stored and viewed by charts, divided by each sprint.</p>
                 <h2>Frequently Asked Questions</h2>
