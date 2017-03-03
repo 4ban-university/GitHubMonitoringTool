@@ -1,9 +1,9 @@
 var repo = {"collaborators": {'1':'Aman Bhandal', '2':'Dmitry Kryukov', '3':'Charles-Philippe Labbe', '4':'Ksenia Popova', '5':'Nikita Baranov', '6':'Batoul Yehia', '7':'Raymart De Guzman', '8':'Andy Pham'},
-			"commitsPerCollaborator":{'Dima':34, 'Ksyusha':345, 'Nikita':45},
-			"issues": 45,
-			"commits":345,
-			"issuesPerCollaborator": {'Dima':43, 'Ksyusha':32,},
-			"commentsPerCollaborator": {'Dima':444, 'Ksyusha':3442, 'Nikita':43},
+			"commitsPerCollaborator":{'Aman Bhandal': 24, 'Dmitry Kryukov': 22, 'Charles-Philippe Labbe': 42, 'Ksenia Popova': 18, 'Nikita Baranov': 11,'Batoul Yehia': 8, 'Raymart De Guzman': 10, 'Andy Pham': 13},
+			"issues": 75,
+			"commits": 191,
+			"issuesPerCollaborator": {'Aman Bhandal': 8, 'Dmitry Kryukov': 10, 'Charles-Philippe Labbe': 29, 'Ksenia Popova': 10, 'Nikita Baranov': 12,'Batoul Yehia': 4, 'Raymart De Guzman': 1, 'Andy Pham': 1},
+			"commentsPerCollaborator": {'Aman Bhandal': 24, 'Dmitry Kryukov': 22, 'Charles-Philippe Labbe': 20, 'Ksenia Popova': 24, 'Nikita Baranov': 21,'Batoul Yehia': 20, 'Raymart De Guzman': 22, 'Andy Pham': 24},
 	};
 
 
@@ -80,12 +80,20 @@ function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
             backgroundColor: [
                 "#FF6384",
                 "#36A2EB",
-                "#FFCE56"
+                "#FFCE56",
+                "#FCCE56",
+                "#FGCE57",
+                "#FHCE58",
+                "#FACE59"
             ],
             hoverBackgroundColor: [
                 "#FF6384",
                 "#36A2EB",
-                "#FFCE56"
+                "#FFCE56",
+                "#FGCE57",
+                "#FHCE58",
+                "#FHCE90",
+                "#FACE59"
             ]
         }]
 
