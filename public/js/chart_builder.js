@@ -7,30 +7,90 @@ var repo = {"collaborators": {'1':'Aman Bhandal', '2':'Dmitry Kryukov', '3':'Cha
 	};
 
 
+var table = "<table><tr><th>Name</th><th>Number of commits</th><th>Percentage</th></tr>"
+var commitsPerCollaborator=repo.commitsPerCollaborator
+for (var key in commitsPerCollaborator) {
+	table+="<tr><td>"+key+"</td><td>"+commitsPerCollaborator[key]+"</td><td>"+Math.round(commitsPerCollaborator[key]*100/191)+"%</td></tr>"
+}
+table+="</table>"
+document.getElementById('commitsTable').innerHTML += table;
+
+table = "<table><tr><th>Name</th><th>Number of issues</th><th>Percentage</th></tr>"
+var issuesPerCollaborator=repo.issuesPerCollaborator
+for (var key in issuesPerCollaborator) {
+	table+="<tr><td>"+key+"</td><td>"+issuesPerCollaborator[key]+"</td><td>"+Math.round(issuesPerCollaborator[key]*100/75)+"%</td></tr>"
+}
+table+="</table>"
+document.getElementById('issuesTable').innerHTML += table;
+
+var table = "<table><tr><th>Name</th><th>Number of comments</th><th>Percentage</th></tr>"
+var commentsPerCollaborator=repo.commentsPerCollaborator
+for (var key in commentsPerCollaborator) {
+	table+="<tr><td>"+key+"</td><td>"+commentsPerCollaborator[key]+"</td><td>"+Math.round(commentsPerCollaborator[key]*100/177)+"%</td></tr>"
+}
+table+="</table>"
+document.getElementById('commentsTable').innerHTML += table;
 
 charts(repo);
 
- //console.log( input.getAttribute('checked') ); // пустая строка
+ //----------checkboxes for what information to show
  document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
     if ( !this.checked ) {
-        document.getElementById("commitsPerCollaborator").style.display="none"
+        document.getElementById("commitsChart").style.display="none"
     }
-    else document.getElementById("commitsPerCollaborator").style.display="block"
+    else document.getElementById("commitsChart").style.display="block"
 };
 
  document.getElementById('issuesPerCollaboratorCheck').onclick = function() {
     if ( !this.checked ) {
-        document.getElementById("issuesPerCollaborator").style.display="none"
+        document.getElementById("issuesChart").style.display="none"
     }
-    else document.getElementById("issuesPerCollaborator").style.display="block"
+    else document.getElementById("issuesChart").style.display="block"
 };
 
  document.getElementById('commentsPerCollaboratorCheck').onclick = function() {
     if ( !this.checked ) {
-        document.getElementById("commentsPerCollaborator").style.display="none"
+        document.getElementById("commetsChart").style.display="none"
     }
-    else document.getElementById("commentsPerCollaborator").style.display="block"
+    else document.getElementById("commetsChart").style.display="block"
 };
+
+ //----------radio buttons for how to display the information
+document.getElementById('TextData').onclick = function() {
+    if ( this.checked ) {
+        document.getElementById("commitsCanvas").style.display="none"
+        document.getElementById("issuesCanvas").style.display="none"
+        document.getElementById("commentsCanvas").style.display="none"
+        document.getElementById("commitsTable").style.display="block"
+        document.getElementById("issuesTable").style.display="block"
+        document.getElementById("commentsTable").style.display="block"
+    }
+};
+
+ document.getElementById('GraphicData').onclick = function() {
+    if ( this.checked ) {
+        document.getElementById("commitsTable").style.display="none"
+        document.getElementById("issuesTable").style.display="none"
+        document.getElementById("commentsTable").style.display="none"
+        document.getElementById("commitsCanvas").style.display="block"
+        document.getElementById("issuesCanvas").style.display="block"
+        document.getElementById("commentsCanvas").style.display="block"
+    }
+};
+
+ document.getElementById('MixedData').onclick = function() {
+    if ( this.checked ) {
+        document.getElementById("commitsTable").style.display="block"
+        document.getElementById("issuesTable").style.display="block"
+        document.getElementById("commentsTable").style.display="block"
+        document.getElementById("commitsCanvas").style.display="block"
+        document.getElementById("issuesCanvas").style.display="block"
+        document.getElementById("commentsCanvas").style.display="block"
+    }
+};
+
+
+
 
 
 function charts(repo){
