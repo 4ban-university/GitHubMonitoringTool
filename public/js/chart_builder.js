@@ -10,12 +10,7 @@ charts(repo);
 
 function charts(repo){
 	//var visible = true;
-	var commits = repo.commits;
-	var issues = repo.issues;
-	var collaborators = repo.collaborators;
-	document.getElementById("commits").innerHTML += commits;
-	document.getElementById('issues').innerHTML += issues;
-	document.getElementById('collaborators').innerHTML += collaborators[1]+collaborators[2];
+	overallInfo(repo.commits, repo.issues, repo.collaborators);
 	//Define canvas
 	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator');
 	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator');
@@ -41,6 +36,25 @@ function charts(repo){
     });
 };
 
+function overallInfo(){
+	var commits = repo.commits;
+	var issues = repo.issues;
+	var collaborators = repo.collaborators;
+	var collab = [];
+	var i = 0;
+	document.getElementById('collaborators').innerHTML += '<p>Collaborators:</p><ul>';
+	for (var key in collaborators){
+		document.getElementById('collaborators').innerHTML += '<li>'+collaborators[key]+'</li>';
+		i++
+	}
+	document.getElementById('collaborators').innerHTML += '</ul>';
+
+
+
+	document.getElementById("commits").innerHTML += commits;
+	document.getElementById('issues').innerHTML += issues;
+	
+}
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
