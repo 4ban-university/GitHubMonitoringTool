@@ -4,6 +4,7 @@
 <a href="http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/login.php"> PHP Github API Testing page for now</a>
 
 [Charts overview](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/data_structure.md)
+[JavaScript](https://b5n.github.io/builder.html)
 
 <h1>Group Members</h1>
 <ol>
