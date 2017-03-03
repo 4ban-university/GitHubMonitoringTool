@@ -19,7 +19,7 @@ function charts(repo){
 	var ctx_commentsPerCollaborator = document.getElementById('commentsPerCollaborator');
 
 	//Data and options for commits per collaborator
-	var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(repo.commitsPerCollaborator);	// {'Dima':34, 'Ksyusha':345, 'Nikita':45}
+	var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(repo.commitsPerCollaborator);
 	var commitsPerCollaborator_options = {}
 
 	//Data and options for comments per collaborator
@@ -36,6 +36,20 @@ function charts(repo){
         data: commitsPerCollaborator_data,
         options: commitsPerCollaborator_options
     });
+
+	var issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
+        type: 'doughnut',
+        data: issuesPerCollaborator_data,
+        options: issuesPerCollaborators_options
+    });
+
+	var commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
+        type: 'doughnut',
+        data: commentsPerCollaborator_data,
+        options: commentsPerCollaborators_options
+    });
+
+
 };
 
 function overAllInfo(){
@@ -58,7 +72,7 @@ function overAllInfo(){
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
-
+	var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
 	for (var key in commitsPerCollaborator_data) {
 		labels[keyNum]=key
 		keyNum++
@@ -77,24 +91,8 @@ function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 		datasets: [
         {
             data: data,
-            backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#FCCE56",
-                "#FGCE57",
-                "#FHCE58",
-                "#FACE59"
-            ],
-            hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#FGCE57",
-                "#FHCE58",
-                "#FHCE90",
-                "#FACE59"
-            ]
+            backgroundColor: colors,
+            hoverBackgroundColor: colors
         }]
 
 	}
@@ -102,9 +100,63 @@ function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 };
 
 function commentsPerCollaboratorTransformation (commentsPerCollaborator_data){
+	var keyNum=0
+	var labels=[]
+	var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
+	for (var key in commentsPerCollaborator_data) {
+		labels[keyNum]=key
+		keyNum++
+	}
+
+	var keyNum=0
+	var data=[]
+	for (var key in commentsPerCollaborator_data) {
+		data[keyNum]=commentsPerCollaborator_data[key]
+		keyNum++
+	}
+
+	commentsPerCollaborator_data = {
+		labels: labels,
+
+		datasets: [
+        {
+            data: data,
+            backgroundColor: colors,
+            hoverBackgroundColor: colors
+        }]
+
+	}
+	return commentsPerCollaborator_data;
 
 };
 
 function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
+	var keyNum=0
+	var labels=[]
+	var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
+	for (var key in issuesPerCollaborator_data) {
+		labels[keyNum]=key
+		keyNum++
+	}
+
+	var keyNum=0
+	var data=[]
+	for (var key in issuesPerCollaborator_data) {
+		data[keyNum]=issuesPerCollaborator_data[key]
+		keyNum++
+	}
+
+	issuesPerCollaborator_data = {
+		labels: labels,
+
+		datasets: [
+        {
+            data: data,
+            backgroundColor: colors,
+            hoverBackgroundColor: colors
+        }]
+
+	}
+	return issuesPerCollaborator_data;
 
 };
