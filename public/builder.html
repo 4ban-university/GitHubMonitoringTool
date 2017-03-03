@@ -30,8 +30,14 @@
 </head>
 <body>
 	<div id='collaborators' class='collaborators'></div>
-	<div id="issues" class='issues'>Issues: </div>
-	<div id='commits' class='commits'>Commits: </div><br>
+	<div id="issues" class='issues'>Overall Issues: </div>
+	<div id='commits' class='commits'>Overall Commits: </div><br>
+
+	<p>
+		<input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
+   		<input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
+   		<input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
+   	</p>
 
 	<div class="chart">
 		<canvas id='commitsPerCollaborator' class='visible'></canvas>
@@ -42,5 +48,8 @@
 	<div class="chart">
 		<canvas id='commentsPerCollaborator' class='visible'></canvas>
 	</div>
+
+	
+
 </body>
 </html>

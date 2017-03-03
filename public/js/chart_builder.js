@@ -10,6 +10,29 @@ var repo = {"collaborators": {'1':'Aman Bhandal', '2':'Dmitry Kryukov', '3':'Cha
 
 charts(repo);
 
+ //console.log( input.getAttribute('checked') ); // пустая строка
+ document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
+    if ( !this.checked ) {
+        document.getElementById("commitsPerCollaborator").style.display="none"
+    }
+    else document.getElementById("commitsPerCollaborator").style.display="block"
+};
+
+ document.getElementById('issuesPerCollaboratorCheck').onclick = function() {
+    if ( !this.checked ) {
+        document.getElementById("issuesPerCollaborator").style.display="none"
+    }
+    else document.getElementById("issuesPerCollaborator").style.display="block"
+};
+
+ document.getElementById('commentsPerCollaboratorCheck').onclick = function() {
+    if ( !this.checked ) {
+        document.getElementById("commentsPerCollaborator").style.display="none"
+    }
+    else document.getElementById("commentsPerCollaborator").style.display="block"
+};
+
+
 function charts(repo){
 	//var visible = true;
 	overAllInfo(repo.commits, repo.issues, repo.collaborators);
