@@ -5,14 +5,31 @@
     <title>Title</title>
     <script src="../mockup/js/jquery-3.1.1.min.js"></script>
     <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+    <script src="repo.js"></script>
 </head>
 <body>
 <script>
-    var g = new GitHub();
-    var c = g.getUser('CharlesPhilippeLabbe');
-    c.listStarredRepos(function(err,repos){
-        document.write(repos[0].id);
+    var auth = {username: 'CharlesPhilippeLabbe', password: '1maisondu'};
+    var repo = new Repo('abhandal','SOEN341-G4',auth);
+
+    repo.collaborators.then(function(response){
+        repo.commits.then(function(data){
+            response.forEach(function(value){
+               // document.write(value + " " +data[value] + " ");
+            });
+        });
+
+
+        repo.issues.then(function(data){
+            response.forEach(function(value){
+                document.write(value + " " +data[value] + " ");
+            });
+        });
+
     });
+
+
+
 </script>
 </body>
 </html>
