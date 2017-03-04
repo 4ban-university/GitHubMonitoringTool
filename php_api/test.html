@@ -22,7 +22,13 @@
 
         repo.issues.then(function(data){
             response.forEach(function(value){
-                document.write(value + " " +data[value] + " ");
+                //document.write(value + " " +data[value] + " ");
+            });
+        });
+
+        repo.comments.then(function(data){
+            response.forEach(function(value){
+                document.write(value + " " + data[value]+ " ");
             });
         });
 

@@ -27,6 +27,7 @@ function Repo(owner, repo, oauth) {
 
 }
 
+
 function getCollaborators(ob1){
     ob1.repo.getCollaborators().then(function(response){
             var collabs = new Array();
@@ -60,10 +61,29 @@ function getCommits(ob1){
 
 }
 
+
 function getComments(ob1){
 
+    var comments = new Array();
 
+    ob1.collaborators.then(function(c){
+       //getting the comments in the same order as the others
+        c.forEach(function(value){
+            comments[value] = 0;
+        });
+
+        var opt = {sort: 'created'};
+        ob1.issue._requestAllPages("/repos/"+ob1.repo.__fullname+"/issues/comments", opt).then(function(response){
+
+            response.data.forEach(function(comment){
+               comments[comment.user.login] +=1;
+                //document.write(comment.id + " " + comment.user.login + " " + comments[comment.user.login]+ "<br>");
+           }) ;
+          ob1.comments.resolve(comments);
+        });
+    });
 }
+
 
 function getIssues(ob1){
 
