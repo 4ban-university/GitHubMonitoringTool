@@ -4,7 +4,7 @@ var repo = {"collaborators": {'1':'Aman Bhandal', '2':'Dmitry Kryukov', '3':'Cha
 			"commits": 191,
 			"issuesPerCollaborator": {'Aman Bhandal': 8, 'Dmitry Kryukov': 10, 'Charles-Philippe Labbe': 29, 'Ksenia Popova': 10, 'Nikita Baranov': 12,'Batoul Yehia': 4, 'Raymart De Guzman': 1, 'Andy Pham': 1},
 			"commentsPerCollaborator": {'Aman Bhandal': 24, 'Dmitry Kryukov': 22, 'Charles-Philippe Labbe': 20, 'Ksenia Popova': 24, 'Nikita Baranov': 21,'Batoul Yehia': 20, 'Raymart De Guzman': 22, 'Andy Pham': 24},
-			"burndown" : {'1':28, '2':27, '3':33, '4':30, '5':30, '6':25, '7':20, '8':15, '9':13, '10':10, '11':5, '12':3, '13':1, '14':0, },
+			"burndown" : {'1':35, '2':33, '3':33, '4':35, '5':33, '6':25, '7':23, '8':18, '9':15, '10':10, '11':7, '12':4, '13':1, '14':0, },
 	};
 
 
@@ -249,7 +249,12 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 function burndown(repo){
 	var ctx_burndown = document.getElementById('burndown');	
 	var burndown_data = repo.burndown;
-	var burndown_options = {};
+	var burndown_options = {
+			chartArea: {
+        				backgroundColor: 'rgba(35, 35, 35, 0.6)'
+    		}
+    	};
+
 	
 	var keyNum=0
 	var labels=[]
@@ -268,17 +273,17 @@ function burndown(repo){
 
 	var i = 0;
 	var ideal_data = [];
-	var maxIssues = Math.max(...data);
+	ideal_data[0]=data[0]
+	var firstIssues = data[0];
 	var totalDays = labels.length;
-	var idealIncrement = maxIssues/totalDays
-	for (var day in labels){
-		ideal_data.push(idealIncrement*i+1);
-		i++
-	}
-	ideal_data = ideal_data.reverse()
-	console.log(maxIssues)
-	
+	var idealIncrement = firstIssues/(totalDays-1)
+	for (var i = 1; i < labels.length; i++){
+		firstIssues-=idealIncrement;
+		ideal_data[i]=firstIssues
 
+		}
+	ideal_data[ideal_data.length-1] = 0
+	console.log(ideal_data)
 
 	burndown_data = {
 		labels: labels,
@@ -286,7 +291,7 @@ function burndown(repo){
 		datasets: [
         {
             data: data,
-            label: "Burndown chart",
+            label: " Burndown chart",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
@@ -300,7 +305,7 @@ function burndown(repo){
             pointBorderWidth: 5,
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderColor: "rgba(75,192,192,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -308,21 +313,21 @@ function burndown(repo){
         },
         {	
         	data: ideal_data,
-        	label: "Ideal burndown chart",
+        	label: " Ideal burndown chart",
             fill: false,
             lineTension: 0.1,
-            backgroundColor: "rgba(34,100,12,0.4)",
-            borderColor: "rgba(34,100,12,1)",
+            backgroundColor: "rgba(114,208,114,0.4)",
+            borderColor: "rgba(114,208,114,1)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(34,100,12,1)",
+            pointBorderColor: "rgba(114,208,114,1)",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 5,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(34,100,12,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBackgroundColor: "rgba(114,208,114,1)",
+            pointHoverBorderColor: "rgba(114,208,114,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
@@ -340,3 +345,17 @@ function burndown(repo){
     });
 };
 
+// Chart js plugon for changing background color in charts. 
+Chart.pluginService.register({
+    beforeDraw: function (chart, easing) {
+        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+            var helpers = Chart.helpers;
+            var ctx = chart.chart.ctx;
+            var chartArea = chart.chartArea;
+            ctx.save();
+            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+            ctx.restore();
+        }
+    }
+});
