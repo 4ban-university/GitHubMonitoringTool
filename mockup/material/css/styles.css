@@ -258,3 +258,12 @@ _:-ms-input-placeholder, :root .demo-graph {
     width: 100%;
     height: 100%;
 }
+/*
+over write style
+*/
+.mdl-layout__header-row {
+	background-color: white;
+}
+.mdl-layout__content {
+	background-color: white;
+}
