@@ -44,7 +44,7 @@ function getRepo() {
 			 h += checkbox_list(data[i]["name"], checkboxId += i );
 		}
 		showDialog({
-			title: 'Add Repo',
+			title: 'Add Repository<hr>',
 			text: h,
 			negative: {
 				title: 'Cancel'
