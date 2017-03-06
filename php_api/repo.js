@@ -28,6 +28,9 @@ function Repo(owner, repo, oauth) {
     this.totalComments = new $.Deferred();
     getComments(this);
 
+    this.weeklyInfo = new $.Deferred();
+    getWeeklyInfo(this);
+
 
 }
 
@@ -52,6 +55,10 @@ function getCommits(ob1){
 
     ob1.collaborators.then(function(c){
         var commits = new Array();
+        //keeping the same order for all
+        c.forEach(function(value){
+            commits[value] = 0;
+        });
         var total = 0;
         c.forEach(function(value){
             var opt = {author: value};
@@ -100,6 +107,10 @@ function getIssues(ob1){
 
     ob1.collaborators.then(function(c){
         var issues = new Array();
+        //keeping the same order
+        c.forEach(function(value){
+            issues[value] = 0;
+        });
         var total = 0;
         c.forEach(function(value){
 
@@ -115,5 +126,61 @@ function getIssues(ob1){
             ob1.totalIssues.resolve(total);
         });
     });
+
+}
+
+
+function getWeeklyInfo(ob1){
+    var oneWeek= 7*24*3600*1000;//miliseconds per week
+    var today = new Date();
+    var weeks;
+    var creation;
+    var promises = new Array();
+
+    ob1.repo.getDetails().then(function(response){
+        creation = Date.parse(response.data.created_at);
+        creation = new Date(creation);
+
+        var t = Math.floor((today.getTime()-creation.getTime())/oneWeek);
+
+        weeks = new Array(t);
+
+        ob1.collaborators.then(function(c) {
+
+            //setting up array of array of collaborators
+
+            for(var i = 0; i< weeks.length;i++){
+                weeks[i] = new Array();
+                c.forEach(function(value){
+                    weeks[i][value] = 0;
+                });
+            }
+
+            var temp = new Date(creation.getTime() + oneWeek);
+            weeks.forEach(function(value, index){
+                c.forEach(function(key) {
+                    var opt = {author: key, until: temp.toISOString()};
+
+                    promises.push(ob1.repo._requestAllPages("/repos/"+ob1.repo.__fullname+"/commits", opt).then(function(list){
+                        weeks[index][key] = list.data.length;
+
+                    }));
+
+                });
+                temp.setTime(temp.getTime() + oneWeek);
+            });
+
+
+            Promise.all(promises).then(function(){
+                ob1.weeklyInfo.resolve(weeks);
+            });
+
+        });
+
+
+
+    });
+
+
 
 }
