@@ -149,6 +149,63 @@ function burndown(){
 };
 
 
+function filter(){
+	//----------checkboxes for what information to show
+	document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
+	    if ( !this.checked ) {
+	        document.getElementById("commitsChart").style.display="none"
+	    }
+	    else document.getElementById("commitsChart").style.display="block"
+	};
+
+	document.getElementById('issuesPerCollaboratorCheck').onclick = function() {
+	    if ( !this.checked ) {
+	        document.getElementById("issuesChart").style.display="none"
+	    }
+	    else document.getElementById("issuesChart").style.display="block"
+	};
+
+	document.getElementById('commentsPerCollaboratorCheck').onclick = function() {
+	    if ( !this.checked ) {
+	        document.getElementById("commetsChart").style.display="none"
+	    }
+	    else document.getElementById("commetsChart").style.display="block"
+	};
+
+	//----------radio buttons for how to display the information
+	document.getElementById('TextData').onclick = function() {
+	    if ( this.checked ) {
+	        document.getElementById("commitsCanvas").style.display="none"
+	        document.getElementById("issuesCanvas").style.display="none"
+	        document.getElementById("commentsCanvas").style.display="none"
+	        document.getElementById("commitsTable").style.display="block"
+	        document.getElementById("issuesTable").style.display="block"
+	        document.getElementById("commentsTable").style.display="block"
+	    }
+	};
+
+	document.getElementById('GraphicData').onclick = function() {
+	    if ( this.checked ) {
+	        document.getElementById("commitsTable").style.display="none"
+	        document.getElementById("issuesTable").style.display="none"
+	        document.getElementById("commentsTable").style.display="none"
+	        document.getElementById("commitsCanvas").style.display="block"
+	        document.getElementById("issuesCanvas").style.display="block"
+	        document.getElementById("commentsCanvas").style.display="block"
+	    }
+	};
+
+	document.getElementById('MixedData').onclick = function() {
+	    if ( this.checked ) {
+	        document.getElementById("commitsTable").style.display="block"
+	        document.getElementById("issuesTable").style.display="block"
+	        document.getElementById("commentsTable").style.display="block"
+	        document.getElementById("commitsCanvas").style.display="block"
+	        document.getElementById("issuesCanvas").style.display="block"
+	        document.getElementById("commentsCanvas").style.display="block"
+	    }
+	};
+};
 
 
 
@@ -188,62 +245,6 @@ document.getElementById('commentsTable').innerHTML += table;
 
 charts(repo);
 
-
- //----------checkboxes for what information to show
- document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
-    if ( !this.checked ) {
-        document.getElementById("commitsChart").style.display="none"
-    }
-    else document.getElementById("commitsChart").style.display="block"
-};
-
- document.getElementById('issuesPerCollaboratorCheck').onclick = function() {
-    if ( !this.checked ) {
-        document.getElementById("issuesChart").style.display="none"
-    }
-    else document.getElementById("issuesChart").style.display="block"
-};
-
- document.getElementById('commentsPerCollaboratorCheck').onclick = function() {
-    if ( !this.checked ) {
-        document.getElementById("commetsChart").style.display="none"
-    }
-    else document.getElementById("commetsChart").style.display="block"
-};
-
- //----------radio buttons for how to display the information
-document.getElementById('TextData').onclick = function() {
-    if ( this.checked ) {
-        document.getElementById("commitsCanvas").style.display="none"
-        document.getElementById("issuesCanvas").style.display="none"
-        document.getElementById("commentsCanvas").style.display="none"
-        document.getElementById("commitsTable").style.display="block"
-        document.getElementById("issuesTable").style.display="block"
-        document.getElementById("commentsTable").style.display="block"
-    }
-};
-
- document.getElementById('GraphicData').onclick = function() {
-    if ( this.checked ) {
-        document.getElementById("commitsTable").style.display="none"
-        document.getElementById("issuesTable").style.display="none"
-        document.getElementById("commentsTable").style.display="none"
-        document.getElementById("commitsCanvas").style.display="block"
-        document.getElementById("issuesCanvas").style.display="block"
-        document.getElementById("commentsCanvas").style.display="block"
-    }
-};
-
- document.getElementById('MixedData').onclick = function() {
-    if ( this.checked ) {
-        document.getElementById("commitsTable").style.display="block"
-        document.getElementById("issuesTable").style.display="block"
-        document.getElementById("commentsTable").style.display="block"
-        document.getElementById("commitsCanvas").style.display="block"
-        document.getElementById("issuesCanvas").style.display="block"
-        document.getElementById("commentsCanvas").style.display="block"
-    }
-};
 
 
 
