@@ -236,63 +236,50 @@ function tables(){
 };
 
 
-
-
-
-
-
-
-
-
-
-charts(repo);
-
-
-
-
-
-
-function charts(repo){
-	//var visible = true;
-	
-	//Define canvas
-	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator');
-	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator');
-	var ctx_commentsPerCollaborator = document.getElementById('commentsPerCollaborator');
+function commitsPerCollaborator(chartType){
+	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator').getContext("2d");
 
 	//Data and options for commits per collaborator
 	var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(repo.commitsPerCollaborator);
 	var commitsPerCollaborator_options = {}
 
-	//Data and options for comments per collaborator
-	var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(repo.commentsPerCollaborator);	
-	var commentsPerCollaborators_options = {}
+	//commits per collaborators
+	commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
+        type: chartType,
+        data: commitsPerCollaborator_data,
+        options: commitsPerCollaborator_options
+    });
+};
 
+function issuesPerCollaborator(chartType){
+	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator').getContext("2d");
+	
 	//Data and options for issues per collaborator
 	var issuesPerCollaborator_data = issuesPerCollaboratorTransformation(repo.issuesPerCollaborator);	
 	var issuesPerCollaborators_options = {}
 
-	//commits per collaborators
-	var commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
-        type: 'doughnut',
-        data: commitsPerCollaborator_data,
-        options: commitsPerCollaborator_options
-    });
-
-	var issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
-        type: 'doughnut',
+	issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
+        type: chartType,
         data: issuesPerCollaborator_data,
         options: issuesPerCollaborators_options
     });
+};
 
-	var commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
-        type: 'doughnut',
+function commentsPerCollaborator(chartType){
+	var ctx_commentsPerCollaborator = document.getElementById('commentsPerCollaborator').getContext("2d");
+
+	//Data and options for comments per collaborator
+	var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(repo.commentsPerCollaborator);	
+	var commentsPerCollaborators_options = {}
+
+	commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
+        type: chartType,
         data: commentsPerCollaborator_data,
         options: commentsPerCollaborators_options
     });
-
-
 };
+
+
 
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
