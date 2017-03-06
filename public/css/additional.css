@@ -53,4 +53,7 @@
 }
 .ChartType{
 	border: 1px solid #dddddd;
+	background: #424242;
+	border-radius: 3px;
+	color: #ffffff;
 }
