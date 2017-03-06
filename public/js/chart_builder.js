@@ -280,7 +280,6 @@ function commentsPerCollaborator(chartType){
 };
 
 
-
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
@@ -372,4 +371,3 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 	return issuesPerCollaborator_data;
 
 };
-
