@@ -31,6 +31,9 @@ function Repo(owner, repo, oauth) {
     this.weeklyInfo = new $.Deferred();
     getWeeklyInfo(this);
 
+    this.burndown = new $.Deferred();
+    getBurndown(this);
+
 
 }
 
@@ -176,11 +179,54 @@ function getWeeklyInfo(ob1){
             });
 
         });
+    });
+}
 
+
+function getBurndown(ob1){
+    var oneDay = 24*3600*1000;//milliseconds per day
+    var today = new Date();
+    var creation;
+    var promises = new Array();
+    var closed = new Array();
+
+
+    ob1.repo.getDetails().then(function(response) {
+        creation = Date.parse(response.data.created_at);
+        creation = new Date(creation);
+
+        var t = Math.floor((today.getTime()-creation.getTime())/oneDay);
+
+        var temp = new Date(creation.getTime());
+        for(var i = 0; i<t; i++)
+            closed[i] = 0;
+
+        var opt = {state: 'closed'};
+        ob1.issue.listIssues(opt).then(function(response){
+            response.data.forEach(function(value){
+                var temp = new Date(value.closed_at);
+                var diff = Math.floor((temp.getTime() - creation.getTime())/oneDay);
+                if(diff < t)
+                 closed[diff] +=1;
+            });
+
+
+            ob1.totalIssues.then(function(total){
+                var burn = new Array();
+                closed.forEach(function(value, index){
+                    total -= value;
+                    burn[index] = total;
+                });
+
+                ob1.burndown.resolve(burn);
+
+            });
+
+
+
+        });
 
 
     });
-
-
 
 }
