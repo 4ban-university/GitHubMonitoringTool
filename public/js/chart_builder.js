@@ -10,6 +10,45 @@ var repo = {"name": "SOEN341-G4",
 			"burndown" : {'1':35, '2':33, '3':33, '4':35, '5':33, '6':25, '7':23, '8':18, '9':15, '10':10, '11':7, '12':4, '13':1, '14':0, },
 	};
 
+// Chart js plugon for changing background color in charts. 
+Chart.pluginService.register({
+    beforeDraw: function (chart, easing) {
+        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+            var helpers = Chart.helpers;
+            var ctx = chart.chart.ctx;
+            var chartArea = chart.chartArea;
+            ctx.save();
+            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+            ctx.restore();
+        }
+    }
+});
+
+
+function overAllInfo(){
+	var commits = repo.commits;
+	var issues = repo.issues;
+	var collaborators = repo.collaborators;
+	var name = repo.name;
+	var description = repo.description;
+	var link = repo.link;
+
+	var collab = [];
+	var i = 0;
+	document.getElementById('collaborators').innerHTML += '<h2>Collaborators:</h2><ul class="demo-list-icon mdl-list">';
+	for (var key in collaborators){
+		document.getElementById('collaborators').innerHTML += '<li class="mdl-list__item"><span class="mdl-list__item-primary-content"> <i class="material-icons mdl-list__item-icon">person</i>'+collaborators[key]+'</span></li>';
+		i++
+	}
+	document.getElementById('collaborators').innerHTML += '</ul>';
+	document.getElementById("commits").innerHTML += '<span class="mdl-badge" data-badge="'+commits+'">Total commits</span>';
+	document.getElementById('issues').innerHTML += '<span class="mdl-badge" data-badge="'+issues+'">Total issues</span>';
+	document.getElementById('repo_name').innerHTML += name;
+	document.getElementById('repo_description').innerHTML += description;
+	document.getElementById('repo_link').innerHTML += '<a href="'+link+'">Github</a>';
+	
+};
 
 var table = "<table><tr><th>Name</th><th>Number of commits</th><th>Percentage</th></tr>"
 var commitsPerCollaborator=repo.commitsPerCollaborator
@@ -100,7 +139,7 @@ document.getElementById('TextData').onclick = function() {
 
 function charts(repo){
 	//var visible = true;
-	overAllInfo(repo.commits, repo.issues, repo.collaborators);
+	
 	//Define canvas
 	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator');
 	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator');
@@ -138,23 +177,6 @@ function charts(repo){
     });
 
 
-};
-
-function overAllInfo(){
-	var commits = repo.commits;
-	var issues = repo.issues;
-	var collaborators = repo.collaborators;
-	var collab = [];
-	var i = 0;
-	document.getElementById('collaborators').innerHTML += '<p>Collaborators:</p><ul>';
-	for (var key in collaborators){
-		document.getElementById('collaborators').innerHTML += '<li>'+collaborators[key]+'</li>';
-		i++
-	}
-	document.getElementById('collaborators').innerHTML += '</ul>';
-	document.getElementById("commits").innerHTML += commits;
-	document.getElementById('issues').innerHTML += issues;
-	
 };
 
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
