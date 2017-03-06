@@ -1,56 +1,42 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description"
-	content="A front-end template that helps you build fast, modern mobile web apps.">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Material Design Lite</title>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Material Design Lite</title>
 
-<!-- Add to homescreen for Chrome on Android -->
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="icon" sizes="192x192" href="images/android-desktop.png">
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
-<!-- Add to homescreen for Safari on iOS -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Material Design Lite">
-<link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+	<link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
-<!-- Tile icon for Win8 (144x144 + tile color) -->
-<meta name="msapplication-TileImage"
-	content="images/touch/ms-touch-icon-144x144-precomposed.png">
-<meta name="msapplication-TileColor" content="#3372DF">
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+	<meta name="msapplication-TileColor" content="#3372DF">
 
-<link rel="shortcut icon" href="images/favicon.png">
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/material.min.js"></script>
+	<link rel="shortcut icon" href="images/favicon.png">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/material.min.js"></script>
 
-<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-<!--
-        <link rel="canonical" href="http://www.example.com/">
-        -->
+	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+	<!-- <link rel="canonical" href="http://www.example.com/"> -->
 
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-<link rel="stylesheet" href="css/styles.css">
-<style>
-#view-source {
-	position: fixed;
-	display: block;
-	right: 0;
-	bottom: 0;
-	margin-right: 40px;
-	margin-bottom: 40px;
-	z-index: 900;
-}
-</style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/additional.css">
+
+	<script src="js/Chart.bundle.js" defer></script>
+	<script src="js/chart_builder.js" defer></script>
+
 </head>
 <body>
 	<div
@@ -58,7 +44,7 @@
 		<header
 			class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
 			<div class="mdl-layout__header-row">
-				<span class="mdl-layout-title">Home</span>
+				<span class="mdl-layout-title">Overview</span>
 				<div class="mdl-layout-spacer"></div>
 				<div
 					class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
@@ -112,9 +98,9 @@
 
 				<!-- Tabs -->
 				<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-					<a href="#scroll-tab-1" class="mdl-layout__tab is-active">General Overview</a>
-					<a href="#scroll-tab-2" class="mdl-layout__tab">Authors</a> <a
-						href="#scroll-tab-3" class="mdl-layout__tab">Tab 3</a>
+					<a href="#scroll-tab-1" class="mdl-layout__tab is-active">General info</a>
+					<a href="#scroll-tab-2" class="mdl-layout__tab">Report</a> 
+					<a href="#scroll-tab-3" class="mdl-layout__tab">Burndown</a>
 
 				</div>
 			</header>
@@ -124,48 +110,10 @@
 				<div class="page-content">
 					<!-- Your content goes here -->
 					<div class="mdl-grid">
-						<div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
-							<h1>SOEN341-G4</h1>
-							This repository works on keeping track of activities of each team
-							member on each sprint to help the TAs evaluate the amount of work
-							done as a whole team, and per team member.
+						<div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet" id="repo_description">
+							<h2 id="repo_name"></h2>
 						</div>
-						<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
-							<h1>Collaborators</h1>
-							<style>
-.demo-list-icon {
-	width: 300px;
-}
-</style>
-
-							<ul class="demo-list-icon mdl-list">
-								<li class="mdl-list__item"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-icon">person</i> Bryan
-										Cranston
-								</span></li>
-								<li class="mdl-list__item"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-icon">person</i> Aaron
-										Paul
-								</span></li>
-								<li class="mdl-list__item"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-icon">person</i> PK
-										Subban
-								</span></li>
-								<li class="mdl-list__item"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-icon">person</i> Mickey
-										Mouse
-								</span></li>
-								<li class="mdl-list__item"><span
-									class="mdl-list__item-primary-content"> <i
-										class="material-icons mdl-list__item-icon">person</i> Katy
-										Perry
-								</span></li>
-							</ul>
-						</div>
+						<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet" id="collaborators"></div>
 
 					</div>
 					<div class="mdl-grid">
@@ -174,10 +122,10 @@
 							
 								<table class="mdl-data-table mdl-js-data-table">
 									<tr>
-										<td class="mdl-data-table__cell--non-numeric"width="700px">Github</td>									
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="repo_link"></td>									
 									</tr>
 									<tr>
-										<td class="mdl-data-table__cell--non-numeric"width="700px">Project Homepage</td>
+										<td class="mdl-data-table__cell--non-numeric" width="700px">Project Homepage</td>
 									</tr>
 								</table>
 						</div>
@@ -187,12 +135,10 @@
 							<table class="mdl-data-table mdl-js-data-table">
 									<tr>
 										
-										<td class="mdl-data-table__cell--non-numeric"width="700px">
-										<span class="mdl-badge" data-badge="123">Total commits</span></td>								
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="commits"></td>								
 									</tr>
 									<tr>
-										<td class="mdl-data-table__cell--non-numeric"width="700px">
-										<span class="mdl-badge" data-badge="4">Branches</span></td>
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="issues"></td>
 									</tr>
 							</table>
 						</div>
@@ -200,14 +146,10 @@
 				</div>
 			</section>
 			<section class="mdl-layout__tab-panel" id="scroll-tab-2">
-				<div class="page-content">
-					<!-- Your content goes here -->
-				</div>
+				
 			</section>
 			<section class="mdl-layout__tab-panel" id="scroll-tab-3">
-				<div class="page-content">
-					<!-- Your content goes here -->
-				</div>
+				
 			</section>
 
 			</main>
