@@ -371,3 +371,12 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 	return issuesPerCollaborator_data;
 
 };
+
+overAllInfo(repo.commits, repo.issues, repo.collaborators, repo.name, repo.description, repo.link);
+burndown(repo.burndown);
+filter();
+tables(repo.commitsPerCollaborator, repo.commentsPerCollaborator, repo.issuesPerCollaborator);
+var commitsPerCollaborator_chart;
+var issuesPerCollaborator_chart;
+var commentsPerCollaborator_chart;
+report();
