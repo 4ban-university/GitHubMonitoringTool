@@ -201,6 +201,7 @@ if(isset($_GET["repo_name"])) {
                         <li><button type="button" class="btn btn-success">New Repository</button></li>
                         <li class="active"><a href="admin.php">All Repositories</a></li>
                         <li><a href="#">Deleted Repositories</a></li>
+						<li>
                     </ul>
                 </div>
                 <div class="col-md-10 main">

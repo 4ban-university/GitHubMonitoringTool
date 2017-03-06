@@ -5,7 +5,7 @@
 
 [Charts overview](https://github.com/abhandal/SOEN341-G4/blob/master/Documentation/Charts/data_structure.md)
 
-[JavaScript](https://b5n.github.io/builder.html)
+[Material Charts](https://b5n.github.io/repo_selection.html)
 
 <h1>Group Members</h1>
 <ol>

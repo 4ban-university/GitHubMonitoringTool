@@ -1,13 +1,13 @@
 <?php
 session_start();
 ?>
-<?php require_once '../../vendor/autoload.php';
-
+<?php require_once '../../public/php/vendor/autoload.php';
 
     $client = new \Github\Client();
 
     $user = $client->authenticate($_SESSION['token'], null, Github\Client::AUTH_HTTP_TOKEN);
 
+    if(isset($_GET['user']) && isset($_GET['repo']) && isset($_GET['method']) && isset($_GET['collaborator'])){
     $user = $_REQUEST['user'];
     $repo = $_REQUEST['repo'];
     $method = $_REQUEST['method'];
@@ -23,9 +23,11 @@ session_start();
             break;
         case 'numberOfEvents': numberOfEvents($user,$repo,$collaborator);
             break;
+        case 'getName': getName($user,$repo,$collaborator);
+            break;
 
     }
-
+}
 
     /**
      * @param $user
@@ -87,11 +89,19 @@ session_start();
         echo $count;
     }
 
-    function numberOfEvents($user,$repo,$collaborator){
+    function numberOfEvents($user,$repo,$collaborator, $num = false){
         $commits = numberOfCommits($user,$repo,$collaborator,true);
         $issues = numberOfIssues($user,$repo,$collaborator,true);
         $comments = numberOfComments($user,$repo,$collaborator,true);
         $overall = (int)$commits + (int)$issues + (int)$comments;
+        if($num)
+            return $overall;
+
         echo $overall;
+    }
+
+    function getName($user,$repo,$collaborator){
+        $data = $GLOBALS['client']->api("user")->show($collaborator);
+        echo $data['name'];
     }
 ?>
