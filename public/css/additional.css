@@ -8,6 +8,7 @@
 	z-index: 900;
 }
 
+
 .demo-list-icon {
 	width: 300px;
 }
@@ -17,7 +18,7 @@
 	margin: 20pt 0px 0px 20px;
 }
 .burndownCanvas{
-	width: 80%;
+	width: 96%;
 }
 .canvas{
 	width: 30%;
