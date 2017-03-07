@@ -1,0 +1,98 @@
+#view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+}
+
+.demo-list-icon {
+    width: 300px;
+}
+
+.chart{
+    width:100%;
+    margin: 20pt 0px 0px 20px;
+}
+.burndownCanvas{
+    width: 80%;
+}
+.canvas{
+    width: 30%;
+    padding: 5px 0px 5px 0px;
+}
+.collaborators{
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    border: 1px solid #000;
+}
+.issues{
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    border: 1px solid #000;
+}
+.commits{
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    border: 1px solid #000;
+}
+.tbl {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+}
+.td_s, .th_s {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.tr_s:nth-child(even) {
+    background-color: #dddddd;
+}
+.ChartType{
+    border: 1px solid #dddddd;
+    background: #424242;
+    border-radius: 3px;
+    color: #ffffff;
+}
+.commits_block, .issues_block {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: text-top;
+}
+.commits_txt, .issues_txt {
+    position: absolute;
+    left: 0;
+}
+.commits_val, .issues_val {
+    position: absolute;
+    right: 0;
+}
+.page-content {
+    padding: 1em 5em 0 5em;
+}
+.mdl-layout__header{
+    min-height: 50px !important;
+    background-color: rgb(55, 71, 79);
+}
+.mdl-layout__tab-bar-container, .mdl-layout__tab-bar, .mdl-layout__tab-bar-button {
+    background-color: rgb(55, 71, 79);
+    color: #eceff1 !important;
+}
+.mdl-layout__tab-bar-button {
+    visibility: hidden;
+}
+.mdl-layout.is-upgraded .mdl-layout__tab {
+    color: #fff !important;
+}
+#keyboard_arrow_down {
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+.mdl-list__item {
+    padding: 0;
+}

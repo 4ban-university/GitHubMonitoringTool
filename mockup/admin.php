@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +10,9 @@ session_start();
     <title>Admin view</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../public/css/override.css" rel="stylesheet">
-    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/override.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -27,51 +24,6 @@ session_start();
 </head>
 
 <body>
-
-
-<?php require_once '../public/php/vendor/autoload.php';
-
-    $code = $_GET['code'];
-
-
-    // Initialize Guzzle client
-    $c = new GuzzleHttp\Client();
-
-    // Create a POST request
-    $response = $c->request(
-        'POST',
-        'https://github.com/login/oauth/access_token',
-        [
-            'form_params' => [
-                'client_id' => '7e84f9e2e7d65f484caa',
-                'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
-                'code' => $code
-            ]
-        ]
-    );
-
-    // Parse the response object, e.g. read the headers, body, etc.
-    // $headers = $response->getHeaders();
-    $body = $response->getBody();
-    //echo $headers;
-    $start =  strpos($body,"=") + 1;
-    $length = strpos($body,'&') - $start;
-    $token = substr($body, $start, $length);
-
-
-    $_SESSION['token'] = $token;
-
-
-?>
-
-
-
-
-
-
-
-
-
 <nav class="navbar navbar-inverse navbar-fixed-top" id="adminNavbar">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -142,7 +94,7 @@ session_start();
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </td>
-                            <td><a href="RepositorySelection.php">SOEN341-G4</a></td>
+                            <td><a href="repository_selection.php?repo_name=soen341-g4">SOEN341-G4</a></td>
                             <td><p>Some description here 1.</p></td>
                             <td>abhandal</td>
                             <td>9th Feb 2017, 11:08 pm</td>
@@ -205,24 +157,6 @@ session_start();
                                     
                                 </div>
                             <div class="col-md-12 margin-top-bottom repoList" id="repo-list">
-                            <!--
-                                <p>Abhandal Repositories:</p>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="checkbox" aria-label="...">
-                                    </span>
-                                        <input type="text" class="form-control" aria-label="..." readonly value="repo1">
-                                </div>
-                            </div>
-                                 <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="checkbox" aria-label="...">
-                                    </span>
-                                        <input type="text" class="form-control" aria-label="..." readonly value="repo2">
-                                </div>
-                            </div> /.col-lg-6 -->
                             </div>
                             
                             
@@ -276,9 +210,9 @@ session_start();
     </div>
 </div>
 
-<script src="../public/js/jquery-3.1.1.min.js"></script>
-<script src="../public/js/bootstrap.min.js"></script>
-<script src="../public/js/ie10-viewport-bug-workaround.js"></script>
-<script src="../public/js/admin.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>

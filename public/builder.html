@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body{
+			background: #fff;
+		}
+		.chart{
+			width:90%;
+		}
+		.canvas{
+			width:30%;
+		}
+		.burndownCanvas{
+			width: 60%;
+			border: 1px solid #000;
+		}
+		.collaborators{
+			padding: 5px 5px 5px 5px;
+			margin: 5px 5px 5px 5px;
+			border: 1px solid #000;
+		}
+		.issues{
+			padding: 5px 5px 5px 5px;
+			margin: 5px 5px 5px 5px;
+			border: 1px solid #000;
+		}
+		.commits{
+			padding: 5px 5px 5px 5px;
+			margin: 5px 5px 5px 5px;
+			border: 1px solid #000;
+		}
+		table {
+    		font-family: arial, sans-serif;
+    		border-collapse: collapse;
+    		width: 100%;
+		}
+
+		td, th {
+    		border: 1px solid #dddddd;
+    		text-align: left;
+    		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+    		background-color: #dddddd;
+		}
+	</style>
+	<script type="text/javascript" src="js/Chart.bundle.js" defer></script>
+	<script type="text/javascript" src='js/chart_builder.js' defer></script>
+
+</head>
+<body>
+	<div id='collaborators' class='collaborators'></div>
+	<div id="issues" class='issues'>Overall Issues: </div>
+	<div id='commits' class='commits'>Overall Commits: </div><br>
+
+	<p>
+		<input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
+   		<input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
+   		<input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
+   	</p>
+
+   	<p>
+		<input type="radio" id="TextData" name="dataDisplayForm" >Show data only in tables<Br>
+   		<input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
+   		<input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
+   	</p>
+   	
+   	<div class="chart" id="burndownChart">
+		<h2>Burndown chart for sprint</h2>
+		<div class="burndownCanvas" id="burndownCanvas">
+			<canvas id='burndown' class='visible'></canvas>
+		</div>
+	</div>
+
+	<div class="chart" id="commitsChart">
+		<h2>Number of commits per collaborator</h2>
+		<div class="dataTable" id="commitsTable"></div>
+		<div class="canvas" id="commitsCanvas">
+			<canvas id='commitsPerCollaborator' class='visible'></canvas>
+		</div>
+	</div>
+	<div class="chart" id="issuesChart">
+		<h2>Number of issues per collaborator</h2>
+		<div class="dataTable" id="issuesTable"></div>
+		<div class="canvas" id="issuesCanvas">
+			<canvas id='issuesPerCollaborator' class='visible'></canvas>
+		</div>
+	</div>
+	<div class="chart" id="commetsChart">
+		<h2>Number of comments per collaborator</h2>
+		<div class="dataTable" id="commentsTable"></div>
+		<div class="canvas" id="commentsCanvas">
+			<canvas id='commentsPerCollaborator' class='visible'></canvas>
+		</div>
+	</div>
+
+
+	
+
+</body>
+</html>
