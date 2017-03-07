@@ -9,9 +9,14 @@
 // 			"commentsPerCollaborator": {'Aman Bhandal': 24, 'Dmitry Kryukov': 22, 'Charles-Philippe Labbe': 20, 'Ksenia Popova': 24, 'Nikita Baranov': 21,'Batoul Yehia': 20, 'Raymart De Guzman': 22, 'Andy Pham': 24},
 // 			"burndown" : {'1':35, '2':33, '3':33, '4':35, '5':33, '6':25, '7':23, '8':18, '9':15, '10':10, '11':7, '12':4, '13':1, '14':0, },
 // 	};
-var auth = {username: 'b5n', password: 'password'};
-var repo = new Repo('abhandal','SOEN341-G4', auth);
 
+
+
+function login (login, password){
+    var auth = {username: login, password: password};
+    var repo = new Repo('abhandal','SOEN341-G4', auth); // need to transfer in admin.html and change in depends of repo in table
+    window.location.replace("admin.html");
+}
 
 // Additional functions
 // Chart js plugon for changing background color in charts. 
