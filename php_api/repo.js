@@ -144,7 +144,7 @@ function getWeeklyInfo(ob1){
         creation = Date.parse(response.data.created_at);
         creation = new Date(creation);
 
-        var t = Math.floor((today.getTime()-creation.getTime())/oneWeek);
+        var t = Math.ceil((today.getTime()-creation.getTime())/oneWeek);
 
         weeks = new Array(t);
 
@@ -160,16 +160,17 @@ function getWeeklyInfo(ob1){
             }
 
 
-            var optCommits = {sort: 'created'};
-            //commits
-            promises.push(ob1.repo._requestAllPages("/repos/"+ob1.repo.__fullname+"/commits", optCommits).then(function(list){
-                list.data.forEach(function(l){
-                    var current = new Date(l.commit.author.date);
-                    var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                    if(i < weeks.length)
-                        weeks[i][l.author.login] += 1;
-                });
-            }));
+            c.forEach(function(author){
+                var optCommits = {author: author, sort: 'created'};
+                //commits
+                promises.push(ob1.repo._requestAllPages("/repos/"+ob1.repo.__fullname+"/commits", optCommits).then(function(list){
+                    list.data.forEach(function(l){
+                        var current = new Date(l.commit.author.date);
+                        var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
+                        weeks[i][author] += 1;
+                    });
+                }));
+            });
 
 
 
@@ -179,8 +180,7 @@ function getWeeklyInfo(ob1){
                  list.data.forEach(function(l){
                      var current = new Date(l.created_at);
                      var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                     if(i < weeks.length)
-                         weeks[i][l.user.login] += 1;
+                     weeks[i][l.user.login] += 1;
                  });
              }));
 
@@ -192,11 +192,10 @@ function getWeeklyInfo(ob1){
                  list.data.forEach(function(l){
                      var current = new Date(l.created_at);
                      var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                     if(i< weeks.length)
-                         weeks[i][l.user.login] += 1;
+                     weeks[i][l.user.login] += 1;
                  });
              }));
-
+          
 
             Promise.all(promises).then(function(){
                 ob1.weeklyInfo.resolve(weeks);
@@ -222,7 +221,7 @@ function getBurndown(ob1){
         var t = Math.floor((today.getTime()-creation.getTime())/oneDay);
 
         var temp = new Date(creation.getTime());
-        for(var i = 0; i<t; i++)
+        for(var i = 0; i<=t; i++)
             closed[i] = 0;
 
         var opt = {state: 'closed'};
@@ -230,7 +229,7 @@ function getBurndown(ob1){
             response.data.forEach(function(value){
                 var temp = new Date(value.closed_at);
                 var diff = Math.floor((temp.getTime() - creation.getTime())/oneDay);
-                if(diff < t)
+                if(diff <= t)
                  closed[diff] +=1;
             });
 
