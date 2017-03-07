@@ -34,8 +34,13 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/additional.css">
 
+	<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
 	<script src="js/Chart.bundle.js" defer></script>
-	<script src="js/chart_builder.js" defer></script>
+	<script src="js/repo.js" defer></script>
+	<script src="js/init.js" defer></script>
+	<script src="js/general_info.js" defer></script>
+	<script src="js/report.js" defer></script>
+	<script src="js/burndown.js" defer></script>
 
 </head>
 <body>
@@ -207,7 +212,7 @@
 				<div class="page-content">
 					<!-- Your content goes here -->
 					<div class="chart" id="burndownChart">
-						<h4>Burndown chart for sprint 1</h4>
+						<h4>Project burndown chart</h4>
 						<div class="burndownCanvas" id="burndownCanvas">
 							<canvas id='burndown' class='visible'></canvas>
 						</div>
@@ -220,5 +225,4 @@
 		</main>
 	</div>
 </body>
-<script src="js/test.js"></script>
 </html>
