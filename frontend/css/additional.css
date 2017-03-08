@@ -8,6 +8,7 @@
 	z-index: 900;
 }
 
+
 .demo-list-icon {
 	width: 300px;
 }
@@ -17,7 +18,7 @@
 	margin: 20pt 0px 0px 20px;
 }
 .burndownCanvas{
-	width: 80%;
+	width: 96%;
 }
 .canvas{
 	width: 30%;
@@ -56,4 +57,15 @@
 	background: #424242;
 	border-radius: 3px;
 	color: #ffffff;
+}
+.mdl-layout-back{
+	display: block;
+    position: relative;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-right: 10px;
 }

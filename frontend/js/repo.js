@@ -167,7 +167,8 @@ function getWeeklyInfo(ob1){
                     list.data.forEach(function(l){
                         var current = new Date(l.commit.author.date);
                         var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                        weeks[i][author] += 1;
+                        if(i >= 0)
+                            weeks[i][author] += 1;
                     });
                 }));
             });
