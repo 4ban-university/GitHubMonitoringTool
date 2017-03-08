@@ -154,31 +154,33 @@ function report(){
 
 };
 
-function tables(){
+function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollaborator){
+	commitsPerCollaborator.then(function(commitsPerCollaborator){
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
+		for (var key in commitsPerCollaborator) {
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/191)+"%</td></tr>"
+		}
+		table+="</table>"
+		document.getElementById('commitsTable').innerHTML += table;
+	});
+	
+	issuesPerCollaborator.then(function(issuesPerCollaborator){
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues</th><th class='th_s'>Percentage</th></tr>"
+		for (var key in issuesPerCollaborator) {
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+issuesPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(issuesPerCollaborator[key]*100/75)+"%</td></tr>"
+		}
+		table+="</table>"
+		document.getElementById('issuesTable').innerHTML += table;
+	});
 
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
-	var commitsPerCollaborator=repo.commitsPerCollaborator
-	for (var key in commitsPerCollaborator) {
-		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/191)+"%</td></tr>"
-	}
-	table+="</table>"
-	document.getElementById('commitsTable').innerHTML += table;
-
-	table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues</th><th class='th_s'>Percentage</th></tr>"
-	var issuesPerCollaborator=repo.issuesPerCollaborator
-	for (var key in issuesPerCollaborator) {
-		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+issuesPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(issuesPerCollaborator[key]*100/75)+"%</td></tr>"
-	}
-	table+="</table>"
-	document.getElementById('issuesTable').innerHTML += table;
-
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments</th><th class='th_s'>Percentage</th></tr>"
-	var commentsPerCollaborator=repo.commentsPerCollaborator
-	for (var key in commentsPerCollaborator) {
-		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commentsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commentsPerCollaborator[key]*100/177)+"%</td></tr>"
-	}
-	table+="</table>"
-	document.getElementById('commentsTable').innerHTML += table;
+	commentsPerCollaborator.then(function(commentsPerCollaborator){
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments</th><th class='th_s'>Percentage</th></tr>"
+		for (var key in commentsPerCollaborator) {
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commentsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commentsPerCollaborator[key]*100/177)+"%</td></tr>"
+		}
+		table+="</table>"
+		document.getElementById('commentsTable').innerHTML += table;
+	});
 };
 
 	
@@ -319,7 +321,7 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 
 
 filter();
-tables(repo.commitsPerCollaborator, repo.commentsPerCollaborator, repo.issuesPerCollaborator);
+tables(repo.commits, repo.comments, repo.issues);
 var commitsPerCollaborator_chart;
 var issuesPerCollaborator_chart;
 var commentsPerCollaborator_chart;

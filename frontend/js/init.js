@@ -10,5 +10,5 @@
 // 			"burndown" : {'1':35, '2':33, '3':33, '4':35, '5':33, '6':25, '7':23, '8':18, '9':15, '10':10, '11':7, '12':4, '13':1, '14':0, },
 // 	};
 
-var auth = {username: 'b5n', password: 'password'};
+var auth = {username: 'Lyncis', password: 'password'};
 var repo = new Repo('abhandal','SOEN341-G4', auth);
