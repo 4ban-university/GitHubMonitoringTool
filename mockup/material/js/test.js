@@ -1,14 +1,15 @@
-var lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
+
 $('#show-info').click(function () {
     showDialog({
         title: 'Information',
-        text: lorem
+        text: ""
     })
 });
-$('#show-action').click(function () {
-	getRepo();
 
+$('#show-action').click(function () {
+    getRepo();
 });
+
 $('#show-not-cancelable').click(function () {
     showDialog({
         title: 'Not cancelable',
@@ -63,7 +64,7 @@ function checkbox_list(repo_name, checkboxId){
     var h = "";
    
     h += '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="' +checkboxId+ '">';
-    h += '<input type="checkbox" id="' +checkboxId+ '" class="mdl-checkbox__input">';
+    h += '<input type="checkbox" id="' +checkboxId+ '" class="mdl-checkbox__input repoSelection">';
     h += '<span class="mdl-checkbox__label">' +repo_name+ '</span>';
     h += '</label>';
 
@@ -178,3 +179,17 @@ function hideDialog(dialog) {
         dialog.remove();
     }, 400);
 }
+
+function getRepoList() {
+    $.getJSON("resources/userRepoSelection.json", function(data) {
+        $('#repoSelection').html('');
+        for(var i = 0; i < data["repoSelection"].length; i++) {
+            $('#repoSelection').append('<a class="mdl-navigation__link" href="#" id="' +data["repoSelection"][i]["name"]+'"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>' +data["repoSelection"][i]["name"]+ '</a>')
+        }
+    });
+}
+
+$('#repoSelection').change(function() {
+    console.log("i am here");
+    //console.log($( this ).prop("checked").val());
+});
