@@ -322,7 +322,6 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 
 };
 
-
 filter();
 tables(repo.commits, repo.comments, repo.issues);
 var commitsPerCollaborator_chart;
@@ -345,19 +344,3 @@ Chart.pluginService.register({
         }
     }
 });
-
-$('.tabgroup > div').hide();
-$('.tabgroup > div:first-of-type').show();
-$('.tabs a').click(function(e){
-  e.preventDefault();
-    var $this = $(this),
-        tabgroup = '#'+$this.parents('.tabs').data('tabgroup'),
-        others = $this.closest('li').siblings().children('a'),
-        target = $this.attr('href');
-    others.removeClass('active');
-    $this.addClass('active');
-    $(tabgroup).children('div').hide();
-    $(target).show();
-  
-})
-    
