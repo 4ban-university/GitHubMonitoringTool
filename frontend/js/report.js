@@ -1,17 +1,3 @@
-$('.tabgroup > div').hide();
-$('.tabgroup > div:first-of-type').show();
-$('.tabs a').click(function(e){
-  	e.preventDefault();
-  	var $this = $(this),
-  	tabgroup = '#'+$this.parents('.tabs').data('tabgroup'),
-  	others = $this.closest('li').siblings().children('a'),
-  	target = $this.attr('href');
-  	others.removeClass('active');
-  	$this.addClass('active');
-  	$(tabgroup).children('div').hide();
-  	$(target).show();
-})
-
 function filter(){
 	//----------checkboxes for what information to show
 	document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
@@ -71,7 +57,8 @@ function filter(){
 };
 
 function report(){
-	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
+
+	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
 	document.getElementById('issuesCanvas').innerHTML += "<canvas id='issuesPerCollaborator' class='visible'></canvas>"
 	document.getElementById('commentsCanvas').innerHTML += "<canvas id='commentsPerCollaborator' class='visible'></canvas>"
 
@@ -165,7 +152,6 @@ function report(){
 	        commentsPerCollaborator(repo.comments, 'line');
 	    }
 	};
-
 };
 
 function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollaborator){
@@ -204,7 +190,6 @@ function commitsPerCollaborator(commitsPerCollaborator, chartType){
 		//Data and options for commits per collaborator
 		var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(commitsPerCollaborator);
 		var commitsPerCollaborator_options = {}
-
 		//commits per collaborators
 		commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
 	        type: chartType,
@@ -342,6 +327,10 @@ var commitsPerCollaborator_chart;
 var issuesPerCollaborator_chart;
 var commentsPerCollaborator_chart;
 report();
+
+
+
+
 
 // Additional functions
 // Chart js plugon for changing background color in charts. 
