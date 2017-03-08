@@ -11,7 +11,7 @@ function Repo(owner, repo, oauth) {
     this.git = new GitHub(oauth);
     this.repo = this.git.getRepo(owner, repo);
     this.oauth = oauth;
-    this.issue = this.git.getIssues(owner,repo);
+    this.issue = this.git.getIssues(owner, repo);
 
     //repo details
     this.description = new $.Deferred();
@@ -41,21 +41,38 @@ function Repo(owner, repo, oauth) {
     this.burndown = new $.Deferred();
     getBurndown(this);
 
-    this.addFile = function(content){
+    this.commentBranch = new $.Deferred();
+    isCommented(this);
 
-        return this.repo.createBranch("master", "TA_Comments").then(function(reponse){
-            document.write(" new branch ");
-            this.repo.writeFile("TA_Comments","comments.txt", content,'DO NOT MERGE', {});
-        }).catch(function(){
-            document.write(" looks like branch already exists ");
+    this.addFile = function (ob1, content) {
+
+        this.commentBranch.then(function (response) {
+
+            document.write("is commented: " + response);
+            if (response) {
+                ob1.repo.writeFile("TA_Comments", "comments.txt", content, "DO NOT MERGE", {});
+            }
+            else {
+                ob1.repo.createBranch("master", "TA_Comments").then(function (response) {
+                    console.log(" new branch ");
+                    ob1.repo.writeFile("TA_Comments", "comments.txt", content, "DO NOT MERGE", {});
+                });
+
+            }
         });
 
-        return this.repo.writeFile("TA_Comments","comments.txt", content,'DO NOT MERGE', {});
-
     };
-
-
 }
+
+function isCommented(ob1){
+    ob1.repo.getBranch("TA_Comments").then(function(response){
+        ob1.commentBranch.resolve(true);
+
+    }).catch(function(fail){
+        ob1.commentBranch.resolve(false);
+    });
+}
+
 
 function details(ob1){
     ob1.repo.getDetails().then(function(list){
