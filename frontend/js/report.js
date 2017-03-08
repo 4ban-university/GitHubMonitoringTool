@@ -61,36 +61,36 @@ function report(){
 	document.getElementById('issuesCanvas').innerHTML += "<canvas id='issuesPerCollaborator' class='visible'></canvas>"
 	document.getElementById('commentsCanvas').innerHTML += "<canvas id='commentsPerCollaborator' class='visible'></canvas>"
 
-	commitsPerCollaborator('doughnut');
-	issuesPerCollaborator('doughnut');
-	commentsPerCollaborator('doughnut');
+	commitsPerCollaborator(repo.commits, 'doughnut');
+	issuesPerCollaborator(repo.issues, 'doughnut');
+	commentsPerCollaborator(repo.comments, 'doughnut');
 
 	document.getElementById('doughnutCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('commitsCanvas').style.width="30%"
 			commitsPerCollaborator_chart.destroy();
-	        commitsPerCollaborator('doughnut');
+	        commitsPerCollaborator(repo.commits, 'doughnut');
 	    }
 	};
 	document.getElementById('pieCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('commitsCanvas').style.width="30%"
 			commitsPerCollaborator_chart.destroy();
-	        commitsPerCollaborator('pie');
+	        commitsPerCollaborator(repo.commits, 'pie');
 	    }
 	};
 	document.getElementById('barCPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commitsCanvas').style.width="60%"
 			commitsPerCollaborator_chart.destroy();
-	        commitsPerCollaborator('bar');
+	        commitsPerCollaborator(repo.commits, 'bar');
 	    }
 	};
 	document.getElementById('lineCPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commitsCanvas').style.width="70%"
 			commitsPerCollaborator_chart.destroy();
-	        commitsPerCollaborator('line');
+	        commitsPerCollaborator(repo.commits, 'line');
 	    }
 	};
 
@@ -98,28 +98,28 @@ function report(){
 	    if ( this.checked ) {
 	    	document.getElementById('issuesCanvas').style.width="30%"
 	    	issuesPerCollaborator_chart.destroy();
-	        issuesPerCollaborator('doughnut');
+	        issuesPerCollaborator(repo.issues, 'doughnut');
 	    }
 	};
 	document.getElementById('pieIPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('issuesCanvas').style.width="30%"
 	    	issuesPerCollaborator_chart.destroy();
-	        issuesPerCollaborator('pie');
+	        issuesPerCollaborator(repo.issues,'pie');
 	    }
 	};
 	document.getElementById('barIPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('issuesCanvas').style.width="60%"
 	        issuesPerCollaborator_chart.destroy();
-	        issuesPerCollaborator('bar');
+	        issuesPerCollaborator(repo.issues,'bar');
 	    }
 	};
 	document.getElementById('lineIPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('issuesCanvas').style.width="70%"
 	        issuesPerCollaborator_chart.destroy();
-	        issuesPerCollaborator('line');
+	        issuesPerCollaborator(repo.issues,'line');
 	    }
 	};
 
@@ -127,28 +127,28 @@ function report(){
 	    if ( this.checked ) {
 	    	document.getElementById('commentsCanvas').style.width="30%"
 	    	commentsPerCollaborator_chart.destroy();
-	        commentsPerCollaborator('doughnut');
+	        commentsPerCollaborator(repo.comments, 'doughnut');
 	    }
 	};
 	document.getElementById('pieCoPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('commentsCanvas').style.width="30%"
 	    	commentsPerCollaborator_chart.destroy();
-	        commentsPerCollaborator('pie');
+	        commentsPerCollaborator(repo.comments, 'pie');
 	    }
 	};
 	document.getElementById('barCoPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commentsCanvas').style.width="60%"
 	    	commentsPerCollaborator_chart.destroy();
-	        commentsPerCollaborator('bar');
+	        commentsPerCollaborator(repo.comments, 'bar');
 	    }
 	};
 	document.getElementById('lineCoPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commentsCanvas').style.width="70%"
 	    	commentsPerCollaborator_chart.destroy();
-	        commentsPerCollaborator('line');
+	        commentsPerCollaborator(repo.comments, 'line');
 	    }
 	};
 
@@ -184,47 +184,50 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 };
 
 	
-function commitsPerCollaborator(chartType){
+function commitsPerCollaborator(commitsPerCollaborator, chartType){
 	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator').getContext("2d");
+	commitsPerCollaborator.then(function(commitsPerCollaborator){
+		//Data and options for commits per collaborator
+		var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(commitsPerCollaborator);
+		var commitsPerCollaborator_options = {}
 
-	//Data and options for commits per collaborator
-	var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(repo.commitsPerCollaborator);
-	var commitsPerCollaborator_options = {}
-
-	//commits per collaborators
-	commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
-        type: chartType,
-        data: commitsPerCollaborator_data,
-        options: commitsPerCollaborator_options
-    });
+		//commits per collaborators
+		commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
+	        type: chartType,
+	        data: commitsPerCollaborator_data,
+	        options: commitsPerCollaborator_options
+	    });
+	});
 };
 
-function issuesPerCollaborator(chartType){
+function issuesPerCollaborator(issuesPerCollaborator, chartType){
 	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator').getContext("2d");
-	
-	//Data and options for issues per collaborator
-	var issuesPerCollaborator_data = issuesPerCollaboratorTransformation(repo.issuesPerCollaborator);	
-	var issuesPerCollaborators_options = {}
+	issuesPerCollaborator.then(function(issuesPerCollaborator){
+		//Data and options for issues per collaborator
+		var issuesPerCollaborator_data = issuesPerCollaboratorTransformation(issuesPerCollaborator);	
+		var issuesPerCollaborators_options = {}
 
-	issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
-        type: chartType,
-        data: issuesPerCollaborator_data,
-        options: issuesPerCollaborators_options
-    });
+		issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
+	        type: chartType,
+	        data: issuesPerCollaborator_data,
+	        options: issuesPerCollaborators_options
+	    });
+	});
 };
 
-function commentsPerCollaborator(chartType){
+function commentsPerCollaborator(commentsPerCollaborator, chartType){
 	var ctx_commentsPerCollaborator = document.getElementById('commentsPerCollaborator').getContext("2d");
+	commentsPerCollaborator.then(function(commentsPerCollaborator){
+		//Data and options for comments per collaborator
+		var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(commentsPerCollaborator);	
+		var commentsPerCollaborators_options = {}
 
-	//Data and options for comments per collaborator
-	var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(repo.commentsPerCollaborator);	
-	var commentsPerCollaborators_options = {}
-
-	commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
-        type: chartType,
-        data: commentsPerCollaborator_data,
-        options: commentsPerCollaborators_options
-    });
+		commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
+	        type: chartType,
+	        data: commentsPerCollaborator_data,
+	        options: commentsPerCollaborators_options
+	    });
+	});
 };
 
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
