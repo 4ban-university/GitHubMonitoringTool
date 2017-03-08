@@ -10,26 +10,5 @@
 // 			"burndown" : {'1':35, '2':33, '3':33, '4':35, '5':33, '6':25, '7':23, '8':18, '9':15, '10':10, '11':7, '12':4, '13':1, '14':0, },
 // 	};
 
-
-
-function login (login, password){
-    var auth = {username: login, password: password};
-    var repo = new Repo('abhandal','SOEN341-G4', auth); // need to transfer in admin.html and change in depends of repo in table
-    window.location.replace("admin.html");
-}
-
-// Additional functions
-// Chart js plugon for changing background color in charts. 
-Chart.pluginService.register({
-    beforeDraw: function (chart, easing) {
-        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
-            var helpers = Chart.helpers;
-            var ctx = chart.chart.ctx;
-            var chartArea = chart.chartArea;
-            ctx.save();
-            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
-            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
-            ctx.restore();
-        }
-    }
-});
+var auth = {username: 'b5n', password: 'password'};
+var repo = new Repo('abhandal','SOEN341-G4', auth);
