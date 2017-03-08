@@ -1,4 +1,5 @@
 repo.weeklyInfo.then(function(weeklyInfo){
+	console.log(weeklyInfo)
 	var weeks = weeklyInfo.length;
 	var tabs = '<div class="wrapper"><ul class="tabs clearfix" data-tabgroup="first-tab-group">'
 	for (var w = 1; w <= weeks; w++){
