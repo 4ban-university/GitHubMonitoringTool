@@ -18,9 +18,7 @@ function overAllInfo(commits, issues, collaborators, name, description, link){
 		document.getElementById('issues').innerHTML += '<span class="mdl-badge" data-badge="'+issues+'">Total issues</span>';
 	});
 
-	name.then(function(name){
-		document.getElementById('repo_name').innerHTML += name;
-	});
+	document.getElementById('repo_name').innerHTML += name;
 
 	description.then(function(description){
 		document.getElementById('repo_description').innerHTML += description;
@@ -31,7 +29,7 @@ function overAllInfo(commits, issues, collaborators, name, description, link){
 	});
 	
 };
-
 overAllInfo(repo.totalCommits, repo.totalIssues, repo.collaborators, repo.name, repo.description, repo.link);
+
 
 // I have no data for dislaying repository name, repository description and repository link

@@ -6,10 +6,17 @@ The variable are promises which are resolved with method calls.
 function Repo(owner, repo, oauth) {
     //var auth = {token: oauth};
     //github api
+    this.owner = owner;
+    this.name = repo;
     this.git = new GitHub(oauth);
     this.repo = this.git.getRepo(owner, repo);
     this.oauth = oauth;
     this.issue = this.git.getIssues(owner,repo);
+
+    //repo details
+    this.description = new $.Deferred();
+    this.link = new $.Deferred();
+    details(this);
 
     //data and collecting the data;
     this.collaborators = new $.Deferred();
@@ -37,6 +44,12 @@ function Repo(owner, repo, oauth) {
 
 }
 
+function details(ob1){
+    ob1.repo.getDetails().then(function(list){
+        ob1.description.resolve(list.data.description);
+        ob1.link.resolve(list.data.html_url);
+    });
+}
 
 function getCollaborators(ob1){
     ob1.repo.getCollaborators().then(function(response){
