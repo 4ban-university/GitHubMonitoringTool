@@ -1,4 +1,4 @@
-function repos(){
+function repo_list(){
 
 	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th></tr>"
 	table+="<tr class='tr_s'><td class='td_s'><a href='repo_selection.html'>SOEN341-G4</a></td></tr>"
@@ -8,4 +8,4 @@ function repos(){
 	document.getElementById('reposTable').innerHTML += table;
 
 };
-repos();
+repo_list();

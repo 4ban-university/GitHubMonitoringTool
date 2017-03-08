@@ -324,3 +324,19 @@ var commitsPerCollaborator_chart;
 var issuesPerCollaborator_chart;
 var commentsPerCollaborator_chart;
 report();
+
+// Additional functions
+// Chart js plugon for changing background color in charts. 
+Chart.pluginService.register({
+    beforeDraw: function (chart, easing) {
+        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+            var helpers = Chart.helpers;
+            var ctx = chart.chart.ctx;
+            var chartArea = chart.chartArea;
+            ctx.save();
+            ctx.fillStyle = chart.config.options.chartArea.backgroundColor;
+            ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+            ctx.restore();
+        }
+    }
+});
