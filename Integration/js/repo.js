@@ -41,6 +41,19 @@ function Repo(owner, repo, oauth) {
     this.burndown = new $.Deferred();
     getBurndown(this);
 
+    this.addFile = function(content){
+
+        return this.repo.createBranch("master", "TA_Comments").then(function(reponse){
+            document.write(" new branch ");
+            this.repo.writeFile("TA_Comments","comments.txt", content,'DO NOT MERGE', {});
+        }).catch(function(){
+            document.write(" looks like branch already exists ");
+        });
+
+        return this.repo.writeFile("TA_Comments","comments.txt", content,'DO NOT MERGE', {});
+
+    };
+
 
 }
 
