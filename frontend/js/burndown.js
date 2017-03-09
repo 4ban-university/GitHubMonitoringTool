@@ -1,3 +1,4 @@
+var dueDate;
 function burndown(burndown){
     burndown.then(function(burndown){
         var ctx_burndown = document.getElementById('burndown'); 
@@ -9,33 +10,39 @@ function burndown(burndown){
             };
 
         
-        var keyNum=0
-        var labels=[]
+        var keyNum=0;
+        var labels=[];
 
-        for (var key in burndown_data) {
-            labels[keyNum]='Day '+key
-            keyNum++
+        if(dueDate){
+            keyNum = dueDate;
+            for (var i = 0; i<keyNum; i++)
+                labels[i]='Day '+i;
         }
-
-        var keyNum=0
-        var data=[]
+        else {
+            for (var key in burndown_data) {
+                labels[keyNum] = 'Day ' + key;
+                keyNum++
+            }
+        }
+        var keyNum=0;
+        var data=[];
         for (var key in burndown_data) {
-            data[keyNum]=burndown_data[key]
+            data[keyNum]=burndown_data[key];
             keyNum++
         }
 
         var i = 0;
         var ideal_data = [];
-        ideal_data[0]=data[0]
+        ideal_data[0]=data[0];
         var firstIssues = data[0];
         var totalDays = labels.length;
-        var idealIncrement = firstIssues/(totalDays-1)
+        var idealIncrement = firstIssues/(totalDays-1);
         for (var i = 1; i < labels.length; i++){
             firstIssues-=idealIncrement;
             ideal_data[i]=firstIssues
 
             }
-        ideal_data[ideal_data.length-1] = 0
+        ideal_data[ideal_data.length-1] = 0;
 
         burndown_data = {
             labels: labels,
@@ -61,7 +68,7 @@ function burndown(burndown){
                 pointHoverBorderWidth: 2,
                 pointRadius: 0,
                 pointHitRadius: 0,
-                spanGaps: false,
+                spanGaps: false
             },
             {   
                 data: ideal_data,
@@ -83,7 +90,7 @@ function burndown(burndown){
                 pointHoverBorderWidth: 2,
                 pointRadius: 0,
                 pointHitRadius: 0,
-                spanGaps: false,
+                spanGaps: false
             }]
             
 
@@ -98,5 +105,9 @@ function burndown(burndown){
     });
 };
 
+function setDueDate(form){
+     dueDate = form.in.value;
+    burndown(repo.burndown);
+}
 
 burndown(repo.burndown);
