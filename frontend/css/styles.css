@@ -178,7 +178,7 @@ _:-ms-input-placeholder, :root .demo-graph {
 }
 .demo-updates .mdl-card__title {
   min-height: 200px;
-  background-image: url('../images/dog.png');
+  background-image: url('images/dog.png');
   background-position: 90% 100%;
   background-repeat: no-repeat;
 }
@@ -266,35 +266,4 @@ over write style
 }
 .mdl-layout__content {
   background-color: white;
-}
-.page-content {
-    padding: 1em 4em 0 4em;
-}
-.mdl-layout__header{
-    min-height: 50px !important;
-    background-color: rgb(55, 71, 79);
-}
-.mdl-layout__tab-bar-container, .mdl-layout__tab-bar, .mdl-layout__tab-bar-button {
-    background-color: rgb(55, 71, 79);
-    color: #eceff1 !important;
-}
-.mdl-layout__tab-bar-button {
-    visibility: hidden;
-}
-.mdl-layout.is-upgraded .mdl-layout__tab {
-    color: #fff !important;
-}
-#keyboard_arrow_down {
-    position: absolute;
-    right: 0;
-    top: 20px;
-}
-.mdl-list__item {
-    padding: 0;
-}
-.margin-none {
-    margin: 0;
-}
-.padding-none {
-    padding: 0;
-}
+}-
