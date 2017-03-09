@@ -1,5 +1,4 @@
 repo.weeklyInfo.then(function(weeklyInfo){
-	console.log(weeklyInfo)
 	var weeks = weeklyInfo.length;
 	var tabs = '<div class="wrapper"><ul class="tabs clearfix" data-tabgroup="first-tab-group">'
 	for (var w = 1; w <= weeks; w++){
@@ -21,7 +20,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	for (var week = 1; week <= weeks; week++){
 		var id = 'tab'+week
 		var page = '<!-- Start of all weeks report --> \
-					<h1>Week '+week+' report</h1> \
+					<h1>Week '+week+' report for all collaborators</h1> \
 					<p> \
 						<input type="checkbox" id="weekly'+week+'_commitsPerCollaboratorCheck" name="weekly'+week+'_commitsPerCollaborator" value="b1" checked>Commits per collaborator<Br> \
 					</p> \
@@ -123,7 +122,7 @@ function weekly_filter(weeklyInfo, week){
 };
 
 function weekly_tables(weeklyInfo, week){
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
+	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity</th><th class='th_s'>Percentage</th></tr>"
 	for (var key in weeklyInfo) {
 		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+weeklyInfo[key]+"</td><td class='td_s'>"+Math.round(weeklyInfo[key]*100/191)+"%</td></tr>"
 	}
