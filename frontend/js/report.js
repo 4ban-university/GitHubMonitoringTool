@@ -57,7 +57,8 @@ function filter(){
 };
 
 function report(){
-	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
+
+	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
 	document.getElementById('issuesCanvas').innerHTML += "<canvas id='issuesPerCollaborator' class='visible'></canvas>"
 	document.getElementById('commentsCanvas').innerHTML += "<canvas id='commentsPerCollaborator' class='visible'></canvas>"
 
@@ -151,7 +152,6 @@ function report(){
 	        commentsPerCollaborator(repo.comments, 'line');
 	    }
 	};
-
 };
 
 function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollaborator){
@@ -190,7 +190,6 @@ function commitsPerCollaborator(commitsPerCollaborator, chartType){
 		//Data and options for commits per collaborator
 		var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(commitsPerCollaborator);
 		var commitsPerCollaborator_options = {}
-
 		//commits per collaborators
 		commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
 	        type: chartType,
@@ -322,13 +321,16 @@ function issuesPerCollaboratorTransformation (issuesPerCollaborator_data){
 
 };
 
-
 filter();
 tables(repo.commits, repo.comments, repo.issues);
 var commitsPerCollaborator_chart;
 var issuesPerCollaborator_chart;
 var commentsPerCollaborator_chart;
 report();
+
+
+
+
 
 // Additional functions
 // Chart js plugon for changing background color in charts. 

@@ -6,10 +6,17 @@ The variable are promises which are resolved with method calls.
 function Repo(owner, repo, oauth) {
     //var auth = {token: oauth};
     //github api
+    this.owner = owner;
+    this.name = repo;
     this.git = new GitHub(oauth);
     this.repo = this.git.getRepo(owner, repo);
     this.oauth = oauth;
-    this.issue = this.git.getIssues(owner,repo);
+    this.issue = this.git.getIssues(owner, repo);
+
+    //repo details
+    this.description = new $.Deferred();
+    this.link = new $.Deferred();
+    details(this);
 
     //data and collecting the data;
     this.collaborators = new $.Deferred();
@@ -34,6 +41,46 @@ function Repo(owner, repo, oauth) {
     this.burndown = new $.Deferred();
     getBurndown(this);
 
+    this.commentBranch = new $.Deferred();
+    isCommented(this);
+
+    this.addFile = function (ob1, content) {
+
+        this.commentBranch.then(function (response) {
+
+            document.write("is commented: " + response);
+            if (response) {
+                ob1.repo.writeFile("TA_Comments", "comments.txt", content, "DO NOT MERGE", {});
+            }
+            else {
+                ob1.repo.createBranch("master", "TA_Comments").then(function (response) {
+                    console.log(" new branch ");
+                    ob1.repo.writeFile("TA_Comments", "comments.txt", content, "DO NOT MERGE", {});
+                });
+
+            }
+        });
+
+    };
+}
+
+function isCommented(ob1){
+    ob1.repo.getBranch("TA_Comments").then(function(response){
+        ob1.commentBranch.resolve(true);
+
+    }).catch(function(fail){
+        ob1.commentBranch.resolve(false);
+    });
+}
+
+
+function details(ob1){
+    ob1.repo.getDetails().then(function(list){
+
+        ob1.description.resolve(list.data.description);
+        ob1.link.resolve(list.data.html_url);
+
+    });
 
 }
 
@@ -167,8 +214,7 @@ function getWeeklyInfo(ob1){
                     list.data.forEach(function(l){
                         var current = new Date(l.commit.author.date);
                         var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                        if(i >= 0)
-                            weeks[i][author] += 1;
+                        weeks[i][author] += 1;
                     });
                 }));
             });
