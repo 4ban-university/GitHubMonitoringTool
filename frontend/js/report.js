@@ -156,27 +156,40 @@ function report(){
 
 function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollaborator){
 	commitsPerCollaborator.then(function(commitsPerCollaborator){
+		var commits = 0;
+		for (var key in commitsPerCollaborator){
+			commits += commitsPerCollaborator[key]
+		}
+
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commitsPerCollaborator) {
-			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/191)+"%</td></tr>"
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/commits)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('commitsTable').innerHTML += table;
 	});
 	
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
+		var issues = 0;
+		for (var key in issuesPerCollaborator){
+			issues += issuesPerCollaborator[key]
+		}
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues</th><th class='th_s'>Percentage</th></tr>"
 		for (var key in issuesPerCollaborator) {
-			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+issuesPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(issuesPerCollaborator[key]*100/75)+"%</td></tr>"
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+issuesPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(issuesPerCollaborator[key]*100/issues)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('issuesTable').innerHTML += table;
 	});
 
 	commentsPerCollaborator.then(function(commentsPerCollaborator){
+		var comments = 0;
+		for (var key in commentsPerCollaborator){
+			comments += commentsPerCollaborator[key]
+		}
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments</th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commentsPerCollaborator) {
-			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commentsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commentsPerCollaborator[key]*100/177)+"%</td></tr>"
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commentsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commentsPerCollaborator[key]*100/comments)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('commentsTable').innerHTML += table;
