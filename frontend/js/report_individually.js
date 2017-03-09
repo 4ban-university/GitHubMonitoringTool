@@ -53,6 +53,10 @@ function individual_filter(num){
 };
 
 function individual_tables(num, name, info){
+	var com = 0;
+		for (var key in info){
+			com += info[key]
+	}
 	var table = '<table class="tbl">'
 	table +='<tr class="tr_s"><th class="th_s">Name</th>'
 	var w
@@ -63,7 +67,7 @@ function individual_tables(num, name, info){
 	table +='</tr><tr class="tr_s">'
 	table +='<td class="td_s">'+name+'</td>'
 	for (var key in info) {
-		table+="<td class='td_s'>"+info[key]+"</td>"
+		table+="<td class='td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/com)+"%</span></td>"
 	}
 	table+="</tr></table>"
 	document.getElementById('individual'+num+'_commitsTable').innerHTML += table;
