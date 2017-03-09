@@ -44,18 +44,18 @@ function Repo(owner, repo, oauth) {
     this.commentBranch = new $.Deferred();
     isCommented(this);
 
-    this.addFile = function (ob1, content) {
-
+    this.writeComment = function (ob1, content) {
+        var today = new Date();
         this.commentBranch.then(function (response) {
 
-            document.write("is commented: " + response);
             if (response) {
-                ob1.repo.writeFile("TA_Comments", "comments.txt", content, "DO NOT MERGE", {});
+                console.log("branch exists");
+                ob1.repo.writeFile("TA_Comments", "Comments/"+today.toISOString()+".txt", content, "DO NOT MERGE", {});
             }
             else {
                 ob1.repo.createBranch("master", "TA_Comments").then(function (response) {
                     console.log(" new branch ");
-                    ob1.repo.writeFile("TA_Comments", "comments.txt", content, "DO NOT MERGE", {});
+                    ob1.repo.writeFile("TA_Comments", "Comments/"+today.toISOString()+".txt", content, "DO NOT MERGE", {});
                 });
 
             }
