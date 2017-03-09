@@ -157,7 +157,7 @@ function weekly_report(weeklyInfo, week){
 function weekly_commitsPerCollaborator(weeklyInfo, week, chartType){
 	var ctx_commitsPerCollaborator = document.getElementById('weekly'+week+'_commitsPerCollaborator').getContext("2d");
 	//Data and options for commits per collaborator
-	var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(weeklyInfo);
+	var commitsPerCollaborator_data = weekly_commitsPerCollaboratorTransformation(weeklyInfo);
 	var commitsPerCollaborator_options = {}
 	// commitsPerCollaborator_chart = new Chart
 	weekly_commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
@@ -167,7 +167,7 @@ function weekly_commitsPerCollaborator(weeklyInfo, week, chartType){
     });
 };
 
-function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
+function weekly_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
 	var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']

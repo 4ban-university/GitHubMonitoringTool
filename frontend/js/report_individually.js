@@ -11,7 +11,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		page += '<div class="ChartType" style="display:block"> \
 					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" checked>Line \
 					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" >Bar \
-					</div>'
+				</div>'
 		page +='</div>'
 		page += '<hr width="95%" size="5" color="#454545">'
 		page += '</div>'
@@ -20,8 +20,8 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		for (var week in weeklyInfo){
 			data.push(weeklyInfo[week][names[name]])
 		}
-		individual_filter(name, names[name], data);
-		individual_tables(name, names[name], data)
+		individual_filter(name);
+		individual_tables(name, names[name], data);
 		var individual_commitsPerCollaborator_chart;
 		individual_report(name, data)
 	}
@@ -87,7 +87,7 @@ function individual_report(num, info){
 function individual_commitsPerCollaborator(num, info, chartType){
 	var ctx_commitsPerCollaborator = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
 	//Data and options for commits per collaborator
-	var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(info);
+	var commitsPerCollaborator_data = individual_commitsPerCollaboratorTransformation(info);
 	var commitsPerCollaborator_options = {}
 	
 	individual_commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
@@ -97,12 +97,14 @@ function individual_commitsPerCollaborator(num, info, chartType){
     });
 };
 
-function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
+function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
-	var colors = ['#FF6384']
+	var colors = '#FF6384'
+	var k;
 	for (var key in commitsPerCollaborator_data) {
-		labels[keyNum]=key
+		k = parseInt(key)+1
+		labels[keyNum]='Week '+k
 		keyNum++
 	}
 
@@ -127,7 +129,7 @@ function commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	return commitsPerCollaborator_data;
 };
 
-function individual_filter(num, name, info){
+function individual_filter(num){
 	//----------radio buttons for how to display the information
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
