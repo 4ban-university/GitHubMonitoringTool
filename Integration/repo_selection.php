@@ -1,6 +1,9 @@
 <?php
     session_start();
-    $token = $_SESSION['token'];
+    if(isset($_SESSION['token']))
+        $token = $_SESSION['token'];
+    else
+        header("login.php");
     echo "<script> var auth = {token: '$token'};</script>";
 
 ?>
