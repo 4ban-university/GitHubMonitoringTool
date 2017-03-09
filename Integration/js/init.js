@@ -13,4 +13,4 @@ $.ajax({
     asynch: false
 });
 */
-var repo = new Repo('abhandal','SOEN341-G4', auth);
+var repo = new Repo(owner,repoName, auth);
