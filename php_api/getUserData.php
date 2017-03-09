@@ -21,6 +21,8 @@ session_start();
             break;
         case 'numberOfComments': numberOfComments($user,$repo,$collaborator);
             break;
+        case 'numberOfEvents': numberOfEvents($user,$repo,$collaborator);
+            break;
 
     }
 
@@ -29,7 +31,7 @@ session_start();
      * @param $user
      * @param $repo
      */
-    function numberOfCommits($user, $repo,$collaborator){
+    function numberOfCommits($user, $repo,$collaborator, $num = false){
 
         $path = $GLOBALS['client']->api('repo')->commits();
         $param = array($user, $repo, array('author'=>$collaborator));
@@ -37,6 +39,9 @@ session_start();
         $paginator = new Github\ResultPager($GLOBALS['client']);
 
         $commits = $paginator->fetchAll($path,'all',$param);
+
+        if($num)
+            return sizeof($commits);
 
         echo sizeof($commits);
 
@@ -46,7 +51,7 @@ session_start();
      * @param $user
      * @param $repo
      */
-    function numberOfIssues($user, $repo,$collaborator){
+    function numberOfIssues($user, $repo,$collaborator, $num = false){
         $path = $GLOBALS['client']->api('issue');
         $param = array($user, $repo, array('state'=>'all','creator'=>$collaborator));
 
@@ -54,11 +59,14 @@ session_start();
 
         $issues = $paginator->fetchAll($path,'all',$param);
 
+        if($num)
+            return sizeof($issues);
+
         echo sizeof($issues);
 
     }
 
-    function numberOfComments($user, $repo,$collaborator){
+    function numberOfComments($user, $repo,$collaborator, $num = false){
         $page = 1;
         $count = 0;
         $com = $GLOBALS['client']->getHttpClient()->get("repos/$user/$repo/issues/comments?page=$page");
@@ -73,7 +81,17 @@ session_start();
             $com = $GLOBALS['client']->getHttpClient()->get("repos/$user/$repo/issues/comments?page=$page");
             $comments = Github\HttpClient\Message\ResponseMediator::getContent($com);
         }
+        if($num)
+            return $count;
 
         echo $count;
+    }
+
+    function numberOfEvents($user,$repo,$collaborator){
+        $commits = numberOfCommits($user,$repo,$collaborator,true);
+        $issues = numberOfIssues($user,$repo,$collaborator,true);
+        $comments = numberOfComments($user,$repo,$collaborator,true);
+        $overall = (int)$commits + (int)$issues + (int)$comments;
+        echo $overall;
     }
 ?>

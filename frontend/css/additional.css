@@ -1,0 +1,114 @@
+#view-source {
+	position: fixed;
+	display: block;
+	right: 0;
+	bottom: 0;
+	margin-right: 40px;
+	margin-bottom: 40px;
+	z-index: 900;
+}
+.mdl-layout__header{
+	min-height: 34px;
+}
+
+.demo-list-icon {
+	width: 300px;
+}
+
+.chart{
+	width:100%;
+	margin: 20pt 0px 0px 20px;
+}
+.burndownCanvas{
+	width: 96%;
+}
+.canvas{
+	width: 30%;
+	padding: 5px 0px 5px 0px;
+}
+.collaborators{
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	border: 1px solid #000;
+}
+.issues{
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	border: 1px solid #000;
+}
+.commits{
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	border: 1px solid #000;
+}
+.tbl {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 95%;
+}
+.td_s, .th_s {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+.tr_s:nth-child(even) {
+    background-color: #dddddd;
+}
+.ChartType{
+	border: 1px solid #dddddd;
+	background: #424242;
+	border-radius: 3px;
+	color: #ffffff;
+}
+.mdl-layout-back{
+	display: block;
+    position: relative;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
+.wrapper {
+  margin: 0px auto;
+  width: 100%;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  color: #555;
+  font-size: 14px;
+  line-height: 24px;
+}
+.tabs{
+	list-style-type: none;
+	padding: 1px 1px 1px 1px;
+}
+.tabs li {
+  float: left;
+  width: 10%;
+  margin: 5px 1px 5px 1px;
+}
+.tabs a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #888;
+  padding: 10px 0;
+  border-bottom: 2px solid #888;
+  background: #f7f7f7;
+}
+.tabs a:hover,
+.tabs a.active {
+  background: #ddd;
+}
+.tabgroup div {
+  padding: 5px;
+  /*box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);*/
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

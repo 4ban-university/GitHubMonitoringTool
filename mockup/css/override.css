@@ -54,3 +54,16 @@ table {
 .margin2-bottom {
     margin-bottom: 1em;
 }
+
+/**
+Loading
+ */
+
+
+.loading {
+    background-color: #ffffff;
+    background-image: url("http://loadinggif.com/images/image-selection/3.gif");
+    background-size: 25px 25px;
+    background-position:left bottom;
+    background-repeat: no-repeat;
+}
