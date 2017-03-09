@@ -25,14 +25,15 @@ repo.weeklyInfo.then(function(weeklyInfo){
 			dataForCollaborator.push(weeklyInfo[week][names[name]])
 		}
 		data[name]=dataForCollaborator
-		//individual_filter(name);
-		//individual_tables(name, names[name], data);
+		
+		individual_tables(name, names[name], dataForCollaborator);
 		
 		//individual_report(name, data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 		//console.log(individual_commitsPerCollaborator_chart)
 	}
 	//console.log(names)
-	individual_report1(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
+	individual_filter(name);
+	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
 });
 
@@ -40,8 +41,10 @@ function individual_filter(num){
 	//----------radio buttons for how to display the information
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById("individual"+num+"_commitsCanvas").style.display="none"
-	        document.getElementById("individual"+num+"_commitsTable").style.display="block"
+	    	for (var i=0; i<=num; i++) {
+	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="none"
+	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
+	    	}
 	    }
 	};
 
@@ -104,7 +107,7 @@ function chart_plugin(){
 
 //var ctx_commitsPerCollaborator=[]
 
-function individual_report1(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options) {
+function individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options) {
 	for (var i=0; i<data.length; i++){
 		document.getElementById('individual'+i+'_commitsCanvas').innerHTML += "<canvas id='individual"+i+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
 		ctx_commitsPerCollaborator[i] = document.getElementById('individual'+i+'_commitsPerCollaborator').getContext("2d");
@@ -123,7 +126,7 @@ function individual_report1(data, individual_commitsPerCollaborator_chart, ctx_c
 
 }
 
-function individual_report(num, info, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options){
+function individual_report1(num, info, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options){
 
 	num=parseInt(num)
 	document.getElementById('individual'+num+'_commitsCanvas').innerHTML += "<canvas id='individual"+num+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
