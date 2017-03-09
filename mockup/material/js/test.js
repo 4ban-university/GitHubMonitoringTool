@@ -195,7 +195,7 @@ function getRepoList() {
     $.getJSON("resources/userRepoSelection.json", function(data) {
         $('#repoSelection').html('');
         for(var i = 0; i < data["repoSelection"].length; i++) {
-            $('#repoSelection').append('<a class="mdl-navigation__link" href="#" id="' +data["repoSelection"][i]["name"]+'"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>' +data["repoSelection"][i]["name"]+ '</a>')
+            $('#repoSelection').append('<a class="mdl-navigation__link" href="#" id="' +data["repoSelection"][i]["name"]+'"><i class="fa fa-github fa-2x" aria-hidden="true" role="presentation" style="margin-right: 10px;"></i>' +data["repoSelection"][i]["name"]+ '</a>')
         }
     });
 }
