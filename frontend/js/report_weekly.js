@@ -16,6 +16,11 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	tabs+='</section></div>'
 	document.getElementById('report_weekly').innerHTML += tabs;
 
+	// var charts = []
+	// for (var week = 1; week <= weeks; week++){
+	// 	charts.push({})
+	// }
+	// //console.log(charts)
 	// Generating page under tabs
 	for (var week = 1; week <= weeks; week++){
 		var id = 'tab'+week
@@ -43,7 +48,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		
 		weekly_filter(weeklyInfo[week-1], week);
 		weekly_tables(weeklyInfo[week-1], week);
-		var weekly_commitsPerCollaborator_chart;
+		var weekly_commitsPerCollaborator_chart; 
 		weekly_report(weeklyInfo[week-1], week);
 	}
 
@@ -125,7 +130,7 @@ function weekly_tables(weeklyInfo, week){
 
 function weekly_report(weeklyInfo, week){
 	document.getElementById('weekly'+week+'_commitsCanvas').innerHTML += "<canvas id='weekly"+week+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
-	
+	//console.log(charts)
 	weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut');
 
 	document.getElementById('weekly'+week+'_doughnutCPC').onclick = function() {
@@ -158,13 +163,14 @@ function weekly_report(weeklyInfo, week){
 	};
 };
 	
-function weekly_commitsPerCollaborator(weeklyInfo, week, chartType){
+function weekly_commitsPerCollaborator(weeklyInfo, week, chartType, charts){
 	var ctx_commitsPerCollaborator = document.getElementById('weekly'+week+'_commitsPerCollaborator').getContext("2d");
 	//Data and options for commits per collaborator
 	var commitsPerCollaborator_data = weekly_commitsPerCollaboratorTransformation(weeklyInfo);
 	var commitsPerCollaborator_options = {}
 	// commitsPerCollaborator_chart = new Chart
 	weekly_commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
+	//charts = new Chart(ctx_commitsPerCollaborator, {
         type: chartType,
         data: commitsPerCollaborator_data,
         options: commitsPerCollaborator_options
