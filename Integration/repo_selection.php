@@ -4,8 +4,20 @@
         $token = $_SESSION['token'];
     else
         header("login.php");
-    echo "<script> var auth = {token: '$token'};</script>";
 
+
+    //setting js variables
+    if(isset($_GET['name']) && isset($_GET['owner'])) {
+        $repoName = $_GET['name'];
+        $owner = $_GET['owner'];
+        echo "<script> 
+    var auth = {token: '$token'};
+    var owner = '$owner';
+    var repoName = '$repoName';
+</script>";
+    }
+    else
+        header("login.php");
 ?>
 
 <!doctype html>
