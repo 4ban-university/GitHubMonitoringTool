@@ -48,8 +48,8 @@ function Repo(owner, repo, oauth) {
         var today = new Date();
         this.commentBranch.then(function (response) {
 
-            document.write("is commented: " + response);
             if (response) {
+                console.log("branch exists");
                 ob1.repo.writeFile("TA_Comments", "Comments/"+today.toISOString()+".txt", content, "DO NOT MERGE", {});
             }
             else {

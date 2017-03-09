@@ -49,6 +49,7 @@
 	<script src="js/report.js" defer></script>
 	<script src="js/report_weekly.js" defer></script>
 	<script src="js/burndown.js" defer></script>
+    <script src="js/commentSection.js" defer></script>
 
 
 </head>
@@ -117,6 +118,7 @@
 					<a href="#scroll-tab-2" class="mdl-layout__tab">Overall Report</a>
 					<a href="#scroll-tab-3" class="mdl-layout__tab">Weekly report</a> 
 					<a href="#scroll-tab-4" class="mdl-layout__tab">Burndown</a>
+                    <a href="#scroll-tab-5" class="mdl-layout__tab">Comments</a>
 					
 
 				</div>
@@ -237,9 +239,31 @@
 						<div class="burndownCanvas" id="burndownCanvas">
 							<canvas id='burndown' class='visible'></canvas>
 						</div>
+                        <div>
+                            <form name="due" action="" method="GET">Enter number of days:
+                                <input type="text" name="in" value="60">
+                                <input type="button" name="submit" value="Enter" onClick="setDueDate(this.form)">
+                            </form>
+                        </div>
 					</div>
 				</div>
 			</section>
+
+                <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+                    <div class="page-content">
+                        <!-- Your content goes here -->
+                        <div class="comment" id="commentSection">
+                            <h2>Comment</h2>
+                            <form action="" method="GET">
+                                <textarea rows="25" cols="100" name="comment">Enter text here...</textarea>
+                                <input type="button" name="submit" value='comment' onClick="submitComment(this.form)">
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                </section>
 			</main>
 		</div>
 		</main>
