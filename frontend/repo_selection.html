@@ -41,6 +41,7 @@
 	<script src="js/general_info.js" defer></script>
 	<script src="js/report.js" defer></script>
 	<script src="js/report_weekly.js" defer></script>
+	<script src="js/report_individually.js" defer></script>
 	<script src="js/burndown.js" defer></script>
 
 
@@ -108,8 +109,9 @@
 				<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
 					<a href="#scroll-tab-1" class="mdl-layout__tab is-active">General info</a>
 					<a href="#scroll-tab-2" class="mdl-layout__tab">Overall Report</a>
-					<a href="#scroll-tab-3" class="mdl-layout__tab">Weekly report</a> 
-					<a href="#scroll-tab-4" class="mdl-layout__tab">Burndown</a>
+					<a href="#scroll-tab-3" class="mdl-layout__tab">Weekly report</a>
+					<a href="#scroll-tab-4" class="mdl-layout__tab">Individual activity report</a> 
+					<a href="#scroll-tab-5" class="mdl-layout__tab">Burndown</a>
 					
 
 				</div>
@@ -223,6 +225,18 @@
 				</div><!-- End of weekly report -->
 			</section>
 			<section class="mdl-layout__tab-panel" id="scroll-tab-4">
+				<div class="page-content" id="report_individually">
+					<!-- Start individual report -->
+					<h1>Individual activity report</h1> 
+					<p>
+						<input type="radio" id="individual_TextData" name="individual_dataDisplayForm" >Show data only in tables<Br> 
+						<input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" >Show data only in charts<Br> 
+						<input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" checked>Show data either in tables and charts<Br> 
+					</p><hr> 
+					
+				</div><!-- End of individual report -->
+			</section>
+			<section class="mdl-layout__tab-panel" id="scroll-tab-5">
 				<div class="page-content">
 					<!-- Your content goes here -->
 					<div class="chart" id="burndownChart">
