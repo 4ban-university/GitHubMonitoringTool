@@ -17,7 +17,7 @@
 </script>";
     }
     else
-        header("login.php");
+        header("admin.php");
 ?>
 
 <!doctype html>
