@@ -28,6 +28,30 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	chart_plugin()
 });
 
+function individual_filter(num){
+	//----------radio buttons for how to display the information
+	document.getElementById('individual_TextData').onclick = function() {
+	    if ( this.checked ) {
+	        document.getElementById("individual"+num+"_commitsCanvas").style.display="none"
+	        document.getElementById("individual"+num+"_commitsTable").style.display="block"
+	    }
+	};
+
+	document.getElementById('individual_GraphicData').onclick = function() {
+	    if ( this.checked ) {
+	        document.getElementById("individual"+num+"_commitsTable").style.display="none"
+	        document.getElementById("individual"+num+"_commitsCanvas").style.display="block"
+	    }
+	};
+
+	document.getElementById('individual_MixedData').onclick = function() {
+	    if ( this.checked ) {
+	        document.getElementById("individual"+num+"_commitsTable").style.display="block"
+	        document.getElementById("individual"+num+"_commitsCanvas").style.display="block"
+	    }
+	};
+};
+
 function individual_tables(num, name, info){
 	var table = '<table class="tbl">'
 	table +='<tr class="tr_s"><th class="th_s">Name</th>'
@@ -127,28 +151,4 @@ function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator
 
 	}
 	return commitsPerCollaborator_data;
-};
-
-function individual_filter(num){
-	//----------radio buttons for how to display the information
-	document.getElementById('individual_TextData').onclick = function() {
-	    if ( this.checked ) {
-	        document.getElementById("individual"+num+"_commitsCanvas").style.display="none"
-	        document.getElementById("individual"+num+"_commitsTable").style.display="block"
-	    }
-	};
-
-	document.getElementById('individual_GraphicData').onclick = function() {
-	    if ( this.checked ) {
-	        document.getElementById("individual"+num+"_commitsTable").style.display="none"
-	        document.getElementById("individual"+num+"_commitsCanvas").style.display="block"
-	    }
-	};
-
-	document.getElementById('individual_MixedData').onclick = function() {
-	    if ( this.checked ) {
-	        document.getElementById("individual"+num+"_commitsTable").style.display="block"
-	        document.getElementById("individual"+num+"_commitsCanvas").style.display="block"
-	    }
-	};
 };
