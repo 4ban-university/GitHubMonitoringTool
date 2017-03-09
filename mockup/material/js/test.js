@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+    getRepoList();
+});
+
 
 $('#show-info').click(function () {
     showDialog({
@@ -41,6 +45,7 @@ function getRepo() {
 				repo_array[i]=data[i]["name"];
 			}
 		}
+        
 		for(var i=0; i<repo_array.length; i++){
 			 h += checkbox_list(data[i]["name"], checkboxId += i );
 		}
@@ -55,8 +60,14 @@ function getRepo() {
 			}
 		});
 	});
+}
 
-	
+function writeToJSON(repo_array) {
+    $.ajax({
+        url: 'resources/writeToJSON.php',
+        type: 'POST',
+        data: {write:repo_array},
+    });
 }
 
 function checkbox_list(repo_name, checkboxId){
