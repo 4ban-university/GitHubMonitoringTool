@@ -49,16 +49,21 @@ function individual_filter(num){
 	};
 
 	document.getElementById('individual_GraphicData').onclick = function() {
+
 	    if ( this.checked ) {
-	        document.getElementById("individual"+num+"_commitsTable").style.display="none"
-	        document.getElementById("individual"+num+"_commitsCanvas").style.display="block"
+	    	for (var i=0; i<=num; i++) {
+	        	document.getElementById("individual"+i+"_commitsTable").style.display="none"
+	       	 	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
+	       	}
 	    }
 	};
 
 	document.getElementById('individual_MixedData').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById("individual"+num+"_commitsTable").style.display="block"
-	        document.getElementById("individual"+num+"_commitsCanvas").style.display="block"
+	    	for (var i=0; i<=num; i++) {
+	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
+	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
+	        }
 	    }
 	};
 };
