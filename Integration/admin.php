@@ -2,32 +2,35 @@
 session_start();
 ?>
 <?php require_once 'php/vendor/autoload.php';
-    $code = $_GET['code'];
-    $c = new GuzzleHttp\Client();
-    // Create a POST request
-    $response = $c->request(
-        'POST',
-        'https://github.com/login/oauth/access_token',
-        [
-            'form_params' => [
-                'client_id' => '7e84f9e2e7d65f484caa',
-                'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
-                'code' => $code
+    if(!isset($_SESSION['token'])) {
+        $code = $_GET['code'];
+        $c = new GuzzleHttp\Client();
+        // Create a POST request
+        $response = $c->request(
+            'POST',
+            'https://github.com/login/oauth/access_token',
+            [
+                'form_params' => [
+                    'client_id' => '7e84f9e2e7d65f484caa',
+                    'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
+                    'code' => $code
+                ]
             ]
-        ]
-    );
-    // Parse the response object, e.g. read the headers, body, etc.
-    // $headers = $response->getHeaders();
-    $body = $response->getBody();
-    //echo $headers;
-    $start =  strpos($body,"=") + 1;
-    $length = strpos($body,'&') - $start;
-    $token = substr($body, $start, $length);
+        );
+        // Parse the response object, e.g. read the headers, body, etc.
+        // $headers = $response->getHeaders();
+        $body = $response->getBody();
+        //echo $headers;
+        $start = strpos($body, "=") + 1;
+        $length = strpos($body, '&') - $start;
+        $token = substr($body, $start, $length);
+        $_SESSION['token'] = $token;
 
-    if(isset($_SESSION['token']))
-        $token = $_SESSION['token'];
+    }
+
     else
-     $_SESSION['token'] = $token;
+        $token = $_SESSION['token'];
+
     echo "<script> var auth = {token: '$token'};</script>";
 ?>
 <!doctype html>
