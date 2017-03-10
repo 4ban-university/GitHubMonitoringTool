@@ -132,16 +132,17 @@ function individual_report(data, individual_commitsPerCollaborator_chart, ctx_co
 		document.getElementById('individual'+i+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	var chartNumber=parseInt($(this).attr("chartNumber"))
-	        document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
+	       // document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
 			individual_commitsPerCollaborator_chart[chartNumber].destroy();
 	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'bar', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
 	    }
 	};
 	document.getElementById('individual'+i+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
-			//individual_commitsPerCollaborator_chart.destroy();
-	        individual_commitsPerCollaborator(i, data[i], 'line');
+	    	var chartNumber=parseInt($(this).attr("chartNumber"))
+	       // document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
+			individual_commitsPerCollaborator_chart[chartNumber].destroy();
+	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
 	    }
 	};
 	}
