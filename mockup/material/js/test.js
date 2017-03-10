@@ -1,14 +1,23 @@
-var lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
+$( document ).ready(function() {
+    getRepoList();
+});
+
+
+/*
+    These are a collection of methods that display various types of modals
+    ########################################################################
+*/
 $('#show-info').click(function () {
     showDialog({
         title: 'Information',
-        text: lorem
+        text: ""
     })
 });
-$('#show-action').click(function () {
-	getRepo();
 
+$('#show-action').click(function () {
+    getRepo();
 });
+
 $('#show-not-cancelable').click(function () {
     showDialog({
         title: 'Not cancelable',
@@ -28,7 +37,11 @@ $('#show-loading').click(function () {
         hideLoading();
     }, 3000);
 });
+//  ########################################################################
 
+/*
+    Retrives the list of repos associated with the user using the Github API
+*/
 function getRepo() {
 	
 	$.when( $.ajax("https://api.github.com/users/abhandal/repos")).done(function(data) {
@@ -40,6 +53,7 @@ function getRepo() {
 				repo_array[i]=data[i]["name"];
 			}
 		}
+        
 		for(var i=0; i<repo_array.length; i++){
 			 h += checkbox_list(data[i]["name"], checkboxId += i );
 		}
@@ -54,23 +68,71 @@ function getRepo() {
 			}
 		});
 	});
-
-	
 }
 
+/*
+    Sends an array to the writeToJSON.php file which writes the array to a json file
+*/
+function writeToJSON(repo_array) {
+    $.ajax({
+        url: 'resources/writeToJSON.php',
+        type: 'POST',
+        data: {write:repo_array},
+    });
+}
+
+/*
+    Formats the output of text in the modal when the user clicks "+ Repo"
+*/
 function checkbox_list(repo_name, checkboxId){
    
     var h = "";
    
     h += '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="' +checkboxId+ '">';
-    h += '<input type="checkbox" id="' +checkboxId+ '" class="mdl-checkbox__input">';
+    h += '<input type="checkbox" id="' +checkboxId+ '" class="mdl-checkbox__input repoSelection">';
     h += '<span class="mdl-checkbox__label">' +repo_name+ '</span>';
     h += '</label>';
 
     return h;
 }
 
-/* library */
+
+/*
+    Retrives the list of repo names from the JSON file stored in resources by parsing it and appending the repo names to the index.html file
+*/
+function getRepoList() {
+    $.getJSON("resources/userRepoSelection.json", function(data) {
+        $('#repoSelection').html('');
+        for(var i = 0; i < data["repoSelection"].length; i++) {
+            $('#repoSelection').append('<a class="mdl-navigation__link" href="#" id="' +data["repoSelection"][i]["name"]+'"><i class="fa fa-github fa-2x" aria-hidden="true" role="presentation" style="margin-right: 10px;"></i>' +data["repoSelection"][i]["name"]+ '</a>')
+        }
+    });
+}
+
+/*
+    Tracks changes in the checkbox when the add repo modal is open and pushes the changes to the JSON file
+*/
+function getCheckedRepo(){
+    
+    var checkedObj = $('.is-checked .mdl-checkbox__label');
+    var repoArray = [];
+    
+    
+    for(var i = 0; i < checkedObj.length; i++) {
+        repoArray.push(checkedObj[i].innerHTML);
+    }
+    console.log(repoArray);
+    
+    writeToJSON(repoArray);
+    location.reload();
+}
+
+//$(document.body).on('shown',function() {
+//    getCheckedRepo();
+//});
+/* 
+    Modal Library -- Do not modify!
+*/
 function showLoading() {
     // remove existing loaders
     $('.loading-container').remove();
@@ -141,9 +203,9 @@ function showDialog(options) {
                     return false;
                 }
             }, options.positive);
-            var posButton = $('<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="' + options.positive.id + '">' + options.positive.title + '</button>');
+            var posButton = $('<button onclick="getCheckedRepo()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="' + options.positive.id + '">' + options.positive.title + '</button>');
             posButton.click(function (e) {
-                e.preventDefault();
+               // e.preventDefault();
                 if (!options.positive.onClick(e))
                     hideDialog(dialog)
             });
