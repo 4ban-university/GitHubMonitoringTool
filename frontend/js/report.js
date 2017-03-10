@@ -431,7 +431,7 @@ function sortData(dataForSort){
 	}
 
 	helpArr.sort(function (a, b) {
-  		return a.value-b.value
+  		return b.value-a.value
 	});
 
 	var sortedCommits=new Object
