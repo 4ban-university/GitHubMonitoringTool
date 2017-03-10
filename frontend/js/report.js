@@ -184,12 +184,24 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 			Object.defineProperty(sortedCommits, helpArr[i].name, {value: helpArr[i].value, configurable: true, writable: true, enumerable: true })
 		}
 
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
+		var table = "<div class='ret' style='width:50px; height:50px; cursor:pointer'>sort</div><table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commitsPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/commits)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('commitsTable').innerHTML += table;
+
+		$(".ret").click(function(){
+			$(this).parents(".dataTable").find(".tbl").remove()
+			var table = "<div class='ret' style='width:50px; height:50px; cursor:pointer'>sort</div><table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
+		for (var key in sortedCommits) {
+			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/commits)+"%</td></tr>"
+		}
+		table+="</table>"
+		document.getElementById('commitsTable').innerHTML += table;
+			//console.log(sortedCommits)
+		})
+
 	});
 	
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
