@@ -267,9 +267,11 @@ over write style
 .mdl-layout__content {
   background-color: white;
 }
-// .page-content {
-//     padding: 1em 4em 0 4em;
-// }
+/*
+.page-content {
+    padding: 1em 4em 0 4em;
+}
+*/
 .mdl-layout__header{
     min-height: 50px !important;
     background-color: rgb(55, 71, 79);
