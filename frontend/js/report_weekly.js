@@ -129,7 +129,7 @@ function weekly_tables(weeklyInfo, week){
 };
 
 function weekly_report(weeklyInfo, week){
-	document.getElementById('weekly'+week+'_commitsCanvas').innerHTML += "<canvas id='weekly"+week+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
+	document.getElementById('weekly'+week+'_commitsCanvas').innerHTML += "<canvas id='weekly"+week+"_commitsPerCollaborator' class='visible'></canvas>"
 	//console.log(charts)
 	weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut');
 
@@ -149,14 +149,14 @@ function weekly_report(weeklyInfo, week){
 	};
 	document.getElementById('weekly'+week+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%"
 			weekly_commitsPerCollaborator_chart.destroy();
 	        weekly_commitsPerCollaborator(weeklyInfo, week, 'bar');
 	    }
 	};
 	document.getElementById('weekly'+week+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%"
 			weekly_commitsPerCollaborator_chart.destroy();
 	        weekly_commitsPerCollaborator(weeklyInfo, week, 'line');
 	    }

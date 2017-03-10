@@ -58,7 +58,7 @@ function filter(){
 
 function report(){
 
-	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
+	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
 	document.getElementById('issuesCanvas').innerHTML += "<canvas id='issuesPerCollaborator' class='visible'></canvas>"
 	document.getElementById('commentsCanvas').innerHTML += "<canvas id='commentsPerCollaborator' class='visible'></canvas>"
 
