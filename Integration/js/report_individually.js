@@ -1,30 +1,31 @@
 repo.weeklyInfo.then(function(weeklyInfo){
-	var names = []
+	var names = [];
 	for (var name in weeklyInfo[weeklyInfo.length-1]){
-		names.push(name)
+		names.push(name);
 	}
 	var individual_commitsPerCollaborator_chart=[];	
-	var ctx_commitsPerCollaborator=[]
-	var commitsPerCollaborator_data=[]
-	var commitsPerCollaborator_options=[]
-	var data=[]
+	var ctx_commitsPerCollaborator=[];
+	var commitsPerCollaborator_data=[];
+	var commitsPerCollaborator_options=[];
+	var data=[];
 	for (var name in names){
-		var page = '<div class="chart" id="individual'+name+'_commitsChart">'
-		page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>'
-		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">'
+		var page = '<h3>'+ names[name] + '</h3>';
+			page += '<div class="chart" id="individual'+name+'_commitsChart">';
+		page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>';
+		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">';
 		page += '<div class="ChartType" style="display:block"> \
 					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" checked>Line \
 					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" >Bar \
-				</div>'
-		page +='</div>'
-		page += '<hr width="95%" size="5" color="#454545">'
-		page += '</div>'
-		document.getElementById('report_individually').innerHTML += page
+				</div>';
+		page +='</div>';
+		page += '<hr width="95%" size="5" color="#454545">';
+		page += '</div>';
+		document.getElementById('report_individually').innerHTML += page;
 		var dataForCollaborator = [];
 		for (var week in weeklyInfo){
 			dataForCollaborator.push(weeklyInfo[week][names[name]])
 		}
-		data[name]=dataForCollaborator
+		data[name]=dataForCollaborator;
 		
 		individual_tables(name, names[name], dataForCollaborator);
 		

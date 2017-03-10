@@ -63,7 +63,7 @@
 	<script src="js/general_info.js" defer></script>
 	<script src="js/report.js" defer></script>
 	<script src="js/report_weekly.js" defer></script>
-        <script src="js/report_individually.js" defer></script>
+    <script src="js/report_individually.js" defer></script>
 	<script src="js/burndown.js" defer></script>
     <script src="js/commentSection.js" defer></script>
 
@@ -284,8 +284,11 @@
                         <div class="comment" id="commentSection">
                             <h2>Comment</h2>
                             <form action="" method="GET">
-                                <textarea rows="25" cols="100" name="comment">Enter text here...</textarea>
-                                <input type="button" name="submit" value='comment' onClick="submitComment(this.form)">
+                                <div class="mdl-textfield mdl-js-textfield" margin>
+                                    <textarea class="mdl-textfield__input" col="25em" rows= "25em" id="ta-comments" name="comment"></textarea>
+                                    <label class="mdl-textfield__label" for="ta-comments">Enter your comment here...</label>
+                                </div><br>
+                                <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" name="submit" value='comment' onClick="submitComment(this.form)">
                             </form>
 
                         </div>
