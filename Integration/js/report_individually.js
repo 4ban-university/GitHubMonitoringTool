@@ -9,8 +9,8 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	var commitsPerCollaborator_options=[]
 	var data=[]
 	for (var name in names){
-        var page = '<h3>'+ names[name] + '</h3>';
-        page += '<div class="chart" id="individual'+name+'_commitsChart">';
+        var page = '<div class="chart" id="individual'+name+'_commitsChart">';
+        page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>';
 		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">'
 		page += '<div class="ChartType" style="display:block"> \
 					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked>Line \
@@ -175,7 +175,7 @@ function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerC
 function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
-	var colors = '#FF6384'
+	var colors = '#14CCCC'
 	var k;
 	for (var key in commitsPerCollaborator_data) {
 		k = parseInt(key)+1
@@ -196,6 +196,7 @@ function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator
 		datasets: [
         {
             data: data,
+            label: 'Activity',
             backgroundColor: colors,
             hoverBackgroundColor: colors
         }]

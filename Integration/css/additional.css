@@ -123,3 +123,6 @@
     margin: 0;
     padding: 20px 0;
 }
+.mdl-textfield.gray{
+	background-color: #fff;
+}
