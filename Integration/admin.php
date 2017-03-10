@@ -2,7 +2,7 @@
 session_start();
 ?>
 <?php require_once 'php/vendor/autoload.php';
-if(!isset($_SESSION['token']) && isset($_GET['code'])) {
+if(isset($_GET['code'])) {
     $code = $_GET['code'];
     $c = new GuzzleHttp\Client();
     // Create a POST request
@@ -24,10 +24,9 @@ if(!isset($_SESSION['token']) && isset($_GET['code'])) {
     $start =  strpos($body,"=") + 1;
     $length = strpos($body,'&') - $start;
     $token = substr($body, $start, $length);
-
     $_SESSION['token']= $token;
 }
-else if(!isset($_SESSION['token']) && !isset($_GET['code']))
+else if(!isset($_SESSION['token']) || !isset($_GET['code']))
     header("login.php");
 else
     $token = $_SESSION['token'] ;
@@ -62,7 +61,6 @@ echo "<script> var auth = {token: '$token'};</script>";
 
         <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" defer></script>
         <script src="js/repo.js" defer></script>
-        <script src="js/init.js" defer></script>
         <script src="js/repo_list.js" defer></script>
         
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
