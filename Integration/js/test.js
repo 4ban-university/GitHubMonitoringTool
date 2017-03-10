@@ -49,12 +49,12 @@ function getRepo() {
         var checkboxId = "checkbox-";
         for(var i=0; i<list.data.length; i++){
             for(var j=0; j<list.data.length; j++){
-                repo_array[i]=list.data[i]["name"];
+                repo_array[i]=list.data[i].owner.login + "/"+list.data[i]["name"];
             }
         }
 
         for(var i=0; i<repo_array.length; i++){
-            h += checkbox_list(list.data[i]["name"], checkboxId += i );
+            h += checkbox_list(list.data[i].owner.login + "/"+list.data[i]["name"], checkboxId += i );
         }
         showDialog({
             title: 'Add Repository<hr>',
@@ -102,9 +102,14 @@ function checkbox_list(repo_name, checkboxId){
 function getRepoList() {
     //$.getJSON("resources/userRepoSelection.json", function(data) {
         $('#repoSelection').html('');
-        console.log(repoList);
+        saveSessionArray();
         for(var i = 0; i < repoList.length; i++) {
-            $('#repoSelection').append('<a class="mdl-navigation__link" href="#" id="' +repoList[i]+'"><i class="fa fa-github fa-2x" aria-hidden="true" role="presentation" style="margin-right: 10px;"></i>' +repoList[i]+ '</a>')
+            var ow = repoList[i].split("/")[0];
+            var na = repoList[i].split("/")[1];
+            var link = "repo_selection.php?owner="+ ow +"&name="+na;
+            $('#repoSelection').append(
+                '<a class="mdl-navigation__link" href="'+link+'" id="' +repoList[i]+'">' +
+                '<i class="fa fa-github fa-2x" aria-hidden="true" role="presentation" style="margin-right: 10px;"></i>' +repoList[i]+ '</a>')
         }
     //});
 }

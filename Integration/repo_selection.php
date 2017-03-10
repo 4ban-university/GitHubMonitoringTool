@@ -18,11 +18,13 @@
     }
     else
         header("admin.php");
+
+
 ?>
 
 <!doctype html>
 <html lang="en">
-	<head>
+	<head id="head">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
@@ -57,10 +59,8 @@
 	<link rel="stylesheet" href="css/additional.css">
 
 	<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" ></script>
-        <?php
-        echo " <script>var git = new GitHub(auth);
-            var user = git.getUser();</script>";
-        ?>
+
+        <script src="js/repo_list.js" defer></script>
         <script src="js/test.js" defer></script>
 	<script src="js/Chart.bundle.js" defer></script>
 	<script src="js/repo.js" defer></script>
@@ -80,7 +80,7 @@
         <header
                 class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-back"><a href="admin.html">Back to repo list</a></span>
+
                 <span class="mdl-layout-title">Overview</span>
                 <div class="mdl-layout-spacer"></div>
                 <div
@@ -108,27 +108,7 @@
                 </ul>
             </div>
         </header>
-        <div
-                class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-            <header class="demo-drawer-header">
-                <img src="images/user.jpg" class="demo-avatar">
-                <div class="demo-avatar-dropdown">
-                    <span style="padding-top: 10px;">hello@example.com</span>
-                    <div class="mdl-layout-spacer"></div>
-                </div>
-            </header>
-            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-                <button class="mdl-button mdl-js-button mdl-button--primary"
-                        id="show-action">
-                    <i class="material-icons">add</i><span>Repo</span>
-                </button>
-                <div class="mdl-layout-spacer"></div>
-                <a class="mdl-navigation__link" href="#"> <i
-                            class="mdl-color-text--blue-grey-400 material-icons"
-                            role="presentation">help_outline</i> <span class="">Help</span>
-                </a>
-            </nav>
-        </div>
+
         <main class="mdl-layout__content mdl-color--grey-100"> <!-- Simple header with scrollable tabs. -->
             <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <header class="mdl-layout__header">
@@ -299,6 +279,31 @@
                 </main>
             </div>
         </main>
+        <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+            <header class="demo-drawer-header">
+                <img src="images/user.jpg" class="demo-avatar">
+                <div class="demo-avatar-dropdown">
+                    <span style="padding-top:10px;">hello@example.com</span>
+                    <div class="mdl-layout-spacer"></div>
+                </div>
+            </header>
+            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+                <button class="mdl-button mdl-js-button mdl-button--primary" id="show-action">
+                    <i class="material-icons">add</i><span>Repo</span>
+                </button>
+                <div id="repoSelection"></div>
+                <div class="mdl-layout-spacer"></div>
+                <a class="mdl-navigation__link" href="#">
+                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>
+                    <span class="">Help</span>
+                </a>
+            </nav>
+        </div>
+
+            <div class="mdl-grid demo-content">
+                <div class="reposTable" id="reposTable"></div>
+            </div>
+
     </div>
     </body>
 </html>

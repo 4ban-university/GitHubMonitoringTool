@@ -2,8 +2,7 @@
 session_start();
 ?>
 <?php require_once 'php/vendor/autoload.php';
-if(isset($_GET['code']) && !isset($_SESSION['token'])) {
-    echo 'h';
+if(isset($_GET['code']) ) {
     $code = $_GET['code'];
     $c = new GuzzleHttp\Client();
     // Create a POST request
@@ -12,8 +11,8 @@ if(isset($_GET['code']) && !isset($_SESSION['token'])) {
         'https://github.com/login/oauth/access_token',
         [
             'form_params' => [
-                'client_id' => '7e84f9e2e7d65f484caa',
-                'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
+                'client_id' => 'aa4b1b744188bfdc5bea',
+                'client_secret' => 'b2de4848fea9b13995295817da5236cc77744c99',
                 'code' => $code
             ]
         ]
@@ -27,11 +26,16 @@ if(isset($_GET['code']) && !isset($_SESSION['token'])) {
     $token = substr($body, $start, $length);
     $_SESSION['token']= $token;
 }
-else if(!isset($_SESSION['token']) || !isset($_GET['code']))
+else if(!isset($_SESSION['token']) || !isset($_GET['code']) || (isset($_SESSION['token']) && $_SESSION['token'] === 'Bad verification code' ))
     header("login.php");
 else
     $token = $_SESSION['token'] ;
 echo "<script> var auth = {token: '$token'};</script>";
+
+$repoList = array();
+$repoList = json_encode($repoList);
+echo "<script> var repoList = $repoList ;</script>";
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -61,15 +65,10 @@ echo "<script> var auth = {token: '$token'};</script>";
         <script src="js/material.min.js"></script>
 
         <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
-        <?php
-        echo " <script>var git = new GitHub(auth);
-            var user = git.getUser();
-            var repoList = new Array();</script>";
-        ?>
-        <script src="js/test.js" defer></script>
+
         <script src="js/repo.js" defer></script>
         <script src="js/repo_list.js" defer></script>
-        
+        <script src="js/test.js" defer></script>
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
         <!--
         <link rel="canonical" href="http://www.example.com/">

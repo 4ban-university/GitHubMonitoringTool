@@ -17,14 +17,42 @@
 
 .chart{
 	width:100%;
-	margin: 20pt 0px 0px 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.dataTable{
+  width:48%;
+  margin: 0px auto;
+  margin-right: 10px;
+  float: left;
+  /*float:left;
+  border: 1px solid #ff0000;
+  display:inline-block;
+  vertical-align: middle;*/
+}
+.canvas{
+  width:30%;
+  margin: 0px auto;
+  margin-right: 10px;
+  float: left;
+  /*float:right;
+  display:inline-block;
+  vertical-align: middle;
+  border: 1px solid #ff0000;*/
+}
+.dataTable_in{
+
+}
+.chart_in{
+  width:100%;
+  margin: 20pt 0px 0px 20px;
+}
+.canvas_in{
+  width: 30%;
+  padding: 5px 0px 5px 0px;
 }
 .burndownCanvas{
 	width: 96%;
-}
-.canvas{
-	width: 30%;
-	padding: 5px 0px 5px 0px;
 }
 .collaborators{
 	padding: 5px 5px 5px 5px;
