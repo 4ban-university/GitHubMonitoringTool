@@ -73,7 +73,7 @@ function individual_tables(num, name, info){
 		for (var key in info){
 			com += info[key]
 	}
-	var table = '<table class="tbl">'
+	var table = '<h3>'+name+'</h3><br><table class="tbl">'
 	table +='<tr class="tr_s"><th class="th_s">Name</th>'
 	var w
 	for (var week in info){
