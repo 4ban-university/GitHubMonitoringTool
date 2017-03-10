@@ -56,6 +56,12 @@ function filter(){
 	};
 };
 
+// function sortData(commits){
+// 	commits.then(function(commits){
+// 		console.log(commits)
+// 	});
+// }
+
 function report(){
 
 	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
@@ -65,6 +71,7 @@ function report(){
 	commitsPerCollaborator(repo.commits, 'doughnut', false);
 	issuesPerCollaborator(repo.issues, 'doughnut', false);
 	commentsPerCollaborator(repo.comments, 'doughnut', false);
+
 
 	document.getElementById('doughnutCPC').onclick = function() {
 	    if ( this.checked ) {
@@ -159,6 +166,22 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 		var commits = 0;
 		for (var key in commitsPerCollaborator){
 			commits += commitsPerCollaborator[key]
+		}
+
+		var helpArr=[]
+		var i=0
+		for (var key in commitsPerCollaborator){
+			helpArr[i]={name:key, value:commitsPerCollaborator[key]}
+			i++
+		}
+
+		helpArr.sort(function (a, b) {
+  			return a.value-b.value
+			});
+
+		var sortedCommits=new Object
+		for (var i in helpArr) {
+			Object.defineProperty(sortedCommits, helpArr[i].name, {value: helpArr[i].value, configurable: true, writable: true, enumerable: true })
 		}
 
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
