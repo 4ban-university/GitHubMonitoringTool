@@ -281,7 +281,7 @@
                 <section class="mdl-layout__tab-panel" id="scroll-tab-6">
                     <div class="page-content">
                         <!-- Your content goes here -->
-                        <div class="comment" id="commentSection">
+                        <div class="comment" id="commentSection" align="center">
                             <h2>Comment</h2>
                             <form action="" method="GET">
                                 <div class="mdl-textfield mdl-js-textfield" margin>

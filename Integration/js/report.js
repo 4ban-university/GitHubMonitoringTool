@@ -58,7 +58,7 @@ function filter(){
 
 function report(){
 
-	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
+	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
 	document.getElementById('issuesCanvas').innerHTML += "<canvas id='issuesPerCollaborator' class='visible'></canvas>"
 	document.getElementById('commentsCanvas').innerHTML += "<canvas id='commentsPerCollaborator' class='visible'></canvas>"
 
@@ -82,14 +82,14 @@ function report(){
 	};
 	document.getElementById('barCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('commitsCanvas').style.width="60%"
+	        document.getElementById('commitsCanvas').style.width="50%"
 			commitsPerCollaborator_chart.destroy();
 	        commitsPerCollaborator(repo.commits, 'bar');
 	    }
 	};
 	document.getElementById('lineCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('commitsCanvas').style.width="70%"
+	        document.getElementById('commitsCanvas').style.width="50%"
 			commitsPerCollaborator_chart.destroy();
 	        commitsPerCollaborator(repo.commits, 'line');
 	    }
@@ -111,14 +111,14 @@ function report(){
 	};
 	document.getElementById('barIPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('issuesCanvas').style.width="60%"
+	        document.getElementById('issuesCanvas').style.width="50%"
 	        issuesPerCollaborator_chart.destroy();
 	        issuesPerCollaborator(repo.issues,'bar');
 	    }
 	};
 	document.getElementById('lineIPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('issuesCanvas').style.width="70%"
+	        document.getElementById('issuesCanvas').style.width="50%"
 	        issuesPerCollaborator_chart.destroy();
 	        issuesPerCollaborator(repo.issues,'line');
 	    }
@@ -140,14 +140,14 @@ function report(){
 	};
 	document.getElementById('barCoPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('commentsCanvas').style.width="60%"
+	        document.getElementById('commentsCanvas').style.width="50%"
 	    	commentsPerCollaborator_chart.destroy();
 	        commentsPerCollaborator(repo.comments, 'bar');
 	    }
 	};
 	document.getElementById('lineCoPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('commentsCanvas').style.width="70%"
+	        document.getElementById('commentsCanvas').style.width="50%"
 	    	commentsPerCollaborator_chart.destroy();
 	        commentsPerCollaborator(repo.comments, 'line');
 	    }

@@ -1,31 +1,30 @@
 repo.weeklyInfo.then(function(weeklyInfo){
-	var names = [];
+	var names = []
 	for (var name in weeklyInfo[weeklyInfo.length-1]){
-		names.push(name);
+		names.push(name)
 	}
 	var individual_commitsPerCollaborator_chart=[];	
-	var ctx_commitsPerCollaborator=[];
-	var commitsPerCollaborator_data=[];
-	var commitsPerCollaborator_options=[];
-	var data=[];
+	var ctx_commitsPerCollaborator=[]
+	var commitsPerCollaborator_data=[]
+	var commitsPerCollaborator_options=[]
+	var data=[]
 	for (var name in names){
-		var page = '<h3>'+ names[name] + '</h3>';
-			page += '<div class="chart" id="individual'+name+'_commitsChart">';
-		page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>';
-		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">';
+        var page = '<h3>'+ names[name] + '</h3>';
+        page += '<div class="chart" id="individual'+name+'_commitsChart">';
+		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">'
 		page += '<div class="ChartType" style="display:block"> \
-					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" checked>Line \
-					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" >Bar \
-				</div>';
-		page +='</div>';
-		page += '<hr width="95%" size="5" color="#454545">';
-		page += '</div>';
-		document.getElementById('report_individually').innerHTML += page;
+					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked>Line \
+					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' >Bar \
+				</div>'
+		page +='</div>'
+		page += '<hr width="95%" size="5" color="#454545">'
+		page += '</div>'
+		document.getElementById('report_individually').innerHTML += page
 		var dataForCollaborator = [];
 		for (var week in weeklyInfo){
 			dataForCollaborator.push(weeklyInfo[week][names[name]])
 		}
-		data[name]=dataForCollaborator;
+		data[name]=dataForCollaborator
 		
 		individual_tables(name, names[name], dataForCollaborator);
 		
@@ -74,7 +73,7 @@ function individual_tables(num, name, info){
 		for (var key in info){
 			com += info[key]
 	}
-	var table = '<table class="tbl">'
+	var table = '<h3>'+name+'</h3><br><table class="tbl">'
 	table +='<tr class="tr_s"><th class="th_s">Name</th>'
 	var w
 	for (var week in info){
@@ -126,46 +125,32 @@ function individual_report(data, individual_commitsPerCollaborator_chart, ctx_co
         	options: commitsPerCollaborator_options[i]
     	});
 
+		
 	}
 
+	for (var i=0; i<data.length-1; i++) {
+		document.getElementById('individual'+i+'_barCPC').onclick = function() {
+	    if ( this.checked ) {
+	    	var chartNumber=parseInt($(this).attr("chartNumber"))
+	       // document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
+			individual_commitsPerCollaborator_chart[chartNumber].destroy();
+	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'bar', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
+	    }
+	};
+	document.getElementById('individual'+i+'_lineCPC').onclick = function() {
+	    if ( this.checked ) {
+	    	var chartNumber=parseInt($(this).attr("chartNumber"))
+	       // document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
+			individual_commitsPerCollaborator_chart[chartNumber].destroy();
+	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
+	    }
+	};
+	}
 
 
 }
 
-function individual_report1(num, info, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options){
-
-	num=parseInt(num)
-	document.getElementById('individual'+num+'_commitsCanvas').innerHTML += "<canvas id='individual"+num+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
-	ctx_commitsPerCollaborator[num] = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
-	commitsPerCollaborator_data[num] = individual_commitsPerCollaboratorTransformation(info);
-	commitsPerCollaborator_options[num] = {}
-	individual_commitsPerCollaborator_chart[num] = new Chart(ctx_commitsPerCollaborator[num], {
-        type: 'line',
-        data: commitsPerCollaborator_data[num],
-        options: commitsPerCollaborator_options[num]
-    });
-
-
-	//individual_commitsPerCollaborator(num, info, 'line');
-
-	// document.getElementById('individual'+num+'_barCPC').onclick = function() {
-	//     if ( this.checked ) {
-	//         document.getElementById('individual'+num+'_commitsCanvas').style.width="50%"
-	// 		//individual_commitsPerCollaborator_chart.destroy();
-	//         individual_commitsPerCollaborator(num, info, 'bar');
-	//     }
-	// };
-	// document.getElementById('individual'+num+'_lineCPC').onclick = function() {
-	//     if ( this.checked ) {
-	//         document.getElementById('individual'+num+'_commitsCanvas').style.width="50%"
-	// 		//individual_commitsPerCollaborator_chart.destroy();
-	//         individual_commitsPerCollaborator(num, info, 'line');
-	//     }
-	// };
-};
-
-
-function individual_commitsPerCollaborator(num, info, chartType){
+function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart){
 	
 	num=parseInt(num)
 	ctx_commitsPerCollaborator[num] = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
