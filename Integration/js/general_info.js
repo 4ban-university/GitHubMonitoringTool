@@ -11,11 +11,11 @@ function overAllInfo(commits, issues, collaborators, name, description, link){
 	});
 
 	commits.then(function(commits){
-		document.getElementById("commits").innerHTML += '<span class="mdl-badge" data-badge="'+commits+'">Total commits</span>';
+		document.getElementById("commits").innerHTML = '<span class="mdl-badge" data-badge="'+commits+'">Total commits </span>';
 	});
 
 	issues.then(function(issues){
-		document.getElementById('issues').innerHTML += '<span class="mdl-badge" data-badge="'+issues+'">Total issues</span>';
+		document.getElementById('issues').innerHTML = '<span class="mdl-badge" data-badge="'+issues+'">Total issues </span>';
 	});
 
 	document.getElementById('repo_name').innerHTML += name;
