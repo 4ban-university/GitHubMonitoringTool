@@ -11,10 +11,10 @@
         $repoName = $_GET['name'];
         $owner = $_GET['owner'];
         echo "<script> 
-    var auth = {token: '$token'};
-    var owner = '$owner';
-    var repoName = '$repoName';
-</script>";
+        var auth = {token: '$token'};
+        var owner = '$owner';
+        var repoName = '$repoName';
+    </script>";
     }
     else
         header("admin.php");
@@ -63,7 +63,6 @@
 	<script src="js/general_info.js" defer></script>
 	<script src="js/report.js" defer></script>
 	<script src="js/report_weekly.js" defer></script>
-    <script src="js/report_individually.js" defer></script>
 	<script src="js/burndown.js" defer></script>
     <script src="js/commentSection.js" defer></script>
 
@@ -132,135 +131,122 @@
 				<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
 					<a href="#scroll-tab-1" class="mdl-layout__tab is-active">General info</a>
 					<a href="#scroll-tab-2" class="mdl-layout__tab">Overall Report</a>
-					<a href="#scroll-tab-3" class="mdl-layout__tab">Weekly report</a>
-                    <a href="#scroll-tab-4" class="mdl-layout__tab">Individual activity report</a>
-                    <a href="#scroll-tab-5" class="mdl-layout__tab">Burndown</a>
-                    <a href="#scroll-tab-6" class="mdl-layout__tab">Comments</a>
+					<a href="#scroll-tab-3" class="mdl-layout__tab">Weekly report</a> 
+					<a href="#scroll-tab-4" class="mdl-layout__tab">Burndown</a>
+                    <a href="#scroll-tab-5" class="mdl-layout__tab">Comments</a>
 					
 
 				</div>
 			</header>
 
-            <main class="mdl-layout__content">
-                <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
-                    <div class="page-content">
-                        <!-- Your content goes here -->
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet" id="repo_description">
-                                <h2 id="repo_name"></h2>
-                            </div>
-                            <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet" id="collaborators"></div>
+			<main class="mdl-layout__content">
+			<section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+				<div class="page-content">
+					<!-- Your content goes here -->
+					<div class="mdl-grid">
+						<div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet" id="repo_description">
+							<h2 id="repo_name"></h2>
+						</div>
+						<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet" id="collaborators"></div>
 
-                        </div>
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <h3>Links to</h3>
+					</div>
+					<div class="mdl-grid">
+						<div class="mdl-cell mdl-cell--6-col">
+							<h3>Links to</h3>
+							
+								<table class="mdl-data-table mdl-js-data-table">
+									<tr>
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="repo_link"></td>									
+									</tr>
+									<tr>
+										<td class="mdl-data-table__cell--non-numeric" width="700px">Project Homepage</td>
+									</tr>
+								</table>
+						</div>
+						<div class="mdl-cell mdl-cell--6-col">
+							<h3>Repository details</h3>
 
-                                <table class="mdl-data-table mdl-js-data-table">
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" width="700px" id="repo_link"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" width="700px">Project Homepage</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <h3>Repository details</h3>
+							<table class="mdl-data-table mdl-js-data-table">
+									<tr>
+										
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="commits"></td>								
+									</tr>
+									<tr>
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="issues"></td>
+									</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="mdl-layout__tab-panel" id="scroll-tab-2">
+				<div class="page-content">
+			    	<!-- Start of all weeks report -->
+					<h1>All weeks report</h1>
+					<p>
+						<input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
+		   				<input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
+		   				<input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
+		   			</p>
 
-                                <table class="mdl-data-table mdl-js-data-table">
-                                    <tr>
+		   			<p>
+						<input type="radio" id="TextData" name="dataDisplayForm" >Show data only in tables<Br>
+				   		<input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
+				   		<input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
+				   	</p>
+			   		<hr>
+					<div class="chart" id="commitsChart">
+						<h2>Number of commits per collaborator</h2>
+						<div class="dataTable" id="commitsTable"></div>
+						<div class="canvas" id="commitsCanvas">
+							<div class="ChartType">
+								<input type="radio" id="doughnutCPC" name="chartType1" checked>Doughnut
+				   				<input type="radio" id="pieCPC" name="chartType1" >Pie
+				   				<input type="radio" id="barCPC" name="chartType1" >Bar
+				   				<input type="radio" id="lineCPC" name="chartType1" >Line
+							</div>
+							
+						</div>
+						<hr width="95%" size="5" color="#454545">
+					</div>
+					<div class="chart" id="issuesChart">
+						<h2>Number of issues per collaborator</h2>
+						<div class="dataTable" id="issuesTable"></div>
+						<div class="canvas" id="issuesCanvas">
+							<div class="ChartType">
+								<input type="radio" id="doughnutIPC" name="chartType2" checked>Doughnut
+				   				<input type="radio" id="pieIPC" name="chartType2" >Pie
+				   				<input type="radio" id="barIPC" name="chartType2" >Bar
+				   				<input type="radio" id="lineIPC" name="chartType2" >Line
+							</div>
+							
+						</div>
+						<hr width="95%" size="5" color="#454545">
+					</div>
+					<div class="chart" id="commetsChart">
+						<h2>Number of comments per collaborator</h2>
+						<div class="dataTable" id="commentsTable"></div>
+						<div class="canvas" id="commentsCanvas">
+							<div class="ChartType">
+								<input type="radio" id="doughnutCoPC" name="chartType3" checked>Doughnut
+				   				<input type="radio" id="pieCoPC" name="chartType3" >Pie
+				   				<input type="radio" id="barCoPC" name="chartType3" >Bar
+				   				<input type="radio" id="lineCoPC" name="chartType3" >Line
+							</div>
+						</div>
+						<hr width="95%" size="5" color="#454545">
+					</div>
+			    <!-- End of all weeks report -->
+				</div>
+			</section>
+			<section class="mdl-layout__tab-panel" id="scroll-tab-3">
+				<div class="page-content" id="report_weekly">
+					<!-- Start weekly report -->
 
-                                        <td class="mdl-data-table__cell--non-numeric" width="700px" id="commits"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" width="700px" id="issues"></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-2">
-                    <div class="page-content">
-                        <!-- Start of all weeks report -->
-                        <h1>All weeks report</h1>
-                        <p>
-                            <input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
-                            <input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
-                            <input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
-                        </p>
-
-                        <p>
-                            <input type="radio" id="TextData" name="dataDisplayForm" >Show data only in tables<Br>
-                            <input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
-                            <input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
-                        </p>
-                        <hr>
-                        <div class="chart" id="commitsChart">
-                            <h2>Number of commits per collaborator</h2>
-                            <div class="dataTable" id="commitsTable"></div>
-                            <div class="canvas" id="commitsCanvas">
-                                <div class="ChartType">
-                                    <input type="radio" id="doughnutCPC" name="chartType1" checked>Doughnut
-                                    <input type="radio" id="pieCPC" name="chartType1" >Pie
-                                    <input type="radio" id="barCPC" name="chartType1" >Bar
-                                    <input type="radio" id="lineCPC" name="chartType1" >Line
-                                </div>
-
-                            </div>
-                            <hr width="95%" size="5" color="#454545">
-                        </div>
-                        <div class="chart" id="issuesChart">
-                            <h2>Number of issues per collaborator</h2>
-                            <div class="dataTable" id="issuesTable"></div>
-                            <div class="canvas" id="issuesCanvas">
-                                <div class="ChartType">
-                                    <input type="radio" id="doughnutIPC" name="chartType2" checked>Doughnut
-                                    <input type="radio" id="pieIPC" name="chartType2" >Pie
-                                    <input type="radio" id="barIPC" name="chartType2" >Bar
-                                    <input type="radio" id="lineIPC" name="chartType2" >Line
-                                </div>
-
-                            </div>
-                            <hr width="95%" size="5" color="#454545">
-                        </div>
-                        <div class="chart" id="commetsChart">
-                            <h2>Number of comments per collaborator</h2>
-                            <div class="dataTable" id="commentsTable"></div>
-                            <div class="canvas" id="commentsCanvas">
-                                <div class="ChartType">
-                                    <input type="radio" id="doughnutCoPC" name="chartType3" checked>Doughnut
-                                    <input type="radio" id="pieCoPC" name="chartType3" >Pie
-                                    <input type="radio" id="barCoPC" name="chartType3" >Bar
-                                    <input type="radio" id="lineCoPC" name="chartType3" >Line
-                                </div>
-                            </div>
-                            <hr width="95%" size="5" color="#454545">
-                        </div>
-                        <!-- End of all weeks report -->
-                    </div>
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-3">
-                    <div class="page-content" id="report_weekly">
-                        <!-- Start weekly report -->
-
-
-                    </div><!-- End of weekly report -->
-                </section>
-                <section class="mdl-layout__tab-panel" id="scroll-tab-4">
-                    <div class="page-content" id="report_individually">
-                        <!-- Start individual report -->
-                        <h1>Individual activity report</h1>
-                        <p>
-                            <input type="radio" id="individual_TextData" name="individual_dataDisplayForm" >Show data only in tables<Br>
-                            <input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" >Show data only in charts<Br>
-                            <input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" checked>Show data either in tables and charts<Br>
-                        </p><hr>
-
-                    </div><!-- End of individual report -->
-                </section>
-			<section class="mdl-layout__tab-panel" id="scroll-tab-5">
+					
+				</div><!-- End of weekly report -->
+			</section>
+			<section class="mdl-layout__tab-panel" id="scroll-tab-4">
 				<div class="page-content">
 					<!-- Your content goes here -->
 					<div class="chart" id="burndownChart">
@@ -278,7 +264,7 @@
 				</div>
 			</section>
 
-                <section class="mdl-layout__tab-panel" id="scroll-tab-6">
+                <section class="mdl-layout__tab-panel" id="scroll-tab-5">
                     <div class="page-content">
                         <!-- Your content goes here -->
                         <div class="comment" id="commentSection">
