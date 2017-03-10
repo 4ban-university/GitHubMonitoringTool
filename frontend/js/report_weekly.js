@@ -129,44 +129,44 @@ function weekly_tables(weeklyInfo, week){
 };
 
 function weekly_report(weeklyInfo, week){
-	document.getElementById('weekly'+week+'_commitsCanvas').innerHTML += "<canvas id='weekly"+week+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
+	document.getElementById('weekly'+week+'_commitsCanvas').innerHTML += "<canvas id='weekly"+week+"_commitsPerCollaborator' class='visible'></canvas>"
 	//console.log(charts)
-	weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut');
+	weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut', false);
 
 	document.getElementById('weekly'+week+'_doughnutCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%"
 			weekly_commitsPerCollaborator_chart.destroy();
-	        weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut');
+	        weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut', false);
 	    }
 	};
 	document.getElementById('weekly'+week+'_pieCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%"
 			weekly_commitsPerCollaborator_chart.destroy();
-	        weekly_commitsPerCollaborator(weeklyInfo, week, 'pie');
+	        weekly_commitsPerCollaborator(weeklyInfo, week, 'pie', false);
 	    }
 	};
 	document.getElementById('weekly'+week+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="60%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%"
 			weekly_commitsPerCollaborator_chart.destroy();
-	        weekly_commitsPerCollaborator(weeklyInfo, week, 'bar');
+	        weekly_commitsPerCollaborator(weeklyInfo, week, 'bar', false);
 	    }
 	};
 	document.getElementById('weekly'+week+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="70%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%"
 			weekly_commitsPerCollaborator_chart.destroy();
-	        weekly_commitsPerCollaborator(weeklyInfo, week, 'line');
+	        weekly_commitsPerCollaborator(weeklyInfo, week, 'line', true);
 	    }
 	};
 };
 	
-function weekly_commitsPerCollaborator(weeklyInfo, week, chartType, charts){
+function weekly_commitsPerCollaborator(weeklyInfo, week, chartType, labels){
 	var ctx_commitsPerCollaborator = document.getElementById('weekly'+week+'_commitsPerCollaborator').getContext("2d");
 	//Data and options for commits per collaborator
-	var commitsPerCollaborator_data = weekly_commitsPerCollaboratorTransformation(weeklyInfo);
+	var commitsPerCollaborator_data = weekly_commitsPerCollaboratorTransformation(weeklyInfo, labels);
 	var commitsPerCollaborator_options = {}
 	// commitsPerCollaborator_chart = new Chart
 	weekly_commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
@@ -177,10 +177,16 @@ function weekly_commitsPerCollaborator(weeklyInfo, week, chartType, charts){
     });
 };
 
-function weekly_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
+function weekly_commitsPerCollaboratorTransformation (commitsPerCollaborator_data, labels_need){
 	var keyNum=0
-	var labels=[]
-	var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
+	if (labels_need == true){
+		var labels=[]
+		var colors = '#36A2EB'
+	}
+	else{
+		var labels=[]
+		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
+	}
 	for (var key in commitsPerCollaborator_data) {
 		labels[keyNum]=key
 		keyNum++
@@ -199,6 +205,7 @@ function weekly_commitsPerCollaboratorTransformation (commitsPerCollaborator_dat
 		datasets: [
         {
             data: data,
+            label: "Activity",
             backgroundColor: colors,
             hoverBackgroundColor: colors
         }]

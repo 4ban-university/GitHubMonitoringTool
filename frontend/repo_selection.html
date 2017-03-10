@@ -257,11 +257,14 @@
 			<section class="mdl-layout__tab-panel" id="scroll-tab-6">
                     <div class="page-content">
                         <!-- Your content goes here -->
-                        <div class="comment" id="commentSection">
+                        <div class="comment" id="commentSection" align="center">
                             <h2>Comment</h2>
                             <form action="" method="GET">
-                                <textarea rows="25" cols="100" name="comment">Enter text here...</textarea>
-                                <input type="button" name="submit" value='comment' onClick="submitComment(this.form)">
+                                <div class="mdl-textfield mdl-js-textfield gray" margin>
+                                	<textarea class="mdl-textfield__input" rows= "10" id="ta-comments" name="comment"></textarea>
+                                	<label class="mdl-textfield__label" for="ta-comments">Enter your comment here...</label>
+                                </div><br>
+                                <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" name="submit" value='comment' onClick="submitComment(this.form)">
                             </form>
                         </div>
                     </div>
