@@ -149,14 +149,14 @@ function weekly_report(weeklyInfo, week){
 	};
 	document.getElementById('weekly'+week+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="60%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%"
 			weekly_commitsPerCollaborator_chart.destroy();
 	        weekly_commitsPerCollaborator(weeklyInfo, week, 'bar');
 	    }
 	};
 	document.getElementById('weekly'+week+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="70%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%"
 			weekly_commitsPerCollaborator_chart.destroy();
 	        weekly_commitsPerCollaborator(weeklyInfo, week, 'line');
 	    }
