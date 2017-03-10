@@ -9,10 +9,10 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	var commitsPerCollaborator_options=[]
 	var data=[]
 	for (var name in names){
-		var page = '<div class="chart" id="individual'+name+'_commitsChart">'
+		var page = '<div class="chart_in" id="individual'+name+'_commitsChart">'
 		page += '<h3>'+names[name]+'</h3><br>'
-		page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>'
-		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">'
+		page += '<div class="dataTable_in" id="individual'+name+'_commitsTable"></div>'
+		page += '<div class="canvas_in" id="individual'+name+'_commitsCanvas">'
 		page += '<div class="ChartType" style="display:block"> \
 					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked>Line \
 					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' >Bar \

@@ -152,7 +152,7 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	document.getElementById('weekly'+week+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
 	        weekly_commitsPerCollaborator(weeklyInfo, week, 'bar', false, weekly_commitsPerCollaborator_chart);
 	    }
@@ -160,7 +160,7 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	document.getElementById('weekly'+week+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%"
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
 	        weekly_commitsPerCollaborator(weeklyInfo, week, 'line', true, weekly_commitsPerCollaborator_chart);
 	    }
