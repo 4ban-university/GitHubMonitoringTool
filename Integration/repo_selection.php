@@ -56,7 +56,12 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/additional.css">
 
-	<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" defer></script>
+	<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" ></script>
+        <?php
+        echo " <script>var git = new GitHub(auth);
+            var user = git.getUser();</script>";
+        ?>
+        <script src="js/test.js" defer></script>
 	<script src="js/Chart.bundle.js" defer></script>
 	<script src="js/repo.js" defer></script>
 	<script src="js/init.js" defer></script>

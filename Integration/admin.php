@@ -2,7 +2,8 @@
 session_start();
 ?>
 <?php require_once 'php/vendor/autoload.php';
-if(isset($_GET['code'])) {
+if(isset($_GET['code']) && !isset($_SESSION['token'])) {
+    echo 'h';
     $code = $_GET['code'];
     $c = new GuzzleHttp\Client();
     // Create a POST request
@@ -59,7 +60,13 @@ echo "<script> var auth = {token: '$token'};</script>";
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/material.min.js"></script>
 
-        <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" defer></script>
+        <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+        <?php
+        echo " <script>var git = new GitHub(auth);
+            var user = git.getUser();
+            var repoList = new Array();</script>";
+        ?>
+        <script src="js/test.js" defer></script>
         <script src="js/repo.js" defer></script>
         <script src="js/repo_list.js" defer></script>
         
@@ -112,6 +119,7 @@ echo "<script> var auth = {token: '$token'};</script>";
                     <button class="mdl-button mdl-js-button mdl-button--primary" id="show-action">
                         <i class="material-icons">add</i><span>Repo</span>
                     </button>
+                    <div id="repoSelection"></div>
                     <div class="mdl-layout-spacer"></div>
                     <a class="mdl-navigation__link" href="#">
                         <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>
@@ -126,4 +134,5 @@ echo "<script> var auth = {token: '$token'};</script>";
             </main>
         </div>
     </body>
+    <script src="js/test.js"></script>
 </html>
