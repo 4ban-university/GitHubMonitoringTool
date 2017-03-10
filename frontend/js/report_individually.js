@@ -28,11 +28,8 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		data[name]=dataForCollaborator
 		
 		individual_tables(name, names[name], dataForCollaborator);
-		
-		//individual_report(name, data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
-		//console.log(individual_commitsPerCollaborator_chart)
+	
 	}
-	//console.log(names)
 	individual_filter(name);
 	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
@@ -73,7 +70,8 @@ function individual_tables(num, name, info){
 	var com = 0;
 		for (var key in info){
 			com += info[key]
-	}
+		}
+
 	var table = '<table class="tbl">'
 	table +='<tr class="tr_s"><th class="th_s">Name</th>'
 	var w
