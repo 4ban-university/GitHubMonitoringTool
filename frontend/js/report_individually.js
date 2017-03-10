@@ -175,7 +175,7 @@ function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerC
 function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
 	var keyNum=0
 	var labels=[]
-	var colors = '#FF6384'
+	var colors = '#14CCCC'
 	var k;
 	for (var key in commitsPerCollaborator_data) {
 		k = parseInt(key)+1
@@ -196,6 +196,7 @@ function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator
 		datasets: [
         {
             data: data,
+            label: 'Activity',
             backgroundColor: colors,
             hoverBackgroundColor: colors
         }]
