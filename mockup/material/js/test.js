@@ -112,12 +112,24 @@ function getRepoList() {
 /*
     Tracks changes in the checkbox when the add repo modal is open and pushes the changes to the JSON file
 */
-$('#repoSelection').change(function() {
-    console.log("i am here");
-    //console.log($( this ).prop("checked").val());
-});
+function getCheckedRepo(){
+    
+    var checkedObj = $('.is-checked .mdl-checkbox__label');
+    var repoArray = [];
+    
+    
+    for(var i = 0; i < checkedObj.length; i++) {
+        repoArray.push(checkedObj[i].innerHTML);
+    }
+    console.log(repoArray);
+    
+    writeToJSON(repoArray);
+    location.reload();
+}
 
-
+//$(document.body).on('shown',function() {
+//    getCheckedRepo();
+//});
 /* 
     Modal Library -- Do not modify!
 */
@@ -191,9 +203,9 @@ function showDialog(options) {
                     return false;
                 }
             }, options.positive);
-            var posButton = $('<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="' + options.positive.id + '">' + options.positive.title + '</button>');
+            var posButton = $('<button onclick="getCheckedRepo()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="' + options.positive.id + '">' + options.positive.title + '</button>');
             posButton.click(function (e) {
-                e.preventDefault();
+               // e.preventDefault();
                 if (!options.positive.onClick(e))
                     hideDialog(dialog)
             });
