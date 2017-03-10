@@ -10,6 +10,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	var data=[]
 	for (var name in names){
 		var page = '<div class="chart" id="individual'+name+'_commitsChart">'
+		page += '<h3>'+names[name]+'</h3><br>'
 		page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>'
 		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">'
 		page += '<div class="ChartType" style="display:block"> \
@@ -73,7 +74,7 @@ function individual_tables(num, name, info){
 		for (var key in info){
 			com += info[key]
 	}
-	var table = '<h3>'+name+'</h3><br><table class="tbl">'
+	var table = '<table class="tbl">'
 	table +='<tr class="tr_s"><th class="th_s">Name</th>'
 	var w
 	for (var week in info){
