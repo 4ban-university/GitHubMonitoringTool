@@ -116,16 +116,28 @@ function weekly_filter(weeklyInfo, week){
 };
 
 function weekly_tables(weeklyInfo, week){
+	var sortedWeeklyInfo=sortData(weeklyInfo)
 	var activity = 0
 	for (var key in weeklyInfo){
 		activity+=weeklyInfo[key]
 	}
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity</th><th class='th_s'>Percentage</th></tr>"
+	var table = "<div class='sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>sort</div><table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity</th><th class='th_s'>Percentage</th></tr>"
 	for (var key in weeklyInfo) {
 		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+weeklyInfo[key]+"</td><td class='td_s'>"+Math.round(weeklyInfo[key]*100/activity)+"%</td></tr>"
 	}
 	table+="</table>"
 	document.getElementById('weekly'+week+'_commitsTable').innerHTML += table;
+
+	$(".sortWeekly"+week).click(function(){
+		$(this).parents(".dataTable").find(".tbl").remove()
+		var tableID=$(this).parents(".dataTable").attr("id")
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity</th><th class='th_s'>Percentage</th></tr>"
+			for (var key in sortedWeeklyInfo) {
+				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedWeeklyInfo[key]+"</td><td class='td_s'>"+Math.round(sortedWeeklyInfo[key]*100/activity)+"%</td></tr>"
+			}
+			table+="</table>"
+			$(this).parents(".dataTable").append(table);
+	})
 };
 
 function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
