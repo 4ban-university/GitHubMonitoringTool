@@ -64,7 +64,7 @@ echo "<script> var repoList = $repoList ;</script>";
         <script src="js/jquery-3.1.1.min.js"></script>
         <script src="js/material.min.js"></script>
 
-        <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+        <script src="js/GitHub.bundle.js"></script>
 
         <script src="js/repo.js" defer></script>
         <script src="js/repo_list.js" defer></script>

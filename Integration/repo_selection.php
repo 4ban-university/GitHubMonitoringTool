@@ -58,7 +58,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/additional.css">
 
-	<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" ></script>
+	<script src="js/GitHub.bundle.js" ></script>
 
         <script src="js/repo_list.js" defer></script>
         <script src="js/test.js" defer></script>
