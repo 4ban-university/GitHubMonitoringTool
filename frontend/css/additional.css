@@ -65,6 +65,14 @@
   min-width: 200pt;
   max-width: 300pt;
 }
+.weekly_radio{
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10pt 10pt 10pt;
+  padding: 1pt 10pt 1pt 10pt;
+  min-width: 200pt;
+  max-width: 300pt;
+}
 .collaborators{
 	padding: 5px 5px 5px 5px;
 	margin: 5px 5px 5px 5px;
@@ -140,6 +148,12 @@
   color: #232323;
 }
 .sortComments{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.sortWeek{
   border-radius: 5px;
   padding: 3pt 5pt 3pt 5pt;
   background-color: #b3d4fc;
