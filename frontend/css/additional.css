@@ -41,11 +41,14 @@
   border: 1px solid #ff0000;*/
 }
 .dataTable_in{
-
+  width:100%;
+  overflow-x: auto;
 }
 .chart_in{
-  width:100%;
-  margin: 20pt 0px 0px 20px;
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10px 10px 10px;
+  padding:10pt 10pt 10pt 10pt;
 }
 .canvas_in{
   width: 30%;
@@ -53,6 +56,14 @@
 }
 .burndownCanvas{
 	width: 96%;
+}
+.ind_radio{
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10pt 10pt 10pt;
+  padding: 1pt 10pt 1pt 10pt;
+  min-width: 200pt;
+  max-width: 300pt;
 }
 .collaborators{
 	padding: 5px 5px 5px 5px;
@@ -82,11 +93,29 @@
 .tr_s:nth-child(even) {
     background-color: #dddddd;
 }
+
+.indr_tbl {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  background-color: #b3d4fc;
+  width:100%;
+}
+.indr_td_s, .indr_th_s {
+  border: 1px solid #f3f3f3;
+  text-align: left;
+  min-width: 100px;
+  padding: 8px;
+}
+.indr_tr_s:nth-child(even) {
+    background-color: #dddddd;
+}
+
 .ChartType{
 	border: 1px solid #dddddd;
-	background: #424242;
+  padding: 5pt 10pt 5pt 10pt;
+	background: #b3d4fc;
 	border-radius: 3px;
-	color: #ffffff;
+	color: #232323;
 }
 .mdl-layout-back{
 	display: block;
