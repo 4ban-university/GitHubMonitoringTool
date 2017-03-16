@@ -16,9 +16,9 @@
 }
 
 .chart{
-	width:100%;
-  margin-right: 5px
-  margin-left: 5px;
+  border-radius: 5px;
+  margin: 10pt 10px 10px 10px;
+  padding:10pt 10pt 10pt 10pt;
 }
 .dataTable{
   width:48%;
@@ -109,7 +109,6 @@
 .indr_tr_s:nth-child(even) {
     background-color: #dddddd;
 }
-
 .ChartType{
 	border: 1px solid #dddddd;
   padding: 5pt 10pt 5pt 10pt;
@@ -128,7 +127,36 @@
     box-sizing: border-box;
     padding-right: 10px;
 }
-
+.sortCommits{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.sortIssues{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.sortComments{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.over_radio{
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10pt 10pt 10pt;
+  padding: 1pt 10pt 1pt 10pt;
+  min-width: 200pt;
+  max-width: 300pt;
+  float:left;
+}
+.over_filters{
+  width:100%;
+}
 .wrapper {
   margin: 0px auto;
   width: 100%;
