@@ -9,8 +9,8 @@
 
     <title>Login template</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../public/css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -37,7 +37,7 @@
                         <div class="col-md-12 padding-no-left-right">
 
                             <button class="btn btn-lg btn-success btn-block" type="submit">
-                                <a href="https://github.com/login/oauth/authorize?client_id=7e84f9e2e7d65f484caa&scope=user public_repo repo repo_deployment gist read write admin&redirect_uri=http://debiancp.local/SOEN341/Integration/admin.php;">
+                                <a href="https://github.com/login/oauth/authorize?client_id=aa4b1b744188bfdc5bea&scope=user public_repo repo repo_deployment gist read write admin&redirect_uri=http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/admin.php;">
                                     Sign in with GitHub</a></button>
                         </div>
 
@@ -50,8 +50,8 @@
 
 </div>
 
-<script src="../public/js/jquery-3.1.1.min.js"></script>
-<script src="../public/js/bootstrap.min.js"></script>
-<script src="../public/js/ie10-viewport-bug-workaround.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
