@@ -8,9 +8,11 @@
   "author": "SOEN341-G4",
   "version": "1.0.0",
   "devDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "mocha": "*"
   },
   "scripts": {
-    "test": "eslint frontend/js"
+    "test": "eslint frontend/js",
+    "mocha": "mocha"
   }
 }
