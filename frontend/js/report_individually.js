@@ -9,16 +9,16 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	var commitsPerCollaborator_options=[]
 	var data=[]
 	for (var name in names){
-		var page = '<div class="chart" id="individual'+name+'_commitsChart">'
+		var page = '<div class="chart_in" id="individual'+name+'_commitsChart">'
 		page += '<h3>'+names[name]+'</h3><br>'
-		page += '<div class="dataTable" id="individual'+name+'_commitsTable"></div>'
-		page += '<div class="canvas" id="individual'+name+'_commitsCanvas">'
+		page += '<div class="dataTable_in" id="individual'+name+'_commitsTable"></div>'
+		page += '<div class="canvas_in" id="individual'+name+'_commitsCanvas">'
 		page += '<div class="ChartType" style="display:block"> \
 					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked>Line \
 					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' >Bar \
 				</div>'
 		page +='</div>'
-		page += '<hr width="95%" size="5" color="#454545">'
+		page += '<hr width="100%" size="5" color="#454545">'
 		page += '</div>'
 		document.getElementById('report_individually').innerHTML += page
 		var dataForCollaborator = [];
@@ -28,11 +28,8 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		data[name]=dataForCollaborator
 		
 		individual_tables(name, names[name], dataForCollaborator);
-		
-		//individual_report(name, data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
-		//console.log(individual_commitsPerCollaborator_chart)
+	
 	}
-	//console.log(names)
 	individual_filter(name);
 	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
@@ -73,18 +70,19 @@ function individual_tables(num, name, info){
 	var com = 0;
 		for (var key in info){
 			com += info[key]
-	}
-	var table = '<table class="tbl">'
-	table +='<tr class="tr_s"><th class="th_s">Name</th>'
+		}
+
+	var table = '<table class="indr_tbl">'
+	table +='<tr class="indr_tr_s"><th class="indr_th_s">Name</th>'
 	var w
 	for (var week in info){
 		w = parseInt(week)+1
-		table += '<th class="th_s">Week '+w+'</th>'
+		table += '<th class="indr_th_s">Week '+w+'</th>'
 	}
-	table +='</tr><tr class="tr_s">'
-	table +='<td class="td_s">'+name+'</td>'
+	table +='</tr><tr class="indr_tr_s">'
+	table +='<td class="indr_td_s">'+name+'</td>'
 	for (var key in info) {
-		table+="<td class='td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/com)+"%</span></td>"
+		table+="<td class='indr_td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/com)+"%</span></td>"
 	}
 	table+="</tr></table>"
 	document.getElementById('individual'+num+'_commitsTable').innerHTML += table;
