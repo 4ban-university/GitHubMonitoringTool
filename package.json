@@ -11,6 +11,6 @@
     "jshint": "^2.8.0"
   },
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint ./tests"
+    "test": "./node_modules/jshint/bin/jshint ./tests ./frontend/js"
   }
 }
