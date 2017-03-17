@@ -8,7 +8,8 @@
   "author": "SOEN341-G4",
   "version": "1.0.0",
   "devDependencies": {
-    "jshint": "^2.8.0"
+    "jshint": "^2.8.0",
+    "mocha": "0.3.x"
   },
   "jshintConfig": {
     "asi": false,
