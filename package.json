@@ -11,7 +11,8 @@
     "jshint": "^2.8.0"
   },
   "jshintConfig": {
-    "asi": true
+    "asi": true,
+    "boss": true,
   },
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint ./tests ./frontend/js"
