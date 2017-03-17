@@ -12,7 +12,7 @@
   },
   "jshintConfig": {
     "asi": true,
-    "boss": true,
+    "boss": true
   },
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint ./tests ./frontend/js"
