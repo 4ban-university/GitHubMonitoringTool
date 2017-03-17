@@ -16,6 +16,6 @@
   },
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint ./frontend/js",
-    "test1": "./node_modules/jshint/bin/jshint ./tests"
+    "unit_test": "./node_modules/mocha/bin/mocha"
   }
 }
