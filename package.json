@@ -1,0 +1,16 @@
+{
+  "name": "SOEN341-G4",
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "description": "Github monitoring tool",
+  "author": "Dmitry Kryukov",
+  "version": "1.0.0",
+  "devDependencies": {
+    "jshint": "^2.8.0"
+  },
+  "scripts": {
+    "test": "./node_modules/jshint/bin/jshint ./tests"
+  }
+}
