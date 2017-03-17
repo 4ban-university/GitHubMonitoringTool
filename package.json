@@ -8,18 +8,9 @@
   "author": "SOEN341-G4",
   "version": "1.0.0",
   "devDependencies": {
-    "jshint": "^2.8.0",
-    "phantomjs":"*",
-    "http-server": "*",
-    "casperjs": "*"
-  },
-  "jshintConfig": {
-    "asi": false,
-    "boss": false
+    "eslint": "*"
   },
   "scripts": {
-    "start": "./node_modules/http-server/bin/http-server",
-    "test": "./node_modules/casperjs/bin/casperjs test ./tests",
-    "unit_test": "./node_modules/jshint/bin/jshint ./frontend/js"
+    "test": "./node_modules/eslint/bin/eslint.js ./frontend/js"
   }
 }
