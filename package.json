@@ -15,7 +15,7 @@
     "boss": false
   },
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint ./frontend/js"
+    "test": "./node_modules/jshint/bin/jshint ./frontend/js",
     "test1": "./node_modules/jshint/bin/jshint ./tests"
   }
 }
