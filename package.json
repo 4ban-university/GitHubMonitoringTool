@@ -5,7 +5,7 @@
     "url": "#"
   },
   "description": "Github monitoring tool",
-  "author": "Dmitry Kryukov",
+  "author": "SOEN341-G4",
   "version": "1.0.0",
   "devDependencies": {
     "jshint": "^2.8.0"
