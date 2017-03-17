@@ -1,20 +1,12 @@
-function nextPrime(n) {
-  var smaller;
-  n = Math.floor(n);
-
-  if (n >= 2) {
-    smaller = 1;
-    while (smaller * smaller <= n) {
-      n++;
-      smaller = 2;
-      while ((n % smaller > 0) && (smaller * smaller <= n)) {
-        smaller++;
-      }
-    }
-    return n;
-  } else {
-    return 2;
-  }
-}
-
-module.exports.nextPrime = nextPrime;
+casper.test.begin('Testing index page', 1, function (test) {
+  casper
+    .start('http://localhost:8080')
+    .then(function () {
+      this.echo('Text appearing', 'COMMENT');
+      this.click('.action');
+      test.assertExists('.text', 'Text is appearing after click');
+    })
+    .run(function () {
+      test.done()
+    });
+});

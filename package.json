@@ -9,14 +9,17 @@
   "version": "1.0.0",
   "devDependencies": {
     "jshint": "^2.8.0",
-    "mocha": "0.3.x"
+    "phantomjs":"*",
+    "http-server": "*",
+    "casperjs": "*"
   },
   "jshintConfig": {
     "asi": false,
     "boss": false
   },
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint ./frontend/js",
-    "unit_test": "./node_modules/mocha/bin/mocha ./tests"
+    "start": "./node_modules/http-server/bin/http-server",
+    "test": "./node_modules/casperjs/bin/casperjs test ./tests",
+    "unit_test": "./node_modules/jshint/bin/jshint ./frontend/js"
   }
 }
