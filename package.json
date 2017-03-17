@@ -11,6 +11,6 @@
     "eslint": "*"
   },
   "scripts": {
-    "test": "./node_modules/eslint/bin/eslint.js ./frontend/js"
+    "test": "eslint frontend/js"
   }
 }
