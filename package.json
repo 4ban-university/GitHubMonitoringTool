@@ -16,6 +16,6 @@
   },
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint ./frontend/js",
-    "testOriginal": "./node_modules/jshint/bin/jshint ./tests"
+    "test": "./node_modules/jshint/bin/jshint ./tests"
   }
 }
