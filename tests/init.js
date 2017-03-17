@@ -1,1 +1,1 @@
-conole.log("hello");
+conole.log("hello")
