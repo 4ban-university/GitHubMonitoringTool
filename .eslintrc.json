@@ -4,7 +4,8 @@
         "$": true
     },
     "env": {
-        "browser": false,
+        "browser": true,
+        "commonjs": true,
         "node": true
     },
     "parserOptions": {
@@ -15,7 +16,11 @@
         }
     },
     "rules": {
-        "semi": 2,
-        "quotes": [1, "double"]
+        "semi": 1,
+        "quotes": 1,
+        "no-console": 0,
+        "comma-dangle": 0,
+        "no-unused-vars":1,
+        "no-constant-condition":0
     }
 }
