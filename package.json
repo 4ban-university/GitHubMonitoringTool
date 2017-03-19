@@ -9,13 +9,13 @@
   "version": "0.0.1",
   "devDependencies": {
     "eslint": "*",
-    //"mocha": "*",
-    //"github-api": "*",
-    //"chai": "*",
-    //"chai-as-promised": "*"
+    "mocha": "*",
+    "github-api": "*",
+    "chai": "*",
+    "chai-as-promised": "*"
   },
   "scripts": {
     "test": "eslint frontend/js",
-    //"mocha": "mocha"
+    "mocha": "mocha"
   }
 }
