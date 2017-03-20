@@ -284,9 +284,9 @@
         </main>
         <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="demo-drawer-header">
-                <img src="images/user.jpg" class="demo-avatar">
+                <span id="avatar-image"></span>
                 <div class="demo-avatar-dropdown">
-                    <span style="padding-top:10px;">hello@example.com</span>
+                    <span id="username" style="padding-top:10px;"></span>
                     <div class="mdl-layout-spacer"></div>
                 </div>
             </header>

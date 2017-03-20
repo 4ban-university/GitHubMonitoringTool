@@ -14,3 +14,12 @@ $.ajax({
 });
 */
 var repo = new Repo(owner,repoName, auth);
+
+user.getProfile().then(function(response){
+    var name = response.data.name;
+    var login = response.data.login;
+    var imageURL = response.data.avatar_url;
+    $("#avatar-image").append(' <img src='+imageURL+' class="demo-avatar">');
+    $("#username").append('<h5>'+ name +'</h5>('+ login + ')');
+
+});
