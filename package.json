@@ -1,0 +1,21 @@
+{
+  "name": "SOEN341-G4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhandal/SOEN341-G4"
+  },
+  "description": "Github monitoring tool",
+  "author": "SOEN341-G4",
+  "version": "0.0.1",
+  "devDependencies": {
+    "eslint": "*",
+    "mocha": "*",
+    "github-api": "*",
+    "chai": "*",
+    "chai-as-promised": "*"
+  },
+  "scripts": {
+    "test": "eslint frontend/js",
+    "mocha": "mocha"
+  }
+}
