@@ -168,21 +168,25 @@
                     <section class="mdl-layout__tab-panel" id="scroll-tab-2">
                         <div class="page-content">
                             <!-- Start of all weeks report -->
-                            <h1>All weeks report</h1>
-                            <p>
-                                <input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
-                                <input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
-                                <input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
-                            </p>
+                            <h2>All weeks report</h2>
+                            <div class="over_filters">
+                                <div class="over_radio">
+                                    <input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
+                                    <input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
+                                    <input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
+                                </div>
 
-                            <p>
-                                <input type="radio" id="TextData" name="dataDisplayForm" >Show data only in tables<Br>
-                                <input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
-                                <input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
-                            </p>
-                            <hr>
-                            <div class="chart" id="commitsChart">
-                                <h2>Number of commits per collaborator</h2>
+                                <div class="over_radio">
+                                    <input type="radio" id="TextData" name="dataDisplayForm" >Show data only in tables<Br>
+                                    <input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
+                                    <input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
+                                </div>
+
+                            </div>
+
+                            <div class="chart" id="commitsChart"  style="clear:left;">
+                                <hr>
+                                <h3>Number of commits per collaborator</h3>
                                 <div class="dataTable" id="commitsTable"></div>
                                 <div class="canvas" id="commitsCanvas">
                                     <div class="ChartType">
@@ -193,10 +197,10 @@
                                     </div>
 
                                 </div>
-                                <hr width="95%" size="5" color="#454545">
                             </div>
-                            <div class="chart" id="issuesChart">
-                                <h2>Number of issues per collaborator</h2>
+                            <div class="chart" id="issuesChart" style="clear:left;">
+                                <hr>
+                                <h3>Number of issues per collaborator</h3>
                                 <div class="dataTable" id="issuesTable"></div>
                                 <div class="canvas" id="issuesCanvas">
                                     <div class="ChartType">
@@ -207,10 +211,10 @@
                                     </div>
 
                                 </div>
-                                <hr width="95%" size="5" color="#454545">
                             </div>
-                            <div class="chart" id="commetsChart">
-                                <h2>Number of comments per collaborator</h2>
+                            <div class="chart" id="commetsChart" style="clear:left;">
+                                <hr>
+                                <h3>Number of comments per collaborator</h3>
                                 <div class="dataTable" id="commentsTable"></div>
                                 <div class="canvas" id="commentsCanvas">
                                     <div class="ChartType">
@@ -220,7 +224,6 @@
                                         <input type="radio" id="lineCoPC" name="chartType3" >Line
                                     </div>
                                 </div>
-                                <hr width="95%" size="5" color="#454545">
                             </div>
                             <!-- End of all weeks report -->
                         </div>
@@ -235,12 +238,12 @@
                     <section class="mdl-layout__tab-panel" id="scroll-tab-4">
                         <div class="page-content" id="report_individually">
                             <!-- Start individual report -->
-                            <h1>Individual activity report</h1>
-                            <p>
+                            <h2>Individual activity report</h2>
+                            <div class="ind_radio">
                                 <input type="radio" id="individual_TextData" name="individual_dataDisplayForm" >Show data only in tables<Br>
                                 <input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" >Show data only in charts<Br>
                                 <input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" checked>Show data either in tables and charts<Br>
-                            </p><hr>
+                            </div><hr>
 
                         </div><!-- End of individual report -->
                     </section>
@@ -248,7 +251,7 @@
                         <div class="page-content">
                             <!-- Your content goes here -->
                             <div class="chart" id="burndownChart">
-                                <h4>Project burndown chart</h4>
+                                <h2>Project burndown chart</h2>
                                 <div class="burndownCanvas" id="burndownCanvas">
                                     <canvas id='burndown' class='visible'></canvas>
                                 </div>
@@ -265,11 +268,11 @@
                         <div class="page-content">
                             <!-- Your content goes here -->
                             <div class="comment" id="commentSection" align="center">
-                                <h2>Comment</h2>
+                                <h3>Comment</h3>
                                 <form action="" method="GET">
                                     <div class="mdl-textfield mdl-js-textfield gray" margin>
                                         <textarea class="mdl-textfield__input" rows= "10" id="ta-comments" name="comment"></textarea>
-                                        <label class="mdl-textfield__label" for="ta-comments">Enter your comment here...</label>
+                                        <label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label>
                                     </div><br>
                                     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" name="submit" value='comment' onClick="submitComment(this.form)">
                                 </form>

@@ -11,8 +11,8 @@ if(isset($_GET['code']) ) {
         'https://github.com/login/oauth/access_token',
         [
             'form_params' => [
-                'client_id' => 'aa4b1b744188bfdc5bea',
-                'client_secret' => 'b2de4848fea9b13995295817da5236cc77744c99',
+                'client_id' => '7e84f9e2e7d65f484caa',
+                'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
                 'code' => $code
             ]
         ]

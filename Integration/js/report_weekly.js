@@ -25,14 +25,14 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	for (var week = 1; week <= weeks; week++){
 		var id = 'tab'+week
 		var page = '<!-- Start of all weeks report --> \
-					<h1>Week '+week+' report for all collaborators</h1> \
-					<p> \
+					<h2>Week '+week+' report for all collaborators</h2> \
+					<div class="weekly_radio"> \
 						<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" >Show data only in tables<Br> \
 						<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" >Show data only in charts<Br> \
 						<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" checked>Show data either in tables and charts<Br> \
-					</p><hr> \
+					</div><hr> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
-						<h2>Activity per collaborator</h2> \
+						<h3>Activity per collaborator</h3> \
 						<div class="dataTable" id="weekly'+week+'_commitsTable"></div> \
 						<div class="canvas" id="weekly'+week+'_commitsCanvas"> \
 							<div class="ChartType" style="display:block"> \
@@ -41,7 +41,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 									<input type="radio" id="weekly'+week+'_barCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Bar \
 									<input type="radio" id="weekly'+week+'_lineCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Line \
 							</div>		 \
-						</div><hr width="95%" size="5" color="#454545"> \
+						</div> \
 					</div> \
 					<!-- End of all weeks report --> '
 		document.getElementById(id).innerHTML += page;
@@ -121,7 +121,7 @@ function weekly_tables(weeklyInfo, week){
 	for (var key in weeklyInfo){
 		activity+=weeklyInfo[key]
 	}
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 	for (var key in weeklyInfo) {
 		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+weeklyInfo[key]+"</td><td class='td_s'>"+Math.round(weeklyInfo[key]*100/activity)+"%</td></tr>"
 	}
@@ -131,7 +131,7 @@ function weekly_tables(weeklyInfo, week){
 	$(".sortWeekly"+week).click(function(){
 		var tableId=$(this).parents(".dataTable").attr("id")
 		$(this).parents(".dataTable").find(".tbl").remove()
-			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 			for (var key in sortedWeeklyInfo) {
 				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedWeeklyInfo[key]+"</td><td class='td_s'>"+Math.round(sortedWeeklyInfo[key]*100/activity)+"%</td></tr>"
 			}
