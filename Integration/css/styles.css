@@ -320,6 +320,7 @@ over write style
   align: center;
   justify-content: center;
 }
+<<<<<<< HEAD
 .mdl-mini-footer {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -341,4 +342,34 @@ over write style
 	    position: absolute;
     width: 100%;
     height: auto !important; 
+}
+=======
+.demo-blog .mdl-mini-footer {
+    margin-top: 80px;
+    height: 120px;
+    padding: 40px;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: white;
+    box-sizing: border-box;
+}
+.mdl-card {
+    min-height: 0;
+}
+
+.mdl-layout__tab-bar {
+    background-color: #37474f !important;
+    width: 100% !important;
+}
+.mdl-mini-footer {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(158, 158, 158);
+    background-color: rgb(66, 66, 66);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    flex-flow: row wrap;
+    padding: 32px 16px;
 }
