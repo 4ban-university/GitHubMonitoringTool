@@ -46,63 +46,42 @@
 
     <body>
     <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark mdl-js-ripple-effect--ignore-events">
-        <header
-                class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
-            <div class="mdl-layout__header-row">
-
-                <span class="mdl-layout-title">Overview</span>
-               
-             
-
-              
-            </div>
-       
-        </header>
+                <h1>Overview</h1>
 	</div>
-<div class="content-grid mdl-grid" >
-	  <div class="mdl-cell">
-	    <!-- add content here -->
-	    
-	    <div class="login-box">      
-<div class="mdl-js-layout">
-	<!-- <main class="mdl-layout__content"> -->
-		<div class="mdl-card mdl-shadow--6dp">
-			<div class="mdl-card__title mdl-color--primary mdl-color-text--white login_mdl">
-				<h2 class="mdl-card__title-text">GitHub Repo Monitoring tool sign in</h2>
-			</div>
-	  	<div class="mdl-card__supporting-text">
-				
-					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="text" id="username" />
-						<label class="mdl-textfield__label" for="username">Username</label>
+	<div class="content-grid mdl-grid">
+		<div class="mdl-cell">
+			<div class="login-box">
+				<div class="mdl-js-layout">
+					<div class="mdl-card mdl-shadow--6dp">
+						<div class="mdl-card__title mdl-color--primary mdl-color-text--white login_mdl">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col">
+									<h2 class="mdl-card__title-text">GitHub Repo Monitoring tool sign in</h2>
+								</div>
+								<div class="mdl-cell mdl-cell--12-col">
+									<a href="https://github.com/login/oauth/authorize?client_id=aa4b1b744188bfdc5bea&scope=user public_repo repo repo_deployment gist read write admin&redirect_uri=http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/admin.php;">
+										<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+												id="login_btn">
+											SIGN IN WITH GITHUB
+										</button>
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="password" id="userpass" />
-						<label class="mdl-textfield__label" for="userpass">Password</label>
-					</div>
-				
-			</div>
-			<!-- #263238 -->
-			<div class="mdl-card__actions mdl-card--border login_mdl">
-				 	<a href="https://github.com/login/oauth/authorize?client_id=aa4b1b744188bfdc5bea&scope=user public_repo repo repo_deployment gist read write admin&redirect_uri=http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/admin.php;">
-				 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="login_btn">
-                       SIGN IN WITH GITHUB
-                    </button></a>
+				</div>
 			</div>
 		</div>
-	<!-- </main> -->
-</div>
-</div>
-	  </div>
-	  <div class="mdl-cell" style="padding:2em; ">
-	    <!-- also here -->
-	    <p>
-	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod aliquet varius. Morbi lobortis egestas leo. Nulla convallis faucibus urna sed dapibus. Nulla ornare hendrerit tortor. In rhoncus, urna ac euismod euismod, turpis ex congue lorem, eget dapibus lorem orci et justo. 
-	
-	    </p>
-	    
-	  </div>
-</div>
+		<div class="mdl-cell" style="padding:2em; ">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod aliquet varius. Morbi lobortis
+				egestas leo. Nulla convallis faucibus urna sed dapibus. Nulla ornare hendrerit tortor. In rhoncus, urna
+				ac euismod euismod, turpis ex congue lorem, eget dapibus lorem orci et justo.
+
+			</p>
+
+		</div>
+	</div>
 
 
 <script src="js/jquery-3.1.1.min.js"></script>

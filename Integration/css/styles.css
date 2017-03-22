@@ -330,4 +330,12 @@ over write style
     background-color: white;
     box-sizing: border-box;
 }
+.mdl-card {
+    min-height: 0;
+}
+
+.mdl-layout__tab-bar {
+    background-color: #37474f !important;
+    width: 100% !important;
+}
  
