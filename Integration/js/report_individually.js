@@ -18,7 +18,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' >Bar \
 				</div>'
 		page +='</div>'
-		page += '<hr width="95%" size="5" color="#454545">'
+		page += '<hr width="100%" size="5" color="#454545">'
 		page += '</div>'
 		document.getElementById('report_individually').innerHTML += page
 		var dataForCollaborator = [];
@@ -72,17 +72,17 @@ function individual_tables(num, name, info){
 			com += info[key]
 		}
 
-	var table = '<table class="tbl">'
-	table +='<tr class="tr_s"><th class="th_s">Name</th>'
+	var table = '<table class="indr_tbl">'
+	table +='<tr class="indr_tr_s"><th class="indr_th_s">Name</th>'
 	var w
 	for (var week in info){
 		w = parseInt(week)+1
-		table += '<th class="th_s">Week '+w+'</th>'
+		table += '<th class="indr_th_s">Week '+w+'</th>'
 	}
-	table +='</tr><tr class="tr_s">'
-	table +='<td class="td_s">'+name+'</td>'
+	table +='</tr><tr class="indr_tr_s">'
+	table +='<td class="indr_td_s">'+name+'</td>'
 	for (var key in info) {
-		table+="<td class='td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/com)+"%</span></td>"
+		table+="<td class='indr_td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/com)+"%</span></td>"
 	}
 	table+="</tr></table>"
 	document.getElementById('individual'+num+'_commitsTable').innerHTML += table;

@@ -11,8 +11,8 @@ if(isset($_GET['code']) ) {
         'https://github.com/login/oauth/access_token',
         [
             'form_params' => [
-                'client_id' => 'aa4b1b744188bfdc5bea',
-                'client_secret' => 'b2de4848fea9b13995295817da5236cc77744c99',
+                'client_id' => '7e84f9e2e7d65f484caa',
+                'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
                 'code' => $code
             ]
         ]
@@ -30,7 +30,9 @@ else if(!isset($_SESSION['token']) || !isset($_GET['code']) || (isset($_SESSION[
     header("login.php");
 else
     $token = $_SESSION['token'] ;
-echo "<script> var auth = {token: '$token'};</script>";
+echo "<script> var auth = {token: '$token'};
+        var owner;
+        var repoName;</script>";
 
 $repoList = array();
 $repoList = json_encode($repoList);
@@ -69,6 +71,7 @@ echo "<script> var repoList = $repoList ;</script>";
         <script src="js/repo.js" defer></script>
         <script src="js/repo_list.js" defer></script>
         <script src="js/test.js" defer></script>
+        <script src="js/init.js" defer></script>
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
         <!--
         <link rel="canonical" href="http://www.example.com/">
@@ -108,9 +111,9 @@ echo "<script> var repoList = $repoList ;</script>";
             </header>
             <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
                 <header class="demo-drawer-header">
-                    <img src="images/user.jpg" class="demo-avatar">
+                    <span id="avatar-image"></span>
                     <div class="demo-avatar-dropdown">
-                        <span style="padding-top:10px;">hello@example.com</span>
+                        <span id="username" style="padding-top:10px;"></span>
                         <div class="mdl-layout-spacer"></div>
                     </div>
                 </header>

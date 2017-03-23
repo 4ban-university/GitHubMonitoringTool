@@ -1,5 +1,3 @@
-
-
 function submitComment(form){
     var contents = form.comment.value;
     repo.writeComment(repo, contents);
