@@ -12,7 +12,9 @@
     "mocha": "*",
     "github-api": "*",
     "chai": "*",
-    "chai-as-promised": "*"
+    "chai-as-promised": "*",
+    "selenium-webdriver": "*",
+    "chromedriver": "*"
   },
   "scripts": {
     "test": "eslint frontend/js",
