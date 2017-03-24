@@ -46,3 +46,32 @@ input[type="checkbox"]#commitsPerCollaboratorCheck {
 .over_filters, .ind_radio, .weekly_radio {
     margin-left: 20px;
 }
+#collaborators h2 {
+    margin-bottom: 0;
+}
+#collaborators > ul:first-child {
+    display: none;
+}
+#avatar-image {
+    text-align: center;
+    padding-top: 0;
+}
+.demo-avatar:hover, .demo-avatar:focus, .demo-avatar:active {
+    border-radius: 0px;
+}
+#collaborators > ul {
+    display: none;
+}
+#username > h5 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#weekly1_commitsChart > h3 {
+    margin-top: 0;
+}
+#show-action > i {
+    margin-bottom: 5px;
+}
+body > div > div > header > div.mdl-layout__header-row > span {
+    margin-left: 10px;
+}
