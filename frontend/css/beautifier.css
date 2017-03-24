@@ -78,3 +78,12 @@ body > div > div > header > div.mdl-layout__header-row > span {
 #commentSection > form > div > label, textarea[id="ta-comments"] {
     padding: 0 0 0 20px;
 }
+#commentSection > form > input {
+    color: #fff;
+    font-size: 15px;
+}
+#commentSection > form > input:hover,
+#commentSection > form > input:active,
+#commentSection > form > input:focus {
+    background-color: rgb(64,196,255);
+}
