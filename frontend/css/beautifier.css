@@ -87,3 +87,12 @@ body > div > div > header > div.mdl-layout__header-row > span {
 #commentSection > form > input:focus {
     background-color: rgb(64,196,255);
 }
+.chart_in > h3 {
+    margin: 0;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
