@@ -1,0 +1,48 @@
+.page-content {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+.mdl-list__item {
+    min-height: 10px !important;
+}
+.mdl-badge[data-badge]:after {
+    top: -4px !important;
+    right: -60px !important;
+    width: 50px;
+}
+input[type=radio] {
+    border: 2px solid rgb(63,81,181);
+}
+h3 {
+    font-size: 35px;
+    color: #555;
+}
+h2 {
+    font-size: 30px;
+    color: #555;
+}
+.tabs {
+    margin: 0;
+}
+textarea[id="ta-comments"] {
+    resize: none;
+}
+
+input[type="checkbox"]#commitsPerCollaboratorCheck {
+    border: 10px solid #b32e2e;
+    text-align: center;
+    color: #eee;
+}
+.mdl-button[for="search"] {
+    display: none;
+}
+.demo-layout .demo-navigation .mdl-navigation__link:hover {
+    color: #ffffff;
+}
+.page-content > h2:first-child, .page-content #tab1 h2 {
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+.over_filters, .ind_radio, .weekly_radio {
+    margin-left: 20px;
+}
