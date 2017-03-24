@@ -6,17 +6,16 @@ var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 var assert = chai.assert;
 
-//Write correct login and password for passing test
-var user = { username: 'Lyncis',
-            password: 'password' };
+var user = { username: 'b8n',
+            password: 'qwertyuiop011010' };
 
 var gh = new GitHub(user)
 var me = gh.getUser();
 
-describe('User', function() {
-    it('User Auth', function() {
+describe('GitHub API library test', function() {
+    it('User authentication', function() {
        return me.getProfile().then(function(res) {
-        return assert.eventually.equal( Promise.resolve(res.data.login), 'Lyncis') //Do not forget change login in this place
+        return assert.eventually.equal( Promise.resolve(res.data.login), 'b8n')
        })
   });
 })
