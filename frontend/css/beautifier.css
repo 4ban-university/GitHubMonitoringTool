@@ -46,3 +46,6 @@ input[type="checkbox"]#commitsPerCollaboratorCheck {
 .over_filters, .ind_radio, .weekly_radio {
     margin-left: 20px;
 }
+#commentSection > form > div > label, textarea[id="ta-comments"] {
+    padding-left: 20px;
+}
