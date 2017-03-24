@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/abhandal/SOEN341-G4.svg?token=Fyrgscu4gzYXetd7HgGn&branch=master)](https://travis-ci.com/abhandal/SOEN341-G4)
 # SOEN341-G4
 
 <a href="https://abhandal.github.io/SOEN341-G4/">Group WebPage</a><br>
