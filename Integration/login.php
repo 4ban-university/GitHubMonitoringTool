@@ -37,7 +37,7 @@
                         <div class="col-md-12 padding-no-left-right">
 
                             <button class="btn btn-lg btn-success btn-block" type="submit">
-                                <a href="https://github.com/login/oauth/authorize?client_id=aa4b1b744188bfdc5bea&scope=user public_repo repo repo_deployment gist read write admin&redirect_uri=http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/admin.php;">
+                                <a href="https://github.com/login/oauth/authorize?client_id=7e84f9e2e7d65f484caa&scope=user public_repo repo repo_deployment gist read write admin&redirect_uri=http://debiancp.local/SOEN341/Integration/admin.php">
                                     Sign in with GitHub</a></button>
                         </div>
 
