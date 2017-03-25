@@ -46,7 +46,7 @@ echo "<script> var repoList = $repoList ;</script>";
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>Material Design Lite</title>
+        <title>GitHub Monitoring Tool</title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -113,9 +113,9 @@ echo "<script> var repoList = $repoList ;</script>";
             </header>
             <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
                 <header class="demo-drawer-header">
-                    <span id="avatar-image"></span>
+                    <div id="avatar-image"></div>
                     <div class="demo-avatar-dropdown">
-                        <span id="username" style="padding-top:10px;"></span>
+                        <div id="username" style="padding-top:10px;"></div>
                         <div class="mdl-layout-spacer"></div>
                     </div>
                 </header>
