@@ -1,4 +1,11 @@
+<?php
+session_start();
 
+if(isset($_SESSION['token'])){
+    unset($_SESSION['token']);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
