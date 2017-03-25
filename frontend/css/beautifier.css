@@ -107,3 +107,7 @@ hr {
     letter-spacing: 4px;
     text-align: center;
 }
+
+.mdl-dialog {
+    width: 400px !important;
+}
