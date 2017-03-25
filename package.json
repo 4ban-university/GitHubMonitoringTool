@@ -14,10 +14,14 @@
     "chai": "*",
     "chai-as-promised": "*",
     "selenium-webdriver": "*",
-    "chromedriver": "*"
+    "chromedriver": "*",
+    "webdriverjs":"*",
+    "phantomjs":"*",
+    "jslint": "*"
   },
   "scripts": {
     "test": "eslint frontend/js",
-    "mocha": "mocha"
+    "mocha": "mocha",
+    "jslint": "node_modules/jslint/bin/jslint.js frontend/js/*.js"
   }
 }
