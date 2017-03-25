@@ -17,7 +17,7 @@
     </script>";
     }
     else
-        header("admin.php");
+        header("Location: admin.php");
 
 
 ?>

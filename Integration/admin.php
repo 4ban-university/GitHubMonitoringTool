@@ -6,7 +6,36 @@ session_start();
 if(isset($_SESSION['token'])){
 
 
-    if(isset($_GET['code']) && $_SESSION['token'] === 'bad_verification_code') {
+    if($_SESSION['token'] === 'bad_verification_code') {
+        login();
+    }
+
+    if($_SESSION['token'] === 'bad_verification_code' )
+        header("Location: login.php");
+
+}
+
+else{
+    login();
+}
+
+
+$token = $_SESSION['token'] ;
+
+
+echo "<script> var auth = {token: '$token'};
+        var owner;
+        var repoName;</script>";
+
+$repoList = array();
+$repoList = json_encode($repoList);
+
+echo "<script> var repoList = $repoList ;</script>";
+
+
+
+function login(){
+    if(isset($_GET['code'])) {
         $code = $_GET['code'];
         $c = new GuzzleHttp\Client();
         // Create a POST request
@@ -25,32 +54,15 @@ if(isset($_SESSION['token'])){
         // $headers = $response->getHeaders();
         $body = $response->getBody();
         //echo $headers;
-        $start =  strpos($body,"=") + 1;
-        $length = strpos($body,'&') - $start;
+        $start = strpos($body, "=") + 1;
+        $length = strpos($body, '&') - $start;
         $token = substr($body, $start, $length);
-        $_SESSION['token']= $token;
+        $_SESSION['token'] = $token;
     }
-    else if(!isset($_GET['code'])){
+    else{
         header("Location: login.php");
     }
-
-    if($_SESSION['token'] === 'bad_verification_code' )
-        header("Location: login.php");
-
 }
-
-
-$token = $_SESSION['token'] ;
-
-
-echo "<script> var auth = {token: '$token'};
-        var owner;
-        var repoName;</script>";
-
-$repoList = array();
-$repoList = json_encode($repoList);
-
-echo "<script> var repoList = $repoList ;</script>";
 
 ?>
 <!doctype html>
