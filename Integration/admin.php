@@ -2,41 +2,67 @@
 session_start();
 ?>
 <?php require_once 'php/vendor/autoload.php';
-if(isset($_GET['code']) ) {
-    $code = $_GET['code'];
-    $c = new GuzzleHttp\Client();
-    // Create a POST request
-    $response = $c->request(
-        'POST',
-        'https://github.com/login/oauth/access_token',
-        [
-            'form_params' => [
-                'client_id' => '7e84f9e2e7d65f484caa',
-                'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
-                'code' => $code
-            ]
-        ]
-    );
-    // Parse the response object, e.g. read the headers, body, etc.
-    // $headers = $response->getHeaders();
-    $body = $response->getBody();
-    //echo $headers;
-    $start =  strpos($body,"=") + 1;
-    $length = strpos($body,'&') - $start;
-    $token = substr($body, $start, $length);
-    $_SESSION['token']= $token;
+
+if(isset($_SESSION['token'])){
+
+
+    if($_SESSION['token'] === 'bad_verification_code') {
+        login();
+    }
+
+    if($_SESSION['token'] === 'bad_verification_code' )
+        header("Location: login.php");
+
 }
-else if(!isset($_SESSION['token']) || !isset($_GET['code']) || (isset($_SESSION['token']) && $_SESSION['token'] === 'Bad verification code' ))
-    header("login.php");
-else
-    $token = $_SESSION['token'] ;
+
+else{
+    login();
+}
+
+
+$token = $_SESSION['token'] ;
+
+
 echo "<script> var auth = {token: '$token'};
         var owner;
         var repoName;</script>";
 
 $repoList = array();
 $repoList = json_encode($repoList);
+
 echo "<script> var repoList = $repoList ;</script>";
+
+
+
+function login(){
+    if(isset($_GET['code'])) {
+        $code = $_GET['code'];
+        $c = new GuzzleHttp\Client();
+        // Create a POST request
+        $response = $c->request(
+            'POST',
+            'https://github.com/login/oauth/access_token',
+            [
+                'form_params' => [
+                    'client_id' => '7e84f9e2e7d65f484caa',
+                    'client_secret' => 'bcda23ce654c82d76a4d35fbde17fefb14f638cd',
+                    'code' => $code
+                ]
+            ]
+        );
+        // Parse the response object, e.g. read the headers, body, etc.
+        // $headers = $response->getHeaders();
+        $body = $response->getBody();
+        //echo $headers;
+        $start = strpos($body, "=") + 1;
+        $length = strpos($body, '&') - $start;
+        $token = substr($body, $start, $length);
+        $_SESSION['token'] = $token;
+    }
+    else{
+        header("Location: login.php");
+    }
+}
 
 ?>
 <!doctype html>
@@ -46,7 +72,7 @@ echo "<script> var repoList = $repoList ;</script>";
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>Material Design Lite</title>
+        <title>GitHub Monitoring Tool</title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
@@ -113,9 +139,9 @@ echo "<script> var repoList = $repoList ;</script>";
             </header>
             <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
                 <header class="demo-drawer-header">
-                    <span id="avatar-image"></span>
+                    <div id="avatar-image"></div>
                     <div class="demo-avatar-dropdown">
-                        <span id="username" style="padding-top:10px;"></span>
+                        <div id="username" style="padding-top:10px;"></div>
                         <div class="mdl-layout-spacer"></div>
                     </div>
                 </header>

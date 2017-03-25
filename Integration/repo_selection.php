@@ -3,7 +3,7 @@
     if(isset($_SESSION['token']))
         $token = $_SESSION['token'];
     else
-        header("login.php");
+        header("Location: login.php");
 
 
     //setting js variables
@@ -17,7 +17,7 @@
     </script>";
     }
     else
-        header("admin.php");
+        header("Location: admin.php");
 
 
 ?>
@@ -29,7 +29,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<title>Repository Selection</title>
+	<title>Material Design Lite</title>
 
 	<!-- Add to homescreen for Chrome on Android -->
 	<meta name="mobile-web-app-capable" content="yes">
@@ -57,7 +57,6 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/additional.css">
-    <link rel="stylesheet" href="css/beautifier.css">
 
 	<script src="js/GitHub.bundle.js" ></script>
 
