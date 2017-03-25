@@ -111,3 +111,7 @@ hr {
 .mdl-dialog {
     width: 400px !important;
 }
+
+#contact-dialog p {
+    margin-left: 5px;
+}
