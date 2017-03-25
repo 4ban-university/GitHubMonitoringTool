@@ -82,7 +82,9 @@ echo "<script> var repoList = $repoList ;</script>";
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/additional.css">
- 
+        <link rel="stylesheet" href="css/beautifier.css">
+
+
     </head>
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
