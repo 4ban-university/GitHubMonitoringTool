@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/abhandal/SOEN341-G4.svg?token=Fyrgscu4gzYXetd7HgGn&branch=master)](https://travis-ci.com/abhandal/SOEN341-G4)
 # SOEN341-G4
+[![Start project](./frontend/images/open.png)](http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/login.php)
 
 <a href="https://abhandal.github.io/SOEN341-G4/">Group WebPage</a><br>
 <a href="http://sample-env.emtpabv7s6.ca-central-1.elasticbeanstalk.com/Integration/login.php"> PHP Github API Testing page for now</a>
