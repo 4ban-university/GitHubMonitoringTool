@@ -90,7 +90,7 @@ test.describe('Get data', function() {
                 browser.sleep(1000);
                 browser.findElement(webdriver.By.id('repo_description')).getText().then(function(description){
                     var len = description.length
-                    if (len > 20){
+                    if (len >= 20){
                         assert.equal(true, true)
                     }else{
                         assert.equal(false,true)
