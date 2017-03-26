@@ -27,9 +27,21 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		var page = '<!-- Start of all weeks report --> \
 					<h2>Week '+week+' report for all collaborators</h2> \
 					<div class="weekly_radio"> \
-						<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" >Show data only in tables<Br> \
-						<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" >Show data only in charts<Br> \
-						<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" checked>Show data either in tables and charts<Br> \
+						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_TextData" data-upgraded=",MaterialRadio">\
+            				<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
+            				<span class="mdl-radio__label">Show data only in tables</span>\
+            				<span class="mdl-radio__outer-circle"></span>\
+            			</label>\
+            			<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_GraphicData" data-upgraded=",MaterialRadio">\
+							<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
+							<span class="mdl-radio__label">Show data only in charts</span>\
+            				<span class="mdl-radio__outer-circle">\
+						</label>\
+						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_MixedData" data-upgraded=",MaterialRadio">\
+							<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button" checked>\
+							<span class="mdl-radio__label">Show data either in tables and charts</span>\
+            				<span class="mdl-radio__outer-circle">\
+						</label>\
 					</div><hr> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
 						<h3>Activity per collaborator</h3> \
@@ -95,6 +107,8 @@ function weekly_filter(weeklyInfo, week){
 	//----------radio buttons for how to display the information
 	document.getElementById('weekly'+week+'_TextData').onclick = function() {
 	    if ( this.checked ) {
+            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+	    	$(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="none"
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="block"
 	    }
@@ -102,6 +116,8 @@ function weekly_filter(weeklyInfo, week){
 
 	document.getElementById('weekly'+week+'_GraphicData').onclick = function() {
 	    if ( this.checked ) {
+            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="none"
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="block"
 	    }
@@ -109,6 +125,8 @@ function weekly_filter(weeklyInfo, week){
 
 	document.getElementById('weekly'+week+'_MixedData').onclick = function() {
 	    if ( this.checked ) {
+            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="block"
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="block"
 	    }
