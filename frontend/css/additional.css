@@ -95,7 +95,7 @@
 }
 .td_s, .th_s {
 	border: 1px solid #dddddd;
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 }
 .tr_s:nth-child(even) {
