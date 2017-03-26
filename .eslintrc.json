@@ -16,8 +16,8 @@
         }
     },
     "rules": {
-        "semi": 1,
-        "quotes": 1,
+        "semi": 0,
+        "quotes": 0,
         "no-console": 0,
         "comma-dangle": 0,
         "no-unused-vars":1,
