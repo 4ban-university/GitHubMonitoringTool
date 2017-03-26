@@ -314,11 +314,13 @@
                         <div class="page-content">
                             <!-- Your content goes here -->
                             <div class="comment" id="commentSection" align="center">
-                                <h3>Comment</h3>
                                 <form action="" method="GET">
                                     <div class="mdl-textfield mdl-js-textfield gray" margin>
-                                        <textarea class="mdl-textfield__input" rows= "10" id="ta-comments" name="comment"></textarea>
-                                        <label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label>
+                                        <div class="commentsHistory" id="ta-comments-history" name="history"></div>
+                                    </div><br>
+                                    <div class="mdl-textfield mdl-js-textfield gray" margin>
+                                        <textarea class="mdl-textfield__input" rows= "3" id="ta-comments" name="comment" placeholder="Enter your comment here..."></textarea>
+                                        <!--<label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label> -->
                                     </div><br>
                                     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" name="submit" value='comment' onClick="submitComment(this.form)">
                                 </form>
