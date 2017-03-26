@@ -8,7 +8,8 @@
 .mdl-badge[data-badge]:after {
     top: -4px !important;
     right: -60px !important;
-    width: 50px;
+    width: 50px !important;
+    border-radius: 5px !important;
 }
 input[type=radio] {
     border: 2px solid rgb(63,81,181);
@@ -74,4 +75,45 @@ input[type="checkbox"]#commitsPerCollaboratorCheck {
 }
 body > div > div > header > div.mdl-layout__header-row > span {
     margin-left: 10px;
+}
+#commentSection > form > div > label, textarea[id="ta-comments"] {
+    padding: 0 0 0 20px;
+}
+#commentSection > form > input {
+    color: #fff;
+    font-size: 15px;
+}
+#commentSection > form > input:hover,
+#commentSection > form > input:active,
+#commentSection > form > input:focus {
+    background-color: rgb(64,196,255);
+}
+.chart_in > h3 {
+    margin: 0;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+#scroll-tab-1 > div > div:nth-child(2) > div:nth-child(1) > table > tbody > tr:nth-child(2) > td {
+    display: none;
+}
+#commitsCanvas > div,
+#issuesCanvas > div,
+#commentsCanvas > div,
+.ChartType > div {
+    text-align: center;
+}
+
+.mdl-dialog {
+    width: 400px !important;
+}
+
+#contact-dialog p {
+    margin-left: 5px;
+}
+.mdl-radio__label:not(:last-child) {
+    margin-right: 15px;
 }

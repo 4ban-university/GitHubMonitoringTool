@@ -94,10 +94,13 @@ function login(){
 
         <script src="js/GitHub.bundle.js"></script>
 
+        <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" defer></script>
         <script src="js/repo.js" defer></script>
         <script src="js/repo_list.js" defer></script>
         <script src="js/test.js" defer></script>
         <script src="js/init.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.js"></script>
+
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
         <!--
         <link rel="canonical" href="http://www.example.com/">
@@ -109,6 +112,7 @@ function login(){
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/additional.css">
         <link rel="stylesheet" href="css/beautifier.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.css" />
 
 
     </head>
@@ -131,9 +135,8 @@ function login(){
                         <i class="material-icons">more_vert</i>
                     </button>
                     <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-                        <li class="mdl-menu__item">About</li>
-                        <li class="mdl-menu__item">Contact</li>
-                        <li class="mdl-menu__item">Legal information</li>
+                        <li class="mdl-menu__item mdl-button" type="button" id="about-btn-dialog" >About</li>
+                        <li class="mdl-menu__item mdl-button" type="button" id="contact-btn-dialog" >Contact</li>
                     </ul>
                 </div>
             </header>
@@ -161,8 +164,37 @@ function login(){
                 <div class="mdl-grid demo-content">
                     <div class="reposTable" id="reposTable"></div>
                 </div>
+
+                <dialog class="mdl-dialog" id="about-dialog">
+                    <h4 class="mdl-dialog__title">About</h4>
+                    <div class="mdl-dialog__content">
+                        <p>
+                            The GitHub repository monitoring tool will help the teaching assistants to monitor and grade each groups and students; by analyzing a repository and showing useful information in an easy-to-use and easy-to-understand way.
+                        </p>
+                    </div>
+                    <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button close">Close</button>
+                    </div>
+                </dialog>
+
+                <dialog class="mdl-dialog" id="contact-dialog">
+                    <h4 class="mdl-dialog__title">Contact</h4>
+                    <div class="mdl-dialog__content">
+                        <p class="about_text">
+                            Address: 7141 Sherbrooke St W,
+                            Montreal, QC H4B 1R6
+                            Phone: (514) 848-2424
+                            Province: Québec
+                        </p>
+                    </div>
+                    <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button close">Close</button>
+                    </div>
+                </dialog>
+
             </main>
         </div>
     </body>
     <script src="js/test.js"></script>
+    <script src="js/about_contact.js"></script>
 </html>
