@@ -48,8 +48,8 @@
 	<link rel="shortcut icon" href="images/favicon.png">
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/material.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.js"></script>
-
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.js"></script>
+        -->
 
         <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
 	<!-- <link rel="canonical" href="http://www.example.com/"> -->
@@ -60,8 +60,8 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/additional.css">
         <link rel="stylesheet" href="css/beautifier.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.css" />
-
+       <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.css" />
+        -->
 
         <script src="js/GitHub.bundle.js" ></script>
 
@@ -339,20 +339,7 @@
                 </div>
             </dialog>
 
-            <dialog class="mdl-dialog" id="contact-dialog">
-                <h4 class="mdl-dialog__title">Contact</h4>
-                <div class="mdl-dialog__content">
-                    <p>
-                        Address: 7141 Sherbrooke St W,<br>
-                        Montreal, QC H4B 1R6<br>
-                        Phone: (514) 848-2424<br>
-                        Province: Québec
-                    </p>
-                </div>
-                <div class="mdl-dialog__actions">
-                    <button type="button" class="mdl-button close">Close</button>
-                </div>
-            </dialog>
+
 
         </main>
         <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">

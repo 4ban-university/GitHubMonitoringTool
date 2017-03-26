@@ -177,24 +177,9 @@ function login(){
                     </div>
                 </dialog>
 
-                <dialog class="mdl-dialog" id="contact-dialog">
-                    <h4 class="mdl-dialog__title">Contact</h4>
-                    <div class="mdl-dialog__content">
-                        <p class="about_text">
-                            Address: 7141 Sherbrooke St W,
-                            Montreal, QC H4B 1R6
-                            Phone: (514) 848-2424
-                            Province: Québec
-                        </p>
-                    </div>
-                    <div class="mdl-dialog__actions">
-                        <button type="button" class="mdl-button close">Close</button>
-                    </div>
-                </dialog>
 
             </main>
         </div>
     </body>
     <script src="js/test.js"></script>
-    <script src="js/about_contact.js"></script>
 </html>
