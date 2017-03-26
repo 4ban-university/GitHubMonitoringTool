@@ -117,3 +117,9 @@ hr {
 .mdl-radio__label:not(:last-child) {
     margin-right: 15px;
 }
+.modal-content {
+    border-radius: 0 !important;
+}
+.modal-body p {
+    font-size: 14px;
+}
