@@ -55,7 +55,7 @@ test.describe('Get data', function() {
     });
 
     test.describe('Get repo description', function() {
-        this.timeout(100000);
+        this.timeout(200000);
         test.it('Repo description should not be "" or "null".', function() {
             var chromeCapabilities = webdriver.Capabilities.chrome();
             var chromeOptions = {'args': ['--start-maximized', '--incognito']};
@@ -89,8 +89,13 @@ test.describe('Get data', function() {
             browser.findElement(webdriver.By.className("mdl-navigation__link")).click().then(function() {
                 browser.sleep(1000);
                 browser.findElement(webdriver.By.id('repo_description')).getText().then(function(description){
-                    var len = description.length
-                    if (len >= 20){
+                    // var len = description.length
+                    // if (len >= 20){
+                    //     assert.equal(true, true)
+                    // }else{
+                    //     assert.equal(false,true)
+                    // }
+                    if (description != '' || description != 'null'){
                         assert.equal(true, true)
                     }else{
                         assert.equal(false,true)
