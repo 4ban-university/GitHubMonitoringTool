@@ -112,7 +112,7 @@
 					<a href="#scroll-tab-1" class="mdl-layout__tab is-active">General info</a>
 					<a href="#scroll-tab-2" class="mdl-layout__tab">Overall Report</a>
 					<a href="#scroll-tab-3" class="mdl-layout__tab">Weekly report</a>
-					<a href="#scroll-tab-4" class="mdl-layout__tab">Individual activity report</a> 
+					<a href="#scroll-tab-4" class="mdl-layout__tab">Individual activity report</a>
 					<a href="#scroll-tab-5" class="mdl-layout__tab">Burndown</a>
 					<a href="#scroll-tab-6" class="mdl-layout__tab">Comments</a>
 
@@ -133,10 +133,10 @@
 					<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--6-col">
 							<h3>Links to</h3>
-							
+
 								<table class="mdl-data-table mdl-js-data-table">
 									<tr>
-										<td class="mdl-data-table__cell--non-numeric" width="700px" id="repo_link"></td>									
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="repo_link"></td>
 									</tr>
 									<tr>
 										<td class="mdl-data-table__cell--non-numeric" width="700px">Project Homepage</td>
@@ -148,8 +148,8 @@
 
 							<table class="mdl-data-table mdl-js-data-table">
 									<tr>
-										
-										<td class="mdl-data-table__cell--non-numeric" width="700px" id="commits"></td>								
+
+										<td class="mdl-data-table__cell--non-numeric" width="700px" id="commits"></td>
 									</tr>
 									<tr>
 										<td class="mdl-data-table__cell--non-numeric" width="700px" id="issues"></td>
@@ -177,7 +177,7 @@
 					   	</div>
 
 			   		</div>
-			   		
+
 					<div class="chart" id="commitsChart"  style="clear:left;">
 						<hr>
 						<h3>Number of commits per collaborator</h3>
@@ -189,7 +189,7 @@
 				   				<input type="radio" id="barCPC" name="chartType1" >Bar
 				   				<input type="radio" id="lineCPC" name="chartType1" >Line
 							</div>
-							
+
 						</div>
 					</div>
 					<div class="chart" id="issuesChart" style="clear:left;">
@@ -203,7 +203,7 @@
 				   				<input type="radio" id="barIPC" name="chartType2" >Bar
 				   				<input type="radio" id="lineIPC" name="chartType2" >Line
 							</div>
-							
+
 						</div>
 					</div>
 					<div class="chart" id="commetsChart" style="clear:left;">
@@ -226,19 +226,19 @@
 				<div class="page-content" id="report_weekly">
 					<!-- Start weekly report -->
 
-					
+
 				</div><!-- End of weekly report -->
 			</section>
 			<section class="mdl-layout__tab-panel" id="scroll-tab-4">
 				<div class="page-content" id="report_individually">
 					<!-- Start individual report -->
-					<h2>Individual activity report</h2> 
+					<h2>Individual activity report</h2>
 					<div class="ind_radio">
-						<input type="radio" id="individual_TextData" name="individual_dataDisplayForm" >Show data only in tables<Br> 
-						<input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" >Show data only in charts<Br> 
-						<input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" checked>Show data either in tables and charts<Br> 
-					</div><hr> 
-					
+						<input type="radio" id="individual_TextData" name="individual_dataDisplayForm" >Show data only in tables<Br>
+						<input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" >Show data only in charts<Br>
+						<input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" checked>Show data either in tables and charts<Br>
+					</div><hr>
+
 				</div><!-- End of individual report -->
 			</section>
 			<section class="mdl-layout__tab-panel" id="scroll-tab-5">
@@ -262,14 +262,12 @@
                     <div class="page-content">
                         <!-- Your content goes here -->
                         <div class="comment" id="commentSection" align="center">
-                            <h3>Comment</h3>
                             <form action="" method="GET">
 								<div class="mdl-textfield mdl-js-textfield gray" margin>
-									<textarea readonly class="mdl-textfield__input" rows= "10" id="ta-comments-history" name="history" placeholder="No comments"></textarea>
-									<!--<label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label> -->
+									<div class="commentsHistory" id="ta-comments-history" name="history"></div>
 								</div><br>
 								<div class="mdl-textfield mdl-js-textfield gray" margin>
-                                	<textarea class="mdl-textfield__input" rows= "10" id="ta-comments" name="comment" placeholder="Enter your comment here..."></textarea>
+                                	<textarea class="mdl-textfield__input" rows= "3" id="ta-comments" name="comment" placeholder="Enter your comment here..."></textarea>
                                 	<!--<label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label> -->
                                 </div><br>
                                 <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" name="submit" value='comment' onClick="submitComment(this.form)">
