@@ -139,7 +139,7 @@ function weekly_tables(weeklyInfo, week){
 	for (var key in weeklyInfo){
 		activity+=weeklyInfo[key]
 	}
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 	for (var key in weeklyInfo) {
 		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+weeklyInfo[key]+"</td><td class='td_s'>"+Math.round(weeklyInfo[key]*100/activity)+"%</td></tr>"
 	}
@@ -149,7 +149,7 @@ function weekly_tables(weeklyInfo, week){
 	$(".sortWeekly"+week).click(function(){
 		var tableId=$(this).parents(".dataTable").attr("id")
 		$(this).parents(".dataTable").find(".tbl").remove()
-			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 			for (var key in sortedWeeklyInfo) {
 				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedWeeklyInfo[key]+"</td><td class='td_s'>"+Math.round(sortedWeeklyInfo[key]*100/activity)+"%</td></tr>"
 			}
