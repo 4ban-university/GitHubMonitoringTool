@@ -117,3 +117,26 @@ hr {
 .mdl-radio__label:not(:last-child) {
     margin-right: 15px;
 }
+.modal-content {
+    border-radius: 0 !important;
+}
+.modal-body p {
+    font-size: 14px;
+}
+.mdl-checkbox .mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded{
+    font-size: 14px;
+    font-weight: 100;
+   
+}
+
+a:focus, a:hover {
+    text-decoration: none !important;
+}
+.outer-circle {
+    background: rgb(0,188,212);
+
+    animation-name: spin;
+    animation-duration: 3s; /* 3 seconds */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
