@@ -31,16 +31,16 @@ repo.weeklyInfo.then(function(weeklyInfo){
             				<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
             				<span class="mdl-radio__label">Show data only in tables</span>\
             				<span class="mdl-radio__outer-circle"></span>\
-            			</label>\
+            			</label><br>\
             			<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_GraphicData" data-upgraded=",MaterialRadio">\
 							<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
 							<span class="mdl-radio__label">Show data only in charts</span>\
-            				<span class="mdl-radio__outer-circle">\
-						</label>\
+            				<span class="mdl-radio__outer-circle"></span>\
+						</label><br>\
 						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_MixedData" data-upgraded=",MaterialRadio">\
 							<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button" checked>\
 							<span class="mdl-radio__label">Show data either in tables and charts</span>\
-            				<span class="mdl-radio__outer-circle">\
+            				<span class="mdl-radio__outer-circle"></span>\
 						</label>\
 					</div><hr> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
