@@ -35,6 +35,7 @@
 	<link rel="stylesheet" href="css/additional.css">
 
 	<script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" defer></script>
+
 	<script src="js/Chart.bundle.js" defer></script>
 	<script src="js/repo.js" defer></script>
 	<script src="js/init.js" defer></script>
@@ -263,9 +264,13 @@
                         <div class="comment" id="commentSection" align="center">
                             <h3>Comment</h3>
                             <form action="" method="GET">
-                                <div class="mdl-textfield mdl-js-textfield gray" margin>
-                                	<textarea class="mdl-textfield__input" rows= "10" id="ta-comments" name="comment"></textarea>
-                                	<label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label>
+								<div class="mdl-textfield mdl-js-textfield gray" margin>
+									<textarea readonly class="mdl-textfield__input" rows= "10" id="ta-comments-history" name="history" placeholder="No comments"></textarea>
+									<!--<label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label> -->
+								</div><br>
+								<div class="mdl-textfield mdl-js-textfield gray" margin>
+                                	<textarea class="mdl-textfield__input" rows= "10" id="ta-comments" name="comment" placeholder="Enter your comment here..."></textarea>
+                                	<!--<label class="mdl-textfield__label" for="ta-comments"> Enter your comment here...</label> -->
                                 </div><br>
                                 <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="button" name="submit" value='comment' onClick="submitComment(this.form)">
                             </form>
