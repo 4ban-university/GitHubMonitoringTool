@@ -89,7 +89,7 @@ function checkbox_list(repo_name, checkboxId){
    
     h += '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="' +checkboxId+ '">';
     h += '<input type="checkbox" id="' +checkboxId+ '" class="mdl-checkbox__input repoSelection">';
-    h += '<span class="mdl-checkbox__label">' +repo_name+ '</span>';
+    h += '<span class="mdl-checkbox__label" id="forRepoSelection">' +repo_name+ '</span>';
     h += '</label>';
 
     return h;
@@ -119,14 +119,15 @@ function getRepoList() {
 */
 function getCheckedRepo(){
     
-    var checkedObj = $('.is-checked .mdl-checkbox__label');
+    var checkedObj = $('.is-checked #forRepoSelection.mdl-checkbox__label');
     var repoArray = [];
-    
+
     
     for(var i = 0; i < checkedObj.length; i++) {
         repoArray.push(checkedObj[i].innerHTML);
+
     }
-    console.log(repoArray);
+
     
     writeToJSON(repoArray);
     repoList = repoArray;

@@ -48,8 +48,10 @@
 	<link rel="shortcut icon" href="images/favicon.png">
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/material.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.js"></script>
+        -->
 
-	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+        <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
 	<!-- <link rel="canonical" href="http://www.example.com/"> -->
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -57,8 +59,11 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/additional.css">
+        <link rel="stylesheet" href="css/beautifier.css">
+       <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.7/dialog-polyfill.min.css" />
+        -->
 
-	<script src="js/GitHub.bundle.js" ></script>
+        <script src="js/GitHub.bundle.js" ></script>
 
         <script src="js/repo_list.js" defer></script>
         <script src="js/test.js" defer></script>
@@ -83,17 +88,7 @@
 
                 <span class="mdl-layout-title">Overview</span>
                 <div class="mdl-layout-spacer"></div>
-                <div
-                        class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                    <label class="mdl-button mdl-js-button mdl-button--icon"
-                           for="search"> <i class="material-icons">search</i>
-                    </label>
-                    <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search">
-                        <label class="mdl-textfield__label" for="search">Enter
-                            your query...</label>
-                    </div>
-                </div>
+
                 <button
                         class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
                         id="hdrbtn">
@@ -102,9 +97,8 @@
                 <ul
                         class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
                         for="hdrbtn">
-                    <li class="mdl-menu__item">About</li>
-                    <li class="mdl-menu__item">Contact</li>
-                    <li class="mdl-menu__item">Legal information</li>
+                    <li class="mdl-menu__item mdl-button" type="button" id="about-btn-dialog" >About</li>
+                    <li class="mdl-menu__item mdl-button" type="button" id="contact-btn-dialog" >Contact</li>
                 </ul>
             </div>
         </header>
@@ -171,15 +165,24 @@
                             <h2>All weeks report</h2>
                             <div class="over_filters">
                                 <div class="over_radio">
-                                    <input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" checked>Commits per collaborator<Br>
-                                    <input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" checked>Issues per collaborator<Br>
-                                    <input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" checked>Comments per collaborator<Br>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="commitsPerCollaboratorCheck">
+                                        <input type="checkbox" id="commitsPerCollaboratorCheck" name="commitsPerCollaborator" value="a1" class="mdl-checkbox__input" checked><span class="mdl-checkbox__label">Commits per collaborator</span></label><Br>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="issuesPerCollaboratorCheck">
+                                        <input type="checkbox" id="issuesPerCollaboratorCheck" name="issuesPerCollaborator" value="a2" class="mdl-checkbox__input" checked> <span class="mdl-checkbox__label">Issues per collaborator</span></label><Br>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="commentsPerCollaboratorCheck">
+                                        <input type="checkbox" id="commentsPerCollaboratorCheck" name="commentsPerCollaborator" value="a3" class="mdl-checkbox__input" checked><span class="mdl-checkbox__label">Comments per collaborator</span></label><Br>
                                 </div>
 
                                 <div class="over_radio">
-                                    <input type="radio" id="TextData" name="dataDisplayForm" >Show data only in tables<Br>
-                                    <input type="radio" id="GraphicData" name="dataDisplayForm" >Show data only in charts<Br>
-                                    <input type="radio" id="MixedData" name="dataDisplayForm" checked>Show data either in tables and charts<Br>
+                                    <label class="mdl-radio mdl-js-radio" for="TextData">
+                                        <input type="radio" id="TextData" name="dataDisplayForm" class="mdl-radio__button"><span class="mdl-radio__label">Show data only in tables</span> </label><Br>
+                                    <label class="mdl-radio mdl-js-radio" for="GraphicData">
+                                        <input type="radio" id="GraphicData" name="dataDisplayForm" class="mdl-radio__button">
+                                        <span class="mdl-radio__label">Show data only in charts</span></label><Br>
+                                    <label class="mdl-radio mdl-js-radio" for="MixedData">
+                                        <input type="radio" id="MixedData" name="dataDisplayForm" checked class="mdl-radio__button">
+                                        <span class="mdl-radio__label">Show data both in tables and charts</span>
+                                    </label><Br>
                                 </div>
 
                             </div>
@@ -190,10 +193,22 @@
                                 <div class="dataTable" id="commitsTable"></div>
                                 <div class="canvas" id="commitsCanvas">
                                     <div class="ChartType">
-                                        <input type="radio" id="doughnutCPC" name="chartType1" checked>Doughnut
-                                        <input type="radio" id="pieCPC" name="chartType1" >Pie
-                                        <input type="radio" id="barCPC" name="chartType1" >Bar
-                                        <input type="radio" id="lineCPC" name="chartType1" >Line
+                                        <label class="mdl-radio mdl-js-radio" for="doughnutCPC">
+                                            <input type="radio" id="doughnutCPC" name="chartType1" checked class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Doughnut</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="pieCPC">
+                                            <input type="radio" id="pieCPC" name="chartType1" class="mdl-radio__button" >
+                                            <span class="mdl-radio__label">Pie</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="barCPC">
+                                            <input type="radio" id="barCPC" name="chartType1" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Bar</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="lineCPC">
+                                            <input type="radio" id="lineCPC" name="chartType1" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Line</span>
+                                        </label>
                                     </div>
 
                                 </div>
@@ -204,10 +219,22 @@
                                 <div class="dataTable" id="issuesTable"></div>
                                 <div class="canvas" id="issuesCanvas">
                                     <div class="ChartType">
-                                        <input type="radio" id="doughnutIPC" name="chartType2" checked>Doughnut
-                                        <input type="radio" id="pieIPC" name="chartType2" >Pie
-                                        <input type="radio" id="barIPC" name="chartType2" >Bar
-                                        <input type="radio" id="lineIPC" name="chartType2" >Line
+                                        <label class="mdl-radio mdl-js-radio" for="doughnutCPC">
+                                            <input type="radio" id="doughnutIPC" name="chartType2" checked class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Doughnut</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="pieIPC">
+                                            <input type="radio" id="pieIPC" name="chartType2" class="mdl-radio__button" >
+                                            <span class="mdl-radio__label">Pie</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="barIPC">
+                                            <input type="radio" id="barIPC" name="chartType2" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Bar</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="lineIPC">
+                                            <input type="radio" id="lineIPC" name="chartType2" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Line</span>
+                                        </label>
                                     </div>
 
                                 </div>
@@ -218,10 +245,22 @@
                                 <div class="dataTable" id="commentsTable"></div>
                                 <div class="canvas" id="commentsCanvas">
                                     <div class="ChartType">
-                                        <input type="radio" id="doughnutCoPC" name="chartType3" checked>Doughnut
-                                        <input type="radio" id="pieCoPC" name="chartType3" >Pie
-                                        <input type="radio" id="barCoPC" name="chartType3" >Bar
-                                        <input type="radio" id="lineCoPC" name="chartType3" >Line
+                                        <label class="mdl-radio mdl-js-radio" for="doughnutCoPC">
+                                            <input type="radio" id="doughnutCoPC" name="chartType3" checked class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Doughnut</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="pieCoPC">
+                                            <input type="radio" id="pieCoPC" name="chartType3" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Pie</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="barCoPC">
+                                            <input type="radio" id="barCoPC" name="chartType3" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Bar</span>
+                                        </label>
+                                        <label class="mdl-radio mdl-js-radio" for="lineCoPC">
+                                            <input type="radio" id="lineCoPC" name="chartType3" class="mdl-radio__button">
+                                            <span class="mdl-radio__label">Line</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -240,9 +279,16 @@
                             <!-- Start individual report -->
                             <h2>Individual activity report</h2>
                             <div class="ind_radio">
-                                <input type="radio" id="individual_TextData" name="individual_dataDisplayForm" >Show data only in tables<Br>
-                                <input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" >Show data only in charts<Br>
-                                <input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" checked>Show data either in tables and charts<Br>
+                                <label class="mdl-radio mdl-js-radio" for="individual_TextData">
+                                    <input type="radio" id="individual_TextData" name="individual_dataDisplayForm" class="mdl-radio__button">
+                                    <span class="mdl-radio__label">Show data only in tables</span>
+                                </label>
+                                <label class="mdl-radio mdl-js-radio" for="individual_GraphicData">
+                                    <input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" class="mdl-radio__button">Show data only in charts<Br>
+                                </label>
+                                <label class="mdl-radio mdl-js-radio" for="individual_MixedData">
+                                    <input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" class="mdl-radio__button" checked>Show data both in tables and charts<Br>
+                                </label>
                             </div><hr>
 
                         </div><!-- End of individual report -->
@@ -281,6 +327,20 @@
                     </section>
                 </main>
             </div>
+            <dialog class="mdl-dialog" id="about-dialog">
+                <h4 class="mdl-dialog__title">About</h4>
+                <div class="mdl-dialog__content">
+                    <p>
+                        The GitHub repository monitoring tool will help the teaching assistants to monitor and grade each groups and students; by analyzing a repository and showing useful information in an easy-to-use and easy-to-understand way.
+                    </p>
+                </div>
+                <div class="mdl-dialog__actions">
+                    <button type="button" class="mdl-button close">Close</button>
+                </div>
+            </dialog>
+
+
+
         </main>
         <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
             <header class="demo-drawer-header">
@@ -308,5 +368,6 @@
             </div>
 
     </div>
+    <script src="js/about_contact.js"></script>
     </body>
 </html>

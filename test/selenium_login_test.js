@@ -37,7 +37,7 @@ test.describe('Selenium login', function() {
         this.timeout(15000);
         test.it('should return "true" when the password is incorrect', function() {
             var chromeCapabilities = webdriver.Capabilities.chrome();
-            var chromeOptions = {'args': ['--test-type', '--incognito']};
+            var chromeOptions = {'args': ['--start-maximized', '--incognito']};
             chromeCapabilities.set('chromeOptions', chromeOptions);
             var browser = new webdriver.Builder().usingServer().withCapabilities(chromeCapabilities).build();
             browser.manage().deleteAllCookies()
