@@ -34,11 +34,13 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
 });
-
 function individual_filter(num){
+    $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
 	//----------radio buttons for how to display the information
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
+            $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
 	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="none"
 	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
@@ -49,6 +51,8 @@ function individual_filter(num){
 	document.getElementById('individual_GraphicData').onclick = function() {
 
 	    if ( this.checked ) {
+            $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
 	        	document.getElementById("individual"+i+"_commitsTable").style.display="none"
 	       	 	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
@@ -58,6 +62,8 @@ function individual_filter(num){
 
 	document.getElementById('individual_MixedData').onclick = function() {
 	    if ( this.checked ) {
+            $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
 	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
 	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
