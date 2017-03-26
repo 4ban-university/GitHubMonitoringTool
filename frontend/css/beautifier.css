@@ -104,7 +104,6 @@ hr {
 #issuesCanvas > div,
 #commentsCanvas > div,
 .ChartType > div {
-    letter-spacing: 4px;
     text-align: center;
 }
 
@@ -114,4 +113,7 @@ hr {
 
 #contact-dialog p {
     margin-left: 5px;
+}
+.mdl-radio__label:not(:last-child) {
+    margin-right: 15px;
 }
