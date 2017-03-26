@@ -3,7 +3,7 @@
     if(isset($_SESSION['token']))
         $token = $_SESSION['token'];
     else
-        header("login.php");
+        header("Location: login.php");
 
 
     //setting js variables
@@ -17,7 +17,7 @@
     </script>";
     }
     else
-        header("admin.php");
+        header("Location: admin.php");
 
 
 ?>
