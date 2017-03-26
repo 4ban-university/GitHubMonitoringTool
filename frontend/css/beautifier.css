@@ -123,3 +123,10 @@ hr {
 .modal-body p {
     font-size: 14px;
 }
+.mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded {
+    font-size: 14px;
+    font-weight: 100;
+}
+a:focus, a:hover {
+    text-decoration: none !important;
+}
