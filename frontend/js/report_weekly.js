@@ -1,5 +1,11 @@
 repo.weeklyInfo.then(function(weeklyInfo){
+	/*
+		Promise generate weekly activity reports for all collaborators
+		by commits + issues + comments.
+	:param weeklyInfo: json object with activity data.
+	*/
 	var weeks = weeklyInfo.length;
+	// Gererate html tabs like Week 1, week 2, week 3
 	var tabs = '<div class="wrapper"><ul class="tabs clearfix" data-tabgroup="first-tab-group">'
 	for (var w = 1; w <= weeks; w++){
 		if (w == 1){
@@ -21,7 +27,9 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	// 	charts.push({})
 	// }
 	// //console.log(charts)
+
 	// Generating page under tabs
+	// Filters, divs.
 	for (var week = 1; week <= weeks; week++){
 		var id = 'tab'+week
 		var page = '<!-- Start of all weeks report --> \
@@ -63,13 +71,15 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		var weekly_commitsPerCollaborator_chart=[]; 
 		weekly_report(weeklyInfo[week-1], week, weekly_commitsPerCollaborator_chart);
 	}
-
 	// Additional functionss
 	changeTabs()
 	chart_plugin()
 });
 
 function changeTabs(){
+	/*
+		Realization of tab changing functions
+	*/
 	$('.tabgroup > div').hide();
 	$('.tabgroup > div:first-of-type').show();
 	$('.tabs a').click(function(e){
@@ -83,11 +93,12 @@ function changeTabs(){
 	  	$(tabgroup).children('div').hide();
 	  	$(target).show();
 	})
-	
 }
-// Additional functions
-// Chart js plugon for changing background color in charts. 
+
 function chart_plugin(){
+	/*
+		Chart js library plugin for changing background color in charts. 
+	*/
 	Chart.pluginService.register({
 	    beforeDraw: function (chart, easing) {
 	        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
@@ -104,7 +115,10 @@ function chart_plugin(){
 };
 
 function weekly_filter(weeklyInfo, week){
-	//----------radio buttons for how to display the information
+	/*
+		Function realize filters functionality.
+	*/
+	// radio buttons for how to display the information
 	document.getElementById('weekly'+week+'_TextData').onclick = function() {
 	    if ( this.checked ) {
             $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
@@ -134,6 +148,10 @@ function weekly_filter(weeklyInfo, week){
 };
 
 function weekly_tables(weeklyInfo, week){
+	/*
+		Function generate tables with activity data for each week
+		and put it into right div
+	*/
 	var sortedWeeklyInfo=sortData(weeklyInfo)
 	var activity = 0
 	for (var key in weeklyInfo){
@@ -159,6 +177,10 @@ function weekly_tables(weeklyInfo, week){
 };
 
 function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
+	/*
+		Function generate charts with activity for each week.
+		Realization functions of changing chart type.
+	*/
 	document.getElementById('weekly'+week+'_commitsCanvas').innerHTML += "<canvas id='weekly"+week+"_commitsPerCollaborator' class='visible'></canvas>"
 	//console.log(charts)
 	weekly_commitsPerCollaborator(weeklyInfo, week, 'doughnut', false, weekly_commitsPerCollaborator_chart);
@@ -198,6 +220,9 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 };
 	
 function weekly_commitsPerCollaborator(weeklyInfo, week, chartType, labels, weekly_commitsPerCollaborator_chart){
+	/*
+		Function generate right options and data for each chart.
+	*/
 	//console.log(week)
 	var ctx_commitsPerCollaborator = document.getElementById('weekly'+week+'_commitsPerCollaborator').getContext("2d");
 	//Data and options for commits per collaborator
@@ -213,6 +238,9 @@ function weekly_commitsPerCollaborator(weeklyInfo, week, chartType, labels, week
 };
 
 function weekly_commitsPerCollaboratorTransformation (commitsPerCollaborator_data, labels_need){
+	/*
+		Function convert data to correct format.
+	*/
 	var keyNum=0
 	if (labels_need == true){
 		var labels=[]

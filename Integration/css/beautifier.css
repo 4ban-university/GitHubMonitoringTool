@@ -117,3 +117,20 @@ hr {
 .mdl-radio__label:not(:last-child) {
     margin-right: 15px;
 }
+.modal-content {
+    border-radius: 0 !important;
+}
+.modal-body p {
+    font-size: 14px;
+}
+.mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded {
+    font-size: 14px;
+    font-weight: 100;
+}
+#forRepoSelection{
+    font-size: 15px;
+    font-weight: 400;
+}
+a:focus, a:hover {
+    text-decoration: none !important;
+}

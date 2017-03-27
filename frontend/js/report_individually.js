@@ -1,4 +1,9 @@
 repo.weeklyInfo.then(function(weeklyInfo){
+	/*
+		Promise generate report for each collaborator by activity,
+		which consist of commits + issues + comments.
+	:param weeklyInfo: Json object with data for each user activity.
+	*/
 	var names = []
 	for (var name in weeklyInfo[weeklyInfo.length-1]){
 		names.push(name)
@@ -8,6 +13,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	var commitsPerCollaborator_data=[]
 	var commitsPerCollaborator_options=[]
 	var data=[]
+	// Generate empty divs, filter buttons for each collaborator.
 	for (var name in names){
 		var page = '<div class="chart_in" id="individual'+name+'_commitsChart">'
 		page += '<h3>'+names[name]+'</h3><br>'
@@ -35,8 +41,13 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	chart_plugin()
 });
 function individual_filter(num){
+
     $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
 	//----------radio buttons for how to display the information
+
+	/*
+		Function generate functions for filters.
+	*/
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
             $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
@@ -73,6 +84,10 @@ function individual_filter(num){
 };
 
 function individual_tables(num, name, info){
+	/*
+		Function generate tables with data
+		and put it into empty, generated div.
+	*/
 	var com = 0;
 		for (var key in info){
 			com += info[key]
@@ -92,14 +107,14 @@ function individual_tables(num, name, info){
 	}
 	table+="</tr></table>"
 	document.getElementById('individual'+num+'_commitsTable').innerHTML += table;
-
 	//document.getElementById('individual'+num+'_commitsTable')
-
 };
 
-// Additional functions
-// Chart js plugon for changing background color in charts. 
+// Additional functions 
 function chart_plugin(){
+	/*
+		Chart js library plugin for changing background color in charts.
+	*/
 	Chart.pluginService.register({
 	    beforeDraw: function (chart, easing) {
 	        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
@@ -118,6 +133,10 @@ function chart_plugin(){
 //var ctx_commitsPerCollaborator=[]
 
 function individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options) {
+	/*
+		Function generate chart data, chart options, chart object
+		and put it into empty, generated div.
+	*/
 	for (var i=0; i<data.length; i++){
 		document.getElementById('individual'+i+'_commitsCanvas').innerHTML += "<canvas id='individual"+i+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
 		ctx_commitsPerCollaborator[i] = document.getElementById('individual'+i+'_commitsPerCollaborator').getContext("2d");
@@ -135,28 +154,28 @@ function individual_report(data, individual_commitsPerCollaborator_chart, ctx_co
 
 	for (var i=0; i<data.length-1; i++) {
 		document.getElementById('individual'+i+'_barCPC').onclick = function() {
-	    if ( this.checked ) {
-	    	var chartNumber=parseInt($(this).attr("chartNumber"))
-	       // document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
-			individual_commitsPerCollaborator_chart[chartNumber].destroy();
-	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'bar', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
-	    }
-	};
-	document.getElementById('individual'+i+'_lineCPC').onclick = function() {
-	    if ( this.checked ) {
-	    	var chartNumber=parseInt($(this).attr("chartNumber"))
-	       // document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
-			individual_commitsPerCollaborator_chart[chartNumber].destroy();
-	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
-	    }
-	};
+		    if ( this.checked ) {
+		    	var chartNumber=parseInt($(this).attr("chartNumber"))
+		        // document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
+				individual_commitsPerCollaborator_chart[chartNumber].destroy();
+		        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'bar', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
+		    }
+		};
+		document.getElementById('individual'+i+'_lineCPC').onclick = function() {
+		    if ( this.checked ) {
+		    	var chartNumber=parseInt($(this).attr("chartNumber"))
+		        // document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
+				individual_commitsPerCollaborator_chart[chartNumber].destroy();
+		        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
+		    }
+		};
 	}
-
-
 }
 
 function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart){
-	
+	/*
+		Additional function for generating right chart data.
+	*/
 	num=parseInt(num)
 	ctx_commitsPerCollaborator[num] = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
 	
@@ -173,11 +192,14 @@ function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerC
     //     data: commitsPerCollaborator_data,
     //     options: commitsPerCollaborator_options
     // });
-   // individual_commitsPerCollaborator_chart[num]=a
+    // individual_commitsPerCollaborator_chart[num]=a
     console.log(num, individual_commitsPerCollaborator_chart[num])
 };
 
 function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
+	/*
+		Additional function for transform data into right format.
+	*/
 	var keyNum=0
 	var labels=[]
 	var colors = '#14CCCC'

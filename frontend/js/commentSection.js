@@ -1,7 +1,10 @@
 function submitComment(form){
+    /* 
+        Function for adding new comment into repository
+    :param form: values from html form with comment text.
+    */ 
     var today = new Date().toString();
-
-    var content = $("#ta-comments-history").html()
+    var content = $("#ta-comments-history").html();
     //console.log(content)
     content += "<span class='bubble'><p>"+ today +"<br>";
     content += form.comment.value;
@@ -12,6 +15,11 @@ function submitComment(form){
 }
 
 function getTAComment(ob1) {
+    /*
+        Function recieve all previous comments from repositories
+        for creating comment history on website.
+    :param ob1: main repo object.
+    */
     ob1.commentBranch.then(function (response) {
         if (response) {
             //console.log("branch exists: Read file");
