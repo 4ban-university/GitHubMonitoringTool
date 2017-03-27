@@ -34,7 +34,6 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
 });
-
 function individual_filter(num){
     $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
 	//----------radio buttons for how to display the information
