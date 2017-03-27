@@ -40,7 +40,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_MixedData" data-upgraded=",MaterialRadio">\
 							<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button" checked>\
 							<span class="mdl-radio__label">Show data either in tables and charts</span>\
-            				<span class="mdl-radio__outer-circle"></span>\
+            				<span class="mdl-radio__outer-circle outer-circle"></span>\
 						</label>\
 					</div><hr> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
