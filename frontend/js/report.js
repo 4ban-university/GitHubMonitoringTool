@@ -183,7 +183,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 			commits += commitsPerCollaborator[key];
 		}
 
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits<br> <a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits <a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commitsPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/commits)+"%</td></tr>"
 		}
@@ -192,7 +192,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 
 		$(".sortCommits").click(function(){
 			$(this).parents(".dataTable").find(".tbl").remove()
-			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits<br> <a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits<a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 			for (var key in sortedCommits) {
 				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/commits)+"%</td></tr>"
 			}
@@ -208,7 +208,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 		for (var key in issuesPerCollaborator){
 			issues += issuesPerCollaborator[key];
 		}
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues <br> <a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues<a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in issuesPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+issuesPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(issuesPerCollaborator[key]*100/issues)+"%</td></tr>"
 		}
@@ -216,7 +216,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 		document.getElementById('issuesTable').innerHTML += table;
 		$(".sortIssues").click(function(){
 			$(this).parents(".dataTable").find(".tbl").remove()
-			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues<br> <a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues<a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 			for (var key in sortedCommits) {
 				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/issues)+"%</td></tr>"
 			}
@@ -231,7 +231,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 		for (var key in commentsPerCollaborator){
 			comments += commentsPerCollaborator[key];
 		}
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<br> <a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commentsPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commentsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commentsPerCollaborator[key]*100/comments)+"%</td></tr>"
 		}
@@ -239,7 +239,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 		document.getElementById('commentsTable').innerHTML += table;
 		$(".sortComments").click(function(){
 			$(this).parents(".dataTable").find(".tbl").remove()
-			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<br> <a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 			for (var key in sortedCommits) {
 				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/comments)+"%</td></tr>"
 			}
