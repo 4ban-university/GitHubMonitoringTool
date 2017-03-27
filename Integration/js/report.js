@@ -56,6 +56,12 @@ function filter(){
 	};
 };
 
+// function sortData(commits){
+// 	commits.then(function(commits){
+// 		console.log(commits)
+// 	});
+// }
+
 function report(){
 
 	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
@@ -65,6 +71,7 @@ function report(){
 	commitsPerCollaborator(repo.commits, 'doughnut', false);
 	issuesPerCollaborator(repo.issues, 'doughnut', false);
 	commentsPerCollaborator(repo.comments, 'doughnut', false);
+
 
 	document.getElementById('doughnutCPC').onclick = function() {
 	    if ( this.checked ) {
@@ -156,43 +163,76 @@ function report(){
 
 function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollaborator){
 	commitsPerCollaborator.then(function(commitsPerCollaborator){
+		var sortedCommits=sortData(commitsPerCollaborator)
+
 		var commits = 0;
 		for (var key in commitsPerCollaborator){
 			commits += commitsPerCollaborator[key]
 		}
 
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits</th><th class='th_s'>Percentage</th></tr>"
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits<br> <a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commitsPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commitsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commitsPerCollaborator[key]*100/commits)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('commitsTable').innerHTML += table;
+
+		$(".sortCommits").click(function(){
+			$(this).parents(".dataTable").find(".tbl").remove()
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits<br> <a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			for (var key in sortedCommits) {
+				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/commits)+"%</td></tr>"
+			}
+			table+="</table>"
+			document.getElementById('commitsTable').innerHTML += table;
+		})
+
 	});
 	
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
+		var sortedCommits=sortData(issuesPerCollaborator)
 		var issues = 0;
 		for (var key in issuesPerCollaborator){
 			issues += issuesPerCollaborator[key]
 		}
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues</th><th class='th_s'>Percentage</th></tr>"
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues <br> <a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in issuesPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+issuesPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(issuesPerCollaborator[key]*100/issues)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('issuesTable').innerHTML += table;
+		$(".sortIssues").click(function(){
+			$(this).parents(".dataTable").find(".tbl").remove()
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues<br> <a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			for (var key in sortedCommits) {
+				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/issues)+"%</td></tr>"
+			}
+			table+="</table>"
+			document.getElementById('issuesTable').innerHTML += table;
+		})
 	});
 
 	commentsPerCollaborator.then(function(commentsPerCollaborator){
+		var sortedCommits=sortData(commentsPerCollaborator)
 		var comments = 0;
 		for (var key in commentsPerCollaborator){
 			comments += commentsPerCollaborator[key]
 		}
-		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments</th><th class='th_s'>Percentage</th></tr>"
+		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<br> <a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commentsPerCollaborator) {
 			table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+commentsPerCollaborator[key]+"</td><td class='td_s'>"+Math.round(commentsPerCollaborator[key]*100/comments)+"%</td></tr>"
 		}
 		table+="</table>"
 		document.getElementById('commentsTable').innerHTML += table;
+		$(".sortComments").click(function(){
+			$(this).parents(".dataTable").find(".tbl").remove()
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<br> <a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			for (var key in sortedCommits) {
+				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedCommits[key]+"</td><td class='td_s'>"+Math.round(sortedCommits[key]*100/comments)+"%</td></tr>"
+			}
+			table+="</table>"
+			document.getElementById('commentsTable').innerHTML += table;
+		})
 	});
 };
 
@@ -378,3 +418,24 @@ Chart.pluginService.register({
         }
     }
 });
+
+function sortData(dataForSort){
+	//console.log(1)
+	var helpArr=[]
+	var i=0
+	for (var key in dataForSort){
+		helpArr[i]={name:key, value:dataForSort[key]}
+		i++
+	}
+
+	helpArr.sort(function (a, b) {
+  		return b.value-a.value
+	});
+
+	var sortedCommits=new Object
+	for (var i in helpArr) {
+		Object.defineProperty(sortedCommits, helpArr[i].name, {value: helpArr[i].value, configurable: true, writable: true, enumerable: true })
+	}
+	//console.log(sortedCommits)
+	return(sortedCommits)
+}

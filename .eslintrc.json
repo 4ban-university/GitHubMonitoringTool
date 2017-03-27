@@ -1,0 +1,26 @@
+{
+    "globals": {
+        "jQuery": true,
+        "$": true
+    },
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "semi": 0,
+        "quotes": 0,
+        "no-console": 0,
+        "comma-dangle": 0,
+        "no-unused-vars": 0,
+        "no-constant-condition":0
+    }
+}

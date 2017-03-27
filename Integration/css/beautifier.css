@@ -1,0 +1,136 @@
+.page-content {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+.mdl-list__item {
+    min-height: 10px !important;
+}
+.mdl-badge[data-badge]:after {
+    top: -4px !important;
+    right: -60px !important;
+    width: 50px !important;
+    border-radius: 5px !important;
+}
+input[type=radio] {
+    border: 2px solid rgb(63,81,181);
+}
+h3 {
+    font-size: 35px;
+    color: #555;
+}
+h2 {
+    font-size: 30px;
+    color: #555;
+}
+.tabs {
+    margin: 0;
+}
+textarea[id="ta-comments"] {
+    resize: none;
+}
+
+input[type="checkbox"]#commitsPerCollaboratorCheck {
+    border: 10px solid #b32e2e;
+    text-align: center;
+    color: #eee;
+}
+.mdl-button[for="search"] {
+    display: none;
+}
+.demo-layout .demo-navigation .mdl-navigation__link:hover {
+    color: #ffffff;
+}
+.page-content > h2:first-child, .page-content #tab1 h2 {
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+.over_filters, .ind_radio, .weekly_radio {
+    margin-left: 20px;
+}
+#collaborators h2 {
+    margin-bottom: 0;
+}
+#collaborators > ul:first-child {
+    display: none;
+}
+#avatar-image {
+    text-align: center;
+    padding-top: 0;
+}
+.demo-avatar:hover, .demo-avatar:focus, .demo-avatar:active {
+    border-radius: 0px;
+}
+#collaborators > ul {
+    display: none;
+}
+#username > h5 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#weekly1_commitsChart > h3 {
+    margin-top: 0;
+}
+#show-action > i {
+    margin-bottom: 5px;
+}
+body > div > div > header > div.mdl-layout__header-row > span {
+    margin-left: 10px;
+}
+#commentSection > form > div > label, textarea[id="ta-comments"] {
+    padding: 0 0 0 20px;
+}
+#commentSection > form > input {
+    color: #fff;
+    font-size: 15px;
+}
+#commentSection > form > input:hover,
+#commentSection > form > input:active,
+#commentSection > form > input:focus {
+    background-color: rgb(64,196,255);
+}
+.chart_in > h3 {
+    margin: 0;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+#scroll-tab-1 > div > div:nth-child(2) > div:nth-child(1) > table > tbody > tr:nth-child(2) > td {
+    display: none;
+}
+#commitsCanvas > div,
+#issuesCanvas > div,
+#commentsCanvas > div,
+.ChartType > div {
+    text-align: center;
+}
+
+.mdl-dialog {
+    width: 400px !important;
+}
+
+#contact-dialog p {
+    margin-left: 5px;
+}
+.mdl-radio__label:not(:last-child) {
+    margin-right: 15px;
+}
+.modal-content {
+    border-radius: 0 !important;
+}
+.modal-body p {
+    font-size: 14px;
+}
+.mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded {
+    font-size: 14px;
+    font-weight: 100;
+}
+#forRepoSelection{
+    font-size: 15px;
+    font-weight: 400;
+}
+a:focus, a:hover {
+    text-decoration: none !important;
+}

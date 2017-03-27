@@ -16,9 +16,9 @@
 }
 
 .chart{
-	width:100%;
-  margin-right: 5px
-  margin-left: 5px;
+  border-radius: 5px;
+  margin: 10pt 10px 10px 10px;
+  padding:10pt 10pt 10pt 10pt;
 }
 .dataTable{
   width:48%;
@@ -41,11 +41,14 @@
   border: 1px solid #ff0000;*/
 }
 .dataTable_in{
-
+  width:100%;
+  overflow-x: auto;
 }
 .chart_in{
-  width:100%;
-  margin: 20pt 0px 0px 20px;
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10px 10px 10px;
+  padding:10pt 10pt 10pt 10pt;
 }
 .canvas_in{
   width: 30%;
@@ -53,6 +56,22 @@
 }
 .burndownCanvas{
 	width: 96%;
+}
+.ind_radio{
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10pt 10pt 10pt;
+  padding: 1pt 10pt 1pt 10pt;
+  min-width: 200pt;
+  max-width: 300pt;
+}
+.weekly_radio{
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10pt 10pt 10pt;
+  padding: 1pt 10pt 1pt 10pt;
+  min-width: 200pt;
+  max-width: 300pt;
 }
 .collaborators{
 	padding: 5px 5px 5px 5px;
@@ -76,17 +95,34 @@
 }
 .td_s, .th_s {
 	border: 1px solid #dddddd;
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 }
 .tr_s:nth-child(even) {
     background-color: #dddddd;
 }
+
+.indr_tbl {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  background-color: #b3d4fc;
+  width:100%;
+}
+.indr_td_s, .indr_th_s {
+  border: 1px solid #f3f3f3;
+  text-align: left;
+  min-width: 100px;
+  padding: 8px;
+}
+.indr_tr_s:nth-child(even) {
+    background-color: #dddddd;
+}
 .ChartType{
 	border: 1px solid #dddddd;
-	background: #424242;
+  padding: 5pt 10pt 5pt 10pt;
+	background: #b3d4fc;
 	border-radius: 3px;
-	color: #ffffff;
+	color: #232323;
 }
 .mdl-layout-back{
 	display: block;
@@ -99,7 +135,42 @@
     box-sizing: border-box;
     padding-right: 10px;
 }
-
+.sortCommits{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.sortIssues{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.sortComments{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.sortWeek{
+  border-radius: 5px;
+  padding: 3pt 5pt 3pt 5pt;
+  background-color: #b3d4fc;
+  color: #232323;
+}
+.over_radio{
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin: 10pt 10pt 10pt 10pt;
+  padding: 1pt 10pt 1pt 10pt;
+  min-width: 200pt;
+  max-width: 300pt;
+  float:left;
+}
+.over_filters{
+  width:100%;
+}
 .wrapper {
   margin: 0px auto;
   width: 100%;
@@ -152,5 +223,41 @@
     padding: 20px 0;
 }
 .mdl-textfield.gray{
-	background-color: #fff;
+	background-color: #f3f3f3;
+  border-radius: 5px;
+  border:1px solid #e4e4e4;
+}
+.commentsHistory{
+  width: 100%;
+  height:330pt;
+  overflow-y: auto;
+
+}
+.bubble:nth-child(even) {
+  background: #b3d4fc;
+}
+.bubble
+{
+    display: inline-block;
+    width: 98%;
+    border-radius: 3px;
+    position: relative;
+    clear: both;
+    background-color: #87BAF6;
+    margin: 5px 5px 5px 5px;
+
+}
+
+.bubble p
+{
+    display: block;
+    vertical-align: middle;
+    color:#232323;
+    text-align: left;
+    font-size:14px;
+    margin-left:10px;
+
+}
+.comment{
+  padding: 10px 0px 0px 0px;
 }
