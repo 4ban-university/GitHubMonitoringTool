@@ -55,11 +55,27 @@ repo.weeklyInfo.then(function(weeklyInfo){
 						<h3>Activity per collaborator</h3> \
 						<div class="dataTable" id="weekly'+week+'_commitsTable"></div> \
 						<div class="canvas" id="weekly'+week+'_commitsCanvas"> \
-							<div class="ChartType" style="display:block"> \
-								<input type="radio" id="weekly'+week+'_doughnutCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' checked>Doughnut \
-									<input type="radio" id="weekly'+week+'_pieCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Pie \
-									<input type="radio" id="weekly'+week+'_barCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Bar \
-									<input type="radio" id="weekly'+week+'_lineCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Line \
+							<div class="ChartType chart-chooser-main" style="display:block"> \
+								<label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_doughnutCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_doughnutCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' checked class="mdl-radio__button">\
+                                    <span class="mdl-radio__label">Doughnut</span>\
+                                    <span class="mdl-radio__outer-circle outer-circle"></span>\
+                                </label>\
+                                <label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_pieCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_pieCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' class="mdl-radio__button">\
+								    <span class="mdl-radio__label">Pie</span>\
+								    <span class="mdl-radio__outer-circle"></span>\
+                                </label>\
+                                <label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_barCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_barCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' class="mdl-radio__button">\
+                                    <span class="mdl-radio__label">Bar</span>\
+                                    <span class="mdl-radio__outer-circle"></span>\
+                                </label>\
+                                <label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_lineCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_lineCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' class="mdl-radio__button">\
+                                    <span class="mdl-radio__label">Line</span>\
+                                    <span class="mdl-radio__outer-circle"></span>\
+                                </label>\
 							</div>		 \
 						</div> \
 					</div> \
@@ -187,6 +203,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 
 	document.getElementById('weekly'+week+'_doughnutCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
@@ -195,6 +213,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	};
 	document.getElementById('weekly'+week+'_pieCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
@@ -203,6 +223,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	};
 	document.getElementById('weekly'+week+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
@@ -211,6 +233,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	};
 	document.getElementById('weekly'+week+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
