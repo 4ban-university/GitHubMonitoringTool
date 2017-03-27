@@ -1,4 +1,7 @@
 function filter(){
+	/*
+		Realization of filters functions.
+	*/
 	//----------checkboxes for what information to show
 	document.getElementById('commitsPerCollaboratorCheck').onclick = function() {
 	    if ( !this.checked ) {
@@ -63,7 +66,11 @@ function filter(){
 // }
 
 function report(){
-
+	/*
+		Function generate overall report.
+		Creatinf canvases.
+		Realization changing chart type fucntionality.
+	*/
 	document.getElementById('commitsCanvas').innerHTML += "<canvas id='commitsPerCollaborator' class='visible'></canvas>"
 	document.getElementById('issuesCanvas').innerHTML += "<canvas id='issuesPerCollaborator' class='visible'></canvas>"
 	document.getElementById('commentsCanvas').innerHTML += "<canvas id='commentsPerCollaborator' class='visible'></canvas>"
@@ -162,12 +169,18 @@ function report(){
 };
 
 function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollaborator){
+	/*
+		Function generate tables with data for collaborators in promises.
+	:param commitsPerCollaborator: Number of commits per each collaborator
+	:param issuesPerCollaborator: Number of issues per each collaborator
+	:param commentsPerCollaborator: Number of comments per each collaborator
+	*/
 	commitsPerCollaborator.then(function(commitsPerCollaborator){
-		var sortedCommits=sortData(commitsPerCollaborator)
+		var sortedCommits=sortData(commitsPerCollaborator);
 
 		var commits = 0;
 		for (var key in commitsPerCollaborator){
-			commits += commitsPerCollaborator[key]
+			commits += commitsPerCollaborator[key];
 		}
 
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of commits<br> <a class='sortCommits' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
@@ -190,10 +203,10 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 	});
 	
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
-		var sortedCommits=sortData(issuesPerCollaborator)
+		var sortedCommits=sortData(issuesPerCollaborator);
 		var issues = 0;
 		for (var key in issuesPerCollaborator){
-			issues += issuesPerCollaborator[key]
+			issues += issuesPerCollaborator[key];
 		}
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of issues <br> <a class='sortIssues' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in issuesPerCollaborator) {
@@ -213,10 +226,10 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 	});
 
 	commentsPerCollaborator.then(function(commentsPerCollaborator){
-		var sortedCommits=sortData(commentsPerCollaborator)
+		var sortedCommits=sortData(commentsPerCollaborator);
 		var comments = 0;
 		for (var key in commentsPerCollaborator){
-			comments += commentsPerCollaborator[key]
+			comments += commentsPerCollaborator[key];
 		}
 		var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Number of comments<br> <a class='sortComments' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
 		for (var key in commentsPerCollaborator) {
@@ -238,11 +251,14 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 
 	
 function commitsPerCollaborator(commitsPerCollaborator, chartType, line){
+	/*
+		Function generate commits per collaborator chart, data and options for it.
+	*/
 	var ctx_commitsPerCollaborator = document.getElementById('commitsPerCollaborator').getContext("2d");
 	commitsPerCollaborator.then(function(commitsPerCollaborator){
 		//Data and options for commits per collaborator
 		var commitsPerCollaborator_data = commitsPerCollaboratorTransformation(commitsPerCollaborator, line);
-		var commitsPerCollaborator_options = {}
+		var commitsPerCollaborator_options = {};
 		//commits per collaborators
 		commitsPerCollaborator_chart = new Chart(ctx_commitsPerCollaborator, {
 	        type: chartType,
@@ -253,11 +269,14 @@ function commitsPerCollaborator(commitsPerCollaborator, chartType, line){
 };
 
 function issuesPerCollaborator(issuesPerCollaborator, chartType, line){
+	/*
+		Function generate issues per collaborator chart, data and options for it.
+	*/
 	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator').getContext("2d");
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
 		//Data and options for issues per collaborator
 		var issuesPerCollaborator_data = issuesPerCollaboratorTransformation(issuesPerCollaborator, line);	
-		var issuesPerCollaborators_options = {}
+		var issuesPerCollaborators_options = {};
 
 		issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
 	        type: chartType,
@@ -268,11 +287,14 @@ function issuesPerCollaborator(issuesPerCollaborator, chartType, line){
 };
 
 function commentsPerCollaborator(commentsPerCollaborator, chartType, line){
+	/*
+		Function generate comments per collaborator chart, data and options for it.
+	*/
 	var ctx_commentsPerCollaborator = document.getElementById('commentsPerCollaborator').getContext("2d");
 	commentsPerCollaborator.then(function(commentsPerCollaborator){
 		//Data and options for comments per collaborator
 		var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(commentsPerCollaborator, line);	
-		var commentsPerCollaborators_options = {}
+		var commentsPerCollaborators_options = {};
 
 		commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
 	        type: chartType,
@@ -283,24 +305,27 @@ function commentsPerCollaborator(commentsPerCollaborator, chartType, line){
 };
 
 function commitsPerCollaboratorTransformation (commitsPerCollaborator_data, line){
-	var keyNum=0
-	var labels=[]
+	/*
+		Function convert commits per collaborator data to right format.
+	*/
+	var keyNum=0;
+	var labels=[];
 	if (line == true){
-		var colors = '#FFCE56'
+		var colors = '#FFCE56';
 	}
 	else{
 		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
 	}
 	for (var key in commitsPerCollaborator_data) {
-		labels[keyNum]=key
-		keyNum++
+		labels[keyNum]=key;
+		keyNum++;
 	}
 
-	var keyNum=0
-	var data=[]
+	var keyNum=0;
+	var data=[];
 	for (var key in commitsPerCollaborator_data) {
-		data[keyNum]=commitsPerCollaborator_data[key]
-		keyNum++
+		data[keyNum]=commitsPerCollaborator_data[key];
+		keyNum++;
 	}
 
 	commitsPerCollaborator_data = {
@@ -319,24 +344,27 @@ function commitsPerCollaboratorTransformation (commitsPerCollaborator_data, line
 };
 
 function commentsPerCollaboratorTransformation (commentsPerCollaborator_data, line){
-	var keyNum=0
-	var labels=[]
+	/*
+		Function convert comments per collaborator data to right format.
+	*/
+	var keyNum=0;
+	var labels=[];
 	if (line == true){
-		var colors = '#FFCE56'
+		var colors = '#FFCE56';
 	}
 	else{
 		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
 	}
 	for (var key in commentsPerCollaborator_data) {
-		labels[keyNum]=key
-		keyNum++
+		labels[keyNum]=key;
+		keyNum++;
 	}
 
-	var keyNum=0
-	var data=[]
+	var keyNum=0;
+	var data=[];
 	for (var key in commentsPerCollaborator_data) {
-		data[keyNum]=commentsPerCollaborator_data[key]
-		keyNum++
+		data[keyNum]=commentsPerCollaborator_data[key];
+		keyNum++;
 	}
 
 	commentsPerCollaborator_data = {
@@ -356,24 +384,27 @@ function commentsPerCollaboratorTransformation (commentsPerCollaborator_data, li
 };
 
 function issuesPerCollaboratorTransformation (issuesPerCollaborator_data, line){
-	var keyNum=0
-	var labels=[]
+	/*
+		Function convert issues per collaborator data to right format.
+	*/
+	var keyNum=0;
+	var labels=[];
 	if (line == true){
-		var colors = '#FFCE56'
+		var colors = '#FFCE56';
 	}
 	else{
 		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
 	}
 	for (var key in issuesPerCollaborator_data) {
-		labels[keyNum]=key
-		keyNum++
+		labels[keyNum]=key;
+		keyNum++;
 	}
 
-	var keyNum=0
-	var data=[]
+	var keyNum=0;
+	var data=[];
 	for (var key in issuesPerCollaborator_data) {
-		data[keyNum]=issuesPerCollaborator_data[key]
-		keyNum++
+		data[keyNum]=issuesPerCollaborator_data[key];
+		keyNum++;
 	}
 
 	issuesPerCollaborator_data = {
@@ -399,13 +430,11 @@ var issuesPerCollaborator_chart;
 var commentsPerCollaborator_chart;
 report();
 
-
-
-
-
-// Additional functions
-// Chart js plugon for changing background color in charts. 
+// Additional functions 
 Chart.pluginService.register({
+	/*
+		Chart js library plugin for changing background color in charts.
+	*/
     beforeDraw: function (chart, easing) {
         if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
             var helpers = Chart.helpers;
@@ -420,16 +449,19 @@ Chart.pluginService.register({
 });
 
 function sortData(dataForSort){
+	/*
+		Realization of sorting for tables
+	*/
 	//console.log(1)
-	var helpArr=[]
-	var i=0
+	var helpArr=[];
+	var i=0;
 	for (var key in dataForSort){
-		helpArr[i]={name:key, value:dataForSort[key]}
+		helpArr[i]={name:key, value:dataForSort[key]};
 		i++
 	}
 
 	helpArr.sort(function (a, b) {
-  		return b.value-a.value
+  		return b.value-a.value;
 	});
 
 	var sortedCommits=new Object
@@ -437,5 +469,5 @@ function sortData(dataForSort){
 		Object.defineProperty(sortedCommits, helpArr[i].name, {value: helpArr[i].value, configurable: true, writable: true, enumerable: true })
 	}
 	//console.log(sortedCommits)
-	return(sortedCommits)
+	return(sortedCommits);
 }
