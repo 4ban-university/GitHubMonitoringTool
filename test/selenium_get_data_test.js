@@ -238,7 +238,7 @@ test.describe('Get data', function() {
             });
             browser.findElement(webdriver.By.className("mdl-checkbox")).click()
             browser.findElement(webdriver.By.className("mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect")).click().then(function() {
-                browser.sleep(500);
+                browser.sleep(1000);
                 });
             browser.findElement(webdriver.By.className("mdl-navigation__link")).click().then(function() {
                 browser.sleep(5000);
@@ -285,7 +285,7 @@ test.describe('Get data', function() {
             });
             browser.findElement(webdriver.By.className("mdl-checkbox")).click()
             browser.findElement(webdriver.By.className("mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect")).click().then(function() {
-                browser.sleep(500);
+                browser.sleep(1000);
                 });
             browser.findElement(webdriver.By.className("mdl-navigation__link")).click().then(function() {
                 browser.sleep(5000);
