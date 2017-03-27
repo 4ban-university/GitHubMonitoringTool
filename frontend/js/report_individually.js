@@ -30,12 +30,13 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		individual_tables(name, names[name], dataForCollaborator);
 	
 	}
+
+    $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
 	individual_filter(name);
 	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
 });
 function individual_filter(num){
-    $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
 	//----------radio buttons for how to display the information
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
