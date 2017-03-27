@@ -45,22 +45,23 @@ function Repo(owner, repo, oauth) {
     isCommented(this);
 
     this.writeComment = function (ob1, content) {
-        var today = new Date();
         this.commentBranch.then(function (response) {
-
             if (response) {
-                console.log("branch exists");
-                ob1.repo.writeFile("TA_Comments", "Comments/"+today.toISOString()+".txt", content, "DO NOT MERGE", {});
+                //console.log("branch exists");
+                ob1.repo.writeFile("TA_Comments", "Comments/TA_Comments.md", content, "DO NOT MERGE",{}).then(function (response) {
+                    //console.log("write file - response" + response);
+                    getTAComment(ob1);
+                });
             }
             else {
                 ob1.repo.createBranch("master", "TA_Comments").then(function (response) {
-                    console.log(" new branch ");
-                    ob1.repo.writeFile("TA_Comments", "Comments/"+today.toISOString()+".txt", content, "DO NOT MERGE", {});
+                    //console.log(" new branch ");
+                    ob1.repo.writeFile("TA_Comments", "Comments/TA_Comments.md", content, "DO NOT MERGE",{}).then(function (response){
+                        getTAComment(ob1);
+                    });
                 });
-
             }
         });
-
     };
 }
 
@@ -214,8 +215,8 @@ function getWeeklyInfo(ob1){
                     list.data.forEach(function(l){
                         var current = new Date(l.commit.author.date);
                         var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                        if(i>=0)
-                        weeks[i][author] += 1;
+                        if(i >= 0)
+                            weeks[i][author] += 1;
                     });
                 }));
             });
@@ -228,8 +229,8 @@ function getWeeklyInfo(ob1){
                  list.data.forEach(function(l){
                      var current = new Date(l.created_at);
                      var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                     if(i>=0)
-                     weeks[i][l.user.login] += 1;
+                     if(i >= 0)
+                        weeks[i][l.user.login] += 1;
                  });
              }));
 
@@ -241,11 +242,11 @@ function getWeeklyInfo(ob1){
                  list.data.forEach(function(l){
                      var current = new Date(l.created_at);
                      var i = Math.floor((current.getTime() - creation.getTime()) / oneWeek);//getting the index of weeks[]
-                     if(i>=0)
-                     weeks[i][l.user.login] += 1;
+                     if(i >= 0)
+                        weeks[i][l.user.login] += 1;
                  });
              }));
-          
+
 
             Promise.all(promises).then(function(){
                 ob1.weeklyInfo.resolve(weeks);

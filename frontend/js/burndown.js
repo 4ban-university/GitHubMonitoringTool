@@ -1,8 +1,13 @@
 var dueDate;
 function burndown(burndown){
+    /*
+        Function render burndown chart with capability to change time range.
+    :param burndown: json object with data for burndown chart
+    */
     burndown.then(function(burndown){
         var ctx_burndown = document.getElementById('burndown'); 
         var burndown_data = burndown;
+        // Generating default options object for chart.
         var burndown_options = {
                 chartArea: {
                             backgroundColor: 'rgba(255, 255, 255, 1)'
@@ -39,14 +44,15 @@ function burndown(burndown){
         var idealIncrement = firstIssues/(totalDays-1);
         for (var i = 1; i < labels.length; i++){
             firstIssues-=idealIncrement;
-            ideal_data[i]=firstIssues
+            ideal_data[i]=firstIssues;
+        }
 
-            }
         ideal_data[ideal_data.length-1] = 0;
 
+        // Generate burndown_data object for chart. 
+        // Mostly options is default except data options.
         burndown_data = {
             labels: labels,
-
             datasets: [
             {
                 data: data,
@@ -92,11 +98,9 @@ function burndown(burndown){
                 pointHitRadius: 0,
                 spanGaps: false
             }]
-            
-
         }
 
-
+        // Generating chart object with generated data and options.
         var burndown_chart = new Chart(ctx_burndown, {
             type: 'line',
             data: burndown_data,
@@ -106,7 +110,7 @@ function burndown(burndown){
 };
 
 function setDueDate(form){
-     dueDate = form.in.value;
+    dueDate = form.in.value;
     burndown(repo.burndown);
 }
 
