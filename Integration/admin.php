@@ -97,7 +97,7 @@ function login(){
         <script src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js" defer></script>
         <script src="js/repo.js" defer></script>
         <script src="js/repo_list.js" defer></script>
-        <script src="js/test.js" defer></script>
+        <script src="js/add_repo.js" defer></script>
         <script src="js/init.js" defer></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -206,5 +206,5 @@ function login(){
             </div>
         </div>
     </body>
-    <script src="js/test.js"></script>
+    <script src="js/add_repo.js"></script>
 </html>

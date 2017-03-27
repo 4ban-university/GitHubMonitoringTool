@@ -68,7 +68,7 @@
         <script src="js/GitHub.bundle.js" ></script>
 
         <script src="js/repo_list.js" defer></script>
-        <script src="js/test.js" defer></script>
+        <script src="js/add_repo.js" defer></script>
 	<script src="js/Chart.bundle.js" defer></script>
 	<script src="js/repo.js" defer></script>
 	<script src="js/init.js" defer></script>
@@ -284,12 +284,14 @@
                                 <label class="mdl-radio mdl-js-radio" for="individual_TextData">
                                     <input type="radio" id="individual_TextData" name="individual_dataDisplayForm" class="mdl-radio__button">
                                     <span class="mdl-radio__label">Show data only in tables</span>
-                                </label>
+                                </label><br>
                                 <label class="mdl-radio mdl-js-radio" for="individual_GraphicData">
-                                    <input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" class="mdl-radio__button">Show data only in charts<Br>
-                                </label>
+                                    <input type="radio" id="individual_GraphicData" name="individual_dataDisplayForm" class="mdl-radio__button">
+                                    <span class="mdl-radio__label">Show data only in charts</span>
+                                </label><br>
                                 <label class="mdl-radio mdl-js-radio" for="individual_MixedData">
-                                    <input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" class="mdl-radio__button" checked>Show data both in tables and charts<Br>
+                                    <input type="radio" id="individual_MixedData" name="individual_dataDisplayForm" class="mdl-radio__button">
+                                    <span class="mdl-radio__label">Show data in both tables and charts</span>
                                 </label>
                             </div><hr>
 
@@ -350,10 +352,7 @@
                 </button>
                 <div id="repoSelection"></div>
                 <div class="mdl-layout-spacer"></div>
-                <a class="mdl-navigation__link" href="#">
-                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>
-                    <span class="">Help</span>
-                </a>
+
             </nav>
         </div>
 

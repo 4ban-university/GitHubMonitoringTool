@@ -3,7 +3,7 @@ repo.weeklyInfo.then(function(weeklyInfo){
 	for (var name in weeklyInfo[weeklyInfo.length-1]){
 		names.push(name)
 	}
-	var individual_commitsPerCollaborator_chart=[];	
+	var individual_commitsPerCollaborator_chart=[];
 	var ctx_commitsPerCollaborator=[]
 	var commitsPerCollaborator_data=[]
 	var commitsPerCollaborator_options=[]
@@ -13,9 +13,17 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		page += '<h3>'+names[name]+'</h3><br>'
 		page += '<div class="dataTable_in" id="individual'+name+'_commitsTable"></div>'
 		page += '<div class="canvas_in" id="individual'+name+'_commitsCanvas">'
-		page += '<div class="ChartType" style="display:block"> \
-					<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked>Line \
-					<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' >Bar \
+		page += '<div class="ChartType" style="display:block; text-align: center;"> \
+						<label style="margin-right: 25%;" class="mdl-radio mdl-js-radio is-upgraded" for="individual'+name+'_lineCPC">\
+							<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked class="mdl-radio__button">\
+							<span class="mdl-radio__label">Line</span>\
+							<span class="mdl-radio__outer-circle outer-circle"></span>\
+						</label>\
+						<label class="mdl-radio mdl-js-radio is-upgraded" for="individual'+name+'_barCPC">\
+							<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' class="mdl-radio__button">\
+							<span class="mdl-radio__label">Bar</span>\
+							<span class="mdl-radio__outer-circle"></span>\
+						</label>\
 				</div>'
 		page +='</div>'
 		page += '<hr width="100%" size="5" color="#454545">'
@@ -26,19 +34,22 @@ repo.weeklyInfo.then(function(weeklyInfo){
 			dataForCollaborator.push(weeklyInfo[week][names[name]])
 		}
 		data[name]=dataForCollaborator
-		
+
 		individual_tables(name, names[name], dataForCollaborator);
-	
+
 	}
+
+    $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
 	individual_filter(name);
 	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
 	chart_plugin()
 });
-
 function individual_filter(num){
 	//----------radio buttons for how to display the information
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
+            $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
 	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="none"
 	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
@@ -49,6 +60,8 @@ function individual_filter(num){
 	document.getElementById('individual_GraphicData').onclick = function() {
 
 	    if ( this.checked ) {
+            $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
 	        	document.getElementById("individual"+i+"_commitsTable").style.display="none"
 	       	 	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
@@ -58,6 +71,8 @@ function individual_filter(num){
 
 	document.getElementById('individual_MixedData').onclick = function() {
 	    if ( this.checked ) {
+            $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
 	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
 	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
@@ -92,7 +107,7 @@ function individual_tables(num, name, info){
 };
 
 // Additional functions
-// Chart js plugon for changing background color in charts. 
+// Chart js plugon for changing background color in charts.
 function chart_plugin(){
 	Chart.pluginService.register({
 	    beforeDraw: function (chart, easing) {
@@ -124,12 +139,14 @@ function individual_report(data, individual_commitsPerCollaborator_chart, ctx_co
         	options: commitsPerCollaborator_options[i]
     	});
 
-		
+
 	}
 
 	for (var i=0; i<data.length-1; i++) {
 		document.getElementById('individual'+i+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(this).parent().prev().find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var chartNumber=parseInt($(this).attr("chartNumber"))
 	       // document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
 			individual_commitsPerCollaborator_chart[chartNumber].destroy();
@@ -138,7 +155,9 @@ function individual_report(data, individual_commitsPerCollaborator_chart, ctx_co
 	};
 	document.getElementById('individual'+i+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
-	    	var chartNumber=parseInt($(this).attr("chartNumber"))
+            $(this).parent().next().find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
+            var chartNumber=parseInt($(this).attr("chartNumber"))
 	       // document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
 			individual_commitsPerCollaborator_chart[chartNumber].destroy();
 	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
@@ -150,10 +169,10 @@ function individual_report(data, individual_commitsPerCollaborator_chart, ctx_co
 }
 
 function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart){
-	
+
 	num=parseInt(num)
 	ctx_commitsPerCollaborator[num] = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
-	
+
 	//Data and options for commits per collaborator
 	var commitsPerCollaborator_data = individual_commitsPerCollaboratorTransformation(info);
 	var commitsPerCollaborator_options = {}
