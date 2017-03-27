@@ -68,7 +68,7 @@
         <script src="js/GitHub.bundle.js" ></script>
 
         <script src="js/repo_list.js" defer></script>
-        <script src="js/test.js" defer></script>
+        <script src="js/add_repo.js" defer></script>
 	<script src="js/Chart.bundle.js" defer></script>
 	<script src="js/repo.js" defer></script>
 	<script src="js/init.js" defer></script>
