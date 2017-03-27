@@ -103,7 +103,8 @@ hr {
 #commitsCanvas > div,
 #issuesCanvas > div,
 #commentsCanvas > div,
-.ChartType > div {
+.ChartType > div,
+.chart-chooser-main {
     text-align: center;
 }
 
@@ -114,7 +115,7 @@ hr {
 #contact-dialog p {
     margin-left: 5px;
 }
-.mdl-radio__label:not(:last-child) {
+.mdl-radio__label:not(:last-child), .chart-chooser-main .chart-chooser:not(:last-child) {
     margin-right: 15px;
 }
 .modal-content {
