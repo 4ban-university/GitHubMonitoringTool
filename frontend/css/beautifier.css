@@ -133,9 +133,13 @@ a:focus, a:hover {
 }
 .outer-circle {
     background: rgb(0,188,212);
-
     animation-name: spin;
     animation-duration: 3s; /* 3 seconds */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+.indr_td_s, .indr_th_s {
+    text-align: center !important;
+    padding: 5px !important;
 }
