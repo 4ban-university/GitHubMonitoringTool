@@ -103,7 +103,8 @@ hr {
 #commitsCanvas > div,
 #issuesCanvas > div,
 #commentsCanvas > div,
-.ChartType > div {
+.ChartType > div,
+.chart-chooser-main {
     text-align: center;
 }
 
@@ -114,7 +115,7 @@ hr {
 #contact-dialog p {
     margin-left: 5px;
 }
-.mdl-radio__label:not(:last-child) {
+.mdl-radio__label:not(:last-child), .chart-chooser-main .chart-chooser:not(:last-child) {
     margin-right: 15px;
 }
 .modal-content {
@@ -123,10 +124,23 @@ hr {
 .modal-body p {
     font-size: 14px;
 }
-.mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded {
+.mdl-checkbox .mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded{
     font-size: 14px;
     font-weight: 100;
 }
+
 a:focus, a:hover {
     text-decoration: none !important;
+}
+.outer-circle {
+    background: rgb(0,188,212);
+    animation-name: spin;
+    animation-duration: 3s; /* 3 seconds */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.indr_td_s, .indr_th_s {
+    text-align: center !important;
+    padding: 5px !important;
 }

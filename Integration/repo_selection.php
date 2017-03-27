@@ -221,7 +221,7 @@
                                 <div class="dataTable" id="issuesTable"></div>
                                 <div class="canvas" id="issuesCanvas">
                                     <div class="ChartType">
-                                        <label class="mdl-radio mdl-js-radio" for="doughnutCPC">
+                                        <label class="mdl-radio mdl-js-radio" for="doughnutIPC">
                                             <input type="radio" id="doughnutIPC" name="chartType2" checked class="mdl-radio__button">
                                             <span class="mdl-radio__label">Doughnut</span>
                                         </label>

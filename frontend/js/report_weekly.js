@@ -35,19 +35,47 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		var page = '<!-- Start of all weeks report --> \
 					<h2>Week '+week+' report for all collaborators</h2> \
 					<div class="weekly_radio"> \
-						<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" >Show data only in tables<Br> \
-						<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" >Show data only in charts<Br> \
-						<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" checked>Show data either in tables and charts<Br> \
+						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_TextData" data-upgraded=",MaterialRadio">\
+            				<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
+            				<span class="mdl-radio__label">Show data only in tables</span>\
+            				<span class="mdl-radio__outer-circle"></span>\
+            			</label><br>\
+            			<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_GraphicData" data-upgraded=",MaterialRadio">\
+							<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
+							<span class="mdl-radio__label">Show data only in charts</span>\
+            				<span class="mdl-radio__outer-circle"></span>\
+						</label><br>\
+						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_MixedData" data-upgraded=",MaterialRadio">\
+							<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button" checked>\
+							<span class="mdl-radio__label">Show data either in tables and charts</span>\
+            				<span class="mdl-radio__outer-circle outer-circle"></span>\
+						</label>\
 					</div><hr> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
 						<h3>Activity per collaborator</h3> \
 						<div class="dataTable" id="weekly'+week+'_commitsTable"></div> \
 						<div class="canvas" id="weekly'+week+'_commitsCanvas"> \
-							<div class="ChartType" style="display:block"> \
-								<input type="radio" id="weekly'+week+'_doughnutCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' checked>Doughnut \
-									<input type="radio" id="weekly'+week+'_pieCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Pie \
-									<input type="radio" id="weekly'+week+'_barCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Bar \
-									<input type="radio" id="weekly'+week+'_lineCPC" name="weekly'+week+'_chartType1" weekNumber='+week+'>Line \
+							<div class="ChartType chart-chooser-main" style="display:block"> \
+								<label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_doughnutCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_doughnutCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' checked class="mdl-radio__button">\
+                                    <span class="mdl-radio__label">Doughnut</span>\
+                                    <span class="mdl-radio__outer-circle outer-circle"></span>\
+                                </label>\
+                                <label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_pieCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_pieCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' class="mdl-radio__button">\
+								    <span class="mdl-radio__label">Pie</span>\
+								    <span class="mdl-radio__outer-circle"></span>\
+                                </label>\
+                                <label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_barCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_barCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' class="mdl-radio__button">\
+                                    <span class="mdl-radio__label">Bar</span>\
+                                    <span class="mdl-radio__outer-circle"></span>\
+                                </label>\
+                                <label class="mdl-radio mdl-js-radio is-upgraded chart-chooser" for="weekly'+week+'_lineCPC" data-upgraded=",MaterialRadio">\
+								    <input type="radio" id="weekly'+week+'_lineCPC" name="weekly'+week+'_chartType1" weekNumber='+week+' class="mdl-radio__button">\
+                                    <span class="mdl-radio__label">Line</span>\
+                                    <span class="mdl-radio__outer-circle"></span>\
+                                </label>\
 							</div>		 \
 						</div> \
 					</div> \
@@ -109,6 +137,8 @@ function weekly_filter(weeklyInfo, week){
 	// radio buttons for how to display the information
 	document.getElementById('weekly'+week+'_TextData').onclick = function() {
 	    if ( this.checked ) {
+            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+	    	$(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="none"
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="block"
 	    }
@@ -116,6 +146,8 @@ function weekly_filter(weeklyInfo, week){
 
 	document.getElementById('weekly'+week+'_GraphicData').onclick = function() {
 	    if ( this.checked ) {
+            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="none"
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="block"
 	    }
@@ -123,6 +155,8 @@ function weekly_filter(weeklyInfo, week){
 
 	document.getElementById('weekly'+week+'_MixedData').onclick = function() {
 	    if ( this.checked ) {
+            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="block"
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="block"
 	    }
@@ -139,7 +173,7 @@ function weekly_tables(weeklyInfo, week){
 	for (var key in weeklyInfo){
 		activity+=weeklyInfo[key]
 	}
-	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+	var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 	for (var key in weeklyInfo) {
 		table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+weeklyInfo[key]+"</td><td class='td_s'>"+Math.round(weeklyInfo[key]*100/activity)+"%</td></tr>"
 	}
@@ -149,7 +183,7 @@ function weekly_tables(weeklyInfo, week){
 	$(".sortWeekly"+week).click(function(){
 		var tableId=$(this).parents(".dataTable").attr("id")
 		$(this).parents(".dataTable").find(".tbl").remove()
-			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort table</a></th><th class='th_s'>Percentage</th></tr>"
+			var table = "<table class='tbl'><tr class='tr_s'><th class='th_s'>Name</th><th class='th_s'>Activity <a class='sortWeek sortWeekly"+week+"' style='width:50px; height:50px; cursor:pointer'>Sort</a></th><th class='th_s'>Percentage</th></tr>"
 			for (var key in sortedWeeklyInfo) {
 				table+="<tr class='tr_s'><td class='td_s'>"+key+"</td><td class='td_s'>"+sortedWeeklyInfo[key]+"</td><td class='td_s'>"+Math.round(sortedWeeklyInfo[key]*100/activity)+"%</td></tr>"
 			}
@@ -169,6 +203,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 
 	document.getElementById('weekly'+week+'_doughnutCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
@@ -177,6 +213,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	};
 	document.getElementById('weekly'+week+'_pieCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
@@ -185,6 +223,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	};
 	document.getElementById('weekly'+week+'_barCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
@@ -193,6 +233,8 @@ function weekly_report(weeklyInfo, week, weekly_commitsPerCollaborator_chart){
 	};
 	document.getElementById('weekly'+week+'_lineCPC').onclick = function() {
 	    if ( this.checked ) {
+            $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
+            $(this).next().next().addClass("outer-circle");
 	    	var weekNum=parseInt($(this).attr('weekNumber'))
 	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%"
 			weekly_commitsPerCollaborator_chart[weekNum].destroy();
