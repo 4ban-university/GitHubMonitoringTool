@@ -14,16 +14,8 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		page += '<div class="dataTable_in" id="individual'+name+'_commitsTable"></div>'
 		page += '<div class="canvas_in" id="individual'+name+'_commitsCanvas">'
 		page += '<div class="ChartType" style="display:block; text-align: center;"> \
-					<label style="margin-right: 15px;" class="mdl-radio mdl-js-radio" for="individual'+name+'_lineCPC">\
 						<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked class="mdl-radio__button">\
-						<span class="mdl-radio__label">Line</span>\
-						<span class="mdl-radio__outer-circle outer-circle"></span>\
-					</label>\
-					<label class="mdl-radio mdl-js-radio" for="individual'+name+'_barCPC">\
 						<input type="radio" id="individual'+name+'_barCPC" name="individual'+name+'_chartType1" chartNumber='+name+' class="mdl-radio__button">\
-						<span class="mdl-radio__label">Bar</span>\
-						<span class="mdl-radio__outer-circle outer-circle"></span>\
-					</label>\
 				</div>'
 		page +='</div>'
 		page += '<hr width="100%" size="5" color="#454545">'
