@@ -21,7 +21,8 @@
   },
   "scripts": {
     "test": "eslint frontend/js",
-    "mocha": "mocha",
+    "mocha": "mocha --reporter spec test/unit",
+    "selenium": "mocha --reporter spec test/integration",
     "jslint": "node_modules/jslint/bin/jslint.js frontend/js/*.js"
   }
 }
