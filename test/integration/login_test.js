@@ -6,7 +6,7 @@ var assert = require('assert');
 
 test.describe('Selenium login', function() {
     test.describe('Correct login', function() {
-        this.timeout(15000);
+        this.timeout(30000);
         test.it('should return "Authorize application" when the test passed', function() {
             var chromeCapabilities = webdriver.Capabilities.chrome();
             var chromeOptions = {'args': ['--start-maximized', '--incognito']};
@@ -34,7 +34,7 @@ test.describe('Selenium login', function() {
         });
     });
     test.describe('Incorrect login', function() {
-        this.timeout(15000);
+        this.timeout(30000);
         test.it('should return "true" when the password is incorrect', function() {
             var chromeCapabilities = webdriver.Capabilities.chrome();
             var chromeOptions = {'args': ['--start-maximized', '--incognito']};
