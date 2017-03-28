@@ -8,7 +8,7 @@ var until = webdriver.until;
 
 test.describe('Tabs test', function() {
     this.timeout(100000);
-    test.it('Should return overall report', function() {
+    test.it('Should get uniq DOM from each tab', function() {
         var chromeCapabilities = webdriver.Capabilities.chrome();
         var chromeOptions = {'args': ['--start-maximized', '--incognito']};
         chromeCapabilities.set('chromeOptions', chromeOptions);
