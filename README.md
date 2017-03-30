@@ -19,7 +19,7 @@
   <li>Nikita Baranov (40012854) nikitabaranov@gmail.com</li>
   <li>Batoul Yehia (40010912) batoul.yehia@gmail.com</li>
   <li>Raymart De Guzman (40010443) raymart54@gmail.com</li>
-  <li>andy.pham2956@gmail.com</li>
+  <li>Andy Pham andy.pham2956@gmail.com</li>
 </ol>
 
 <h1>Brainstorm Ideas</h1>
