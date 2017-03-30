@@ -1,4 +1,8 @@
 # IntelliJ
 .idea/**
 
+.gitignore
+
 node_modules/**
+
+SOEN341-G4.iml
