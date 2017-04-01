@@ -123,3 +123,4 @@ function getBurndown(ob1){
 
 
 }
+exports.Repo = Repo;
