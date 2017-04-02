@@ -28,7 +28,7 @@ function overAllInfo(commits, issues, collaborators, name, description, link){
 		document.getElementById('repo_link').innerHTML += '<a href="'+link+'">Github</a>';
 	});
 	
-};
+}
 overAllInfo(repo.totalCommits, repo.totalIssues, repo.collaborators, repo.name, repo.description, repo.link);
 
 
