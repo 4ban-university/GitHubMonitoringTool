@@ -106,6 +106,10 @@ hr {
 .ChartType > div,
 .chart-chooser-main {
     text-align: center;
+    border-left: 1px solid rgba(25, 110, 214, 0.25);
+    border-top: 1px solid rgba(25, 110, 214, 0.25);
+    border-right: 1px solid rgba(25, 110, 214, 0.25);
+    border-radius: 0;
 }
 
 .mdl-dialog {
@@ -143,4 +147,7 @@ a:focus, a:hover {
 .indr_td_s, .indr_th_s {
     text-align: center !important;
     padding: 5px !important;
+}
+.dataTable > h3 {
+    margin-top: 0;
 }

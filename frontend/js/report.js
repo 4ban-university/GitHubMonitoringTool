@@ -27,6 +27,8 @@ function filter(){
 	//----------radio buttons for how to display the information
 	document.getElementById('TextData').onclick = function() {
 	    if ( this.checked ) {
+            $(".num-heading").css("text-align", "center");
+            $("#commitsChart, #issuesChart, #commetsChart").find(".dataTable").css("float", "none");
 	        document.getElementById("commitsCanvas").style.display="none"
 	        document.getElementById("issuesCanvas").style.display="none"
 	        document.getElementById("commentsCanvas").style.display="none"
@@ -38,6 +40,8 @@ function filter(){
 
 	document.getElementById('GraphicData').onclick = function() {
 	    if ( this.checked ) {
+            $(".num-heading").css("text-align", "center");
+	    	$("#commitsChart, #issuesChart, #commetsChart").find(".canvas").css("float", "none");
 	        document.getElementById("commitsTable").style.display="none"
 	        document.getElementById("issuesTable").style.display="none"
 	        document.getElementById("commentsTable").style.display="none"
@@ -49,6 +53,8 @@ function filter(){
 
 	document.getElementById('MixedData').onclick = function() {
 	    if ( this.checked ) {
+            $("#commitsChart, #issuesChart, #commetsChart").find(".dataTable").css("float", "left");
+            $("#commitsChart, #issuesChart, #commetsChart").find(".canvas").css("float", "right");
 	        document.getElementById("commitsTable").style.display="block"
 	        document.getElementById("issuesTable").style.display="block"
 	        document.getElementById("commentsTable").style.display="block"
