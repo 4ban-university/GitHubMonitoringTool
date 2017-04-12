@@ -1,18 +1,25 @@
 repo.weeklyInfo.then(function(weeklyInfo){
-	var names = []
+	/*
+		Individual report for each collaborator
+	*/
+
+	//Set of all collaborators
+	var names = [];
 	for (var name in weeklyInfo[weeklyInfo.length-1]){
-		names.push(name)
+		names.push(name);
 	}
-	var individual_commitsPerCollaborator_chart=[];
-	var ctx_commitsPerCollaborator=[]
-	var commitsPerCollaborator_data=[]
-	var commitsPerCollaborator_options=[]
-	var data=[]
+	var individualCommitsPerCollaboratorChart=[];
+	var ctxCommitsPerCollaborator=[];
+	var commitsPerCollaboratorData=[];
+	var commitsPerCollaboratorOptions=[];
+	var data=[];
+
+	//Generating of an individual report, html
 	for (var name in names){
-		var page = '<div class="chart_in" id="individual'+name+'_commitsChart">'
-		page += '<h3>'+names[name]+'</h3><br>'
-		page += '<div class="dataTable_in" id="individual'+name+'_commitsTable"></div>'
-		page += '<div class="canvas_in" id="individual'+name+'_commitsCanvas">'
+		var page = '<div class="chart_in" id="individual'+name+'_commitsChart">';
+		page += '<h3>'+names[name]+'</h3><br>';
+		page += '<div class="dataTable_in" id="individual'+name+'_commitsTable"></div>';
+		page += '<div class="canvas_in" id="individual'+name+'_commitsCanvas">';
 		page += '<div class="ChartType" style="display:block; text-align: center;"> \
 						<label style="margin-right: 25%;" class="mdl-radio mdl-js-radio is-upgraded" for="individual'+name+'_lineCPC">\
 							<input type="radio" id="individual'+name+'_lineCPC" name="individual'+name+'_chartType1" chartNumber='+name+' checked class="mdl-radio__button">\
@@ -24,91 +31,100 @@ repo.weeklyInfo.then(function(weeklyInfo){
 							<span class="mdl-radio__label">Bar</span>\
 							<span class="mdl-radio__outer-circle"></span>\
 						</label>\
-				</div>'
-		page +='</div>'
-		page += '<hr width="100%" size="5" color="#454545">'
-		page += '</div>'
-		document.getElementById('report_individually').innerHTML += page
+				</div>';
+		page +='</div>';
+		page += '<hr width="100%" size="5" color="#454545">';
+		page += '</div>';
+		document.getElementById('report_individually').innerHTML += page;
+
+		//Weekly data for each collaborator
 		var dataForCollaborator = [];
 		for (var week in weeklyInfo){
-			dataForCollaborator.push(weeklyInfo[week][names[name]])
+			dataForCollaborator.push(weeklyInfo[week][names[name]]);
 		}
-		data[name]=dataForCollaborator
-
-		individual_tables(name, names[name], dataForCollaborator);
-
+		data[name]=dataForCollaborator;
+		createIndividualTables(name, names[name], dataForCollaborator);
 	}
 
     $(".ind_radio").find("#individual_MixedData").next().next().addClass("outer-circle");
-	individual_filter(name);
-	individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options)
-	chart_plugin()
+	individualDataFilter(name);
+	individualReport(data, individualCommitsPerCollaboratorChart, ctxCommitsPerCollaborator, commitsPerCollaboratorData, commitsPerCollaboratorOptions);
+	chartPlugin();
 });
-function individual_filter(num){
-	//----------radio buttons for how to display the information
+
+function individualDataFilter(num){
+	//----------Radio buttons for how to display the information
+
+	//Display data in text
 	document.getElementById('individual_TextData').onclick = function() {
 	    if ( this.checked ) {
             $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
-	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="none"
-	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
+	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="none";
+	        	document.getElementById("individual"+i+"_commitsTable").style.display="block";
 	    	}
 	    }
-	};
+	}
 
+	//Display data in charts
 	document.getElementById('individual_GraphicData').onclick = function() {
-
 	    if ( this.checked ) {
             $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
-	        	document.getElementById("individual"+i+"_commitsTable").style.display="none"
-	       	 	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
+	        	document.getElementById("individual"+i+"_commitsTable").style.display="none";
+	       	 	document.getElementById("individual"+i+"_commitsCanvas").style.display="block";
 	       	}
 	    }
-	};
+	}
 
+	//Display data in text and charts
 	document.getElementById('individual_MixedData').onclick = function() {
 	    if ( this.checked ) {
             $(".ind_radio").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	    	for (var i=0; i<=num; i++) {
-	        	document.getElementById("individual"+i+"_commitsTable").style.display="block"
-	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="block"
+	        	document.getElementById("individual"+i+"_commitsTable").style.display="block";
+	        	document.getElementById("individual"+i+"_commitsCanvas").style.display="block";
 	        }
 	    }
-	};
-};
+	}
+}
 
-function individual_tables(num, name, info){
-	var com = 0;
+function createIndividualTables(num, name, info){
+	/*
+		Function to generate table with data for each collaborator
+	*/
+
+	//Calculation of all activity of collaborator
+	var individualActivity = 0;
 		for (var key in info){
-			com += info[key]
+			individualActivity += info[key];
 		}
 
-	var table = '<table class="indr_tbl">'
-	table +='<tr class="indr_tr_s"><th class="indr_th_s">Name</th>'
-	var w
+	//Creating the table for report
+	var table = '<table class="indr_tbl">';
+	table +='<tr class="indr_tr_s"><th class="indr_th_s">Name</th>';
+	var weekNumber;
 	for (var week in info){
-		w = parseInt(week)+1
-		table += '<th class="indr_th_s">Week '+w+'</th>'
+		weekNumber = parseInt(week)+1;
+		table += '<th class="indr_th_s">Week '+weekNumber+'</th>';
 	}
-	table +='</tr><tr class="indr_tr_s">'
-	table +='<td class="indr_td_s">'+name+'</td>'
+	table +='</tr><tr class="indr_tr_s">';
+	table +='<td class="indr_td_s">'+name+'</td>';
+
+	//Filling the table with the data
 	for (var key in info) {
-		table+="<td class='indr_td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/com)+"%</span></td>"
+		table+="<td class='indr_td_s'>"+info[key]+" or <span style='color:#0074D9'>"+Math.round(info[key]*100/individualActivity)+"%</span></td>";
 	}
-	table+="</tr></table>"
+	table+="</tr></table>";
 	document.getElementById('individual'+num+'_commitsTable').innerHTML += table;
-
-	//document.getElementById('individual'+num+'_commitsTable')
-
-};
+}
 
 // Additional functions
 // Chart js plugon for changing background color in charts.
-function chart_plugin(){
+function chartPlugin(){
 	Chart.pluginService.register({
 	    beforeDraw: function (chart, easing) {
 	        if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
@@ -122,95 +138,93 @@ function chart_plugin(){
 	        }
 	    }
 	});
-};
-
-//var ctx_commitsPerCollaborator=[]
-
-function individual_report(data, individual_commitsPerCollaborator_chart, ctx_commitsPerCollaborator, commitsPerCollaborator_data, commitsPerCollaborator_options) {
-	for (var i=0; i<data.length; i++){
-		document.getElementById('individual'+i+'_commitsCanvas').innerHTML += "<canvas id='individual"+i+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>"
-		ctx_commitsPerCollaborator[i] = document.getElementById('individual'+i+'_commitsPerCollaborator').getContext("2d");
-		//console.log(data)
-		commitsPerCollaborator_data[i] = individual_commitsPerCollaboratorTransformation(data[i]);
-		commitsPerCollaborator_options[i] = {}
-		individual_commitsPerCollaborator_chart[i] = new Chart(ctx_commitsPerCollaborator[i], {
-        	type: 'line',
-        	data: commitsPerCollaborator_data[i],
-        	options: commitsPerCollaborator_options[i]
-    	});
-
-
-	}
-
-	for (var i=0; i<data.length-1; i++) {
-		document.getElementById('individual'+i+'_barCPC').onclick = function() {
-	    if ( this.checked ) {
-            $(this).parent().prev().find("input[type=radio]").next().next().removeClass("outer-circle");
-            $(this).next().next().addClass("outer-circle");
-	    	var chartNumber=parseInt($(this).attr("chartNumber"))
-	       // document.getElementById('individual'+chartNumber+'_commitsCanvas').style.width="50%"
-			individual_commitsPerCollaborator_chart[chartNumber].destroy();
-	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'bar', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
-	    }
-	};
-	document.getElementById('individual'+i+'_lineCPC').onclick = function() {
-	    if ( this.checked ) {
-            $(this).parent().next().find("input[type=radio]").next().next().removeClass("outer-circle");
-            $(this).next().next().addClass("outer-circle");
-            var chartNumber=parseInt($(this).attr("chartNumber"))
-	       // document.getElementById('individual'+i+'_commitsCanvas').style.width="50%"
-			individual_commitsPerCollaborator_chart[chartNumber].destroy();
-	        individual_commitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart);
-	    }
-	};
-	}
-
-
 }
 
-function individual_commitsPerCollaborator(num, info, chartType, ctx_commitsPerCollaborator, individual_commitsPerCollaborator_chart){
 
-	num=parseInt(num)
-	ctx_commitsPerCollaborator[num] = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
+function individualReport(data, individualCommitsPerCollaboratorChart, ctxCommitsPerCollaborator, commitsPerCollaboratorData, commitsPerCollaboratorOptions) {
+
+	//Generating report in chart format
+	for (var i=0; i<data.length; i++){
+		document.getElementById('individual'+i+'_commitsCanvas').innerHTML += "<canvas id='individual"+i+"_commitsPerCollaborator' class='visible' width='500px' height='500px'></canvas>";
+		ctxCommitsPerCollaborator[i] = document.getElementById('individual'+i+'_commitsPerCollaborator').getContext("2d");
+		commitsPerCollaboratorData[i] = individualСommitsPerCollaboratorTransformation(data[i]);
+		commitsPerCollaboratorOptions[i] = {};
+		individualCommitsPerCollaboratorChart[i] = new Chart(ctxCommitsPerCollaborator[i], {
+        	type: 'line',
+        	data: commitsPerCollaboratorData[i],
+        	options: commitsPerCollaboratorOptions[i]
+    	});
+	}
+
+	//Changing the type of charts
+	for (var i=0; i<data.length-1; i++) {
+
+		//Changing for the Bar chart type
+		document.getElementById('individual'+i+'_barCPC').onclick = function() {
+	    	if ( this.checked ) {
+            	$(this).parent().prev().find("input[type=radio]").next().next().removeClass("outer-circle");
+            	$(this).next().next().addClass("outer-circle");
+	    		var chartNumber=parseInt($(this).attr("chartNumber"));
+				individualCommitsPerCollaboratorChart[chartNumber].destroy();
+	        	individualСommitsPerCollaborator(chartNumber, data[chartNumber], 'bar', ctxCommitsPerCollaborator, individualCommitsPerCollaboratorChart);
+	    	}
+		}
+		
+		//Changing for the Line chart type
+		document.getElementById('individual'+i+'_lineCPC').onclick = function() {
+	    	if ( this.checked ) {
+            	$(this).parent().next().find("input[type=radio]").next().next().removeClass("outer-circle");
+            	$(this).next().next().addClass("outer-circle");
+            	var chartNumber=parseInt($(this).attr("chartNumber"));
+				individualCommitsPerCollaboratorChart[chartNumber].destroy();
+	        	individualСommitsPerCollaborator(chartNumber, data[chartNumber], 'line', ctxCommitsPerCollaborator, individualCommitsPerCollaboratorChart);
+	    	}
+		}
+	}
+}
+
+function individualСommitsPerCollaborator(num, info, chartType, ctxCommitsPerCollaborator, individualCommitsPerCollaboratorChart){
+	/*
+		Generation of the charts
+	*/
+	num=parseInt(num);
+	ctxCommitsPerCollaborator[num] = document.getElementById('individual'+num+'_commitsPerCollaborator').getContext("2d");
 
 	//Data and options for commits per collaborator
-	var commitsPerCollaborator_data = individual_commitsPerCollaboratorTransformation(info);
-	var commitsPerCollaborator_options = {}
-	individual_commitsPerCollaborator_chart[num] = new Chart(ctx_commitsPerCollaborator[num], {
+	var commitsPerCollaboratorData = individualСommitsPerCollaboratorTransformation(info);
+	var commitsPerCollaboratorOptions = {};
+	individualCommitsPerCollaboratorChart[num] = new Chart(ctxCommitsPerCollaborator[num], {
         type: chartType,
-        data: commitsPerCollaborator_data,
-        options: commitsPerCollaborator_options
+        data: commitsPerCollaboratorData,
+        options: commitsPerCollaboratorOptions
     });
-    // var b=new Chart(ctx_commitsPerCollaborator2, {
-    //     type: chartType,
-    //     data: commitsPerCollaborator_data,
-    //     options: commitsPerCollaborator_options
-    // });
-   // individual_commitsPerCollaborator_chart[num]=a
-    console.log(num, individual_commitsPerCollaborator_chart[num])
-};
+}
 
-function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator_data){
-	var keyNum=0
-	var labels=[]
-	var colors = '#14CCCC'
-	var k;
-	for (var key in commitsPerCollaborator_data) {
-		k = parseInt(key)+1
-		labels[keyNum]='Week '+k
-		keyNum++
+function individualСommitsPerCollaboratorTransformation (commitsPerCollaboratorData){
+	/*
+		Transformation of the data into the right format
+	*/
+
+	var keyNumber=0;
+	var labels=[];
+	var colors = '#14CCCC';
+	var weekNumber;
+	for (var key in commitsPerCollaboratorData) {
+		weekNumber = parseInt(key)+1;
+		labels[keyNumber]='Week '+weekNumber;
+		keyNumber++;
 	}
 
-	var keyNum=0
-	var data=[]
-	for (var key in commitsPerCollaborator_data) {
-		data[keyNum]=commitsPerCollaborator_data[key]
-		keyNum++
+	var keyNumber=0;
+	var data=[];
+	for (var key in commitsPerCollaboratorData) {
+		data[keyNumber]=commitsPerCollaboratorData[key];
+		keyNumber++;
 	}
 
-	commitsPerCollaborator_data = {
+	//Data in the right format
+	commitsPerCollaboratorData = {
 		labels: labels,
-
 		datasets: [
         {
             data: data,
@@ -218,7 +232,6 @@ function individual_commitsPerCollaboratorTransformation (commitsPerCollaborator
             backgroundColor: colors,
             hoverBackgroundColor: colors
         }]
-
 	}
-	return commitsPerCollaborator_data;
-};
+	return commitsPerCollaboratorData;
+}
