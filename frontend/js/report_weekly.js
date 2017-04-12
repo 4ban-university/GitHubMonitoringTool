@@ -58,8 +58,8 @@ repo.weeklyInfo.then(function(weeklyInfo){
 						</div>\
 					</div> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
+						<h3 class="num-heading">Activity per collaborator</h3> \
 						<div class="dataTable" id="weekly'+week+'_commitsTable">\
-						<h3>Activity per collaborator</h3> \
 						</div> \
 						<div class="canvas" id="weekly'+week+'_commitsCanvas"> \
 							<div class="ChartType chart-chooser-main" style="display:block"> \
@@ -144,6 +144,7 @@ function weekly_filter(weeklyInfo, week){
 	// radio buttons for how to display the information
 	document.getElementById('weekly'+week+'_TextData').onclick = function() {
 	    if ( this.checked ) {
+            $(".num-heading").css("text-align", "center");
         	$(".dataTable").css("float", "none");
             $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
 	    	$(this).next().next().addClass("outer-circle");
@@ -154,6 +155,7 @@ function weekly_filter(weeklyInfo, week){
 
 	document.getElementById('weekly'+week+'_GraphicData').onclick = function() {
 	    if ( this.checked ) {
+            $(".num-heading").css("text-align", "center");
 	    	$(".chart").find("div.canvas").css("float", "none");
             $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
