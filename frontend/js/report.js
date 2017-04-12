@@ -27,8 +27,6 @@ function filter(){
 	//----------radio buttons for how to display the information
 	document.getElementById('TextData').onclick = function() {
 	    if ( this.checked ) {
-            $(".num-heading").css("text-align", "center");
-            $("#commitsChart, #issuesChart, #commetsChart").find(".dataTable").css("float", "none");
 	        document.getElementById("commitsCanvas").style.display="none"
 	        document.getElementById("issuesCanvas").style.display="none"
 	        document.getElementById("commentsCanvas").style.display="none"
@@ -40,9 +38,7 @@ function filter(){
 
 	document.getElementById('GraphicData').onclick = function() {
 	    if ( this.checked ) {
-            $(".num-heading").css("text-align", "center");
-	    	$("#commitsChart, #issuesChart, #commetsChart").find(".canvas").css("float", "none");
-	        document.getElementById("commitsTable").style.display="none"
+	    	document.getElementById("commitsTable").style.display="none"
 	        document.getElementById("issuesTable").style.display="none"
 	        document.getElementById("commentsTable").style.display="none"
 	        document.getElementById("commitsCanvas").style.display="block"
@@ -53,9 +49,7 @@ function filter(){
 
 	document.getElementById('MixedData').onclick = function() {
 	    if ( this.checked ) {
-            $("#commitsChart, #issuesChart, #commetsChart").find(".dataTable").css("float", "left");
-            $("#commitsChart, #issuesChart, #commetsChart").find(".canvas").css("float", "right");
-	        document.getElementById("commitsTable").style.display="block"
+            document.getElementById("commitsTable").style.display="block"
 	        document.getElementById("issuesTable").style.display="block"
 	        document.getElementById("commentsTable").style.display="block"
 	        document.getElementById("commitsCanvas").style.display="block"
@@ -207,7 +201,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 		})
 
 	});
-	
+
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
 		var sortedCommits=sortData(issuesPerCollaborator);
 		var issues = 0;
@@ -255,7 +249,7 @@ function tables(commitsPerCollaborator, commentsPerCollaborator, issuesPerCollab
 	});
 };
 
-	
+
 function commitsPerCollaborator(commitsPerCollaborator, chartType, line){
 	/*
 		Function generate commits per collaborator chart, data and options for it.
@@ -281,7 +275,7 @@ function issuesPerCollaborator(issuesPerCollaborator, chartType, line){
 	var ctx_issuesPerCollaborator = document.getElementById('issuesPerCollaborator').getContext("2d");
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
 		//Data and options for issues per collaborator
-		var issuesPerCollaborator_data = issuesPerCollaboratorTransformation(issuesPerCollaborator, line);	
+		var issuesPerCollaborator_data = issuesPerCollaboratorTransformation(issuesPerCollaborator, line);
 		var issuesPerCollaborators_options = {};
 
 		issuesPerCollaborator_chart = new Chart(ctx_issuesPerCollaborator, {
@@ -299,7 +293,7 @@ function commentsPerCollaborator(commentsPerCollaborator, chartType, line){
 	var ctx_commentsPerCollaborator = document.getElementById('commentsPerCollaborator').getContext("2d");
 	commentsPerCollaborator.then(function(commentsPerCollaborator){
 		//Data and options for comments per collaborator
-		var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(commentsPerCollaborator, line);	
+		var commentsPerCollaborator_data = commentsPerCollaboratorTransformation(commentsPerCollaborator, line);
 		var commentsPerCollaborators_options = {};
 
 		commentsPerCollaborator_chart = new Chart(ctx_commentsPerCollaborator, {
@@ -320,7 +314,8 @@ function commitsPerCollaboratorTransformation (commitsPerCollaborator_data, line
 		var colors = '#FFCE56';
 	}
 	else{
-		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0']
+        var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0', '#676766',
+            '#f26522', '#ffe8af', '#add5d7', '#e0db25']
 	}
 	for (var key in commitsPerCollaborator_data) {
 		labels[keyNum]=key;
