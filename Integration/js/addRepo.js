@@ -40,7 +40,7 @@ $('#show-loading').click(function () {
 //  ########################################################################
 
 /*
-    Retrives the list of repos associated with the user using the Github API
+    Retrieves the list of repos associated with the user using the Github API
 */
 function getRepo() {
     user.listRepos().then(function(list){
@@ -54,7 +54,7 @@ function getRepo() {
         }
 
         for(var i=0; i<repo_array.length; i++){
-            h += checkbox_list(list.data[i].owner.login + "/"+list.data[i]["name"], checkboxId += i );
+            h += checkboxList(list.data[i].owner.login + "/"+list.data[i]["name"], checkboxId += i );
         }
         showDialog({
             title: 'Add Repository<hr>',
@@ -83,7 +83,7 @@ function writeToJSON(repo_array) {
 /*
     Formats the output of text in the modal when the user clicks "+ Repo"
 */
-function checkbox_list(repo_name, checkboxId){
+function checkboxList(repo_name, checkboxId){
    
     var h = "";
    
@@ -106,7 +106,7 @@ function getRepoList() {
         for(var i = 0; i < repoList.length; i++) {
             var ow = repoList[i].split("/")[0];
             var na = repoList[i].split("/")[1];
-            var link = "repo_selection.php?owner="+ ow +"&name="+na;
+            var link = "repoSelection.php?owner="+ ow +"&name="+na;
             $('#repoSelection').append(
                 '<a class="mdl-navigation__link" href="'+link+'" id="' +repoList[i]+'">' +
                 '<i class="fa fa-github fa-2x" aria-hidden="true" role="presentation" style="margin-right: 10px;"></i>' +repoList[i]+ '</a>')

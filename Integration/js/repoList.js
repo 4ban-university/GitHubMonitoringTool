@@ -11,12 +11,18 @@
     var user = git.getUser();
 
     var repoList = getSaved();
-saveSessionArray();
+	saveSessionArray();
+/**
+ * Saves the array of selected repositories in the localStorage
+ */
 function saveSessionArray(){
 	console.log(repoList);
     localStorage.setItem('repoList', JSON.stringify(repoList));
 }
-
+/**
+ * Returns the value of the stored array
+ * @returns {Array}
+ */
 function getSaved(){
 	var arr = localStorage.getItem('repoList');
 	if(arr === null)

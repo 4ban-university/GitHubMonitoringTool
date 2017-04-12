@@ -67,15 +67,15 @@
 
         <script src="js/GitHub.bundle.js" ></script>
 
-        <script src="js/repo_list.js" defer></script>
-        <script src="js/add_repo.js" defer></script>
+        <script src="js/repoList.js" defer></script>
+        <script src="js/addRepo.js" defer></script>
 	<script src="js/Chart.bundle.js" defer></script>
 	<script src="js/repo.js" defer></script>
 	<script src="js/init.js" defer></script>
-	<script src="js/general_info.js" defer></script>
+	<script src="js/generalInfo.js" defer></script>
 	<script src="js/report.js" defer></script>
-	<script src="js/report_weekly.js" defer></script>
-    <script src="js/report_individually.js" defer></script>
+	<script src="js/weeklyReport.js" defer></script>
+    <script src="js/individualReport.js" defer></script>
 	<script src="js/burndown.js" defer></script>
     <script src="js/commentSection.js" defer></script>
 
