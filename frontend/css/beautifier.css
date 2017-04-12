@@ -126,7 +126,7 @@ hr {
 }
 .mdl-checkbox .mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded{
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 a:focus, a:hover {

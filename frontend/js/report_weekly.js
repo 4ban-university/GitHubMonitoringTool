@@ -34,22 +34,28 @@ repo.weeklyInfo.then(function(weeklyInfo){
 		var id = 'tab'+week
 		var page = '<!-- Start of all weeks report --> \
 					<h2>Week '+week+' report for all collaborators</h2> \
-					<div class="weekly_radio"> \
-						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_TextData" data-upgraded=",MaterialRadio">\
-            				<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
-            				<span class="mdl-radio__label">Show data only in tables</span>\
-            				<span class="mdl-radio__outer-circle"></span>\
-            			</label><br>\
-            			<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_GraphicData" data-upgraded=",MaterialRadio">\
-							<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
-							<span class="mdl-radio__label">Show data only in charts</span>\
-            				<span class="mdl-radio__outer-circle"></span>\
-						</label><br>\
-						<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_MixedData" data-upgraded=",MaterialRadio">\
-							<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button" checked>\
-							<span class="mdl-radio__label">Show data either in tables and charts</span>\
-            				<span class="mdl-radio__outer-circle outer-circle"></span>\
-						</label>\
+					<div class="weekly_radio content-grid mdl-grid"> \
+						<div class="mdl-cell mdl-cell--4-col">\
+							<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_TextData" data-upgraded=",MaterialRadio">\
+								<input type="radio" id="weekly'+week+'_TextData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
+								<span class="mdl-radio__label">Show data only in tables</span>\
+								<span class="mdl-radio__outer-circle"></span>\
+							</label>\
+						</div>\
+            			<div class="mdl-cell mdl-cell--4-col">\
+							<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_GraphicData" data-upgraded=",MaterialRadio">\
+								<input type="radio" id="weekly'+week+'_GraphicData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button">\
+								<span class="mdl-radio__label">Show data only in charts</span>\
+								<span class="mdl-radio__outer-circle"></span>\
+							</label>\
+						</div>\
+						<div class="mdl-cell mdl-cell--4-col">\
+							<label class="mdl-radio mdl-js-radio is-upgraded" for="weekly'+week+'_MixedData" data-upgraded=",MaterialRadio">\
+								<input type="radio" id="weekly'+week+'_MixedData" name="weekly'+week+'_dataDisplayForm" class="mdl-radio__button" checked>\
+								<span class="mdl-radio__label">Show data either in tables and charts</span>\
+								<span class="mdl-radio__outer-circle outer-circle"></span>\
+							</label>\
+						</div>\
 					</div><hr> \
 					<div class="chart" id="weekly'+week+'_commitsChart"> \
 						<h3>Activity per collaborator</h3> \
