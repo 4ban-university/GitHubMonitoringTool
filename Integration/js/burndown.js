@@ -1,52 +1,62 @@
 var dueDate;
+
 function burndown(burndown){
+    /*
+        Function render burndown chart with capability to change time range.
+        :param burndown: json object with data for burndown chart
+    */
     burndown.then(function(burndown){
-        var ctx_burndown = document.getElementById('burndown'); 
-        var burndown_data = burndown;
-        var burndown_options = {
+        var ctxBurndown = document.getElementById('burndown'); 
+        var burndownData = burndown;
+        // Generating default options object for chart.
+        var burndownOptions = {
                 chartArea: {
                             backgroundColor: 'rgba(255, 255, 255, 1)'
                 }
-            };
+        }
 
         
-        var keyNum=0;
+        var keyNumber=0;
         var labels=[];
 
+        //Due date of burndown chart
         if(dueDate){
-            keyNum = dueDate;
-            for (var i = 0; i<keyNum; i++)
+            keyNumber = dueDate;
+            for (var i = 0; i<keyNumber; i++)
                 labels[i]='Day '+i;
         }
         else {
-            for (var key in burndown_data) {
-                labels[keyNum] = 'Day ' + key;
-                keyNum++
+            for (var key in burndownData) {
+                labels[keyNumber] = 'Day ' + key;
+                keyNumber++;
             }
         }
-        var keyNum=0;
+
+        var keyNumber=0;
         var data=[];
-        for (var key in burndown_data) {
-            data[keyNum]=burndown_data[key];
-            keyNum++
+        for (var key in burndownData) {
+            data[keyNumber]=burndownData[key];
+            keyNumber++;
         }
 
+        //Ideal chart for the burndown
         var i = 0;
-        var ideal_data = [];
-        ideal_data[0]=data[0];
+        var idealData = [];
+        idealData[0]=data[0];
         var firstIssues = data[0];
         var totalDays = labels.length;
         var idealIncrement = firstIssues/(totalDays-1);
         for (var i = 1; i < labels.length; i++){
             firstIssues-=idealIncrement;
-            ideal_data[i]=firstIssues
+            idealData[i]=firstIssues;
+        }
 
-            }
-        ideal_data[ideal_data.length-1] = 0;
+        idealData[idealData.length-1] = 0;
 
-        burndown_data = {
+        // Generate burndownData object for chart. 
+        // Mostly options is default except data options.
+        burndownData = {
             labels: labels,
-
             datasets: [
             {
                 data: data,
@@ -71,7 +81,7 @@ function burndown(burndown){
                 spanGaps: false
             },
             {   
-                data: ideal_data,
+                data: idealData,
                 label: " Ideal burndown chart",
                 fill: false,
                 lineTension: 0.1,
@@ -92,21 +102,22 @@ function burndown(burndown){
                 pointHitRadius: 0,
                 spanGaps: false
             }]
-            
-
         }
 
-
-        var burndown_chart = new Chart(ctx_burndown, {
+        // Generating chart object with generated data and options.
+        var burndownChart = new Chart(ctxBurndown, {
             type: 'line',
-            data: burndown_data,
-            options: burndown_options
+            data: burndownData,
+            options: burndownOptions
         });
     });
-};
+}
 
 function setDueDate(form){
-     dueDate = form.in.value;
+    /*
+        Function to process the due date of the burndown chart
+    */
+    dueDate = form.in.value;
     burndown(repo.burndown);
 }
 
