@@ -21,7 +21,7 @@
   padding:10pt 10pt 10pt 10pt;
 }
 .dataTable{
-  width:50%;
+  width:45%;
   margin: 0px auto;
   /*margin-right: 10px;*/
   float: left;
@@ -32,9 +32,10 @@
 }
 .canvas{
   width:30%;
-  margin: 0px auto;
-  /*margin-right: 10px;*/
-  float: right;
+  /*margin: 0px auto;*/
+  margin-left: 4.3em;
+  float: left;
+
   /*float:right;
   display:inline-block;
   vertical-align: middle;
@@ -97,7 +98,7 @@ canvas {
 .tbl {
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
-	width: 95%;
+	width: 85%;
 }
 .td_s, .th_s {
 	border: 1px solid #dddddd;
