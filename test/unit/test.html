@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Repo.Js Unit Test</title>
+ 
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.1.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.3.1.js"></script>
+    <script src="../../Integration/js/jquery-3.1.1.min.js"></script>
+    <script src="../../Integration/js/GitHub.bundle.js"></script>
+    <script src="../../Integration/js/repo.js"></script>
+ 
+    <script>
+        var owner = 'abhandal';
+        var repoName = 'SOEN341-G4';
+        var auth = {username:"enter", password:"enter"};
+        //Instantiate your repo object
+        var repo = new Repo(owner,repoName,auth);
+        //^^this will start the process of getting all the data asynchronously
+        
+        QUnit.test("Check Auth", function(assert) {
+            assert.notEqual(auth.username,"enter","Valid username");
+            assert.notEqual(auth.password,"enter","Valid password");
+        })
+        
+        repo.description.then(function(description) {
+            QUnit.test("details", function(assert){ 
+                assert.notEqual(description, "", "Description is not empty");
+            });        
+        });
+        
+        repo.issues.then(function(issues) {
+            
+            QUnit.test("getIssues", function(assert){ 
+                assert.notEqual(issues['abhandal'], "", "Description is not empty");
+            }); 
+        });
+        
+        repo.comments.then(function(comments) {
+            QUnit.test("getComments", function(assert){ 
+                assert.notEqual(comments['abhandal'], "", "Comments is not empty");
+                assert.equal(comments[0], undefined, "undefined comment array is undefined");
+            });         
+        });
+        
+        repo.burndown.then(function(burndown) {
+            QUnit.test("getBurndown", function(assert){ 
+                assert.notEqual(burndown, "", "Burndown is not empty");
+            });  
+        });
+
+         repo.collaborators.then(function(response){//then means -> after you get the data, execute the following function
+             QUnit.test("getCollaborators", function(assert){
+                 assert.equal(response.length,10,"There are 10 collaborators in the SOEN341-G4 repo");
+                 assert.notEqual(response.length,-1,"There are not less than 0 collaborators in the SOEN341-G4 repo");
+                 assert.notEqual(response.length,0,"There are not 0 collaborators in the SOEN341-G4 repo");
+          });
+        });
+
+         repo.commits.then(function(commits) {
+             QUnit.test("getCommits", function(assert){
+                assert.notEqual(commits['abhandal'], 0, "Repo 'abhandal' has greater than 0 commits");
+                assert.equal(commits['blablabla'], undefined, "Repo undefined returnes undefined");
+                 assert.notEqual(commits['abhandal'], -1, "Repo 'abhandal' does not have less than 0 commits");
+              }); 
+          });
+        
+        repo.weeklyInfo.then(function(weeks){
+            QUnit.test("getWeeklyInfo", function(assert){
+                assert.notEqual(weeks[0]['abhandal'], -1, "Number of events in first week is not less than 0");
+                assert.equal(weeks[-1], undefined, "Number of events in non-existant week is undefined");
+          });
+        });
+  </script>
+</head>
+<body>
+ 
+<div id="qunit"></div>
+ 
+</body>
+</html>

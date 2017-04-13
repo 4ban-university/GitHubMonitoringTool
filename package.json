@@ -17,6 +17,8 @@
     "chromedriver": "*",
     "webdriverjs":"*",
     "phantomjs":"*",
+    "jquery":"*",
+    "jsdom":"*",
     "jslint": "*"
   },
   "scripts": {
