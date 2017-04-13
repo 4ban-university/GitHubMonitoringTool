@@ -9,7 +9,9 @@ function Repo(owner, repo, oauth) {
     this.owner = owner;
     this.name = repo;
     this.git = new GitHub(oauth);
+    //current repo being monitored
     this.repo = this.git.getRepo(owner, repo);
+    //Github oauth token
     this.oauth = oauth;
     this.issue = this.git.getIssues(owner, repo);
 
@@ -19,31 +21,67 @@ function Repo(owner, repo, oauth) {
     details(this);
 
     //data and collecting the data;
+
+    /**
+     * Promises a list of collaborators
+     * @type {jQuery.Deferred}
+     */
     this.collaborators = new $.Deferred();
     this.totalCollaborators = new $.Deferred();
     getCollaborators(this);
 
+    /**
+     * Promises the number of commits per collaborators
+     * @type {jQuery.Deferred}
+     */
     this.commits = new $.Deferred();
     this.totalCommits = new $.Deferred();
     getCommits(this);
 
+    /**
+     * Promises the number of issues per collaborators
+     * @type {jQuery.Deferred}
+     */
     this.issues = new $.Deferred();
     this.totalIssues = new $.Deferred();
     getIssues(this);
 
+    /**
+     * Promises the number of comments per collaborators
+     * @type {jQuery.Deferred}
+     */
     this.comments = new $.Deferred();
     this.totalComments = new $.Deferred();
     getComments(this);
 
+    /**
+     * Promises weekly information per collaborators
+     * @type {jQuery.Deferred}
+     */
     this.weeklyInfo = new $.Deferred();
     getWeeklyInfo(this);
 
+    /**
+     * Promises a list of the total number of issues minus the number of issues closed per day
+     starting from the repo's creation
+     * @type {jQuery.Deferred}
+     */
     this.burndown = new $.Deferred();
     getBurndown(this);
 
+    /**
+     * Comments branch of the TA's comments,
+     might not be there at first
+     * @type {jQuery.Deferred}
+     */
     this.commentBranch = new $.Deferred();
     isCommented(this);
 
+    /**
+     * Writing new comment to file in TA_Comments branch
+     * @param ob1
+     * @param content
+     */
     this.writeComment = function (ob1, content) {
         this.commentBranch.then(function (response) {
             if (response) {
@@ -64,8 +102,12 @@ function Repo(owner, repo, oauth) {
         });
     };
 }
-
+/**
+ * Checking the availability of TA_Comments branch
+ * @param ob1
+ */
 function isCommented(ob1){
+
     ob1.repo.getBranch("TA_Comments").then(function(response){
         ob1.commentBranch.resolve(true);
 
@@ -74,7 +116,12 @@ function isCommented(ob1){
     });
 }
 
-
+/**
+ * Resolves two promises part of the repo.js object (ob1)
+ * The description of the current repo;
+ * and the url to the repo on github
+ * @param ob1
+ */
 function details(ob1){
     ob1.repo.getDetails().then(function(list){
 
@@ -85,7 +132,10 @@ function details(ob1){
 
 }
 
-
+/**
+ * Resolves the array of collaborators of the repo.js object ob1
+ * @param ob1
+ */
 function getCollaborators(ob1){
     ob1.repo.getCollaborators().then(function(response){
             //resolving total amount
@@ -100,7 +150,14 @@ function getCollaborators(ob1){
 
 }
 
-
+/**
+ * Resolves the number of commits associated to each collaborator of the repo.js object ob1.
+ * The number of commits is calculated by making and http request using the github.js api wrapper,
+ * because the function given to retrieve commits only included one page of commits, or 30 commits.
+ *
+ * At the same time, it resolves the total number of commits for the whole project.
+ * @param ob1
+ */
 function getCommits(ob1){
     var promises = new Array();
 
@@ -128,7 +185,14 @@ function getCommits(ob1){
 
 }
 
-
+/**
+ * Resolves the number of comments per collaborators of the repo.js object ob1.
+ * The number of comments is calculated by making and http request using the github.js api wrapper,
+ * because the function given to retrieve commits only included one page of comments, or 30 comments.
+ *
+ * The comments correstponds to all comments written by a collaborator on commits, issues, pull requests, etc.
+ * @param ob1
+ */
 function getComments(ob1){
 
     var comments = new Array();
@@ -151,7 +215,12 @@ function getComments(ob1){
     });
 }
 
-
+/**
+ * Resolves the number of issues per collaborators of the repos.js object ob1.
+ *
+ * According to Github's api, pull-requests are counted as issues.
+ * @param ob1
+ */
 function getIssues(ob1){
 
     var promises = new Array();
@@ -180,7 +249,22 @@ function getIssues(ob1){
 
 }
 
-
+/**
+ * Resolves weekly information regarding the number of commits, comments and issues per collaborators since the
+ * creation of the repo.
+ * Every events stored in Github's api are associated with a time stamp. This time stamp is converted in milliseconds,
+ * which can be used to determine the number of weeks that have passed since the creation of the repository in the
+ * following way :
+ *                  (timeOfEvent - creationTime)/oneWeek
+ * When this result is round to floor, it gives the total number of weeks that have passed since the creation, including
+ * the current week (starting from week 0).
+ *
+ * The array is resolved as follows:
+ * weeks[week#][collaborator]
+ * and contains the sum of commits, comments, and issues that that collaborator made that week
+ *
+ * @param ob1
+ */
 function getWeeklyInfo(ob1){
     var oneWeek= 7*24*3600*1000;//miliseconds per week
     var today = new Date();
@@ -256,7 +340,14 @@ function getWeeklyInfo(ob1){
     });
 }
 
-
+/**
+ * Resolves the burndown chart information of the repo.js object ob1.
+ *
+ * This method takes the total number of issues opened since the creation of the repository, and subtracts the number
+ * of issues closed every day. This means the burndown chart will not 'go up' when issues are added, but it will raise
+ * the whole chart.
+ * @param ob1
+ */
 function getBurndown(ob1){
     var oneDay = 24*3600*1000;//milliseconds per day
     var today = new Date();

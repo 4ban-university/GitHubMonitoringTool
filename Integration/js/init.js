@@ -14,7 +14,9 @@ $.ajax({
 });
 */
 var repo = new Repo(owner,repoName, auth);
-
+/**
+ * Setting up the avatar
+ */
 user.getProfile().then(function(response){
     var name = response.data.name;
     var login = response.data.login;
