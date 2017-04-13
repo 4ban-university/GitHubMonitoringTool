@@ -233,7 +233,7 @@ function weeklyReport(weeklyInfo, week, weeklyCommitsPerCollaboratorChart){
             $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	    	var weekNumber=parseInt($(this).attr('weekNumberber'));
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%";
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%";
 			weeklyCommitsPerCollaboratorChart[weekNumber].destroy();
 	        weeklyCommitsPerCollaborator(weeklyInfo, week, 'bar', false, weeklyCommitsPerCollaboratorChart);
 	    }
@@ -245,7 +245,7 @@ function weeklyReport(weeklyInfo, week, weeklyCommitsPerCollaboratorChart){
             $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	    	var weekNumber=parseInt($(this).attr('weekNumberber'));
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="48%";
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%";
 			weeklyCommitsPerCollaboratorChart[weekNumber].destroy();
 	        weeklyCommitsPerCollaborator(weeklyInfo, week, 'line', true, weeklyCommitsPerCollaboratorChart);
 	    }
@@ -281,7 +281,8 @@ function weeklyCommitsPerCollaboratorTransformation (commitsPerCollaboratorData,
 	}
 	else{
 		var labels=[];
-		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0'];
+        var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0', '#676766',
+            '#f26522', '#ffe8af', '#add5d7', '#e0db25'];
 	}
 
 	for (var key in commitsPerCollaboratorData) {

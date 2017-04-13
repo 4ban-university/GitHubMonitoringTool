@@ -141,8 +141,6 @@ function weeklyFilter(weeklyInfo, week){
 	//Display data in text
 	document.getElementById('weekly'+week+'_TextData').onclick = function() {
 	    if ( this.checked ) {
-            $(".num-heading").css("text-align", "center");
-        	$(".dataTable").css("float", "none");
             $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
 	    	$(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="none";
@@ -153,8 +151,6 @@ function weeklyFilter(weeklyInfo, week){
 	//Display data in charts
 	document.getElementById('weekly'+week+'_GraphicData').onclick = function() {
 	    if ( this.checked ) {
-            $(".num-heading").css("text-align", "center");
-	    	$(".chart").find("div.canvas").css("float", "none");
             $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="none";
@@ -165,9 +161,7 @@ function weeklyFilter(weeklyInfo, week){
 	//Display data in text and charts
 	document.getElementById('weekly'+week+'_MixedData').onclick = function() {
 	    if ( this.checked ) {
-            $(".dataTable").css("float", "left");
-            $(".chart").find("div.canvas").css("float", "right");
-            $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
+	        $(".mdl-radio").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 	        document.getElementById("weekly"+week+"_commitsTable").style.display="block";
 	        document.getElementById("weekly"+week+"_commitsCanvas").style.display="block";
@@ -222,6 +216,7 @@ function weeklyReport(weeklyInfo, week, weeklyCommitsPerCollaboratorChart){
             $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 
+
 	    	var weekNumber=parseInt($(this).attr('weekNumberber'));
 	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%";
 			weeklyCommitsPerCollaboratorChart[weekNumber].destroy();
@@ -236,10 +231,12 @@ function weeklyReport(weeklyInfo, week, weeklyCommitsPerCollaboratorChart){
             $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 
+
 	    	var weekNumber=parseInt($(this).attr('weekNumber'));
-	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%";
+	    	document.getElementById('weekly'+week+'_commitsCanvas').style.width="30%";
 			weeklyCommitsPerCollaboratorChart[weekNumber].destroy();
 	        weeklyCommitsPerCollaborator(weeklyInfo, week, 'pie', false, weeklyCommitsPerCollaboratorChart);
+
 
 	    }
 	}
@@ -250,8 +247,9 @@ function weeklyReport(weeklyInfo, week, weeklyCommitsPerCollaboratorChart){
             $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 
+
 	    	var weekNumber=parseInt($(this).attr('weekNumber'));
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%";
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%";
 			weeklyCommitsPerCollaboratorChart[weekNumber].destroy();
 	        weeklyCommitsPerCollaborator(weeklyInfo, week, 'bar', false, weeklyCommitsPerCollaboratorChart);
 
@@ -264,8 +262,9 @@ function weeklyReport(weeklyInfo, week, weeklyCommitsPerCollaboratorChart){
             $(".chart-chooser").find("input[type=radio]").next().next().removeClass("outer-circle");
             $(this).next().next().addClass("outer-circle");
 
+
 	    	var weekNumber=parseInt($(this).attr('weekNumber'));
-	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="40%";
+	        document.getElementById('weekly'+week+'_commitsCanvas').style.width="50%";
 			weeklyCommitsPerCollaboratorChart[weekNumber].destroy();
 	        weeklyCommitsPerCollaborator(weeklyInfo, week, 'line', true, weeklyCommitsPerCollaboratorChart);
 
@@ -301,8 +300,10 @@ function weeklyCommitsPerCollaboratorTransformation (commitsPerCollaboratorData,
 		var colors = '#36A2EB';
 	}
 	else{
-		var labels=[];
-		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0'];
+		var labels=[]
+		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0', '#676766',
+        '#f26522', '#ffe8af', '#add5d7', '#e0db25']
+
 	}
 
 	for (var key in commitsPerCollaboratorData) {

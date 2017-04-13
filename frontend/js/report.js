@@ -30,8 +30,6 @@ function infoFilter(){
 	document.getElementById('TextData').onclick = function() {
 	    if ( this.checked ) {
 
-            $(".num-heading").css("text-align", "center");
-            $("#commitsChart, #issuesChart, #commetsChart").find(".dataTable").css("float", "none");
 	        document.getElementById("commitsCanvas").style.display="none"
 	        document.getElementById("issuesCanvas").style.display="none"
 	        document.getElementById("commentsCanvas").style.display="none"
@@ -46,9 +44,7 @@ function infoFilter(){
 	document.getElementById('GraphicData').onclick = function() {
 	    if ( this.checked ) {
 
-            $(".num-heading").css("text-align", "center");
-	    	$("#commitsChart, #issuesChart, #commetsChart").find(".canvas").css("float", "none");
-	        document.getElementById("commitsTable").style.display="none"
+	    	  document.getElementById("commitsTable").style.display="none"
 	        document.getElementById("issuesTable").style.display="none"
 	        document.getElementById("commentsTable").style.display="none"
 	        document.getElementById("commitsCanvas").style.display="block"
@@ -61,10 +57,7 @@ function infoFilter(){
 	//Display data in text and charts
 	document.getElementById('MixedData').onclick = function() {
 	    if ( this.checked ) {
-
-            $("#commitsChart, #issuesChart, #commetsChart").find(".dataTable").css("float", "left");
-            $("#commitsChart, #issuesChart, #commetsChart").find(".canvas").css("float", "right");
-	        document.getElementById("commitsTable").style.display="block"
+          document.getElementById("commitsTable").style.display="block"
 	        document.getElementById("issuesTable").style.display="block"
 	        document.getElementById("commentsTable").style.display="block"
 	        document.getElementById("commitsCanvas").style.display="block"
@@ -225,6 +218,7 @@ function createTables(commitsPerCollaborator, commentsPerCollaborator, issuesPer
 
 	});
 
+
 	//Creation of a table for the issues per collaborator section	
 
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
@@ -287,7 +281,7 @@ function createTables(commitsPerCollaborator, commentsPerCollaborator, issuesPer
 	});
 }
 
-	
+
 function commitsPerCollaborator(commitsPerCollaborator, chartType, line){
 	/*
 		Function to generate commits per collaborator chart, data and options for it.
@@ -313,8 +307,10 @@ function issuesPerCollaborator(issuesPerCollaborator, chartType, line){
 	var ctxIssuesPerCollaborator = document.getElementById('issuesPerCollaborator').getContext("2d");
 	issuesPerCollaborator.then(function(issuesPerCollaborator){
 		//Data and options for issues per collaborator
+
 		var issuesPerCollaboratorData = issuesPerCollaboratorTransformation(issuesPerCollaborator, line);	
 		var issuesPerCollaboratorsOptions = {};
+
 
 		issuesPerCollaboratorChart = new Chart(ctxIssuesPerCollaborator, {
 	        type: chartType,
@@ -331,8 +327,10 @@ function commentsPerCollaborator(commentsPerCollaborator, chartType, line){
 	var ctxCommentsPerCollaborator = document.getElementById('commentsPerCollaborator').getContext("2d");
 	commentsPerCollaborator.then(function(commentsPerCollaborator){
 		//Data and options for comments per collaborator
+
 		var commentsPerCollaboratorData = commentsPerCollaboratorTransformation(commentsPerCollaborator, line);	
 		var commentsPerCollaboratorsOptions = {};
+
 
 		commentsPerCollaboratorChart = new Chart(ctxCommentsPerCollaborator, {
 	        type: chartType,
@@ -354,7 +352,10 @@ function commitsPerCollaboratorTransformation (commitsPerCollaboratorData, line)
 		var colors = '#FFCE56';
 	}
 	else{
-		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0'];
+
+        var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0', '#676766',
+            '#f26522', '#ffe8af', '#add5d7', '#e0db25']
+
 	}
 
 	for (var key in commitsPerCollaboratorData) {

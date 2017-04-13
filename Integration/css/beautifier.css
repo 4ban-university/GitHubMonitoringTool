@@ -106,6 +106,10 @@ hr {
 .ChartType > div,
 .chart-chooser-main {
     text-align: center;
+    border-left: 1px solid rgba(25, 110, 214, 0.25);
+    border-top: 1px solid rgba(25, 110, 214, 0.25);
+    border-right: 1px solid rgba(25, 110, 214, 0.25);
+    border-radius: 0;
 }
 
 .mdl-dialog {
@@ -115,7 +119,7 @@ hr {
 #contact-dialog p {
     margin-left: 5px;
 }
-.mdl-radio__label:not(:last-child) {
+.mdl-radio__label:not(:last-child), .chart-chooser-main .chart-chooser:not(:last-child) {
     margin-right: 15px;
 }
 .modal-content {
@@ -126,21 +130,24 @@ hr {
 }
 .mdl-checkbox .mdl-checkbox__label, .mdl-radio__label, .mdl-radio.is-upgraded{
     font-size: 14px;
-    font-weight: 100;
-}
-#forRepoSelection{
-    font-size: 15px;
     font-weight: 400;
 }
+
 a:focus, a:hover {
     text-decoration: none !important;
 }
-
 .outer-circle {
     background: rgb(0,188,212);
-
     animation-name: spin;
     animation-duration: 3s; /* 3 seconds */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+.indr_td_s, .indr_th_s {
+    text-align: center !important;
+    padding: 5px !important;
+}
+.dataTable > h3 {
+    margin-top: 0;
 }

@@ -87,28 +87,28 @@ function report(){
 			commitsPerCollaboratorChart.destroy();
 	        commitsPerCollaborator(repo.commits, 'doughnut', false);
 	    }
-	}
+	};
 	document.getElementById('pieCPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('commitsCanvas').style.width="30%";
 			commitsPerCollaboratorChart.destroy();
 	        commitsPerCollaborator(repo.commits, 'pie', false);
 	    }
-	}
+	};
 	document.getElementById('barCPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commitsCanvas').style.width="50%";
 			commitsPerCollaboratorChart.destroy();
 	        commitsPerCollaborator(repo.commits, 'bar', false);
 	    }
-	}
+	};
 	document.getElementById('lineCPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commitsCanvas').style.width="50%";
 			commitsPerCollaboratorChart.destroy();
 	        commitsPerCollaborator(repo.commits, 'line', true);
 	    }
-	}
+	};
 
 	//Issues per collaborator section
 
@@ -118,28 +118,28 @@ function report(){
 	    	issuesPerCollaboratorChart.destroy();
 	        issuesPerCollaborator(repo.issues, 'doughnut', false);
 	    }
-	}
+	};
 	document.getElementById('pieIPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('issuesCanvas').style.width="30%";
 	    	issuesPerCollaboratorChart.destroy();
 	        issuesPerCollaborator(repo.issues,'pie', false);
 	    }
-	}
+	};
 	document.getElementById('barIPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('issuesCanvas').style.width="50%";
 	        issuesPerCollaboratorChart.destroy();
 	        issuesPerCollaborator(repo.issues,'bar', false);
 	    }
-	}
+	};
 	document.getElementById('lineIPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('issuesCanvas').style.width="50%";
 	        issuesPerCollaboratorChart.destroy();
 	        issuesPerCollaborator(repo.issues,'line', true);
 	    }
-	}
+	};
 
 	//Comments per collaborator section
 
@@ -149,21 +149,21 @@ function report(){
 	    	commentsPerCollaboratorChart.destroy();
 	        commentsPerCollaborator(repo.comments, 'doughnut', false);
 	    }
-	}
+	};
 	document.getElementById('pieCoPC').onclick = function() {
 	    if ( this.checked ) {
 	    	document.getElementById('commentsCanvas').style.width="30%";
 	    	commentsPerCollaboratorChart.destroy();
 	        commentsPerCollaborator(repo.comments, 'pie', false);
 	    }
-	}
+	};
 	document.getElementById('barCoPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commentsCanvas').style.width="50%";
 	    	commentsPerCollaboratorChart.destroy();
 	        commentsPerCollaborator(repo.comments, 'bar', false);
 	    }
-	}
+	};
 	document.getElementById('lineCoPC').onclick = function() {
 	    if ( this.checked ) {
 	        document.getElementById('commentsCanvas').style.width="50%";
@@ -342,7 +342,8 @@ function commitsPerCollaboratorTransformation (commitsPerCollaboratorData, line)
 		var colors = '#FFCE56';
 	}
 	else{
-		var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0'];
+        var colors = ['#FF6384','#36A2EB','#FFCE56','#A997DF','#9CEC5B','#E0BAD7','#F2A541','#53F4FF','#F0F465','#533A71','#D16666','#5DD39E','#2978A0', '#676766',
+            '#f26522', '#ffe8af', '#add5d7', '#e0db25']
 	}
 
 	for (var key in commitsPerCollaboratorData) {
