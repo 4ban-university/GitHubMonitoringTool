@@ -11,19 +11,17 @@
     <script src="../../Integration/js/repo.js"></script>
  
     <script>
-        var owner = '';
+        var owner = 'abhandal';
         var repoName = 'SOEN341-G4';
-        
-        //MAKE SURE TO ENTER USER/PASSWORD CREDENTIALS HERE
         var auth = {username:"enter", password:"enter"};
         //Instantiate your repo object
         var repo = new Repo(owner,repoName,auth);
         //^^this will start the process of getting all the data asynchronously
         
-        QUnit.test("Auth Check", function(assert) {
+        QUnit.test("Check Auth", function(assert) {
             assert.notEqual(auth.username,"enter","Valid username");
             assert.notEqual(auth.password,"enter","Valid password");
-        });
+        })
         
         repo.description.then(function(description) {
             QUnit.test("details", function(assert){ 
@@ -51,10 +49,6 @@
             });  
         });
 
-          QUnit.test("Repo", function(assert){
-              assert.ok(repo,"Repo method called successfully");
-          });
-        
          repo.collaborators.then(function(response){//then means -> after you get the data, execute the following function
              QUnit.test("getCollaborators", function(assert){
                  assert.equal(response.length,10,"There are 10 collaborators in the SOEN341-G4 repo");
@@ -77,7 +71,6 @@
                 assert.equal(weeks[-1], undefined, "Number of events in non-existant week is undefined");
           });
         });
-        
   </script>
 </head>
 <body>
