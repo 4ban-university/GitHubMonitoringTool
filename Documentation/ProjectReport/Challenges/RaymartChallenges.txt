@@ -1,0 +1,10 @@
+I faced are two different challenges during the course of the project. 
+First, learning Material Design Lite (MDL) framework for the front-end development. 
+This is framework is all new to me. However, I did quite a bit of work in Bootstrap, a framework similar to MDL. 
+I've been using Bootstrap in my own projects. So, this was not a surprise for me. 
+It took me a couple of hours to learn the basics and finally applied them to the project. 
+Second, understanding and learning about web application programming interface (API) especially GitHub API. 
+GitHub API is the main web API used in the project, thus, I had to read the API documentation and make sense 
+how are we going to employ their usage in our project. Fortunately, playing around with GitHub's OAuth authorization 
+API helps me understand API application better, as well as its relevance
+in other projects.
