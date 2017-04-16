@@ -1,6 +1,6 @@
 The usage of the library mdl was a challenge since mdl is not widely used by many developers,
 there were components that were not compatible with every browser. Some parts are using bootstraps
-to ensure the functionality of the web app available through all browsing platforms. Working with 
-GitHub was also a challenge. I have not worked with any software development platform. 
+to ensure that the functionality of the web app was available through all browsing platforms. Working with 
+GitHub was also a challenge. I have not worked with any software development platform before. 
 There was a period of time needed to get use to GitHub and to learn the functionality of the website.
-Another challenge with be to work with new concepts such as making API calls. 
+Another challenge was to work with new concepts such as making API calls. 
