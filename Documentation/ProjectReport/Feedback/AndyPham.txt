@@ -1,0 +1,4 @@
+Overall, I was able to learn a lot from this project. From the usage of libraries 
+such as mdl and bootstraps, to understanding the concepts of API calling, this project
+allowed me to experience an environment similar to industrial software development. 
+It also enabled to apply concepts of software development and planning learnt in class.
