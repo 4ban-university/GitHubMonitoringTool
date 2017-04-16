@@ -1,7 +1,7 @@
 
 Version 1
 The most difficult part of the project, was to learn to work with asynchronous Javascript. Not having a lot of experience with
-any of the web-programming languages meant that I had to work extra hard to understand the code that I was writing and learn 
+any of the web-programming languages meant that I had to work extra hard to understand the code I was writing and learn 
 how to make it work. At first, I started implementing the backend using PHP, but when it was all done, I realized that it was 
 too slow to convert Github data from JSON to PHP back to JSON objects. Hence, after a couple of weeks of implementing the PHP
 part of the program, I had to convert everything to Javascript.  Since AJAX on its own is not the most convenient way to work 
