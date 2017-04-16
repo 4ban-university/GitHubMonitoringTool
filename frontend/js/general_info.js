@@ -8,7 +8,7 @@ function overAllInfo(commits, issues, collaborators, name, description, link){
 	:param description: promise with description
 	:param link: repository link
 	*/
-	var collab = [];
+	//var collab = [];
 	var i = 0;
 	document.getElementById('collaborators').innerHTML += '<h2>Collaborators:</h2><ul class="demo-list-icon mdl-list">';
 	collaborators.then(function(collaborators){
