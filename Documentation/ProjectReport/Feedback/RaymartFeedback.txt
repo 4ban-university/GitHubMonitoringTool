@@ -1,0 +1,4 @@
+This project has introduced me to the latest web standards such as MDL framework and web API technology.  
+I could not have learned these technologies on my own without being exposed to a project like this. 
+In addition, the project has also taught me how agile methodologies work and applied in a 
+project which requires a short period of development time.
